@@ -1,0 +1,314 @@
+PropDefinitions:
+  #properties of program:
+  program_id:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  program_name:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  program_description:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  program_website:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  #properties of project:
+  project_id:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  application_id:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  fiscal_year:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  project_title:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  project_type:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  abstract_text:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: false
+    Private: false
+  keywords:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: false
+    Private: false
+  org_name:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  org_city:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  org_state:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: false
+    Private: false
+  org_country:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  principal_investigators:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  lead_doc:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  program_officers:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: false
+    Private: false
+  award_amount:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  nci_funded_amount:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  award_notice_date:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: false
+    Private: false
+  project_start_date:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  project_end_date:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  full_foa:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: false
+    Private: false
+  #properties of publication:
+  publication_id:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  pmc_id:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: false
+    Private: false
+  year:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: false
+    Private: false
+  journal:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: false
+    Private: false
+  title:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: false
+    Private: false
+  authors:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: false
+    Private: false
+  publish_date:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: false
+    Private: false
+  citation_count:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: false
+    Private: false
+  relative_citation_ratio:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: false
+    Private: false
+  nih_percentile:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: false
+    Private: false
+  doi:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: false
+    Private: false
+  #properties of geo:
+  accession:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  title:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: false
+    Private: false
+  status:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  submission_date:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  last_update_date:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: false
+    Private: false
+  #properties of sra:
+  accession:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  study_title:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  bioproject_accession:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  registration_date:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  #properties of dbgap:
+  accession:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  title:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: false
+    Private: false
+  release_date:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  #properties of clinical_trial:
+  clinical_trial_id:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  title:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: false
+    Private: false
+  last_update_posted:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: false
+    Private: false
+  recruitment_status:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: false
+    Private: false

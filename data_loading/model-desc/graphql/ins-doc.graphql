@@ -1,0 +1,345 @@
+type clinical_trial {
+  clinical_trial_id: String
+  title: String
+  last_update_posted: String
+  recruitment_status: String
+  projects: [project] 
+}
+
+type dbgap {
+  accession: String
+  title: String
+  release_date: String
+  projects: [project] 
+}
+
+type geo {
+  accession: String
+  title: String
+  status: String
+  submission_date: String
+  last_update_date: String
+  projects: [project] 
+}
+
+type program {
+  program_id: String
+  program_name: String
+  program_description: String
+  program_website: String
+  projects: [project] 
+}
+
+type project {
+  project_id: String
+  application_id: String
+  fiscal_year: String
+  project_title: String
+  project_type: String
+  abstract_text: String
+  keywords: String
+  org_name: String
+  org_city: String
+  org_state: String
+  org_country: String
+  principal_investigators: String
+  lead_doc: String
+  program_officers: String
+  award_amount: String
+  nci_funded_amount: String
+  award_notice_date: String
+  project_start_date: String
+  project_end_date: String
+  full_foa: String
+  publications: [publication] 
+  geos: [geo] 
+  sras: [sra] 
+  dbgaps: [dbgap] 
+  clinical_trials: [clinical_trial] 
+  program: program 
+}
+
+type publication {
+  publication_id: String
+  pmc_id: String
+  year: String
+  journal: String
+  title: String
+  authors: String
+  publish_date: String
+  citation_count: String
+  relative_citation_ratio: String
+  nih_percentile: String
+  doi: String
+  projects: [project] 
+}
+
+type sra {
+  accession: String
+  study_title: String
+  bioproject_accession: String
+  registration_date: String
+  projects: [project] 
+}
+
+type GroupCount {
+    group: String
+    subjects: Int
+}
+
+type ProgramInfo {
+    program_id: String
+    program_name: String
+    program_description: String
+    program_website: String
+    num_projects: Int
+    num_publications: Int
+}
+
+type ProjectInfo {
+    project_id: String
+    application_id: String
+    fiscal_year: String
+    project_title: String
+    project_type: String
+    abstract_text: String
+    keywords: String
+    org_name: String
+    org_city: String
+    org_state: String
+    org_country: String
+    principal_investigators: String
+    lead_doc: String
+    program_officers: String
+    award_amount: String
+    nci_funded_amount: String
+    award_notice_date: String
+    project_start_date: String
+    project_end_date: String
+    full_foa: String
+} 
+
+type PublicationInfo {
+    publication_id: String
+    pmc_id: String
+    year: String
+    journal: String
+    title: String
+    authors: String
+    publish_date: String
+    citation_count: String
+    relative_citation_ratio: String
+    nih_percentile: String
+    doi: String
+}
+
+type GEOInfo {
+    accession: String
+    title: String
+    status: String
+    submission_date: String
+    last_update_date: String
+}
+
+type SRAInfo {
+    accession: String
+    study_title: String
+    bioproject_accession: String
+    registration_date: String
+}
+
+type DBGapInfo {
+    accession: String
+    title: String
+    release_date: String
+}
+
+type ClinicalTrialInfo {
+    clinical_trial_id: String
+    title: String
+    last_update_posted: String
+    recruitment_status: String
+}
+
+type ProgramDetail {
+    program_id: String
+    program_name: String
+    program_description: String
+    program_website: String
+    num_publications: Int
+    projectsByDOC: [GroupCount]
+    projects: [ProjectInfo]
+}
+
+type ProjectDetail {
+    project_id: String
+    application_id: String
+    fiscal_year: String
+    project_title: String
+    project_type: String
+    abstract_text: String
+    keywords: String
+    org_name: String
+    org_city: String
+    org_state: String
+    org_country: String
+    principal_investigators: String
+    lead_doc: String
+    program_officers: String
+    award_amount: String
+    nci_funded_amount: String
+    award_notice_date: String
+    project_start_date: String
+    project_end_date: String
+    full_foa: String
+    publications: [PublicationInfo]
+    geos: [GEOInfo]
+    sras: [SRAInfo]
+    dbgaps: [DBGapInfo]
+    clinical_trials: [ClinicalTrialInfo]
+}
+
+type ProjectOverview {
+    project_id: String
+    application_id: String
+    fiscal_year: String
+    project_title: String
+    project_type: String
+    abstract_text: String
+    keywords: String
+    org_name: String
+    org_city: String
+    org_state: String
+    org_country: String
+    principal_investigators: String
+    lead_doc: String
+    program_officers: String
+    award_amount: String
+    nci_funded_amount: String
+    award_notice_date: String
+    project_start_date: String
+    project_end_date: String
+    full_foa: String
+}
+
+type PublicationOverview {
+    publication_id: String
+    pmc_id: String
+    year: String
+    journal: String
+    title: String
+    authors: String
+    publish_date: String
+    citation_count: String
+    relative_citation_ratio: String
+    nih_percentile: String
+    doi: String
+}
+
+type GEOOverview {
+    accession: String
+    title: String
+    status: String
+    submission_date: String
+    last_update_date: String
+}
+
+type SRAOverview {
+    accession: String
+    study_title: String
+    bioproject_accession: String
+    registration_date: String
+}
+
+type DBGapOverview {
+    accession: String
+    title: String
+    release_date: String
+}
+
+type ClinicalTrialOverview {
+    clinical_trial_id: String
+    title: String
+    last_update_posted: String
+    recruitment_status: String
+}
+
+type SearchResult {
+    numberOfPrograms: Int
+    numberOfProjects: Int
+    numberOfPublications: Int
+    numberOfGEOs: Int
+    numberOfSRAs: Int
+    numberOfDBGaps: Int
+    numberOfClinicalTrials: Int
+    firstPage: [ProjectOverview]
+}
+
+schema {
+    query: QueryType
+}
+
+type QueryType {
+    schemaVersion: String 
+
+    "Simple counts"
+    numberOfPrograms: Int 
+    numberOfProjects: Int 
+    numberOfPublications: Int 
+    numberOfGEOs: Int 
+    numberOfSRAs: Int 
+    numberOfDBGaps: Int 
+    numberOfClinicalTrials: Int 
+
+    programInfo: [ProgramInfo] 
+
+    "Group counts"
+    projectCountByProgram(project_ids: [String] = []): [GroupCount] 
+    projectCountByDOC(project_ids: [String] = []): [GroupCount] 
+    projectCountByFiscalYear(project_ids: [String] = []): [GroupCount] 
+
+    projectOverViewPaged(project_ids: [String] = [""], order_by: String = ""): [ProjectOverview] 
+
+    projectOverViewPagedDesc(project_ids: [String] = [""], order_by: String = ""): [projectOverview] 
+
+    publicationOverViewPaged(publication_ids: [String] = [""], order_by: String = ""): [PublicationOverview] 
+
+    publicationOverViewPagedDesc(publication_ids: [String] = [""], order_by: String = ""): [PublicationOverview] 
+
+    geoOverViewPaged(accessions: [String] = [""], order_by: String = ""): [GEOOverview] 
+
+    geoOverViewPagedDesc(accessions: [String] = [""], order_by: String = ""): [GEOOverview] 
+
+    "Facet search counts"
+    filterProjectCountByProgram(
+        programs: [String] = [],
+        docs: [String] = [],
+        fiscal_years: [String] = []
+    ): [GroupCount] 
+
+    filterProjectCountByDOC(
+        programs: [String] = [],
+        docs: [String] = [],
+        fiscal_years: [String] = []
+    ): [GroupCount] 
+
+    filterProjectCountByFiscalYear(
+        programs: [String] = [],
+        docs: [String] = [],
+        fiscal_years: [String] = []
+    ): [GroupCount] 
+
+    searchProjects (
+          programs: [String] = [],
+          docs: [String] = [],
+          fiscal_years: [String] = [],
+          first: Int = 100
+    ): SearchResult 
+
+    programDetail(program_id: String): ProgramDetail 
+
+    programDetail(program_id: String):  ProgramDetail 
+
+    projectDetail(project_id: String): ProjectDetail 
+
+}
