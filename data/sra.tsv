@@ -1,0 +1,110 @@
+type	accession	study_title	bioproject_accession	registration_date	project.project_id
+sra	SRP068671	Dnmt3a haploinsufficiency transforms Flt3-ITD myeloproliferative disease into a rapid, spontaneous, and fully-penetrant acute myeloid leukemia	PRJNA309321	20-Jan-2016	3R01CA196658-02S1
+sra	SRP102091	Chromatin-associated protein interactions drive megadomain formation in NUT midline carcinoma	PRJNA379616	17-Mar-2017	3R01CA124633-11A1S1
+sra	SRP120988	Analysis of genome-wide accessibility following acute deletion of Ring1b in mouse embryonic stem cells [ATAC-seq]	PRJNA415436	23-Oct-2017	3R01CA163915-07S1
+sra	SRP115262	Rheostatic Chromatin Control of Promiscuous Transcription by Aire and Brg1 [ATAC-Seq]	PRJNA397970	11-Aug-2017	3R01CA163915-07S1
+sra	SRP144074	Transcriptional effects of small molecule targeting of ARID1A	PRJNA454308	30-Apr-2018	3R01CA163915-07S1
+sra	SRP123227	Transcript analysis of CD45+Ter119+CD71+ erythroid-like progenitor cells from tumor-bearing mice	PRJNA416659	31-Oct-2017	1R33CA225328-01
+sra	SRP150315	Bone marrow derived human B cells [normal proB]	PRJNA475684	12-Jun-2018	1U01CA232563-01
+sra	SRP162041	Targeting the CALR Interactome in Myeloproliferative Neoplasms	PRJNA491714	18-Sep-2018	3R01CA204396-02S1
+sra	SRP140587	Targeted degradation of BRD9 reverses oncogenic gene expression in synovial sarcoma [ChIP-seq]	PRJNA450476	16-Apr-2018	3R01CA204915-02S1
+sra	SRP162854	IKZF2 is required for myeloid leukemic stem cells by driving self-renewal and inhibiting the myeloid differentiation program II	PRJNA493794	28-Sep-2018	5R01CA176745-09
+sra	SRP139591	Transcript analysis of multi-locus sampled tumor tissue in patients with non-small cell lung cancer	PRJNA449697	11-Apr-2018	1R33CA225328-01
+sra	SRP158590	Molecular Signatures of Multiple Myeloma Progression through Single Cell RNA-Seq	PRJNA487220	22-Aug-2018	1U54CA224018-01
+sra	SRP140568	Enhancer Domains in Gastrointestinal Stromal Tumor Regulate KIT Expression and are Targetable by BET Bromodomain Inhibition [RNA-seq]	PRJNA450436	16-Apr-2018	5R01CA176745-09
+sra	SRP104270	Extra deep sequencing of GL261 and LLC1 murine cell lines for the purpose of fusion detection	PRJNA383546	19-Apr-2017	1UG3CA244687-01
+sra	SRP183188	Single-cell RNA-seq reveals AML hierarchies relevant to disease progression and immunity	PRJNA477870	25-Jun-2018	1U2CCA233195-01
+sra	SRP137885	The gene expression profiles of antigen-primed wildtype and Ddit3-/- CD8 Pmel T cells	PRJNA449089	6-Apr-2018<	1U01CA232758-01
+sra	SRP168621	Transcriptomic analysis to functionally map the intrinsically disordered domain of EWS/FLI [Experiment 1]	PRJNA505501	14-Nov-2018	1U54CA231641-01
+sra	SRP075249	PTEN-deficient synovial sarcoma	PRJNA321740	16-May-2016	1U54CA231652-01
+sra	SRP136023	Prostate Cancer Cell RNA-Seq (PC3E and GS689.Li)	PRJNA438990	19-Mar-2018	1U01CA233074-01
+sra	SRP119053	Aging Human Hematopoietic Stem Cells Manifest Profound Epigenetic Reprogramming of Enhancers That May Predispose to Leukemia	PRJNA412479	28-Sep-2017	3R01CA196658-02S1
+sra	SRP184654	KSDM1b Role in Ewing Sarcoma	PRJNA521471	8-Feb-2019<	1U54CA231641-01
+sra	SRP215841	Identification of PIKfyve kinase as a target in multiple myeloma	PRJNA555832	22-Jul-2019	1U54CA224018-01
+sra	SRP004867	Piloderma croceum F 1598 genome sequencing	PRJNA61203	21-Jan-2015	1U01CA232563-01
+sra	SRP217139	Lactate mediated epigenetic reprogramming during cancer associated fibroblast formation	PRJNA557889	1-Aug-2019<	1U24CA224020-01
+sra	SRP188729	Papillomavirus-Colonized Murine Skin Confers Cancer Resistance	PRJNA527818	18-Mar-2019	1U01CA233097-01
+sra	SRP214326	Single cell ATAC sequencing profile of quiescent mesenchymal progenitors	PRJNA554142	11-Jul-2019	1U54CA231652-01
+sra	SRP222871	A novel Menin-MLL inhibitor induces specific chromatin changes and eradicates disease in models of MLL-rearranged leukemia [RNA-Seq II]	PRJNA573462	21-Sep-2019	5R01CA176745-09
+sra	SRP220659	CRISPR screening reveals targets to reprogram long-lived effector CD8+ T cells for cancer therapy [scRNA-seq]	PRJNA564283	6-Sep-2019<	5R01CA221290-02
+sra	SRP198497	A large peptidome dataset improves HLA class I epitope prediction across most of the human population	PRJNA543098	15-May-2019	1U24CA224331-01
+sra	SRP126055	RUVBL1/RUVBL2 ATPase Activity Drives PAQosome Maturation, DNA Replication and Radioresistance in Lung Cancer	PRJNA420950	4-Dec-2017<	3R01CA124633-11A1S1
+sra	SRP226833	MUC1-C Drives Lineage Plasticity in Progression to Neuroendocrine Prostate Cancer	PRJNA579338	24-Oct-2019	1U01CA233084-01
+sra	SRP195806	Genome-wide CRISPR/Cas9 guide library knockout screening in Nalm6 ALL cells under CART19 selective pressure	PRJNA541517	7-May-2019<	1R01CA226983-01
+sra	SRP192022	MLL-Menin inhibition reverses pre-leukemic progenitor self-renewal induced by NPM1c mutations [RNA-Seq]	PRJNA532383	11-Apr-2019	5R01CA176745-09
+sra	SRP235221	The landscape of alternative splicing in aggressive prostate cancers	PRJNA594270	9-Dec-2019<	1U01CA233074-01
+sra	SRP238470	Neurofibromin is an Estrogen Receptor alpha Transcriptional Co-repressor in Breast cancer	PRJNA597127	21-Dec-2019	1U54CA233223-01
+sra	SRP197106	H3K36 methyltransferase SETD2 regulates lymphoid and neural development [seq]	PRJNA541930	8-May-2019<	5R01CA176745-09
+sra	SRP230212	Discovery of a selective inhibitor of Doublecortin Like Kinase 1	PRJNA589887	15-Nov-2019	1U01CA224146-01
+sra	SRP164390	Genome-wide survey of adjacent gene rearrangements in breast cancer identifies triple-negative specific BCL2L14-ETV6 fusions	PRJNA495013	8-Oct-2018<	3U54CA224076-01S2
+sra	SRP256482	Differential gene expression in mACVR1 NS v wt-ACVR1 NS.	PRJNA625523	15-Apr-2020	1U01CA224160-01
+sra	SRP200058	Systematic comparative analysis of single cell RNA-sequencing methods	PRJNA545730	31-May-2019	1U2CCA233195-01
+sra	SRP256199	Differentiated prostate luminal cells acquire enhanced regenerative potential after androgen ablation	PRJNA625051	11-Mar-2020	1U54CA224079-01
+sra	SRP238472	Combined targeting of the BRD4-NUT-p300 axis in NUT midline carcinoma by dual selective bromodomain inhibitor, NEO2734	PRJNA597130	21-Dec-2019	3R01CA124633-11A1S1
+sra	SRP226854	Somatic tissue engineering in mouse models reveals an actionable role for WNT pathway alterations in prostate cancer metastasis	PRJNA579352	24-Oct-2019	1U54CA224079-01
+sra	SRP255477	Clinically-relevant cell type cross-talk identified from a lung tumor microenvironment interactome	PRJNA438518	15-Mar-2018	1U24CA224309-01
+sra	SRP257861	“Direct to Drug” screening as a precision medicine tool in multiple myeloma	PRJNA627346	15-Apr-2020	1U54CA224018-01
+sra	SRP254656	Comparison of mRNA profiles of AGO2 sufficent and deficient pancreatic tissue in the LSL KRASG12D mouse model of pancreatic cancer	PRJNA616355	30-Mar-2020	1U01CA224145-01
+sra	SRP255945	Transcriptomic analysis of IRAK4 in murine pancreatic cancer cells (KP2)	PRJNA624277	10-Apr-2020	1U54CA224083-01
+sra	SRP258057	Novel Inhibitors of the Histone-Methyltransferase DOT1L Show Potent Antileukemic Activity in Patient-derived Xenografts (RNA-seq dataset)	PRJNA627611	23-Apr-2020	5R01CA176745-09
+sra	SRP265179	Single Cell and Spatial Analysis of Human Squamous Cell Carcinoma [WES]	PRJNA603106	24-Jan-2020	1U2CCA233195-01
+sra	SRP265179	Single Cell and Spatial Analysis of Human Squamous Cell Carcinoma [WES]	PRJNA603106	24-Jan-2020	1U2CCA233238-01
+sra	SRP251986	IL-18BP is a secreted immune checkpoint and barrier to effective IL-18 immunotherapy	PRJNA611084	8-Mar-2020<	1U01CA233096-01A1
+sra	SRP269098	The Tumor Microenvironment and Inflammation Influence toxicity in patients with Large B Cell Lymphoma Treated with Axicabtagene Ciloleucel [RNA-Seq]	PRJNA642648	28-Jun-2020	1U01CA247576-01
+sra	SRP246236	Comparison of tumor-associated YAP1 fusions identifies a recurrent set of functions critical for oncogenesis [Cut&amp;Run ChIP-seq]	PRJNA604071	30-Jan-2020	1U54CA243125-01
+sra	SRP255006	RNA-seq analysis in NRG1 and enzalutamide treated 22Pc-EP cell line	PRJNA622705	2-Apr-2020<	1U54CA224079-01
+sra	SRP266202	Differential expression of endogenous retroelements (long terminal repeats) in ADA2 depleted primary endothelial cells (HUVECs)	PRJNA637655	5-Jun-2020<	1U01DE028227-01
+sra	SRP246912	Chromatin profiling of the relationship between EWS/FLI, LSD1, and K27ac in multiple Ewing sarcoma cell lines	PRJNA604586	3-Feb-2020<	1U54CA231641-01
+sra	SRP266970	Effect of bone marrow microenvironment on the sensitivity of breast cancer cells to antiestrogens	PRJNA638946	11-Jun-2020	1U54CA233223-01
+sra	SRP275646	Role of PTEN in B-ALL	PRJNA650503	3-Aug-2020<	1U01CA232563-01
+sra	SRP285920	Functional Genomics Identifies Metabolic Vulnerabilities in Pancreatic Cancer [CRISPR Screen]	PRJNA666653	30-Sep-2020	1U01CA224146-01
+sra	SRP279024	ChIP-seq profiling of pancreatic tumor cells	PRJNA659482	26-Aug-2020	1U54CA232568-01
+sra	SRP237758	Genome-wide maps of macroH2A and H2B distribution in murine embryonic fibroblasts in dependence of Lsh.	PRJNA595882	16-Dec-2019	3R01CA163915-07S1
+sra	SRP233500	PD-1 and TIGIT co-expression identifies a circulating CD8 T cell population predictive of response to anti-PD-1 therapy in melanoma and Merkel-cell carcinoma patients [RNA-seq]	PRJNA592169	27-Nov-2019	2UM1CA154967-07
+sra	SRP286166	Protein prenylation drives discrete signaling programs for the differentiation and maintenance of effector Treg cells [Pggt1b_ATACseq]	PRJNA667026	2-Oct-2020<	5R01CA221290-02
+sra	SRP269226	Protein synthesis inhibitors stimulate MondoA transcriptional activity by driving accumulation of glucose 6-phosphate	PRJNA642855	29-Jun-2020	3U54CA224076-01S2
+sra	SRP288305	Droplet based mRNA sequencing of fixed and permeabilized cells by CLInt-Seq allows for antigen specific TCR cloning	PRJNA670907	23-Oct-2020	1U01CA233074-01
+sra	SRP292343	Tumor-infiltrating mast cells are associated with resistance to anti-PD-1 therapy. [RNA-Seq]	PRJNA677942	12-Nov-2020	1U54CA224070-01
+sra	SRP243766	Genomic alterations during the in situ to invasive ductal breast carcinoma transition shaped by the immune system	PRJNA602512	21-Jan-2020	1U24CA224331-01
+sra	SRP300174	A CRISPR/Cas9-engineered ARID1A-deficient human gastric cancer organoid model reveals essential and non-essential modes of oncogenic transformation	PRJNA689437	4-Jan-2021<	1U54CA224081-01
+sra	SRP300174	A CRISPR/Cas9-engineered ARID1A-deficient human gastric cancer organoid model reveals essential and non-essential modes of oncogenic transformation	PRJNA689437	4-Jan-2021<	3R01CA163915-07S1
+sra	SRP292363	Single-cell lineages reveal the rates, routes, and drivers of metastasis in cancer xenografts	PRJNA677962	12-Nov-2020	1U54CA224081-01
+sra	SRP300048	MUC1-C integrates activation of the IFN-? pathway with suppression of the tumor immune microenvironment in triple-negative breast cancer	PRJNA689212	2-Jan-2021<	1U01CA233084-01
+sra	SRP306841	Convergent organization of aberrant MYB complexes controls oncogenic gene expression in acute myeloid leukemia [ChIPseq]	PRJNA702445	17-Feb-2021	3R01CA204396-02S1
+sra	SRP279983	Single-cell B receptor VDJ sequencing from HGSOC isolated B cells	PRJNA661287	3-Sep-2020<	1U01CA232758-01
+sra	SRP258859	Genome-wide maps of histone modifications in mouse tumor-derived cell lines	PRJNA628863	28-Apr-2020	3U54CA224065-01S1
+sra	SRP276510	Differential gene expression profile of FOLR2+ vs. FOLR2- tumor-associated macrophages	PRJNA655737	6-Aug-2020<	1R01CA226983-01
+sra	SRP265561	p300/CBP mediated activation of MHCI machinery and IFNg receptor loci controls chemoimmunotherapy	PRJNA636609	2-Jun-2020<	1U01AA027681-01
+sra	SRP253514	Transcriptional profiling of control versus PAF depleted human lung cancer cell line (H1792)	PRJNA613709	20-Mar-2020	3U54CA224065-01S1
+sra	SRP304721	Lipid signalling enforces functional specialization of Treg cells in tumours [scRNA-seq EAE]	PRJNA699485	4-Feb-2021<	5R01CA221290-02
+sra	SRP295963	ArchR: An integrative and scalable software package for single-cell chromatin accessibility analysis	PRJNA682619	4-Dec-2020<	1U2CCA233311-01
+sra	SRP289484	In vivo CRISPR screening reveals nutrient signaling processes underpinning CD8+ T cell fate decisions [Pofut1 ATAC-seq]	PRJNA672934	28-Oct-2020	5R01CA221290-02
+sra	SRP253428	Combined TP53 and RB1 Loss Promotes Prostate Cancer Resistance to a Broad Spectrum of Cancer Therapeutics and Confers Vulnerability to Replication Stress	PRJNA613594	20-Mar-2020	1U54CA224079-01
+sra	SRP313387	Regnase-1 suppresses TCF-1+ precursor exhausted T cell formation to limit CAR T cell responses against ALL [WGBS]	PRJNA719647	4-Apr-2021<	5R01CA221290-02
+sra	SRP265464	T cell receptor repertoire analysis of tumor-infiltrating T cells in non-small cell lung cancer [tumor_T_cells]	PRJNA636300	1-Jun-2020<	1U54CA232568-01
+sra	SRP284880	Pancreatic cancer is marked by complement-high blood monocytes and tumor-associated macrophages	PRJNA664962	22-Sep-2020	1U01CA224145-01
+sra	SRP301988	Transient “rest” induces functional reinvigoration and epigenetic remodeling in exhausted CAR-T cells Mediate Enhanced Antitumor Activity [ATAC-seq]	PRJNA692498	15-Jan-2021	1U54CA232568-01
+sra	SRP292529	CRISPR genome editing of human dendritic cells (treatments of knockout dendritic cells)	PRJNA678348	13-Nov-2020	1U54CA224081-01
+sra	SRP308387	Targeting Treg cells with GITR activation alleviates resistance to immunotherapy in murine glioblastomas	PRJNA705184	26-Feb-2021	1U01CA224348-01
+sra	SRP308387	Targeting Treg cells with GITR activation alleviates resistance to immunotherapy in murine glioblastomas	PRJNA705184	26-Feb-2021	1U2CCA233262-01
+sra	SRP308387	Targeting Treg cells with GITR activation alleviates resistance to immunotherapy in murine glioblastomas	PRJNA705184	26-Feb-2021	3P30CA006516-55S9
+sra	SRP290695	Apolipoprotein E promotes immune suppression in pancreatic cancer through NF-kB-mediated production of CXCL1	PRJNA673706	1-Nov-2020<	1U01CA224145-01
+sra	SRP303823	The effect of STAG2 loss in Ewing sarcoma [ChIP-seq]	PRJNA697910	29-Jan-2021	3R01CA204915-02S1
+sra	SRP254894	Chromatin Occupancy of AR, BRD4, and H3K27Ac in MR42D Cells in response to Enzalutamide [RNA-seq]	PRJNA622461	1-Apr-2020<	1U54CA224079-01
+sra	SRP311264	Obesity accelerates hair thinning by stem cell-centric converging mechanism [RNA-seq]	PRJNA715473	18-Mar-2021	3P30CA046592-31S8
+sra	SRP311264	Obesity accelerates hair thinning by stem cell-centric converging mechanism [RNA-seq]	PRJNA715473	18-Mar-2021	3P30CA046592-31S4
+sra	SRP318758	Notch-Induced Endoplasmic Reticulum-Associated Degradation Governs Thymocyte ß Selection	PRJNA727825	6-May-2021<	3P30CA125123-14S6
+sra	SRP258680	HIF1a enrichment on KSHV genome in normoxia and hypoxia	PRJNA628619	27-Apr-2020	3P30CA016520-44S5
+sra	SRP258680	HIF1a enrichment on KSHV genome in normoxia and hypoxia	PRJNA628619	27-Apr-2020	3P30CA016520-44S6
+sra	SRP313669	Transcriptomic effects of nicotinamide nucleotide adenylyltransferase 1 (NMNAT1) deletion on human AML cells	PRJNA720103	6-Apr-2021<	3P30CA125123-14S6
+sra	SRP255626	SMAD4 represses FOSL1 expression and pancreatic cancer metastatic colonization	PRJNA623590	7-Apr-2020<	1U01CA224146-01
+sra	SRP267044	Activation of ?-globin gene expression by GATA1 and NF-Y in hereditary persistence of fetal hemoglobin	PRJNA639052	12-Jun-2020	3P30CA021765-41S3
+sra	SRP097634	Homo sapiens Raw sequence reads	PRJNA362942	23-Jan-2017	3R33CA192980-03S1
+sra	SRP124971	Ultrasensitive and universal detection of genomic chimerism by single-molecule molecular inversion probe capture and high throughput sequencing of copy number deletion polymorphisms	PRJNA418330	14-Nov-2017	3R33CA192980-03S1
+sra	SRP168620	Transcriptomic analysis to functionally map the intrinsically disordered domain of EWS/FLI [Experiment 2]	PRJNA505502	14-Nov-2018	1U54CA231641-01
+sra	SRP103200	Enhancer landscape of AML patient samples	PRJNA381888	6-Apr-2017<	3R01CA196658-02S1
+sra	SRP141691	CD19 mutations found in CD19 negative relapse to CART-19 in ALL patients	PRJNA451298	21-Apr-2018	1U01CA232563-01
+sra	SRP163478	Wipi1 is a Genetic Hub that Mediates Right Ventricular Failure	PRJNA494710	4-Oct-2018<	1U24CA224067-01
+sra	SRP163468	Isolation and genome-wide characterization of cellular DNA:RNA triplex structures III	PRJNA494708	4-Oct-2018<	1U24CA224067-01
+sra	SRP032476	ETMR RNA-Seq	PRJNA226099	1-Nov-2013<	3P30CA016520-44S5
+sra	SRP032476	ETMR RNA-Seq	PRJNA226099	1-Nov-2013<	3P30CA016520-44S6

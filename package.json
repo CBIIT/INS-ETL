@@ -1,0 +1,26 @@
+{
+  "name": "ins-etl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/David-YuWei/INS-ETL.git"
+  },
+  "author": "Wei Yu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/David-YuWei/INS-ETL/issues"
+  },
+  "homepage": "https://github.com/David-YuWei/INS-ETL#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "read-excel-file": "^5.1.0",
+    "dotenv": "^10.0.0",
+    "lodash": "^4.17.21",
+    "winston": "^3.3.3"
+  }
+}
