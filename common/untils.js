@@ -1,4 +1,9 @@
 const axios = require('axios');
+const path = require('path');
+const fs = require("fs");
+
+
+const dataFilesDir = path.join(__dirname, "data_files");
 
 const fetch = async (url) => {
   try {
@@ -29,8 +34,38 @@ const getCoreId = (projectId) => {
   return result;
 };
 
+const readCachedPublications = () => {
+  let content = fs.readFileSync(dataFilesDir + "/ins_publications.js").toString();
+  return JSON.parse(content);
+};
+
+const readCachedGEOs = () => {
+  let content = fs.readFileSync(dataFilesDir + "/ins_geos.js").toString();
+  return JSON.parse(content);
+};
+
+const readCachedSRAs = () => {
+  let content = fs.readFileSync(dataFilesDir + "/ins_sras.js").toString();
+  return JSON.parse(content);
+};
+
+const readCachedDBGaps = () => {
+  let content = fs.readFileSync(dataFilesDir + "/ins_dbgaps.js").toString();
+  return JSON.parse(content);
+};
+
+const readCachedClinicalTrials = () => {
+  let content = fs.readFileSync(dataFilesDir + "/ins_clinicalTrials.js").toString();
+  return JSON.parse(content);
+};
+
 module.exports = {
 	fetch,
   post,
   getCoreId,
+  readCachedPublications,
+  readCachedGEOs,
+  readCachedSRAs,
+  readCachedDBGaps,
+  readCachedClinicalTrials,
 };

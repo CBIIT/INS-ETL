@@ -1,16 +1,63 @@
 const fs = require('fs');
+const path = require("path");
 let _ = require("lodash");
-const { fetch, post, getCoreId } = require('../common/untils');
+const {
+  fetch,
+  post,
+  getCoreId,
+  readCachedPublications,
+  readCachedGEOs,
+  readCachedSRAs,
+  readCachedDBGaps,
+  readCachedClinicalTrials
+} = require('../common/untils');
 const apis = require('../common/apis');
 
+//cache
+let cache_publications = {};
+let cache_geos = {};
+let cache_sras = {};
+let cache_dbgaps = {};
+let cache_clinicalTrials = {};
 //data
-let programs = {};
 let projects = {};
 let publications = {};
 let geos = {};
 let sras = {};
 let dbgaps = {};
 let clinicalTrials = {};
+
+const loadCachedData = () => {
+  cache_publications = readCachedPublications();
+  cache_geos = readCachedGEOs();
+  for(let g in cache_geos){
+    cache_geos[g].publications.map((p) => {
+      if(cache_publications[p].geos == undefined){
+        cache_publications[p].geos = [];
+      }
+      cache_publications[p].geos.push(g);
+    });
+  }
+  cache_sras = readCachedSRAs();
+  for(let s in cache_sras){
+    cache_sras[s].publications.map((p) => {
+      if(cache_publications[p].sras == undefined){
+        cache_publications[p].sras = [];
+      }
+      cache_publications[p].sras.push(s);
+    });
+  }
+  cache_dbgaps = readCachedDBGaps();
+  for(let d in cache_dbgaps){
+    cache_dbgaps[d].publications.map((p) => {
+      if(cache_publications[p].dbgaps == undefined){
+        cache_publications[p].dbgaps = [];
+      }
+      cache_publications[p].dbgaps.push(d);
+    });
+  }
+  cache_clinicalTrials = readCachedClinicalTrials();
+};
 
 const getGEODataByAccession = async (geo_id) => {
   let gd = await fetch(apis.pmGeoDetailSite + geo_id);
@@ -311,10 +358,33 @@ const getClinicalTrials = async () => {
 const getFromPM = async () => {
   let pmIds = Object.keys(publications);
   for(let p = 0; p < pmIds.length; p++){
-    console.log(`Collecting Research Output data from PubMed for : ${pmIds[p]}`);
-    let d = await fetch(apis.pmArticleSite + pmIds[p] +'/');
-    let outputs = "";
-    if(d != "failed"){
+    if(cache_publications[pmIds[p]]){
+      console.log(`Found Research Output data in cache for : ${pmIds[p]}`);
+      publications[pmIds[p]] = cache_publications[pmIds[p]];
+      if(cache_publications[pmIds[p]].geos){
+        cache_publications[pmIds[p]].geos.map((g) => {
+          geos[g] = cache_geos[g];
+        });
+      }
+      if(cache_publications[pmIds[p]].sras){
+        cache_publications[pmIds[p]].sras.map((s) => {
+          sras[s] = cache_sras[s];
+        });
+      }
+      
+      if(cache_publications[pmIds[p]].dbgaps){
+        cache_publications[pmIds[p]].dbgaps.map((d) => {
+          dbgaps[d] = cache_dbgaps[d];
+        });
+      }
+      
+      continue;
+    }
+    else{
+      console.log(`Collecting Research Output data from PubMed for : ${pmIds[p]}`);
+      let d = await fetch(apis.pmArticleSite + pmIds[p] +'/');
+      let outputs = "";
+      if(d != "failed"){
         let idx = d.indexOf("related-links-list");
         if(idx > -1){
             let tmp = d.substring(idx - 11);
@@ -386,14 +456,16 @@ const getFromPM = async () => {
                 }
             }
         } 
+      }
     }
+    
   }
 }
 
 const getMoreFromPMC = async () => {
   let pmIds = Object.keys(publications);
   for(let p = 0; p < pmIds.length; p++){
-    console.log(`Collecting More data from PubMed Central for : ${pmIds[p]}`);
+    console.log(`Collecting More data from PubMed Central for : ${pmIds[p]}, (${p+1}/${pmIds.length})`);
     let pmcId = publications[pmIds[p]].pmc_id;
     if(pmcId){
       let content = {};
@@ -503,21 +575,28 @@ const getMoreFromPMC = async () => {
 const getPMCFromPM = async () => {
   let pmIds = Object.keys(publications);
   for(let p = 0; p < pmIds.length; p++){
-    console.log(`Collecting PubMed Central ID for : ${pmIds[p]}`);
-    let d = await fetch(apis.pmArticleSite + pmIds[p] +'/');
-    if(d != "failed"){
-        let idx = d.indexOf("\"PMCID\"");
-        
-        if(idx > -1){
-          publications[pmIds[p]].pmc_id = d.substring(idx + 20, idx + 30);
-        }
-        else{
-            idx = d.indexOf("\"PMC ID\"");
-            if(idx > -1){
-              publications[pmIds[p]].pmc_id = d.substring(idx + 9, idx + 19);
-            }
-        }
+    if(cache_publications[pmIds[p]]){
+      console.log(`Found PubMed Central ID in cache for : ${pmIds[p]}`);
+      continue;
     }
+    else{
+      console.log(`Collecting PubMed Central ID for : ${pmIds[p]}`);
+      let d = await fetch(apis.pmArticleSite + pmIds[p] +'/');
+      if(d != "failed"){
+          let idx = d.indexOf("\"PMCID\"");
+          
+          if(idx > -1){
+            publications[pmIds[p]].pmc_id = d.substring(idx + 20, idx + 30);
+          }
+          else{
+              idx = d.indexOf("\"PMC ID\"");
+              if(idx > -1){
+                publications[pmIds[p]].pmc_id = d.substring(idx + 9, idx + 19);
+              }
+          }
+      }
+    }
+    
   }
 }
 
@@ -527,12 +606,16 @@ const getPM = async () => {
     let count = 0;
     if(projects[projectNums[i]].project_type !== "Contract") {
       let project_core_id = getCoreId(projectNums[i]);
-      let d = await fetch(apis.pmWebsite +  project_core_id +"&sort=date&size=10");
+      let d = await fetch(apis.pmWebsite +  project_core_id +"&sort=date&size=50");
       let idx_start = d.indexOf("data-article-id=");
       let tmp = d;
       while(idx_start > -1){
           tmp = tmp.substring(idx_start + 17);
           let str = tmp.substring(0, 8);
+          if(str.length !== 8){
+            console.log(tmp);
+            console.log(str);
+          }
           if(!(str in publications)){
             publications[str] = {};
             publications[str].projects = [];
@@ -544,6 +627,8 @@ const getPM = async () => {
     }
     console.log(`Collected ${count} Publications from PubMed for project: ${projectNums[i]}`);
   }
+
+  await getIciteData();
 }
 
 const getProjectInfo = async () => {
@@ -603,22 +688,31 @@ const getProjectInfo = async () => {
 };
 
 const getIciteData = async () => {
-  let pmIds = Object.keys(publications);
+  const pmIds = Object.keys(publications);
+  const publicaiton2remove = [];
   for(let p = 0; p < pmIds.length; p++){
     let d = await fetch(apis.iciteApi +  pmIds[p]);
     if(d.data.length > 0){
       let pmData = d.data[0];
       publications[pmIds[p]].journal = pmData.journal;
-      publications[pmIds[p]].title = pmData.title;
+      publications[pmIds[p]].title = pmData.title.replace(/\n/g,"").replace(/<i>/g,"").replace(/<\/i>/g,"").replace(/<sup>/g,"").replace(/<\/sup>/g,"").replace(/<b>/g,"").replace(/<\/b>/g,"");
       publications[pmIds[p]].authors = pmData.authors;
       publications[pmIds[p]].year = pmData.year;
+      if(parseInt(pmData.year) < 2014){
+        publicaiton2remove.push(pmIds[p]);
+      }
       publications[pmIds[p]].citation_count = pmData.citation_count;
       publications[pmIds[p]].doi = pmData.doi;
       publications[pmIds[p]].relative_citation_ratio = pmData.relative_citation_ratio;
       publications[pmIds[p]].nih_percentile = pmData.nih_percentile;
-      console.log(`Updated Publication data from icite for : ${pmIds[p]}`);
+      console.log(`Updated Publication data from icite for : ${pmIds[p]}, (${p+1}/${pmIds.length})`);
     }
   }
+  //remove old publications 
+  publicaiton2remove.map((p2r) => {
+    delete publications[p2r];
+  });
+  console.log(`Removed ${publicaiton2remove.length} Publications earlier before 2014`);
 };
 
 const generateDataModel = async () => {
@@ -627,6 +721,7 @@ const generateDataModel = async () => {
   for(let sra in sras){
     let sraData = sras[sra];
     if(sraData.bio_accession == undefined){
+      console.log("collecting additional SRA Data for:" + sra);
       await getSRADataByAccession(sra, sraData.publications);
     }
     sraData.projects = [];
@@ -638,6 +733,7 @@ const generateDataModel = async () => {
   for(let dbgap in dbgaps){
     let dbgapData = dbgaps[dbgap];
     if(dbgapData.title == undefined){
+      console.log("collecting additional DBGap Data for:" + dbgap);
       await getDBGapDataByAccession(dbgap);
     }
     dbgapData.projects = [];
@@ -649,6 +745,7 @@ const generateDataModel = async () => {
   for(let geo in geos){
     let geoData = geos[geo];
     if(geoData.title == undefined){
+      console.log("collecting additional GEO Data for:" + geo);
       await getGEODataByAccession(geo);
     }
     geoData.projects = [];
@@ -660,6 +757,7 @@ const generateDataModel = async () => {
   for(let clinicaltrial in clinicalTrials){
     let clinicaltrialData = clinicalTrials[clinicaltrial];
     if(clinicaltrialData.title == undefined){
+      console.log("collecting additional Clinical Trial Data for:" + clinicaltrial);
       await getClinicaltrialDataByAccession(clinicaltrial);
     }
     for(let p = 0; p < clinicaltrialData.publications.length; p++){
@@ -674,6 +772,83 @@ const generateDataModel = async () => {
   console.log(dbgaps);
   console.log(clinicalTrials);
 }
+
+const writeToJsonFile = () => {
+  let output_file_path = path.join(
+    __dirname,
+    "..",
+    "common",
+    "data_files",
+    "ins_publications.js"
+  );
+  fs.writeFileSync(
+    output_file_path,
+    JSON.stringify(publications),
+    (err) => {
+      if (err) return logger.error(err);
+    }
+  );
+
+  output_file_path = path.join(
+    __dirname,
+    "..",
+    "common",
+    "data_files",
+    "ins_geos.js"
+  );
+  fs.writeFileSync(
+    output_file_path,
+    JSON.stringify(geos),
+    (err) => {
+      if (err) return logger.error(err);
+    }
+  );
+
+  output_file_path = path.join(
+    __dirname,
+    "..",
+    "common",
+    "data_files",
+    "ins_sras.js"
+  );
+  fs.writeFileSync(
+    output_file_path,
+    JSON.stringify(sras),
+    (err) => {
+      if (err) return logger.error(err);
+    }
+  );
+
+  output_file_path = path.join(
+    __dirname,
+    "..",
+    "common",
+    "data_files",
+    "ins_dbgaps.js"
+  );
+  fs.writeFileSync(
+    output_file_path,
+    JSON.stringify(dbgaps),
+    (err) => {
+      if (err) return logger.error(err);
+    }
+  );
+
+  output_file_path = path.join(
+    __dirname,
+    "..",
+    "common",
+    "data_files",
+    "ins_clinicalTrials.js"
+  );
+  fs.writeFileSync(
+    output_file_path,
+    JSON.stringify(clinicalTrials),
+    (err) => {
+      if (err) return logger.error(err);
+    }
+  );
+};
 
 const writeToProjectFile = () => {
   let data = "";
@@ -811,16 +986,18 @@ const writeToClinicalTrialsFile = () => {
 
 const run = async (projectsTodo) => {
   projects = projectsTodo;
-	
+	loadCachedData();
+
   await getProjectInfo();
   await getPM();
   await getPMCFromPM();
   await getFromPM();
   await getMoreFromPMC();
   await getClinicalTrials();
-  await getIciteData();
 
   await generateDataModel();
+
+  writeToJsonFile();
 
   writeToProjectFile();
   writeToPublicationFile();
@@ -828,6 +1005,7 @@ const run = async (projectsTodo) => {
   writeToSRAFile();
   writeToDBGapFile();
   writeToClinicalTrialsFile();
+
 };
 
 module.exports = {
