@@ -332,7 +332,8 @@ const getClinicalTrials = async () => {
           idx = d.indexOf("\",");
           let session = d.substring(0, idx);
           let dt = await fetch(apis.clinicalTrialsApi + session);
-          dt.data.map((item) => {
+          if(dt && dt.data){
+            dt.data.map((item) => {
               let str = item[3].substring(item[3].indexOf("\">") + 2);
               str = str.substring(0, str.length - 4);
               let status = item[2].substring(item[2].indexOf("\">") + 2);
@@ -349,7 +350,9 @@ const getClinicalTrials = async () => {
                 clinicalTrials[item[1]].projects.push(projectNums[i]);
               }
               
-          });
+            });
+          }
+          
       }
     }
   }
@@ -606,7 +609,7 @@ const getPM = async () => {
     let count = 0;
     if(projects[projectNums[i]].project_type !== "Contract") {
       let project_core_id = getCoreId(projectNums[i]);
-      let d = await fetch(apis.pmWebsite +  project_core_id +"&sort=date&size=50");
+      let d = await fetch(apis.pmWebsite +  project_core_id +"&sort=date&size=10");
       let idx_start = d.indexOf("data-article-id=");
       let tmp = d;
       while(idx_start > -1){
@@ -704,6 +707,34 @@ const getIciteData = async () => {
       publications[pmIds[p]].citation_count = pmData.citation_count;
       publications[pmIds[p]].doi = pmData.doi;
       publications[pmIds[p]].relative_citation_ratio = pmData.relative_citation_ratio;
+      //calculate rcr_range
+      publications[pmIds[p]].rcr_range = "< 0.2";
+      if(pmData.relative_citation_ratio == null){
+        console.log("rcr is empty!");
+        publications[pmIds[p]].rcr_range = "N/A";
+      }
+      else if(pmData.relative_citation_ratio < 0.2) {
+        publications[pmIds[p]].rcr_range = "< 0.2";
+      }
+      else if(pmData.relative_citation_ratio >= 0.2 && pmData.relative_citation_ratio < 0.5) {
+        publications[pmIds[p]].rcr_range = "0.2 to 0.5";
+      }
+      else if(pmData.relative_citation_ratio >= 0.5 && pmData.relative_citation_ratio < 0.8) {
+        publications[pmIds[p]].rcr_range = "0.5 to 0.8";
+      }
+      else if(pmData.relative_citation_ratio >= 0.8 && pmData.relative_citation_ratio < 1.25) {
+        publications[pmIds[p]].rcr_range = "0.8 to 1.25";
+      }
+      else if(pmData.relative_citation_ratio >= 1.25 && pmData.relative_citation_ratio < 2) {
+        publications[pmIds[p]].rcr_range = "1.25 to 2";
+      }
+      else if(pmData.relative_citation_ratio >= 2 && pmData.relative_citation_ratio < 5) {
+        publications[pmIds[p]].rcr_range = "2 to 5";
+      }
+      else {
+        publications[pmIds[p]].rcr_range = "> 5";
+      }
+
       publications[pmIds[p]].nih_percentile = pmData.nih_percentile;
       console.log(`Updated Publication data from icite for : ${pmIds[p]}, (${p+1}/${pmIds.length})`);
     }
@@ -726,7 +757,7 @@ const generateDataModel = async () => {
     }
     sraData.projects = [];
     for(let p = 0; p < sraData.publications.length; p++){
-      sraData.projects = _.concat(sraData.projects, publications[sraData.publications[p]].projects);
+      sraData.projects = _.concat(sraData.projects, publications[sraData.publications[p]] ? publications[sraData.publications[p]].projects : []);
     }
     sraData.projects = _.uniq(sraData.projects);
   }
@@ -738,7 +769,7 @@ const generateDataModel = async () => {
     }
     dbgapData.projects = [];
     for(let p = 0; p < dbgapData.publications.length; p++){
-      dbgapData.projects = _.concat(dbgapData.projects, publications[dbgapData.publications[p]].projects);
+      dbgapData.projects = _.concat(dbgapData.projects, publications[dbgapData.publications[p]] ? publications[dbgapData.publications[p]].projects : []);
     }
     dbgapData.projects = _.uniq(dbgapData.projects);
   }
@@ -750,7 +781,7 @@ const generateDataModel = async () => {
     }
     geoData.projects = [];
     for(let p = 0; p < geoData.publications.length; p++){
-      geoData.projects = _.concat(geoData.projects, publications[geoData.publications[p]].projects);
+      geoData.projects = _.concat(geoData.projects, publications[geoData.publications[p]] ? publications[geoData.publications[p]].projects : []);
     }
     geoData.projects = _.uniq(geoData.projects);
   }
@@ -761,7 +792,7 @@ const generateDataModel = async () => {
       await getClinicaltrialDataByAccession(clinicaltrial);
     }
     for(let p = 0; p < clinicaltrialData.publications.length; p++){
-      clinicaltrialData.projects = _.concat(clinicaltrialData.projects, publications[clinicaltrialData.publications[p]].projects);
+      clinicaltrialData.projects = _.concat(clinicaltrialData.projects, publications[clinicaltrialData.publications[p]] ? publications[clinicaltrialData.publications[p]].projects : []);
     }
     clinicaltrialData.projects = _.uniq(clinicaltrialData.projects);
   }
@@ -888,7 +919,7 @@ const writeToProjectFile = () => {
 const writeToPublicationFile = () => {
   let data = "";
   let columns = ["type","publication_id","pmc_id", "year", "journal","title", "authors",
-   "publish_date", "citation_count", "relative_citation_ratio", "nih_percentile", "doi", "project.project_id"];
+   "publish_date", "citation_count", "relative_citation_ratio", "rcr_range", "nih_percentile", "doi", "project.project_id"];
   data = columns.join("\t") + "\n";
   for(let pubID in publications){
     let tmp = [];
@@ -902,6 +933,7 @@ const writeToPublicationFile = () => {
     tmp.push(publications[pubID].publish_date);
     tmp.push(publications[pubID].citation_count);
     tmp.push(publications[pubID].relative_citation_ratio);
+    tmp.push(publications[pubID].rcr_range);
     tmp.push(publications[pubID].nih_percentile);
     tmp.push(publications[pubID].doi);
     publications[pubID].projects.map((p) => {

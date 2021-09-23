@@ -200,6 +200,12 @@ PropDefinitions:
     Type: string
     Req: false
     Private: false
+  rcr_range:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: false
+    Private: false
   nih_percentile:
     Desc: TBD.
     Src: None

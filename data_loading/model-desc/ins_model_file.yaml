@@ -38,6 +38,7 @@ Nodes:
       - publish_date
       - citation_count
       - relative_citation_ratio
+      - rcr_range
       - nih_percentile
       - doi
   geo:

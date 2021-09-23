@@ -1,60 +1,24 @@
 type	accession	title	status	submission_date	last_update_date	project.project_id
 geo	GSE54482	"Evolution of monoclonal zebrafish Myc-induced T-ALL, assessed by copy number variant analysis"	"Public on Jan 29, 2014"	28-Jan-14	30-Nov-16	3R00CA181500-04S1
-geo	GSE54500	Role of H3K79 methylation states in HOX gene expression and leukemogenesis	"Public on Sep 08, 2014"	29-Jan-14	15-May-19	5R01CA176745-09
-geo	GSE62296	Convergent Sense/Antisense Transcription At Intragenic Super-Enhancers Targets AID-initiated Genomic Instability	"Public on Dec 04, 2014"	14-Oct-14	15-May-19	5R01CA176745-09
-geo	GSE61022	DOT1L Inhibits SIRT1 and SUV39H1-Mediated H3K9 Modification to Maintain Gene Expression	"Public on Mar 30, 2015"	2-Sep-14	15-May-19	5R01CA176745-09
-geo	GSE70871	Recovery and analysis of nascent RNA	"Public on Jul 14, 2015"	14-Jul-15	15-May-19	3R01CA124633-11A1S1
-geo	GSE70870	Chip-seq mapping of active chromatin marks in BRD4-NUT and different NMC cells	"Public on Jul 14, 2015"	14-Jul-15	15-May-19	3R01CA124633-11A1S1
-geo	GSE70869	Chip-seq BRD4NUT-BioTAP mapping in 293Trex and 797 cells	"Public on Jul 14, 2015"	14-Jul-15	15-May-19	3R01CA124633-11A1S1
-geo	GSE70868	The oncogenic BRD4-NUT chromatin regulator drives aberrant transcription within large topological domains	"Public on Jul 14, 2015"	13-Jul-15	15-May-19	3R01CA124633-11A1S1
-geo	GSE63486	JMJD1C is required for the survival of acute myeloid leukemia by functioning as a co-activator for key transcription factors	"Public on Nov 02, 2015"	19-Nov-14	15-May-19	5R01CA176745-09
-geo	GSE63485	RNA expression analysis upon JMJD1C depletion	"Public on Nov 02, 2015"	19-Nov-14	15-May-19	5R01CA176745-09
-geo	GSE63484	Genome-wide map of JMJD1C binding in Kasumi-1 cells [ChIP-seq]	"Public on Nov 02, 2015"	19-Nov-14	15-May-19	5R01CA176745-09
+geo	GSE48277	Identification of distinct basal and luminal subsets of human bladder cancers with different sensitivities to frontline chemotherapy	"Public on Feb 10, 2014"	25-Jun-13	22-Jun-20	3R01CA175397-07S1
 geo	GSE77849	"Dnmt3a haploinsufficiency transforms Flt3-ITD myeloproliferative disease into a rapid, spontaneous, and fully-penetrant acute myeloid leukemia"	"Public on Mar 27, 2016"	11-Feb-16	15-May-19	3R01CA196658-02S1
 geo	GSE77847	"Dnmt3a haploinsufficiency transforms Flt3-ITD myeloproliferative disease into a rapid, spontaneous, and fully-penetrant acute myeloid leukemia (Single Cell RNA-Seq)"	"Public on Mar 27, 2016"	11-Feb-16	15-May-19	3R01CA196658-02S1
 geo	GSE77846	"Dnmt3a haploinsufficiency transforms Flt3-ITD myeloproliferative disease into a rapid, spontaneous, and fully-penetrant acute myeloid leukemia (Bulk RNA-Seq)"	"Public on Mar 27, 2016"	11-Feb-16	15-May-19	3R01CA196658-02S1
 geo	GSE77026	"Dnmt3a haploinsufficiency transforms Flt3-ITD myeloproliferative disease into a rapid, spontaneous, and fully-penetrant acute myeloid leukemia"	"Public on Sep 01, 2017"	20-Jan-16	15-May-19	3R01CA196658-02S1
-geo	GSE85107	Targeting Chromatin Regulators Inhibits Leukemogenic Gene Expression in NPM1 Mutant Leukemia	"Public on Aug 22, 2016"	2-Aug-16	15-May-19	5R01CA176745-09
-geo	GSE88968	SMARCA4 ATPase mutations disrupt direct eviction of PRC1 from chromatin	"Public on Oct 21, 2016"	20-Oct-16	15-May-19	3R01CA163915-07S1
-geo	GSE88967	Expression changes following conditional deletion of SMARCA4 (Brg) in mouse embryonic stem cells [RNA-seq]	"Public on Oct 21, 2016"	20-Oct-16	15-May-19	3R01CA163915-07S1
-geo	GSE77093	SMARCA4 (Brg) ATPase mutations induce increased occupancy and activity of Polycomb repressive factors on chromatin	"Public on Oct 21, 2016"	21-Jan-16	15-May-19	3R01CA163915-07S1
-geo	GSE82118	Transcription control by the ENL YEATS domain in acute leukemia	"Public on Feb 23, 2017"	1-Jun-16	15-May-19	5R01CA176745-09
-geo	GSE82117	Transcription control by the ENL YEATS domain in acute leukemia [RNA-seq]	"Public on Feb 23, 2017"	1-Jun-16	15-May-19	5R01CA176745-09
-geo	GSE82116	Transcription control by the ENL YEATS domain in acute leukemia [ChIP-seq]	"Public on Feb 23, 2017"	1-Jun-16	15-May-19	5R01CA176745-09
-geo	GSE94041	TOP2 synergizes with BAF chromatin remodeling for both resolutions and formation of facultative heterochromatin	"Public on Mar 01, 2017"	25-Jan-17	15-May-19	3R01CA163915-07S1
-geo	GSE94040	esBAF chromatin remodeling complexes promote spacing of nucleosomes flanking pluripotency factor binding sites	"Public on Mar 01, 2017"	25-Jan-17	15-May-19	3R01CA163915-07S1
-geo	GSE94039	TOP2 synergizes with BAF chromatin remodeling for resolution of facultative heterochromatin	"Public on Mar 01, 2017"	25-Jan-17	15-May-19	3R01CA163915-07S1
+geo	GSE70235	Using single-cell RNA-Seq for unbiased analysis of developmental hierarchies (Bulk RNA-Seq)	"Public on Aug 26, 2016"	24-Jun-15	15-May-19	3R01CA196658-02S1
+geo	GSE57114	FLT3-ITD mutations and TET2 loss synergistically alter global DNA methylation in AML	"Public on Apr 14, 2015"	25-Apr-14	15-May-19	3R01CA196658-02S1
 geo	GSE87164	"Gene expression in MMTV-PyMT whole tumor, CD3+ lymphocytes or CD11b+ myeloid cells with and without Class IIa HDAC inhibitor treatment"	"Public on Mar 08, 2017"	21-Sep-16	4-Mar-19	3R01CA205967-03S2
 geo	GSE87163	MMTV-PyMT whole tumor gene expression with and without Class IIa HDAC inhibitor treatment	"Public on Mar 08, 2017"	21-Sep-16	4-Mar-19	3R01CA205967-03S2
 geo	GSE76659	Differential gene expression in either CD3+ lymphocytes or CD11b+ myeloid cells due to Class IIa HDAC inhibitor treatment	"Public on Mar 08, 2017"	7-Jan-16	4-Mar-19	3R01CA205967-03S2
 geo	GSE96775	Chromatin-associated protein interactions drive megadomain formation in NUT midline carcinoma	"Public on Aug 22, 2017"	17-Mar-17	15-May-19	3R01CA124633-11A1S1
-geo	GSE98010	SPOP mutation confers intrinsic BET inhibitor resistance in prostate cancer (BRDs_OE_RNA-seq)	"Public on Mar 08, 2018"	20-Apr-17	25-Jul-21	1U54CA224079-01
-geo	GSE88872	SPOP mutation confers intrinsic BET inhibitor resistance in prostate cancer	"Public on Jul 21, 2017"	18-Oct-16	25-Jul-21	1U54CA224079-01
-geo	GSE88871	SPOP mutation confers intrinsic BET inhibitor resistance in prostate cancer (ChIP-Seq)	"Public on Jul 24, 2017"	18-Oct-16	15-May-19	1U54CA224079-01
-geo	GSE78213	SPOP mutation confers intrinsic BET inhibitor resistance in prostate cancer (BRD4_JQ1_RNA-seq)	"Public on Jul 24, 2017"	23-Feb-16	15-May-19	1U54CA224079-01
-geo	GSE51633	Brd4 and JMJD6-associated Anti-pause Enhancers in Regulation of Transcriptional Pause Release	"Public on Jan 14, 2014"	24-Oct-13	15-May-19	1U54CA224079-01
-geo	GSE44931	Selective Inhibition of Tumor Oncogenes by Disruption of Super-Enhancers	"Public on Mar 07, 2013"	6-Mar-13	15-May-19	1U54CA224079-01
-geo	GSE66122	BET Bromodomain Inhibition Suppresses the Function of Hematopoietic Transcription Factors in Acute Myeloid Leukemia [ChIP-Seq]	"Public on May 01, 2015"	19-Feb-15	15-May-19	1U54CA224079-01
-geo	GSE83088	Transcription profile of WT and LKB1 (encoded by the gene Stk11)-deficient Treg cells	"Public on Aug 29, 2017"	7-Jun-16	21-Feb-18	5R01CA221290-02
-geo	GSE99381	AR-independent prostate cancer is sustained through FGF signaling	"Public on Oct 09, 2017"	29-May-17	25-Jul-21	1U54CA224079-01
-geo	GSE77930	Substantial interindividual and limited intraindividual genomic diversity among tumors from men with metastatic prostate cancer	"Public on Feb 16, 2016"	15-Feb-16	2-Mar-16	1U54CA224079-01
-geo	GSE85559	Expression profiling and occupancy after knockdown or over-expression of HFN1A or HNF4G in prostate cancer cells	"Public on Nov 01, 2017"	12-Aug-16	24-May-19	1U54CA224079-01
-geo	GSE85558	"HNF4G, AR, FOXA1, H3K4me1, H3K27acetyl binding sites upon knockdown and overexpression of HNF4G in 22Rv1 and LNCaP prostate cancer cells respectively"	"Public on Nov 01, 2017"	12-Aug-16	24-May-19	1U54CA224079-01
-geo	GSE85557	Expression profile of LNCaP/AR cells with or without HNF4G expression grown for long term in charcoal stripped-serum (CSS) media	"Public on Nov 01, 2017"	12-Aug-16	24-May-19	1U54CA224079-01
-geo	GSE85556	Expression profile of HNF1A knockdown and overexpression in 22RV1 and LNCaP cells respectively	"Public on Nov 01, 2017"	12-Aug-16	24-May-19	1U54CA224079-01
-geo	GSE85244	Gene expression profile of LNCaP prostate cancer cells with exogenous HNF4G  expression	"Public on Nov 01, 2017"	5-Aug-16	24-May-19	1U54CA224079-01
-geo	GSE85242	Gene expression profile of doxycycline inducible shHNF4G hairpins in 22RV1 prostate cancer cells	"Public on Nov 01, 2017"	5-Aug-16	24-May-19	1U54CA224079-01
-geo	GSE21034	Whole-transcript and exon-level expression data for human primary and metastatic prostate cancer samples and control normal adjacent benign prostate	"Public on Jun 24, 2010"	23-Mar-10	10-Jul-14	1U54CA224079-01
-geo	GSE131674	A major chromatin regulator determines resistance of tumor cells to T cell–mediated killing	"Public on May 22, 2019"	22-May-19	25-May-19	1U24CA224316-01
-geo	GSE107670	A Major Chromatin Regulator Determines Resistance of Tumor Cells to T cell Mediated Killing	"Public on Jan 08, 2018"	4-Dec-17	15-May-19	1U24CA224316-01
-geo	GSE107078	Peptidomimetic blockade of MYB in acute myeloid leukemia [H3K27ac ChIP-seq]	"Public on Feb 23, 2018"	17-Nov-17	15-May-19	3R01CA204396-02S1
-geo	GSE107078	Peptidomimetic blockade of MYB in acute myeloid leukemia [H3K27ac ChIP-seq]	"Public on Feb 23, 2018"	17-Nov-17	15-May-19	5R01CA176745-09
-geo	GSE94242	Peptidomimetic blockade of MYB in acute myeloid leukemia	"Public on Feb 23, 2018"	27-Jan-17	15-May-19	3R01CA204396-02S1
-geo	GSE94242	Peptidomimetic blockade of MYB in acute myeloid leukemia	"Public on Feb 23, 2018"	27-Jan-17	15-May-19	5R01CA176745-09
-geo	GSE94241	Peptidomimetic blockade of MYB in acute myeloid leukemia [RNA-seq]	"Public on Feb 23, 2018"	27-Jan-17	15-May-19	3R01CA204396-02S1
-geo	GSE94241	Peptidomimetic blockade of MYB in acute myeloid leukemia [RNA-seq]	"Public on Feb 23, 2018"	27-Jan-17	15-May-19	5R01CA176745-09
-geo	GSE94240	Peptidomimetic blockade of MYB in acute myeloid leukemia [MYB ChIP-seq]	"Public on Feb 23, 2018"	27-Jan-17	15-May-19	3R01CA204396-02S1
-geo	GSE94240	Peptidomimetic blockade of MYB in acute myeloid leukemia [MYB ChIP-seq]	"Public on Feb 23, 2018"	27-Jan-17	15-May-19	5R01CA176745-09
+geo	GSE29179	Identification of differentially expressed genes upon shRNA knockdown of TAL1 and its regulatory partners in T-ALL cells (Jurkat)	"Public on Aug 16, 2012"	10-May-11	15-Nov-12	3R00CA181500-04S1
+geo	GSE36139	SNP and Expression data from the Cancer Cell Line Encyclopedia (CCLE)	"Public on Mar 20, 2012"	28-Feb-12	13-Mar-18	3R00CA181500-04S1
+geo	GSE36139	SNP and Expression data from the Cancer Cell Line Encyclopedia (CCLE)	"Public on Mar 20, 2012"	28-Feb-12	13-Mar-18	5U19CA214253-02
+geo	GSE13159	Microarray Innovations in LEukemia (MILE) study: Stage 1 data	"Public on Sep 30, 2009"	10-Oct-08	25-Mar-20	3R00CA181500-04S1
+geo	GSE13159	Microarray Innovations in LEukemia (MILE) study: Stage 1 data	"Public on Sep 30, 2009"	10-Oct-08	25-Mar-20	1U54CA224019-01
+geo	GSE26713	Integrated transcript and genome analyses reveal NKX2-1 and MEF2C as potential oncogenes in T-ALL	"Public on Apr 11, 2011"	19-Jan-11	25-Mar-19	3R00CA181500-04S1
+geo	GSE88968	SMARCA4 ATPase mutations disrupt direct eviction of PRC1 from chromatin	"Public on Oct 21, 2016"	20-Oct-16	15-May-19	3R01CA163915-07S1
+geo	GSE94041	TOP2 synergizes with BAF chromatin remodeling for both resolutions and formation of facultative heterochromatin	"Public on Mar 01, 2017"	25-Jan-17	15-May-19	3R01CA163915-07S1
 geo	GSE105799	Analysis of genome-wide accessibility following acute deletion of Ring1b in mouse embryonic stem cells [ATAC-seq]	"Public on Oct 23, 2017"	23-Oct-17	15-May-19	3R01CA163915-07S1
 geo	GSE98605	Dominant-negative SMARCA4 mutants alter the accessibility landscape of tissue-unrestricted enhancers	"Public on Oct 20, 2017"	5-May-17	25-Jul-21	3R01CA163915-07S1
 geo	GSE98604	Effects of dominant-negative G784E Smarca4 mutation on enhancer marks and factors in mouse embryonic stem cells [ChIP-seq]	"Public on Oct 22, 2017"	5-May-17	25-Jul-21	3R01CA163915-07S1
@@ -63,108 +27,45 @@ geo	GSE98469	Transcriptional effects of dominant-negative G784E Smarca4 mutation
 geo	GSE102527	Rheostatic Chromatin Control of Promiscuous Transcription by Aire and Brg1	"Public on Dec 06, 2017"	11-Aug-17	25-Jul-21	3R01CA163915-07S1
 geo	GSE102526	Rheostatic Chromatin Control of Promiscuous Transcription by Aire and Brg1 [ATAC-Seq]	"Public on Dec 06, 2017"	11-Aug-17	15-May-19	3R01CA163915-07S1
 geo	GSE102525	Rheostatic Chromatin Control of Promiscuous Transcription by Aire and Brg1 [Affymetrix]	"Public on Dec 13, 2017"	11-Aug-17	25-Jul-21	3R01CA163915-07S1
-geo	GSE80443	ETV1 binding sites in GIST and Melanoma cells	"Public on Apr 15, 2018"	19-Apr-16	15-May-19	1U54CA224079-01
-geo	GSE80352	Transcriptional effect of ETV1 knockdown in melanoma cells	"Public on Apr 15, 2018"	15-Apr-16	15-May-19	1U54CA224079-01
-geo	GSE80313	Role of COP1 on MAP kinase transcriptional output in melanoma	"Public on Apr 15, 2018"	14-Apr-16	15-May-19	1U54CA224079-01
-geo	GSE80305	Role of COP1 on MAP kinase transcriptional output in gastrointestinal stromal tumor	"Public on Apr 15, 2018"	14-Apr-16	15-May-19	1U54CA224079-01
-geo	GSE107073	MEF2C phosphorylation is required for chemotherapy resistance in acute myeloid leukemia	"Public on Jul 23, 2018"	17-Nov-17	15-May-19	3R01CA204396-02S1
-geo	GSE107072	MEF2C phosphorylation is required for chemotherapy resistance in acute myeloid leukemia [ATAC-seq]	"Public on Jul 23, 2018"	17-Nov-17	15-May-19	3R01CA204396-02S1
-geo	GSE107071	MEF2C phosphorylation is required for chemotherapy resistance in acute myeloid leukemia [inhibitor MRT199665]	"Public on Jul 23, 2018"	17-Nov-17	15-May-19	3R01CA204396-02S1
-geo	GSE94453	MEF2C phosphorylation is required for chemotherapy resistance in acute myeloid leukemia [mutant MEF2C]	"Public on Jul 23, 2018"	3-Feb-17	15-May-19	3R01CA204396-02S1
-geo	GSE108524	Targeting the cMET pathway augments radiation response without adverse effect on hearing in NF2 schwannoma models	"Public on Jun 26, 2018"	26-Dec-17	29-Oct-18	1U01CA224348-01
-geo	GSE108615	A non-catalytic function of SETD1A regulates Cyclin K and the DNA damage response	"Public on Feb 01, 2018"	28-Dec-17	25-Mar-19	3R01CA204396-02S1
-geo	GSE87324	BRCA1/RNApII regulation in Ewing's sarcoma (ChIP-seq)	"Public on Mar 09, 2018"	23-Sep-16	25-Jul-21	3R01CA204915-02S1
-geo	GSE68847	"BRCA1, R-loops and Recombination defects in Ewing's sarcoma"	"Public on Mar 09, 2018"	13-May-15	25-Jul-21	3R01CA204915-02S1
-geo	GSE68845	"BRCA1, R-loops and Recombination defects in Ewing's sarcoma (DRIP-seq)"	"Public on Mar 09, 2018"	13-May-15	15-May-19	3R01CA204915-02S1
-geo	GSE68836	"BRCA1, R-loops and Recombination defects in Ewing's sarcoma (RNA-seq)"	"Public on Mar 09, 2018"	13-May-15	15-May-19	3R01CA204915-02S1
-geo	GSE98588	Genetically-defined Diffuse Large B-cell Lymphoma Subsets Arise by Distinct Pathogenetic Mechanisms and Predicts Outcome	"Public on May 01, 2018"	5-May-17	25-Jul-21	3U24CA210999-02S1
-geo	GSE89568	Genome-wide gene-expression profile of mouse intestinal stem cells	"Public on May 30, 2018"	5-Nov-16	15-May-19	1U54CA224068-01
-geo	GSE103871	TMPRSS2-ERG suppresses PTEN/TP53 alteration-induced cancer lineage plasticity	"Public on May 16, 2018"	14-Sep-17	25-Jul-21	1U54CA224079-01
-geo	GSE47119	"Genomic mapping of ERG, AR, histone H3 monomethyl-K4, histone H3 trimethyl-K4 binding sites in mouse prostates in WT, ERG overexpression, Pten loss mouse prostates"	"Public on Jun 13, 2013"	20-May-13	15-May-19	1U54CA224079-01
-geo	GSE14092	An Integrated Network of Androgen Receptor and TMPRSS2-ERG Gene Fusion in Prostate Cancer Progression (II)	"Public on May 18, 2010"	22-Dec-08	15-May-19	1U54CA224079-01
-geo	GSE43791	Redefinition of Human Androgen Responsive Elements	"Public on Jan 01, 2015"	28-Jan-13	15-May-19	1U54CA224079-01
-geo	GSE77448	LSD1 promotes oncogenesis via H3K9 demethylation-mediated cell cycle gene expression and cellular senescence inhibition	"Public on Jan 29, 2017"	1-Feb-16	15-May-19	1U54CA224079-01
-geo	GSE104130	mTOR coordinates transcriptional programs and mitochondrial metabolism of activated Treg subsets to protect tissue homeostasis	"Public on Sep 12, 2019"	22-Sep-17	25-Jul-21	5R01CA221290-02
-geo	GSE100772	"Transcription profiles of WT or MST1/2-KO total, CD8+ and CD8- DCs in vivo"	"Public on Jun 08, 2018"	3-Jul-17	25-Jul-21	5R01CA221290-02
-geo	GSE112830	Neuroendocrine prostate cancer models	"Public on Jun 22, 2018"	6-Apr-18	27-Mar-19	1U54CA224079-01
-geo	GSE112829	Methylation profile of neuroendocrine prostate cancer models	"Public on Jun 22, 2018"	6-Apr-18	27-Mar-19	1U54CA224079-01
-geo	GSE112786	Molecular characterization of neuroendocrine prostate cancer organoids and PDOX by RNA-seq	"Public on Jun 22, 2018"	5-Apr-18	27-Mar-19	1U54CA224079-01
-geo	GSE112982	Metabolic signaling directs the reciprocal lineage decisions of αβ and γδ T cells	"Public on Jul 06, 2018"	11-Apr-18	19-Mar-19	5R01CA221290-02
-geo	GSE86495	Metabolic signaling directs the reciprocal lineage decisions of αβ and γδ T cells	"Public on Jul 06, 2018"	6-Sep-16	5-Oct-18	5R01CA221290-02
-geo	GSE115821	Robust prediction of response to immune checkpoint blockade therapy in metastatic melanoma	"Public on Aug 20, 2018"	14-Jun-18	27-Mar-19	1R33CA225291-01
-geo	GSE115821	Robust prediction of response to immune checkpoint blockade therapy in metastatic melanoma	"Public on Aug 20, 2018"	14-Jun-18	27-Mar-19	1U54CA224070-01
-geo	GSE103665	Copy number alteration burden is a pan-cancer prognostic factor associated with metastasis and death in conservatively treated prostate cancer: TAPG1 CNA cohort aCGH data	"Public on Aug 18, 2018"	8-Sep-17	25-Jul-21	1U54CA224079-01
+geo	GSE92597	"Aire, guardian of immunological tolerance, binds to and activates super-enhancers [ChIP-seq]"	"Public on Jan 22, 2017"	19-Dec-16	15-May-19	3R01CA163915-07S1
+geo	GSE39513	Regulation of pluripotency and self-renewal of ES cells through epigenetic-threshold modulation and mRNA pruning	"Public on Oct 26, 2012"	19-Jul-12	15-May-19	3R01CA163915-07S1
+geo	GSE42466	RYBP and Cbx7 define specific biological functions of PRC1 complexes in mouse embryonic stem cells	"Public on Jan 01, 2013"	21-Nov-12	15-May-19	3R01CA163915-07S1
+geo	GSE28247	CTCF-Mediated Functional Chromatin Interactome in Pluripotent Cells	"Public on Jun 23, 2011"	29-Mar-11	15-May-19	3R01CA163915-07S1
+geo	GSE27841	Enhancer Decommissioning by LSD1 During Embryonic Stem Cell Differentiation (ChIP-seq)	"Public on Jan 03, 2012"	8-Mar-11	15-May-19	3R01CA163915-07S1
+geo	GSE32894	A Molecular Taxonomy of Urothelial Carcinoma	"Public on May 24, 2012"	11-Oct-11	12-Mar-20	3R01CA175397-07S1
 geo	GSE113872	Transcriptional effects of small molecule targeting of ARID1A	"Public on Jul 27, 2018"	30-Apr-18	21-Mar-19	3R01CA163915-07S1
-geo	GSE96781	A549 cells and MSR-A549 cells	"Public on Mar 28, 2019"	17-Mar-17	15-May-19	1U01CA233084-01
-geo	GSE96780	Genome-wide maps of histone H3K27 acetylation in A549 and MSR-A549 cells.	"Public on Mar 28, 2019"	17-Mar-17	15-May-19	1U01CA233084-01
-geo	GSE96779	mRNA expression profile of A549 cells and MSR-A549 cells with or without JQ1 treatment	"Public on Mar 28, 2019"	17-Mar-17	15-May-19	1U01CA233084-01
-geo	GSE89560	Inhibition of MEK and ATR induces synergistic killing of a Mll-Af4 B-ALL model harboring activated Ras mutation	"Public on Nov 28, 2018"	4-Nov-16	15-May-19	5R01CA176745-09
+geo	GSE113627	Transcriptional effects of the BAF inhibitor BRD-K98645985 on mouse embryonic stem cells	"Public on Jul 26, 2018"	24-Apr-18	21-Mar-19	3R01CA163915-07S1
+geo	GSE22886	Expression profiles from a variety of resting and activated human immune cells	"Public on Jul 13, 2010"	12-Jul-10	10-Aug-18	3R01CA196658-02S1
+geo	GSE15907	ImmGen Microarray Phase 1	"Public on May 02, 2009"	30-Apr-09	21-Jul-21	3R01CA196658-02S1
+geo	GSE26928	Human peripheral blood CD4+ T cell subsets	"Public on Aug 04, 2011"	28-Jan-11	25-Mar-19	3R01CA196658-02S1
+geo	GSE23321	"Expression data from human naïve (TN), stem cell memory (TSCM), central memory (TCM) and effector memory (TEM) CD8+ T cells"	"Public on Jul 13, 2011"	29-Jul-10	25-Jan-19	3R01CA196658-02S1
 geo	GSE106384	Transcript analysis of CD45+Ter119+CD71+ erythroid-like progenitor cells from tumor-bearing mice	"Public on Oct 29, 2018"	31-Oct-17	16-Apr-21	1R33CA225328-01
-geo	GSE117615	Colonic adenoma and adjacent normal single-cell RNA-seq	"Public on Oct 23, 2018"	24-Jul-18	25-Mar-19	1U2CCA233291-01
-geo	GSE114044	Colonic single-cell RNA-seq experiment	"Public on Oct 23, 2018"	4-May-18	27-Feb-20	1U2CCA233291-01
 geo	GSE115656	Alternative splicing analysis of pediatric B-cell acute lymphoblastic leukemia compared to normal bone marrow derived pro-B cells	"Public on Oct 02, 2018"	12-Jun-18	3-Apr-19	1U01CA232563-01
 geo	GSE115655	Bone marrow derived human B cells [normal proB]	"Public on Oct 02, 2018"	12-Jun-18	3-Apr-19	1U01CA232563-01
 geo	GSE115654	Aberrant splicing in B-cell acute lymphoblastic leukemia [cell line]	"Public on Oct 02, 2018"	12-Jun-18	27-Mar-19	1U01CA232563-01
 geo	GSE115653	Aberrant splicing in B-cell acute lymphoblastic leukemia [B-ALL]	"Public on Oct 02, 2018"	12-Jun-18	27-Mar-19	1U01CA232563-01
-geo	GSE120575	Defining T cell states associated with response to checkpoint immunotherapy in melanoma	"Public on Oct 05, 2018"	27-Sep-18	26-Mar-19	1U54CA224068-01
-geo	GSE120575	Defining T cell states associated with response to checkpoint immunotherapy in melanoma	"Public on Oct 05, 2018"	27-Sep-18	26-Mar-19	1U54CA224070-01
-geo	GSE120575	Defining T cell states associated with response to checkpoint immunotherapy in melanoma	"Public on Oct 05, 2018"	27-Sep-18	26-Mar-19	1U01CA233100-01
-geo	GSE120575	Defining T cell states associated with response to checkpoint immunotherapy in melanoma	"Public on Oct 05, 2018"	27-Sep-18	26-Mar-19	1U2CCA233195-01
-geo	GSE106510	T helper cells modulate intestinal stem cell renewal and differentiation	"Public on Nov 01, 2018"	3-Nov-17	8-Apr-19	1U54CA224068-01
-geo	GSE120711	Hippo kinases Mst1 and Mst2 sense and amplify IL-2R−STAT5 signaling in Treg cells to establish stable regulatory activity	"Public on Nov 08, 2018"	1-Oct-18	13-Nov-18	5R01CA221290-02
 geo	GSE118872	Methylation profile of ewing sarcoma cell lines	"Public on Oct 24, 2018"	21-Aug-18	23-Jan-19	3R01CA180279-05S1
 geo	GSE120134	Targeting the CALR Interactome in Myeloproliferative Neoplasms	"Public on Sep 19, 2018"	18-Sep-18	21-Mar-19	3R01CA204396-02S1
-geo	GSE113229	Targeted degradation of BRD9 reverses oncogenic gene expression in synovial sarcoma	"Public on Nov 01, 2018"	16-Apr-18	26-Mar-19	3R01CA204915-02S1
-geo	GSE113229	Targeted degradation of BRD9 reverses oncogenic gene expression in synovial sarcoma	"Public on Nov 01, 2018"	16-Apr-18	26-Mar-19	5R01CA176745-09
-geo	GSE113228	Targeted degradation of BRD9 reverses oncogenic gene expression in synovial sarcoma [ChIP-seq]	"Public on Nov 01, 2018"	16-Apr-18	26-Mar-19	3R01CA204915-02S1
-geo	GSE113228	Targeted degradation of BRD9 reverses oncogenic gene expression in synovial sarcoma [ChIP-seq]	"Public on Nov 01, 2018"	16-Apr-18	26-Mar-19	5R01CA176745-09
-geo	GSE113227	Targeted degradation of BRD9 reverses oncogenic gene expression in synovial sarcoma [RNA-seq]	"Public on Nov 01, 2018"	16-Apr-18	26-Mar-19	3R01CA204915-02S1
-geo	GSE113227	Targeted degradation of BRD9 reverses oncogenic gene expression in synovial sarcoma [RNA-seq]	"Public on Nov 01, 2018"	16-Apr-18	26-Mar-19	5R01CA176745-09
-geo	GSE115193	Evaluating pre-clinical models for studying NASH driven HCC.	"Public on Dec 11, 2018"	1-Jun-18	27-Mar-19	1U01AA027681-01
 geo	GSE120630	IKZF2 is required for myeloid leukemic stem cells by driving self-renewal and inhibiting the myeloid differentiation program	"Public on Sep 29, 2018"	28-Sep-18	25-Mar-19	5R01CA176745-09
 geo	GSE120623	IKZF2 is required for myeloid leukemic stem cells by driving self-renewal and inhibiting the myeloid differentiation program II	"Public on Sep 29, 2018"	28-Sep-18	25-Mar-19	5R01CA176745-09
 geo	GSE108367	IKZF2 is required for myeloid leukemic stem cells by driving self-renewal and inhibiting the myeloid differentiation program I	"Public on Dec 21, 2017"	20-Dec-17	19-Mar-19	5R01CA176745-09
-geo	GSE111360	Organoid modeling of the tumor immune microenvironment	"Public on Dec 13, 2018"	2-Mar-18	21-Mar-19	1U54CA224081-01
 geo	GSE112996	Transcript analysis of multi-locus sampled tumor tissue in patients with non-small cell lung cancer	"Public on Nov 04, 2018"	11-Apr-18	20-Mar-19	1R33CA225328-01
-geo	GSE121599	Metabolic heterogeneity underlies reciprocal fates of TH17 cell stemness and plasticity	"Public on Dec 27, 2018"	22-Oct-18	19-Mar-19	5R01CA221290-02
-geo	GSE121598	Metabolic heterogeneity underlies reciprocal fates of TH17 cell stemness and plasticity [scRNA-seq]	"Public on Dec 27, 2018"	22-Oct-18	19-Mar-19	5R01CA221290-02
-geo	GSE121597	Metabolic heterogeneity underlies reciprocal fates of TH17 cell stemness and plasticity [ATAC-seq]	"Public on Dec 27, 2018"	22-Oct-18	19-Mar-19	5R01CA221290-02
-geo	GSE107521	"Transcription profiles of fate mapped IL17aiCre+flox/stop/flox-YFP+ TH17 cells, CD44intCD27+ TH17 cells and CD44hiCD27- TH17 cells from WT or Raptor-ko (flox/flox) mice after immunization with Myelin Oligodendrocyte Glycoprotein (MOG)"	"Public on Mar 20, 2019"	30-Nov-17	23-Mar-19	5R01CA221290-02
 geo	GSE118900	Molecular Signatures of Multiple Myeloma Progression through Single Cell RNA-Seq	"Public on Nov 17, 2018"	22-Aug-18	27-Mar-19	1U54CA224018-01
 geo	GSE113217	Enhancer Domains in Gastrointestinal Stromal Tumor Regulate KIT Expression and are Targetable by BET Bromodomain Inhibition	"Public on Jan 23, 2019"	16-Apr-18	24-Apr-19	5R01CA176745-09
 geo	GSE113215	Enhancer Domains in Gastrointestinal Stromal Tumor Regulate KIT Expression and are Targetable by BET Bromodomain Inhibition [RNA-seq]	"Public on Jan 23, 2019"	16-Apr-18	24-Apr-19	5R01CA176745-09
 geo	GSE113207	Enhancer Domains in Gastrointestinal Stromal Tumor Regulate KIT Expression and are Targetable by BET Bromodomain Inhibition [ChIP-seq]	"Public on Jan 23, 2019"	16-Apr-18	24-Apr-19	5R01CA176745-09
-geo	GSE120720	GREB1 amplifies androgen receptor output in prostate cancer and contributes to antiandrogen resistance	"Public on Feb 27, 2019"	1-Oct-18	27-Mar-19	1U54CA224079-01
-geo	GSE120680	GREB1 amplifies androgen receptor output in prostate cancer and contributes to antiandrogen resistance	"Public on Feb 27, 2019"	1-Oct-18	27-Mar-19	1U54CA224079-01
-geo	GSE119153	Targeting the perivascular niche sensitizes disseminated tumour cells to chemotherapy	"Public on Apr 23, 2019"	28-Aug-18	25-Apr-19	1U54CA224079-01
+geo	GSE95864	Gastrointestinal Stromal Tumor Enhancers Support a Transcription Factor Network Predictive of Clinical Outcome	"Public on May 21, 2018"	9-Mar-17	25-Jul-21	5R01CA176745-09
+geo	GSE106626	FOXF1 defines the core-regulatory circuitry in gastrointestinal stromal tumor (GIST)	"Public on Feb 01, 2018"	7-Nov-17	27-Mar-19	5R01CA176745-09
 geo	GSE97975	Extra deep sequencing of GL261 and LLC1 murine cell lines for the purpose of fusion detection	"Public on Jan 23, 2019"	19-Apr-17	15-May-19	1UG3CA244687-01
-geo	GSE121694	Clonal deletion of tumor-specific T cells by IFN-g confers therapeutic resistance to combination immune checkpoint blockade	"Public on Oct 24, 2018"	23-Oct-18	19-Mar-19	1U01CA233100-01
-geo	GSE95433	Real-time quantitative RT-PCR analysis of mouse antigen specific T cells (CD8+Spas1)	"Public on Feb 28, 2017"	27-Feb-17	12-Feb-19	1U01CA233100-01
-geo	GSE119139	Gene exression in single T cells across division states.	"Public on Dec 01, 2018"	28-Aug-18	21-Mar-19	1U24CA224309-01
-geo	GSE99806	"Genome-wide maps at the base-pair level, of chromatin regions enriched for H3 me3 marks in mouse glioma neurospheres (NS)"	"Public on Mar 18, 2019"	8-Jun-17	25-Jul-21	1U01CA224160-01
-geo	GSE94976	IDH1-R132H Low Grade Glioma animal brain tumors	"Public on Mar 18, 2019"	16-Feb-17	15-May-19	1U01CA224160-01
-geo	GSE94975	Differential gene expression in IDH1-R132H  Low Grade Glioma animal brain tumors brain in response to 10 Gy of radiation	"Public on Mar 18, 2019"	16-Feb-17	15-May-19	1U01CA224160-01
-geo	GSE94974	Differential gene expression in IDH1-R132H Tumor Neurospheres generated from a mouse model of Low Grade Glioma	"Public on Mar 18, 2019"	16-Feb-17	15-May-19	1U01CA224160-01
-geo	GSE94902	Differential gene expression in IDH1-R132H low grade glioma animal brain tumors brain in response to 20 Gy of radiation	"Public on Feb 10, 2018"	14-Feb-17	15-May-19	1U01CA224160-01
-geo	GSE118859	SOX2 epidermal overexpression promotes cutaneous wound healing via activation of EGFR/MEK/ERK signaling mediated by EGFR ligands	"Public on Sep 02, 2019"	21-Aug-18	3-Dec-19	1R33CA225291-01
-geo	GSE123739	Nr4a transcription factors limit CAR-T cell function in solid tumors	"Public on Feb 13, 2019"	12-Dec-18	21-Mar-19	1U01DE028227-01
-geo	GSE123738	Nr4a transcription factors limit CAR-T cell function in solid tumors [RNA-Seq]	"Public on Feb 13, 2019"	12-Dec-18	21-Mar-19	1U01DE028227-01
-geo	GSE123629	Nr4a transcription factors limit CAR-T cell function in solid tumors [ATAC-Seq]	"Public on Feb 13, 2019"	11-Dec-18	21-Mar-19	1U01DE028227-01
-geo	GSE116256	Single-cell RNA-seq reveals AML hierarchies relevant to disease progression and immunity	"Public on Feb 28, 2019"	25-Jun-18	26-Mar-19	1U2CCA233195-01
-geo	GSE120395	Regulatory T cell depletion promotes oncogenic Kras driven pancreatic tumorigenesis.	"Public on Sep 24, 2019"	24-Sep-18	13-Jan-20	1U01CA224145-01
+geo	GSE58164	The Alarmin IL-33 Promotes Regulatory T Cell Function in the Intestine	"Public on Jun 03, 2014"	2-Jun-14	16-Jan-19	1U01CA232491-01
+geo	GSE94278	Cancer-specific retargeting of BAF complexes by a prion-like domain	"Public on Aug 24, 2017"	30-Jan-17	15-May-19	1U54CA231641-01
 geo	GSE112823	The gene expression profiles of antigen-primed wildtype and Ddit3-/- CD8 Pmel T cells	"Public on Apr 02, 2019"	6-Apr-18	2-Apr-19	1U01CA232758-01
 geo	GSE122537	Transcriptomic analysis to functionally map the intrinsically disordered domain of EWS/FLI	"Public on Feb 21, 2019"	14-Nov-18	28-Mar-19	1U54CA231641-01
 geo	GSE122536	Transcriptomic analysis to functionally map the intrinsically disordered domain of EWS/FLI [Experiment 2]	"Public on Feb 21, 2019"	14-Nov-18	28-Mar-19	1U54CA231641-01
 geo	GSE122535	Transcriptomic analysis to functionally map the intrinsically disordered domain of EWS/FLI [Experiment 1]	"Public on Feb 21, 2019"	14-Nov-18	28-Mar-19	1U54CA231641-01
 geo	GSE81476	PTEN-deficient synovial sarcoma	"Public on Nov 03, 2016"	16-May-16	15-May-19	1U54CA231652-01
-geo	GSE128475	LKB1 orchestrates dendritic cell metabolic quiescence and anti-tumor immunity	"Public on Apr 16, 2019"	18-Mar-19	19-Apr-19	5R01CA221290-02
-geo	GSE128474	LKB1 orchestrates dendritic cell metabolic quiescence and  anti-tumor immunity [HT_MG-430_PM]	"Public on Apr 16, 2019"	18-Mar-19	16-Jul-19	5R01CA221290-02
-geo	GSE128473	LKB1 orchestrates dendritic cell metabolic quiescence and anti-tumor immunity [MoGene-2_0-st]	"Public on Apr 16, 2019"	18-Mar-19	16-Jul-19	5R01CA221290-02
 geo	GSE112037	Prostate Cancer Cell RNA-Seq (PC3E and GS689.Li)	"Public on Jan 18, 2019"	19-Mar-18	19-Apr-19	1U01CA233074-01
-geo	GSE130414	The TP53 Apoptotic Network is a Primary Mediator of Resistance to BCL2 inhibition in AML Cells	"Public on Apr 30, 2019"	29-Apr-19	8-Jan-20	1U54CA224019-01
-geo	GSE130413	Genome wide CRISPR screen for Venetoclax resisatnce in MOLM13 cells using Brunello library	"Public on Apr 30, 2019"	29-Apr-19	8-Jan-20	1U54CA224019-01
-geo	GSE130412	Genome wide CRISPR screen for Venetoclax resisatnce in MOLM13 cells using Y. Kosuke library	"Public on Apr 30, 2019"	29-Apr-19	8-Jan-20	1U54CA224019-01
-geo	GSE75233	Targeting Focal Adhesion Kinase Renders Pancreatic Cancers Responsive to Checkpoint Immunotherapy	"Public on Nov 21, 2015"	20-Nov-15	27-Apr-20	1U54CA224083-01
+geo	GSE75492	Determination of a comprehensive alternative splicing regulatory network and the combinatorial regulation by key factors during Epithelial-to-Mesenchymal Transition	"Public on Apr 05, 2016"	30-Nov-15	15-May-19	1U01CA233074-01
 geo	GSE121560	Aging Human Hematopoietic Stem Cells Manifest Profound Epigenetic Reprogramming of Enhancers That May Predispose to Leukemia (RNA-seq of KLF6 KO)	"Public on May 13, 2019"	22-Oct-18	13-Aug-19	3R01CA196658-02S1
 geo	GSE116254	Aging Human Hematopoietic Stem Cells Manifest Profound Epigenetic Reprogramming of Enhancers That May Predispose to Leukemia (RNA-Seq of LMNA KD)	"Public on May 13, 2019"	25-Jun-18	13-Aug-19	3R01CA196658-02S1
 geo	GSE106422	Aging Human Hematopoietic Stem Cells Manifest Profound Epigenetic Reprogramming of Enhancers That May Predispose to Leukemia (H3 ChIPseq)	"Public on May 13, 2019"	2-Nov-17	13-Aug-19	3R01CA196658-02S1
@@ -173,45 +74,48 @@ geo	GSE104406	Aging Human Hematopoietic Stem Cells Manifest Profound Epigenetic 
 geo	GSE104405	Aging Human Hematopoietic Stem Cells Manifest Profound Epigenetic Reprogramming of Enhancers That May Predispose to Leukemia (ERRBS)	"Public on May 13, 2019"	28-Sep-17	25-Jul-21	3R01CA196658-02S1
 geo	GSE104404	Aging Human Hematopoietic Stem Cells Manifest Profound Epigenetic Reprogramming of Enhancers That May Predispose to Leukemia (ChIP-seq)	"Public on May 13, 2019"	28-Sep-17	25-Jul-21	3R01CA196658-02S1
 geo	GSE104379	Aging Human Hematopoietic Stem Cells Manifest Profound Epigenetic Reprogramming of Enhancers That May Predispose to Leukemia	"Public on May 11, 2019"	28-Sep-17	16-Jul-19	3R01CA196658-02S1
-geo	GSE130540	Distruption of TOX and TOX2 transcription factors in CAR T cells limits T cell exhaustion	"Public on May 31, 2019"	1-May-19	30-Aug-19	1U01DE028227-01
-geo	GSE130539	Distruption of TOX and TOX2 transcription factors in CAR T cells limits T cell exhaustion [ATAC-Seq]	"Public on May 31, 2019"	1-May-19	30-Aug-19	1U01DE028227-01
-geo	GSE130538	Distruption of TOX and TOX2 transcription factors in CAR T cells limits T cell exhaustion [RNA-Seq]	"Public on May 31, 2019"	1-May-19	30-Aug-19	1U01DE028227-01
 geo	GSE126275	KSDM1b Role in Ewing Sarcoma	"Public on Aug 29, 2019"	8-Feb-19	29-Aug-19	1U54CA231641-01
-geo	GSE128867	Genomic analyses of primary mouse prostate organoid culture with overexpression of FOXA1	"Public on Jun 21, 2019"	26-Mar-19	1-Jul-19	1U54CA224079-01
-geo	GSE128667	Primary mouse prostate organoid culture with overexpression of FOXA1	"Public on Jun 21, 2019"	21-Mar-19	1-Jul-19	1U54CA224079-01
-geo	GSE128666	Gene expression analysis of primary mouse prostate organoid culture with overexpression of FOXA1	"Public on Jun 21, 2019"	21-Mar-19	1-Jul-19	1U54CA224079-01
-geo	GSE128421	Chromatin Landscape Analysis of primary mouse prostate organoid culture with overexpression of FOXA1	"Public on Jun 21, 2019"	18-Mar-19	1-Jul-19	1U54CA224079-01
-geo	GSE79957	Tissue-based Genomics Augments Post-prostatectomy Risk Stratification in a Natural History Cohort of Intermediate- and High-Risk Men	"Public on May 12, 2016"	5-Apr-16	9-Jun-17	1U54CA224079-01
-geo	GSE72291	Validation of a genomic classifier for prediction of metastasis following postoperative radiation therapy.	"Public on May 09, 2016"	24-Aug-15	9-May-16	1U54CA224079-01
-geo	GSE62667	A genomic classifier improves prediction of metastatic disease within 5 years after surgery in node-negative high-risk prostate cancer patients managed by radical prostatectomy without adjuvant therapy	"Public on Nov 21, 2014"	23-Oct-14	29-Jul-19	1U54CA224079-01
-geo	GSE62116	Validation of a genomic classifier that predicts metastasis following radical prostatectomy in at risk patient population	"Public on Nov 13, 2014"	7-Oct-14	29-Jul-19	1U54CA224079-01
-geo	GSE46691	Discovery and validation of a prostate cancer genomic classifier that predicts early metastasis following radical prostatectomy	"Public on Jul 01, 2013"	7-May-13	29-Jul-19	1U54CA224079-01
-geo	GSE41408	Co-expression of genes with ERG in prostate cancers	"Public on Feb 11, 2013"	9-Oct-12	18-Feb-19	1U54CA224079-01
-geo	GSE21032	Integrative genomic profiling of human prostate cancer	"Public on Jun 24, 2010"	23-Mar-10	26-Oct-16	1U54CA224079-01
-geo	GSE112414	Chromatin interaction of ERG and AR in established prostate cancer	"Public on Mar 28, 2019"	28-Mar-18	20-May-21	1U54CA224079-01
-geo	GSE112469	Impact of ERG and PTEN loss on RNA expression	"Public on Mar 29, 2018"	28-Mar-18	21-Mar-19	1U54CA224079-01
-geo	GSE116083	The androgen receptor regulates a druggable translational regulon in advanced prostate cancer	"Public on Jul 31, 2019"	20-Jun-18	3-Aug-19	1U54CA224079-01
-geo	GSE116082	The androgen receptor regulates a druggable translational regulon in advanced prostate cancer [ribosome profiling]	"Public on Jul 31, 2019"	20-Jun-18	3-Aug-19	1U54CA224079-01
-geo	GSE116081	The androgen receptor regulates a druggable translational regulon in advanced prostate cancer [RNA-seq]	"Public on Jul 31, 2019"	20-Jun-18	3-Aug-19	1U54CA224079-01
 geo	GSE115676	EWS-FLI1 modulated alternative splicing of ARID1A reveals novel oncogenic function through the BAF complex	"Public on Aug 30, 2019"	12-Jun-18	1-Sep-19	3R01CA204915-02S1
-geo	GSE133660	"Gene expression data from IMR90 control, IMR90 shRRM2 and shRRM2/shp16"	"Public on Jul 02, 2019"	1-Jul-19	11-Sep-19	1U54CA224070-01
-geo	GSE123860	MUC1-C represses the RASSF1A tumor suppressor and activated Kras signaling in human carcinoma cells	"Public on May 27, 2019"	14-Dec-18	26-Aug-19	1U01CA233084-01
-geo	GSE134044	Ketone body signaling mediates intestinal stem cell homeostasis and adaptation to diet	"Public on Oct 01, 2019"	9-Jul-19	2-Jan-20	1U54CA224068-01
-geo	GSE122230	Genome-wide gene-expression profile of mouse intestinal stem cells/progenitors/Paneth cells	"Public on Jul 19, 2019"	6-Nov-18	17-Sep-19	1U54CA224068-01
-geo	GSE112205	scRNA-seq of Wild Type and Hmgcs2-/-epithelial cells	"Public on Jul 19, 2019"	22-Mar-18	24-Dec-20	1U54CA224068-01
-geo	GSE111640	Deletion of Lats 1 and 2 in mouse pancreatic acinar cells	"Public on Jul 26, 2019"	9-Mar-18	20-Sep-19	1U01CA224145-01
-geo	GSE134147	MUC1-C ACTIVATES THE NURD COMPLEX IN DEDIFFERENTIATION OF TRIPLE-NEGATIVE BREASTCANCER CELLS	"Public on Mar 05, 2020"	11-Jul-19	10-Apr-20	1U01CA233084-01
+geo	GSE109774	Tabula Muris: Transcriptomic characterization of 20 organs and tissues from Mus musculus at single cell resolution	"Public on Mar 19, 2018"	29-Jan-18	4-Jun-19	3R01CA196658-02S1
+geo	GSE70245	Using single-cell RNA-Seq for unbiased analysis of developmental hierarchies	"Public on Aug 26, 2016"	24-Jun-15	15-May-19	3R01CA196658-02S1
+geo	GSE136088	Single-Cell RNA-Seq of Myocardial Infarction in Mouse	"Public on Sep 02, 2019"	20-Aug-19	4-Dec-19	3R01CA196658-02S1
+geo	GSE116481	Venetoclax with azacitidine disrupts energy metabolism and targets leukemia stem cells in patients with acute myeloid leukemia	"Public on Jan 30, 2019"	1-Jul-18	21-Mar-19	3R01CA196658-02S1
+geo	GSE49642	Leucegene: AML sequencing (part 1)	"Public on Nov 06, 2013"	8-Aug-13	11-May-21	3R01CA196658-02S1
+geo	GSE52656	Leucegene: AML sequencing (part 2)	"Public on Feb 05, 2014"	22-Nov-13	11-May-21	3R01CA196658-02S1
+geo	GSE62190	Leucegene: AML sequencing (part 3)	"Public on Jul 09, 2015"	8-Oct-14	11-May-21	3R01CA196658-02S1
+geo	GSE67040	Leucegene: AML sequencing	"Public on Jul 09, 2015"	18-Mar-15	13-May-21	3R01CA196658-02S1
+geo	GSE48846	Transcriptome of Primitive Human Hematopoietic Cells: A New Resource to Find hHSC-Specific Genes	"Public on Nov 06, 2013"	12-Jul-13	15-May-19	3R01CA196658-02S1
+geo	GSE51984	RNA-Seq analysis of human adult peripheral blood populations	"Public on Jul 20, 2016"	1-Nov-13	15-May-19	3R01CA196658-02S1
+geo	GSE96561	Gene expression profile during cardiac stress induced by transverse aortic constriction (TAC) and myocardial infarction (MI) with or without BET protein inhibitor JQ1 in mouse hearts	"Public on Mar 30, 2017"	13-Mar-17	15-May-19	3R01CA196658-02S1
 geo	GSE134598	Identification of PIKfyve kinase as a target in multiple myeloma	"Public on Sep 19, 2019"	22-Jul-19	3-Feb-20	1U54CA224018-01
 geo	GSE136068	Retention of CD19 intron 2 contributes to CART-19 resistance in leukemias with subclonal frameshift mutations in CD19	"Public on May 19, 2020"	20-Aug-19	19-May-20	1U01CA232563-01
 geo	GSE135218	Lactate mediated epigenetic reprogramming during cancer associated fibroblast formation	"Public on Dec 04, 2019"	1-Aug-19	4-Dec-19	1U24CA224020-01
 geo	GSE101082	Effect of CXCR4 knockdown in CAFs on gene expression	"Public on Apr 03, 2019"	10-Jul-17	25-Jul-21	1U24CA224020-01
+geo	GSE33912	Functional Identification of Critical Bmi1 target genes in Neural Progenitor and Malignant Glioma cells	"Public on May 21, 2013"	23-Nov-11	15-May-19	1U24CA224020-01
+geo	GSE21512	Simple combinations of lineage-determining transcription factors prime cis-regulatory elements required for macrophage and B cell identities	"Public on May 27, 2010"	26-Apr-10	19-Aug-19	1U24CA224020-01
+geo	GSE31477	ENCODE Transcription Factor Binding Sites by ChIP-seq from Stanford/Yale/USC/Harvard	"Public on Aug 30, 2011"	18-Aug-11	9-Apr-20	1U24CA224020-01
+geo	GSE39860	Transcriptional Architecture and Chromatin Landscape of the Core Circadian Clock in Mammals	"Public on Aug 31, 2012"	3-Aug-12	15-May-19	1U24CA224020-01
+geo	GSE56872	Transcription factor cooperativity in early adipogenic hotspots and super-enhancers	"Public on Apr 17, 2014"	17-Apr-14	15-May-19	1U24CA224020-01
+geo	GSE39756	BATF-JUN is critical for IRF4-mediated transcription in T cells	"Public on Sep 18, 2012"	30-Jul-12	15-May-19	1U24CA224020-01
+geo	GSE46166	Insights into the invasiveness of triple negative breast cancer from genome-wide profiling of transcription factor AP-1 (ChIP-seq)	"Public on Jun 30, 2014"	17-Apr-13	15-May-19	1U24CA224020-01
+geo	GSE29422	Chromatin and Transcriptional Signatures for Nodal Signaling During Endoderm Formation in hESCs	"Public on May 21, 2011"	20-May-11	15-May-19	1U24CA224020-01
+geo	GSE36673	Genome wide binding sites of Smad3 and JMJD3 in neural stem cells	"Public on May 30, 2012"	21-Mar-12	15-May-19	1U24CA224020-01
+geo	GSE36030	Transcription Factor Binding Sites by ChIP-seq from ENCODE/Stanford/Yale	"Public on Apr 11, 2012"	23-Feb-12	20-Nov-19	1U24CA224020-01
+geo	GSE34871	Genome-wide mapping of HIF-2 binding in 786-O clear cell renal carcinoma cells	"Public on Feb 01, 2012"	5-Jan-12	15-May-19	1U24CA224020-01
+geo	GSE35681	ChIP-seq and mRNA-seq experiment to find the direct target genes of ATF4 and CHOP	"Public on Apr 11, 2013"	9-Feb-12	15-May-19	1U24CA224020-01
+geo	GSE30298	Identification and analysis of pancreatic islet specific enhancers	"Public on Jun 30, 2011"	29-Jun-11	15-May-19	1U24CA224020-01
+geo	GSE44420	BACH2 mediates negative selection and p53-dependent tumor suppression at the pre-B cell receptor checkpoint.	"Public on Jun 27, 2013"	20-Feb-13	15-May-19	1U24CA224020-01
+geo	GSE54963	High-resolution Brachyury DNA-binding Sites Mapping by ChIP-exo	"Public on Mar 10, 2014"	13-Feb-14	15-May-19	1U24CA224020-01
+geo	GSE32465	Transcription Factor Binding Sites by ChIP-seq from ENCODE/HAIB	"Public on Sep 29, 2011"	28-Sep-11	15-May-19	1U24CA224020-01
+geo	GSE11431	Mapping of transcription factor binding sites in mouse embryonic stem cells	"Public on Jun 12, 2008"	13-May-08	22-Aug-19	1U24CA224020-01
+geo	GSE20898	Genome-wide Analyses of Transcription Factor GATA3-Mediated Gene Regulation in Distinct T Cell Types	"Public on Aug 26, 2011"	16-Mar-10	15-May-19	1U24CA224020-01
 geo	GSE128476	Papillomavirus-Colonized Murine Skin Confers Cancer Resistance	"Public on Oct 25, 2019"	18-Mar-19	22-Nov-19	1U01CA233097-01
-geo	GSE135739	Amino acid licensing of regulatory T cell function requires signaling via small G proteins Rag and Rheb	"Public on Nov 04, 2019"	12-Aug-19	6-Nov-19	5R01CA221290-02
+geo	GSE20685	Microarray-based molecular subtyping of breast cancer	"Public on Apr 24, 2011"	8-Mar-10	25-Mar-19	3R01CA163915-07S1
+geo	GSE20685	Microarray-based molecular subtyping of breast cancer	"Public on Apr 24, 2011"	8-Mar-10	25-Mar-19	5U19CA214253-02
+geo	GSE45255	Expression Profiles of Breast Tumors from Singapore and Europe	"Public on Mar 21, 2013"	18-Mar-13	10-Aug-18	3R01CA163915-07S1
+geo	GSE65194	Expression profiling of breast cancer samples from Institut Curie (Maire cohort) --Affy CDF	"Public on Jan 23, 2015"	22-Jan-15	25-Mar-19	3R01CA163915-07S1
+geo	GSE65194	Expression profiling of breast cancer samples from Institut Curie (Maire cohort) --Affy CDF	"Public on Jan 23, 2015"	22-Jan-15	25-Mar-19	5U19CA214253-02
 geo	GSE135301	Mevalonate metabolism-dependent protein geranylgeranylation regulates thymocyte egress	"Public on Nov 04, 2019"	2-Aug-19	3-Feb-20	5R01CA221290-02
-geo	GSE138571	In vivo epigenetic CRISPR screen identifies Asf1a as an immunotherapeutic target in Kras-mutant lung adenocarcinoma	"Public on Nov 26, 2019"	8-Oct-19	26-Nov-19	1U01CA233084-01
-geo	GSE133604	"Single-cell transcriptomic profiling of mouse KrasG12DP53-/- (KP) lung tumors in response to tumor cell intrinsic Asf1a knockout (KO), anti-PD-1 or combination treatment (Asf1a KO + anti-PD-1)."	"Public on Nov 26, 2019"	1-Jul-19	26-Nov-19	1U01CA233084-01
-geo	GSE127232	In vitro and in vivo epigenome-wide CRISPR screens in mouse KrasG12D/P53-/- (KP) lung adenocarcinoma model	"Public on Nov 26, 2019"	26-Feb-19	26-Jun-20	1U01CA233084-01
-geo	GSE127205	RNA-seq to compare gene expression profiles between Asf1a WT and Asf1a KO cells	"Public on Nov 26, 2019"	26-Feb-19	26-Nov-19	1U01CA233084-01
 geo	GSE134175	Single cell ATAC sequencing profile of quiescent mesenchymal progenitors	"Public on Dec 05, 2019"	11-Jul-19	19-Feb-20	1U54CA231652-01
 geo	GSE133995	RNA-seq profiling of adult skeletal muscle after long term conditional knockout of Hic1 [TA RNA-seq]	"Public on Dec 05, 2019"	8-Jul-19	19-Feb-20	1U54CA231652-01
 geo	GSE110038	Hic1 defines quiescent mesenchymal progenitor subpopulations with distinct functions and fates in skeletal muscle regeneration	"Public on Dec 05, 2019"	1-Feb-18	19-Feb-20	1U54CA231652-01
@@ -230,13 +134,15 @@ geo	GSE137014	CRISPR screening reveals targets to reprogram long-lived effector 
 geo	GSE126072	CRISPR screening reveals targets to reprogram long-lived effector CD8+ T cells for cancer therapy.	"Public on Dec 11, 2019"	4-Feb-19	20-Dec-19	5R01CA221290-02
 geo	GSE126071	CRISPR screening reveals targets to reprogram long-lived effector CD8+ T cells for cancer therapy. [RNA-Seq]	"Public on Dec 11, 2019"	4-Feb-19	20-Dec-19	5R01CA221290-02
 geo	GSE126070	CRISPR screening reveals targets to reprogram long-lived effector CD8+ T cells for cancer therapy. [ATAC-Seq]	"Public on Dec 11, 2019"	4-Feb-19	20-Dec-19	5R01CA221290-02
-geo	GSE131267	A large peptidome dataset improves HLA class I epitope prediction across most of the human population	"Public on Dec 16, 2019"	15-May-19	16-Mar-20	1U24CA224331-01
+geo	GSE84105	Defining memory-like CD8 T cells that respond to PD-1 therapy in chronic viral infection	"Public on Aug 02, 2016"	6-Jul-16	11-Feb-19	5R01CA221290-02
+geo	GSE76279	CXCR5+ Follicular Cytotoxic T cells Control Viral Infection in B Cell follicles	"Public on Jul 31, 2016"	22-Dec-15	15-May-19	5R01CA221290-02
+geo	GSE54191	"ChIP-Seq analysis of BATF, IRF4, the Jun proteins, and histone modifications in effector CD8+ T cells"	"Public on Mar 02, 2014"	17-Jan-14	15-May-19	5R01CA221290-02
 geo	GSE107637	"RUVBL1/RUVBL2 ATPase Activity Drives PAQosome Maturation, DNA Replication and Radioresistance in Lung Cancer"	"Public on Dec 18, 2019"	4-Dec-17	18-Mar-20	3R01CA124633-11A1S1
-geo	GSE140628	Regulatory T Cell depletion causes compensatory immune suppression and accelerated pancreatic carcinogenesis	"Public on Jan 13, 2020"	18-Nov-19	17-Jan-21	1U01CA224145-01
-geo	GSE128707	Regulatory T cell depletion causes compensatory immune suppression and accelerated pancreatic carcinogenesis.	"Public on Mar 23, 2019"	22-Mar-19	13-Jan-20	1U01CA224145-01
 geo	GSE141499	Homeostasis and transitional activation of regulatory T cells require c-Myc	"Public on Jan 10, 2020"	4-Dec-19	14-May-20	5R01CA221290-02
-geo	GSE118272	STRIPAK directs PP2A activity to promote oncogenic transformation	"Public on Dec 01, 2019"	7-Aug-18	3-Feb-20	1U01DE028227-01
-geo	GSE139335	MUC1-C Drives Lineage Plasticity in Progression to Neuroendocrine Prostate Cancer	"Public on Dec 02, 2019"	24-Oct-19	17-Aug-21	1U01CA233084-01
+geo	GSE55753	Inflammation induced repression of Foxp3-bound chromatin in regulatory T cells	"Public on Apr 12, 2014"	10-Mar-14	15-May-19	5R01CA221290-02
+geo	GSE61077	Continuous requirement for the T cell receptor for regulatory T cell function	"Public on Sep 08, 2014"	3-Sep-14	4-May-18	5R01CA221290-02
+geo	GSE66332	Gene expression profiling of perinatal or adult regulatory T cells (Tregs)	"Public on Feb 27, 2015"	26-Feb-15	4-Mar-19	5R01CA221290-02
+geo	GSE83315	Memory of inflammation in regulatory T cells	"Public on Aug 04, 2016"	13-Jun-16	15-May-19	5R01CA221290-02
 geo	GSE153670	Bulk RNA sequencing from patient bone marrow samples	"Public on Jul 02, 2020"	1-Jul-20	1-Oct-20	1R01CA226983-01
 geo	GSE130819	Genome-wide CRISPR/Cas9 guide library knockout screening in Nalm6 ALL cells under CART19 selective pressure	"Public on Feb 17, 2020"	7-May-19	17-Feb-20	1R01CA226983-01
 geo	GSE130818	ATAC profiling of CART19 cells exposed to WT and BIDko Nalm6 cells	"Public on Feb 17, 2020"	7-May-19	17-Feb-20	1R01CA226983-01
@@ -245,47 +151,32 @@ geo	GSE130663	Impaired tumor death receptor signaling drives resistance to CAR T
 geo	GSE129638	MLL-Menin inhibition reverses pre-leukemic progenitor self-renewal induced by NPM1c mutations	"Public on Feb 11, 2020"	11-Apr-19	11-Feb-20	5R01CA176745-09
 geo	GSE129637	MLL-Menin inhibition reverses pre-leukemic progenitor self-renewal induced by NPM1c mutations [RNA-Seq]	"Public on Feb 11, 2020"	11-Apr-19	11-Feb-20	5R01CA176745-09
 geo	GSE129636	MLL-Menin inhibition reverses pre-leukemic progenitor self-renewal induced by NPM1c mutations [ChIP-Seq]	"Public on Feb 11, 2020"	11-Apr-19	11-Feb-20	5R01CA176745-09
-geo	GSE137228	"Blockade of lL17 signaling reverses alcohol-induced liver injury, and excessive alcohol drinking in mice."	"Public on Apr 07, 2020"	10-Sep-19	7-Apr-20	1U01AA027681-01
+geo	GSE14615	Microarray analyses of induction failure in T-ALL (COG study 9404)	"Public on Jan 29, 2009"	28-Jan-09	8-Aug-19	3R00CA181500-04S1
 geo	GSE141633	The landscape of alternative splicing in aggressive prostate cancers	"Public on Dec 10, 2019"	9-Dec-19	4-Jun-20	1U01CA233074-01
 geo	GSE142479	Neurofibromin is an Estrogen Receptor alpha Transcriptional Co-repressor in Breast cancer	"Public on Feb 14, 2020"	21-Dec-19	20-May-20	1U54CA233223-01
 geo	GSE131690	H3K36 methyltransferase SETD2 regulates NHEJ during lymphoid and neural development	"Public on Mar 23, 2020"	23-May-19	23-Mar-20	5R01CA176745-09
 geo	GSE131608	H3K36 methyltransferase SETD2 regulates lymphoid and neural development [MIXCR]	"Public on Mar 23, 2020"	22-May-19	23-Mar-20	5R01CA176745-09
 geo	GSE131588	H3K36 methyltransferase SETD2 regulates lymphoid and neural development [RNA-seq]	"Public on Mar 23, 2020"	21-May-19	23-Mar-20	5R01CA176745-09
 geo	GSE130904	H3K36 methyltransferase SETD2 regulates lymphoid and neural development [seq]	"Public on Mar 23, 2020"	8-May-19	23-Mar-20	5R01CA176745-09
-geo	GSE132486	JAK2 inhibition in Philadelphia chromosome like acute lymphoblastic leukemia	"Public on May 28, 2020"	10-Jun-19	1-Jun-20	1U01CA232486-01
-geo	GSE138315	Epigenomic profiling of neuroblastoma cell lines	"Public on Nov 03, 2019"	2-Oct-19	27-Apr-20	1U54CA232568-01
-geo	GSE138295	MYCN and MYC ChIP-Seq profiling in neuroblastoma cell lines	"Public on Nov 03, 2019"	2-Oct-19	27-Apr-20	1U54CA232568-01
-geo	GSE133346	Functional comparison between healthy and multiple myeloma adipose stromal cells	"Public on Jun 27, 2019"	26-Jun-19	30-Mar-20	2P01CA155258-06
-geo	GSE127957	Loss of CHD1 promotes chromatin dysregulation leading to heterogeneous mechanisms of resistance to hormone therapy in prostate cancer [shRNA screen]	"Public on Mar 26, 2020"	6-Mar-19	25-Jun-20	1U54CA224079-01
-geo	GSE127241	Loss of CHD1 promotes chromatin dysregulation leading to heterogeneous mechanisms of resistance to hormone therapy in prostate cancer [ATAC-seq]	"Public on Mar 26, 2020"	26-Feb-19	25-Jun-20	1U54CA224079-01
-geo	GSE126918	Loss of CHD1 promotes chromatin dysregulation leading to heterogeneous mechanisms of resistance to hormone therapy in prostate cancer	"Public on Mar 26, 2020"	22-Feb-19	25-Jun-20	1U54CA224079-01
-geo	GSE126917	Loss of CHD1 promotes chromatin dysregulation leading to heterogeneous mechanisms of resistance to hormone therapy in prostate cancer [RNA-seq]	"Public on Mar 26, 2020"	22-Feb-19	25-Jun-20	1U54CA224079-01
 geo	GSE140490	Discovery of a selective inhibitor of Doublecortin Like Kinase 1	"Public on Apr 06, 2020"	15-Nov-19	6-Jul-20	1U01CA224146-01
-geo	GSE146826	High Throughput pMHC-I Tetramer Library Production Using Chaperone Mediated Peptide Exchange	"Public on Mar 12, 2020"	11-Mar-20	27-Apr-20	1U54CA232568-01
+geo	GSE54187	Metastatic potential is determined early in synovial sarcoma development and reflected by tumor molecular features  [transcriptome]	"Public on Jul 31, 2014"	17-Jan-14	9-Jan-18	1U54CA231652-01
 geo	GSE123917	Construction of brest cancer cell line BT20-specific interactome	"Public on Mar 28, 2020"	17-Dec-18	27-Jun-20	3U54CA224076-01S2
 geo	GSE120919	Genome-wide survey of adjacent gene rearrangements in breast cancer identifies triple-negative specific BCL2L14-ETV6 fusions	"Public on Mar 28, 2020"	8-Oct-18	25-Aug-20	3U54CA224076-01S2
 geo	GSE148732	Differential gene expression in mACVR1 NS v wt-ACVR1 NS.	"Public on Apr 16, 2020"	15-Apr-20	31-Jul-20	1U01CA224160-01
 geo	GSE132044	Systematic comparative analysis of single cell RNA-sequencing methods	"Public on Jun 01, 2019"	31-May-19	29-Aug-20	1U2CCA233195-01
-geo	GSE146811	Differentiated prostate luminal cells acquire enhanced regenerative potential after androgen ablation	"Public on May 01, 2020"	11-Mar-20	22-May-20	1U54CA224079-01
-geo	GSE139340	Somatic tissue engineering in mouse models reveals an actionable role for WNT pathway alterations in prostate cancer metastasis	"Public on Apr 28, 2020"	24-Oct-19	7-Jul-20	1U54CA224079-01
-geo	GSE111907	Clinically-relevant cell type cross-talk identified from a lung tumor microenvironment interactome	"Public on Jun 01, 2018"	15-Mar-18	18-May-20	1U24CA224309-01
+geo	GSE108097	Mapping Mouse Cell Atlas by Microwell-seq	"Public on Feb 14, 2018"	14-Dec-17	15-May-19	1U2CCA233291-01
 geo	GSE148715	“Direct to Drug” screening as a precision medicine tool in multiple myeloma	"Public on May 22, 2020"	15-Apr-20	22-May-20	1U54CA224018-01
 geo	GSE140819	A single-cell and single-nucleus RNA-Seq toolbox for fresh and frozen human tumors	"Public on May 11, 2020"	21-Nov-19	26-Aug-20	1U2CCA233195-01
-geo	GSE138388	Combined Inhibition of JAK/STAT Pathway and Lysine Demethylase 1 as a Novel Therapeutic Strategy in CSF3R/CEBPA Mutant Acute Myeloid Leukemia	"Public on Jul 02, 2020"	3-Oct-19	2-Jul-20	1U54CA224019-01
-geo	GSE138387	Combined Inhibition of JAK/STAT Pathway and Lysine Demethylase 1 as a Novel Therapeutic Strategy in CSF3R/CEBPA Mutant Acute Myeloid Leukemia [LSD1i ChIP-seq]	"Public on Jul 02, 2020"	3-Oct-19	2-Jul-20	1U54CA224019-01
-geo	GSE138386	Combined Inhibition of JAK/STAT Pathway and Lysine Demethylase 1 as a Novel Therapeutic Strategy in CSF3R/CEBPA Mutant Acute Myeloid Leukemia [RUX_GSK RNA-seq]	"Public on Jul 02, 2020"	3-Oct-19	2-Jul-20	1U54CA224019-01
-geo	GSE138384	Combined Inhibition of JAK/STAT Pathway and Lysine Demethylase 1 as a Novel Therapeutic Strategy in CSF3R/CEBPA Mutant Acute Myeloid Leukemia [LSD1i RNA-seq]	"Public on Jul 02, 2020"	3-Oct-19	2-Jul-20	1U54CA224019-01
-geo	GSE122166	CEBPA Dysfunction Intiates CSF3R Mutant Acute Myeloid Leukemia Through Disruption of Myeloid Lineage Enhancers	"Public on Dec 02, 2019"	5-Nov-18	2-Jul-20	1U54CA224019-01
-geo	GSE122164	CEBPA Dysfunction Intiates CSF3R Mutant Acute Myeloid Leukemia Through Disruption of Myeloid Lineage Enhancers (RNA-seq - simultaneous)	"Public on Dec 02, 2019"	5-Nov-18	2-Jul-20	1U54CA224019-01
-geo	GSE122163	CEBPA Dysfunction Intiates CSF3R Mutant Acute Myeloid Leukemia Through Disruption of Myeloid Lineage Enhancers (RNA-seq - orders)	"Public on Dec 02, 2019"	5-Nov-18	2-Jul-20	1U54CA224019-01
-geo	GSE122162	CEBPA Dysfunction Intiates CSF3R Mutant Acute Myeloid Leukemia Through Disruption of Myeloid Lineage Enhancers (ChIP-seq)	"Public on Dec 02, 2019"	5-Nov-18	2-Jul-20	1U54CA224019-01
-geo	GSE122161	CEBPA Dysfunction Intiates CSF3R Mutant Acute Myeloid Leukemia Through Disruption of Myeloid Lineage Enhancers (Microarray)	"Public on Dec 02, 2019"	5-Nov-18	2-Jul-20	1U54CA224019-01
-geo	GSE146204	"TP53 abnormalities correlate with immune infiltration and are associated with response to flotetuzumab, an investigational immunotherapy, in acute myeloid leukemia"	"Public on Sep 21, 2020"	2-Mar-20	2-Nov-20	1U01CA232486-01
-geo	GSE134589	IMMUNE LANDSCAPES PREDICT CHEMOTHERAPY RESISTANCE AND IMMUNOTHERAPY RESPONSE IN ACUTE MYELOID LEUKAEMIA	"Public on Jun 03, 2020"	20-Jul-19	2-Sep-20	1U01CA232486-01
 geo	GSE149652	Intratumoral CD4+ T cells mediate anti-tumor cytotoxicity in human bladder cancer	"Public on Jun 01, 2020"	30-Apr-20	21-Apr-21	1U01CA233100-01
 geo	GSE149652	Intratumoral CD4+ T cells mediate anti-tumor cytotoxicity in human bladder cancer	"Public on Jun 01, 2020"	30-Apr-20	21-Apr-21	1U01CA244452-01
 geo	GSE147781	Comparison of mRNA profiles of AGO2 sufficent and deficient pancreatic tissue in the LSL KRASG12D mouse model of pancreatic cancer	"Public on Mar 31, 2020"	30-Mar-20	22-Jun-20	1U01CA224145-01
-geo	GSE148442	Transcriptomic analysis of IRAK4 in murine pancreatic cancer cells (KP2)	"Public on Sep 02, 2020"	10-Apr-20	2-Sep-20	1U54CA224083-01
+geo	GSE60426	mRNA destabilization is the dominant effect of mammalian microRNAs by the time substantial repression ensues (sequencing)	"Public on Sep 25, 2014"	14-Aug-14	15-May-19	1U01DE028227-01
+geo	GSE62247	Cell fate determination by ubiquitin-dependent regulation of translation	"Public on Sep 23, 2015"	10-Oct-14	15-May-19	1U01DE028227-01
+geo	GSE65885	Ribosome profiling and RNA sequencing of MCF10A-ER-Src and fibroblast cell transformation	"Public on Nov 13, 2015"	12-Feb-15	15-May-19	1U01DE028227-01
+geo	GSE41246	Ribosome profiling in muscle reveals the translation landscape of the giant protein titin	"Public on Sep 01, 2015"	1-Oct-12	15-May-19	1U01DE028227-01
+geo	GSE72064	Genome-wide profilings of transcriptome and translatome in mouse hippocampi after contextual fear conditioning	"Public on Oct 07, 2015"	14-Aug-15	15-May-19	1U01DE028227-01
+geo	GSE89108	Integrative analysis of translatome and transcriptome of adipocytes	"Public on Aug 04, 2017"	24-Oct-16	15-May-19	1U01DE028227-01
+geo	GSE66715	Integrated Transcriptome and Proteome Analyses Reveal Organ-Specific Proteome Deterioration in Old Rats	"Public on Sep 22, 2015"	9-Mar-15	26-Jul-19	1U01DE028227-01
 geo	GSE149185	Novel Inhibitors of the Histone-Methyltransferase DOT1L Show Potent Antileukemic Activity in Patient-derived Xenografts	"Public on Jun 01, 2020"	23-Apr-20	31-Aug-20	5R01CA176745-09
 geo	GSE149184	Novel Inhibitors of the Histone-Methyltransferase DOT1L Show Potent Antileukemic Activity in Patient-derived Xenografts (RNA-seq dataset)	"Public on Jun 01, 2020"	23-Apr-20	31-Aug-20	5R01CA176745-09
 geo	GSE149183	Novel Inhibitors of the Histone-Methyltransferase DOT1L Show Potent Antileukemic Activity in Patient-derived Xenografts (ChIP-seq dataset)	"Public on Jun 01, 2020"	23-Apr-20	31-Aug-20	5R01CA176745-09
@@ -300,28 +191,27 @@ geo	GSE144237	Single Cell and Spatial Analysis of Human Squamous Cell Carcinoma 
 geo	GSE144236	Single Cell and Spatial Analysis of Human Squamous Cell Carcinoma [single-cell RNA-seq]	"Public on Jun 22, 2020"	24-Jan-20	21-Sep-20	1U2CCA233195-01
 geo	GSE144236	Single Cell and Spatial Analysis of Human Squamous Cell Carcinoma [single-cell RNA-seq]	"Public on Jun 22, 2020"	24-Jan-20	21-Sep-20	1U2CCA233238-01
 geo	GSE146609	IL-18BP is a secreted immune checkpoint and barrier to effective IL-18 immunotherapy	"Public on Jun 29, 2020"	8-Mar-20	1-Jul-20	1U01CA233096-01A1
+geo	GSE96624	ArrayCGH on a cohort of pediatric T-ALLs to investigate the mechanism of primary chemotherapy resistance	"Public on Oct 16, 2018"	15-Mar-17	15-Jan-19	3R00CA181500-04S1
 geo	GSE153439	The Tumor Microenvironment and Inflammation Influence toxicity in patients with Large B Cell Lymphoma Treated with Axicabtagene Ciloleucel	"Public on Jul 27, 2020"	28-Jun-20	19-Jan-21	1U01CA247576-01
 geo	GSE153438	The Tumor Microenvironment and Inflammation Influence toxicity in patients with Large B Cell Lymphoma Treated with Axicabtagene Ciloleucel [Nanostring]	"Public on Jul 27, 2020"	28-Jun-20	19-Jan-21	1U01CA247576-01
 geo	GSE153437	The Tumor Microenvironment and Inflammation Influence toxicity in patients with Large B Cell Lymphoma Treated with Axicabtagene Ciloleucel [RNA-Seq]	"Public on Jul 27, 2020"	28-Jun-20	19-Jan-21	1U01CA247576-01
-geo	GSE152029	Longitudinal serum auto-antibody response during HER2-CAR T cell therapy in a child with rhabdomyosarcoma identified using Protein microarray	"Public on Jun 09, 2020"	8-Jun-20	27-Jul-20	1U54CA232568-01
 geo	GSE144581	Comparison of tumor-associated YAP1 fusions identifies a recurrent set of functions critical for oncogenesis [Cut&amp;Run ChIP-seq]	"Public on Aug 04, 2020"	30-Jan-20	12-Aug-20	1U54CA243125-01
 geo	GSE137040	Comparison of tumor-associated YAP1 fusions identifies a recurrent set of functions critical for oncogenesis	"Public on Aug 04, 2020"	6-Sep-19	3-Nov-20	1U54CA243125-01
 geo	GSE137039	Comparison of tumor-associated YAP1 fusions identifies a recurrent set of functions critical for oncogenesis [mouse RNA-seq]	"Public on Aug 04, 2020"	6-Sep-19	7-Aug-20	1U54CA243125-01
 geo	GSE137038	Comparison of tumor-associated YAP1 fusions identifies a recurrent set of functions critical for oncogenesis[RNASeq]	"Public on Aug 04, 2020"	6-Sep-19	7-Aug-20	1U54CA243125-01
-geo	GSE147976	RNA-seq analysis in NRG1 and enzalutamide treated 22Pc-EP cell line	"Public on Jun 01, 2020"	2-Apr-20	15-Sep-20	1U54CA224079-01
-geo	GSE151838	Multi-omics analysis reveals divergent epigenetic regulation of gene expression and drivers of esophageal squamous cell carcinoma [ChIP-seq]	"Public on Jun 05, 2020"	4-Jun-20	27-Jul-20	1U54CA224081-01
-geo	GSE149612	Multi-omics analysis reveals divergent epigenetic regulation of gene expression and drivers of esophageal squamous cell carcinoma	"Public on Apr 30, 2020"	29-Apr-20	27-Jul-20	1U54CA224081-01
-geo	GSE149609	Multi-omics analysis reveals divergent epigenetic regulation of gene expression and drivers of esophageal squamous cell carcinoma (RNA-Seq)	"Public on Apr 30, 2020"	29-Apr-20	27-Jul-20	1U54CA224081-01
-geo	GSE149608	Multi-omics analysis reveals divergent epigenetic regulation of gene expression and drivers of esophageal squamous cell carcinoma (WGBS)	"Public on Apr 30, 2020"	29-Apr-20	27-Jul-20	1U54CA224081-01
-geo	GSE10886	A Supervised Risk Predictor of Breast Cancer Based on Biological Subtypes	"Public on Feb 11, 2009"	18-Mar-08	20-Feb-17	1U54CA224079-01
 geo	GSE151924	Differential expression of endogenous retroelements (long terminal repeats) in ADA2 depleted primary endothelial cells (HUVECs)	"Public on Jun 20, 2020"	5-Jun-20	22-Sep-20	1U01DE028227-01
 geo	GSE150540	Tanscriptional profile of primary endothelial cells (HUVEC) in ADA2 depleted setting and effect of Dipyridamole (DPM) treatment	"Public on Jun 01, 2020"	14-May-20	31-Aug-20	1U01DE028227-01
 geo	GSE144688	"Chromatin profiling reveals the relationship between EWS/FLI, LSD1, and the enhancer landscape in Ewing sarcoma"	"Public on May 12, 2020"	3-Feb-20	7-Apr-21	1U54CA231641-01
 geo	GSE144685	"Chromatin profiling of the relationship between EWS/FLI, LSD1, and K27ac in multiple Ewing sarcoma cell lines"	"Public on May 12, 2020"	3-Feb-20	7-Apr-21	1U54CA231641-01
 geo	GSE144651	"Chromatin profiling of the relationship between EWS/FLI, LSD1, and H3K27 acetylation"	"Public on May 12, 2020"	2-Feb-20	7-Apr-21	1U54CA231641-01
 geo	GSE132709	"Chromatin profiling of the relationship between EWS/FLI, LSD1, and the enhancer landscape - H3K4 methylation"	"Public on May 12, 2020"	13-Jun-19	7-Apr-21	1U54CA231641-01
-geo	GSE153710	Genome-scale CRISPR-Cas9 knockout screening for identification of genes which regulate CD38 expression in RPMI 8226 cells	"Public on Jul 03, 2020"	2-Jul-20	2-Oct-20	2P01CA155258-06
 geo	GSE152312	Effect of bone marrow microenvironment on the sensitivity of breast cancer cells to antiestrogens	"Public on Jan 31, 2021"	11-Jun-20	3-May-21	1U54CA233223-01
+geo	GSE147507	Transcriptional response to SARS-CoV-2 infection	"Public on Mar 25, 2020"	24-Mar-20	7-Apr-21	1U2CCA233262-01
+geo	GSE147507	Transcriptional response to SARS-CoV-2 infection	"Public on Mar 25, 2020"	24-Mar-20	7-Apr-21	1U2CCA233280-01
+geo	GSE119228	A cell atlas of mouse lung development reveals a signaling role for lung basophils in alveolar macrophage maturation	"Public on Oct 12, 2018"	30-Aug-18	25-Mar-19	1U2CCA233262-01
+geo	GSE119228	A cell atlas of mouse lung development reveals a signaling role for lung basophils in alveolar macrophage maturation	"Public on Oct 12, 2018"	30-Aug-18	25-Mar-19	1U2CCA233280-01
+geo	GSE121611	Single-Cell Transcriptomic Analysis of Human Lung Reveals Complex Multicellular Changes During Pulmonary Fibrosis	"Public on Dec 15, 2018"	22-Oct-18	25-Mar-19	1U2CCA233262-01
+geo	GSE121611	Single-Cell Transcriptomic Analysis of Human Lung Reveals Complex Multicellular Changes During Pulmonary Fibrosis	"Public on Dec 15, 2018"	22-Oct-18	25-Mar-19	1U2CCA233280-01
 geo	GSE111922	Multiple myeloma tumors from Vk*MYC mice	"Public on Feb 20, 2020"	15-Mar-18	28-Sep-20	1U54CA224018-01
 geo	GSE111921	Gene expression profile in multiple myeloma tumors from Vk*MYC mice	"Public on Feb 20, 2020"	15-Mar-18	28-Sep-20	1U54CA224018-01
 geo	GSE110954	Evaluation of CNAs in multiple myeloma tumors from Vk*MYC mice	"Public on Feb 20, 2020"	21-Feb-18	28-Sep-20	1U54CA224018-01
@@ -329,6 +219,10 @@ geo	GSE110655	Binding of TMPRSS2-ERG to BAF Chromatin Remodeling Complexes Media
 geo	GSE94682	Endogenous Androgen Receptor proteomic profiling reveals genomic subcomplex involved in prostate tumorigenesis	"Public on Sep 05, 2017"	8-Feb-17	27-Jan-20	1U54CA224079-01
 geo	GSE155618	Role of PTEN in B-ALL	"Public on Oct 13, 2020"	3-Aug-20	12-Jan-21	1U01CA232563-01
 geo	GSE155305	An Ifitm3-dependent amplification loop enables antibody responses and oncogenic signaling in B-cells	"Public on Oct 13, 2020"	28-Jul-20	12-Jan-21	1U01CA232563-01
+geo	GSE11877	Children's Oncology Group Study 9906 for High-Risk Pediatric ALL	"Public on Jun 25, 2009"	24-Jun-08	8-Nov-19	1U01CA232563-01
+geo	GSE86897	Super-enhancer reprogramming drives a B cell-epithelial transition and high-risk leukemia	"Public on Oct 06, 2016"	13-Sep-16	15-May-19	1U01CA232563-01
+geo	GSE58825	Genome wide mapping of IKAROS binding (ChIP-Seq) in human patient-derived BCR-ABL1+ (Ph+) pre-B ALL xenograft cells	"Public on Feb 06, 2017"	25-Jun-14	15-May-19	1U01CA232563-01
+geo	GSE90656	Genetic analysis of Ikaros target genes and tumor suppressor function in BCR-ABL1+ pre-B ALL [ChIP-seq]	"Public on Feb 06, 2017"	29-Nov-16	15-May-19	1U01CA232563-01
 geo	GSE158789	Functional Genomics Identifies Metabolic Vulnerabilities in Pancreatic Cancer [CRISPR Screen]	"Public on Oct 01, 2020"	30-Sep-20	4-Jan-21	1U01CA224146-01
 geo	GSE158787	Functional Genomics Identifies Metabolic Vulnerabilities in Pancreatic Cancer	"Public on Oct 01, 2020"	30-Sep-20	4-Jan-21	1U01CA224146-01
 geo	GSE158657	Functional Genomics Identifies Metabolic Vulnerabilities in Pancreatic Cancer [RNA-Seq]	"Public on Oct 01, 2020"	28-Sep-20	4-Jan-21	1U01CA224146-01
@@ -338,6 +232,7 @@ geo	GSE146834	Transcriptional profiling of mouse pancreatic tumor cells III	"Pub
 geo	GSE146833	Transcriptional profiling of mouse pancreatic tumor cells II	"Public on Sep 10, 2020"	11-Mar-20	26-Nov-20	1U54CA232568-01
 geo	GSE146832	Transcriptional profiling of mouse pancreatic tumor cells I	"Public on Sep 10, 2020"	11-Mar-20	26-Nov-20	1U54CA232568-01
 geo	GSE142082	Genome-wide maps of macroH2A and H2B distribution in murine embryonic fibroblasts in dependence of Lsh.	"Public on Aug 13, 2020"	16-Dec-19	12-Nov-20	3R01CA163915-07S1
+geo	GSE152748	Fate and Functional Roles of Prominin 1+ Cells in Liver Injury and Cancer	"Public on Dec 17, 2020"	18-Jun-20	19-Dec-20	1U01AA027681-01
 geo	GSE141121	PD-1 and TIGIT co-expression identifies a circulating CD8 T cell population predictive of response to anti-PD-1 therapy in melanoma and Merkel-cell carcinoma patients	"Public on Nov 27, 2020"	27-Nov-19	27-Nov-20	2UM1CA154967-07
 geo	GSE141120	PD-1 and TIGIT co-expression identifies a circulating CD8 T cell population predictive of response to anti-PD-1 therapy in melanoma and Merkel-cell carcinoma patients [TCR-seq]	"Public on Nov 27, 2020"	27-Nov-19	27-Nov-20	2UM1CA154967-07
 geo	GSE141119	PD-1 and TIGIT co-expression identifies a circulating CD8 T cell population predictive of response to anti-PD-1 therapy in melanoma and Merkel-cell carcinoma patients [RNA-seq]	"Public on Nov 27, 2020"	27-Nov-19	27-Nov-20	2UM1CA154967-07
@@ -347,25 +242,45 @@ geo	GSE158863	Protein prenylation drives discrete signaling programs for the dif
 geo	GSE158862	Protein prenylation drives discrete signaling programs for the differentiation and maintenance of effector Treg cells [Microarray Dataset 3]	"Public on Jan 20, 2021"	1-Oct-20	24-Jan-21	5R01CA221290-02
 geo	GSE158861	Protein prenylation drives discrete signaling programs for the differentiation and maintenance of effector Treg cells [Microarray Dataset 2]	"Public on Jan 20, 2021"	1-Oct-20	24-Jan-21	5R01CA221290-02
 geo	GSE158860	Protein prenylation drives discrete signaling programs for the differentiation and maintenance of effector Treg cells [Microarray Dataset 1]	"Public on Jan 20, 2021"	1-Oct-20	24-Jan-21	5R01CA221290-02
-geo	GSE104574	Transcriptional Signaling Centers Regulate Erythroid Gene Expression and are Disrupted in Common Variations of Human Red Blood Cell Traits	"Public on Sep 14, 2020"	3-Oct-17	25-Jul-21	2P01CA155258-06
-geo	GSE74483	BMP signaling cooperates with GATA factors to govern stage-specific gene expression during erythroid differentiation	"Public on Sep 14, 2020"	29-Oct-15	16-Feb-21	2P01CA155258-06
-geo	GSE74482	BMP signaling cooperates with GATA factors to govern stage-specific gene expression during erythroid differentiation [RNA-Seq]	"Public on Sep 14, 2020"	29-Oct-15	16-Feb-21	2P01CA155258-06
-geo	GSE74479	BMP signaling cooperates with GATA factors to govern stage-specific gene expression during erythroid differentiation [ChIP-Seq]	"Public on Sep 14, 2020"	29-Oct-15	16-Feb-21	2P01CA155258-06
-geo	GSE74472	BMP signaling cooperates with GATA factors to govern stage-specific gene expression during erythroid differentiation [ATAC-Seq]	"Public on Sep 14, 2020"	29-Oct-15	16-Feb-21	2P01CA155258-06
 geo	GSE153499	Protein synthesis inhibitors stimulate MondoA transcriptional activity by driving accumulation of glucose 6-phosphate	"Public on Dec 07, 2020"	29-Jun-20	15-Dec-20	3U54CA224076-01S2
+geo	GSE120852	Wipi1 is a Genetic Hub that Mediates Right Ventricular Failure	"Public on Oct 05, 2018"	4-Oct-18	8-May-19	1U24CA224067-01
+geo	GSE120848	Isolation and genome-wide characterization of cellular DNA:RNA triplex structures III	"Public on Dec 20, 2018"	4-Oct-18	26-Mar-19	1U24CA224067-01
+geo	GSE12276	Expression data from primary breast tumors	"Public on Jun 13, 2009"	29-Jul-08	25-Mar-19	1U54CA224083-01
+geo	GSE12276	Expression data from primary breast tumors	"Public on Jun 13, 2009"	29-Jul-08	25-Mar-19	5U19CA214253-02
+geo	GSE124647	SET ER/PR - A robust 18-gene Predictor for Sensitivity to Endocrine Therapy for Metastatic Breast Cancer	"Public on May 30, 2019"	3-Jan-19	29-Jun-19	1U54CA224083-01
+geo	GSE48075	Identification of subsets of urothelial carcinoma	"Public on Feb 10, 2014"	18-Jun-13	22-Jun-20	3R01CA175397-07S1
+geo	GSE31507	Host cell gene expression in Influenza A/duck/Malaysia/F59/04/1998 (H5N2) infected CEF cells at 10 hour post infection	"Public on Aug 10, 2014"	18-Aug-11	30-Mar-20	3R01CA175397-07S1
+geo	GSE31684	Combination of a novel gene expression signature with a clinical nomogram improves the prediction of survival in high-risk bladder cancer  	"Public on Jan 23, 2012"	26-Aug-11	25-Mar-19	3R01CA175397-07S1
+geo	GSE52219	Tumors with neoadjuvant chemotherapy	"Public on Feb 10, 2014"	8-Nov-13	22-Dec-17	3R01CA175397-07S1
+geo	GSE69795	a phase 2 trial of DDMVAC and bevacizumab in urothelial cancer	"Public on Aug 18, 2015"	11-Jun-15	3-Jul-19	3R01CA175397-07S1
 geo	GSE149720	17 Models: Buparlisib-treated Patient Derived Xenograft (PDX) Reversed Phase Protein Array (RPPA) Data	"Public on Jan 27, 2021"	1-May-20	6-May-21	1U54CA224083-01
 geo	GSE148949	BKM120 Treated WHIMs_17 Model Cohort	"Public on Dec 31, 2020"	20-Apr-20	2-Jan-21	1U54CA224083-01
 geo	GSE119716	Culturing human fusion-positive rhabdomyosarcoma cell lines as rhabdospheres enriches for stemness and Notch signaling	"Public on Feb 22, 2021"	10-Sep-18	22-Feb-21	1U54CA231630-01A1
 geo	GSE138343	Genome wide CRISPR screen for Sorafenib resistance in MOLM13 and MV411 cells using Y. Kosuke library	"Public on May 19, 2021"	2-Oct-19	19-May-21	1U54CA224019-01
+geo	GSE90653	Data from hepatocellular carcinoma PDX	"Public on Dec 01, 2016"	29-Nov-16	21-Aug-19	1U24CA224067-01
+geo	GSE90653	Data from hepatocellular carcinoma PDX	"Public on Dec 01, 2016"	29-Nov-16	21-Aug-19	1U54CA224070-01
+geo	GSE90653	Data from hepatocellular carcinoma PDX	"Public on Dec 01, 2016"	29-Nov-16	21-Aug-19	1U54CA224083-01
+geo	GSE90653	Data from hepatocellular carcinoma PDX	"Public on Dec 01, 2016"	29-Nov-16	21-Aug-19	3U54CA224065-01S1
+geo	GSE33006	Gene expression profiles from the hepatocellular carcinoma (HCC) tissues	"Public on Aug 31, 2012"	15-Oct-11	25-Mar-19	1U24CA224067-01
+geo	GSE33006	Gene expression profiles from the hepatocellular carcinoma (HCC) tissues	"Public on Aug 31, 2012"	15-Oct-11	25-Mar-19	1U54CA224070-01
+geo	GSE33006	Gene expression profiles from the hepatocellular carcinoma (HCC) tissues	"Public on Aug 31, 2012"	15-Oct-11	25-Mar-19	1U54CA224083-01
+geo	GSE33006	Gene expression profiles from the hepatocellular carcinoma (HCC) tissues	"Public on Aug 31, 2012"	15-Oct-11	25-Mar-19	3U54CA224065-01S1
 geo	GSE159927	Droplet based mRNA sequencing of fixed and permeabilized cells by CLInt-Seq allows for antigen specific TCR cloning	"Public on Jan 01, 2021"	23-Oct-20	1-Feb-21	1U01CA233074-01
 geo	GSE161353	Tumor-infiltrating mast cells are associated with resistance to anti-PD-1 therapy.	"Public on Dec 07, 2020"	12-Nov-20	8-Mar-21	1U54CA224070-01
 geo	GSE161351	Tumor-infiltrating mast cells are associated with resistance to anti-PD-1 therapy. [RNA-Seq]	"Public on Dec 07, 2020"	12-Nov-20	8-Mar-21	1U54CA224070-01
 geo	GSE160885	Tumor-infiltrating mast cells are associated with resistance to anti-PD-1 therapy. [TCR]	"Public on Dec 07, 2020"	5-Nov-20	8-Mar-21	1U54CA224070-01
+geo	GSE91061	Molecular portraits of tumor mutational and micro-environmental sculpting by immune checkpoint blockade therapy	"Public on Jan 23, 2018"	8-Dec-16	15-May-19	1U54CA224070-01
+geo	GSE91061	Molecular portraits of tumor mutational and micro-environmental sculpting by immune checkpoint blockade therapy	"Public on Jan 23, 2018"	8-Dec-16	15-May-19	3P30CA016058-44S3
+geo	GSE123728	Clinical and Immunologic Activity of a Single Dose of Neoadjuvant PD-1 Blockade and Predictors of Clinical Outcomes in Resectable Melanoma	"Public on Feb 11, 2019"	12-Dec-18	31-Aug-20	1U54CA224070-01
 geo	GSE144020	Genomic alterations during the in situ to invasive ductal breast carcinoma transition shaped by the immune system	"Public on Dec 01, 2020"	21-Jan-20	2-Mar-21	1U24CA224331-01
 geo	GSE164179	A CRISPR/Cas9-engineered ARID1A-deficient human gastric cancer organoid model reveals essential and non-essential modes of oncogenic transformation	"Public on Jan 05, 2021"	4-Jan-21	6-Apr-21	1U54CA224081-01
 geo	GSE164179	A CRISPR/Cas9-engineered ARID1A-deficient human gastric cancer organoid model reveals essential and non-essential modes of oncogenic transformation	"Public on Jan 05, 2021"	4-Jan-21	6-Apr-21	3R01CA163915-07S1
 geo	GSE161363	"Single-cell lineages reveal the rates, routes, and drivers of metastasis in cancer xenografts"	"Public on Dec 13, 2020"	12-Nov-20	6-Apr-21	1U54CA224081-01
 geo	GSE164141	MUC1-C integrates activation of the IFN-γ pathway with suppression of the tumor immune microenvironment in triple-negative breast cancer	"Public on Feb 03, 2021"	2-Jan-21	3-Feb-21	1U01CA233084-01
+geo	GSE75688	Single cell RNA sequencing of primary breast cancer.	"Public on Dec 09, 2016"	3-Dec-15	15-May-19	1U01CA233084-01
+geo	GSE118390	Unravelling subclonal heterogeneity and aggressive disease states in TNBC through single-cell RNA-seq	"Public on Aug 11, 2018"	10-Aug-18	27-Mar-19	1U01CA233084-01
+geo	GSE118389	Unravelling subclonal heterogeneity and aggressive disease states in TNBC through single-cell RNA-seq [RNA-Seq]	"Public on Aug 11, 2018"	10-Aug-18	21-Feb-19	1U01CA233084-01
+geo	GSE114621	Exon level expression analysis from rhabdomyosarcoma patient tumors.	"Public on May 18, 2018"	17-May-18	18-Feb-19	1U54CA231630-01A1
 geo	GSE166940	Convergent organization of aberrant MYB complexes controls oncogenic gene expression in acute myeloid leukemia [ChIPseq]	"Public on Feb 24, 2021"	17-Feb-21	24-Feb-21	3R01CA204396-02S1
 geo	GSE163470	Convergent organization of aberrant MYB complexes controls oncogenic gene expression in acute myeloid leukemia	"Public on Feb 24, 2021"	18-Dec-20	24-Feb-21	3R01CA204396-02S1
 geo	GSE163469	Convergent organization of aberrant MYB complexes controls oncogenic gene expression in acute myeloid leukemia [RNAseq_4cellLines]	"Public on Feb 24, 2021"	18-Dec-20	24-Feb-21	3R01CA204396-02S1
@@ -377,6 +292,21 @@ geo	GSE149482	Genome-wide maps of histone modifications in mouse tumor-derived c
 geo	GSE149272	Elevated NSD3 Histone Methylation Activity Drives Squamous Cell Lung Cancer	"Public on Nov 24, 2020"	24-Apr-20	23-Feb-21	3U54CA224065-01S1
 geo	GSE164551	Biallelic loss of BCMA as a resistance mechanism to CAR T cell therapy in a patient with Multiple Myeloma	"Public on Jan 11, 2021"	11-Jan-21	22-Feb-21	2P01CA155258-06
 geo	GSE155841	Differential gene expression profile of FOLR2+ vs. FOLR2- tumor-associated macrophages	"Public on Nov 01, 2020"	6-Aug-20	22-Feb-21	1R01CA226983-01
+geo	GSE14764	A Prognostic Gene Expression Index in Ovarian Cancer	"Public on Feb 09, 2009"	9-Feb-09	10-Aug-18	1R01CA226983-01
+geo	GSE15622	Expression data from the CTCR-OV01 study	"Public on Apr 09, 2009"	9-Apr-09	27-Jun-19	1R01CA226983-01
+geo	GSE18520	Whole-genome oligonucleotide expression analysis of papillary serous ovarian adenocarcinomas	"Public on Oct 17, 2009"	11-Oct-09	25-Mar-19	1R01CA226983-01
+geo	GSE18520	Whole-genome oligonucleotide expression analysis of papillary serous ovarian adenocarcinomas	"Public on Oct 17, 2009"	11-Oct-09	25-Mar-19	5U19CA214253-02
+geo	GSE19829	A gene expression profile of BRCAness that is associated with outcome in ovarian cancer	"Public on Jul 11, 2010"	11-Jan-10	25-Mar-19	1R01CA226983-01
+geo	GSE23554	Ovarian Cancer Dataset	"Public on Oct 03, 2011"	10-Aug-10	10-Aug-18	1R01CA226983-01
+geo	GSE26193	Control of oxidative stress by miRNA and impact on ovarian tumorigenesis	"Public on Nov 01, 2011"	20-Dec-10	2-Mar-21	1R01CA226983-01
+geo	GSE26193	Control of oxidative stress by miRNA and impact on ovarian tumorigenesis	"Public on Nov 01, 2011"	20-Dec-10	2-Mar-21	5U19CA214253-02
+geo	GSE26712	A Gene Signature Predicting for Survival in Suboptimally Debulked Patients with Ovarian Cancer	"Public on Jan 20, 2011"	19-Jan-11	10-Aug-18	1R01CA226983-01
+geo	GSE27651	The Anterior Gradient Homolog 3 (AGR3) Gene Is Associated with Differentiation and Survival in Ovarian Cancer	"Public on Mar 04, 2011"	2-Mar-11	25-Mar-19	1R01CA226983-01
+geo	GSE30161	Genomic Multivariate Predictors of Response to Adjuvant Chemotherapy in Ovarian Carcinoma: Predicting Platinum Resistance	"Public on Aug 21, 2012"	22-Jun-11	25-Mar-19	1R01CA226983-01
+geo	GSE51373	Gene expression data from high grade serous ovarian cancer	"Public on Jan 01, 2014"	17-Oct-13	25-Mar-19	1R01CA226983-01
+geo	GSE51373	Gene expression data from high grade serous ovarian cancer	"Public on Jan 01, 2014"	17-Oct-13	25-Mar-19	5U19CA214253-02
+geo	GSE63885	Gene expression profiling in ovarian cancer	"Public on Dec 06, 2014"	5-Dec-14	28-Jun-19	1R01CA226983-01
+geo	GSE65986	Integrated copy number and expression analysis identifies profiles of whole-arm chromosomal alterations and subgroups with favorable outcome in ovarian clear cell carcinomas	"Public on May 11, 2015"	17-Feb-15	12-Jul-19	1R01CA226983-01
 geo	GSE151611	p300/CBP mediated activation of MHCI machinery and IFNg receptor loci controls chemoimmunotherapy	"Public on Feb 01, 2021"	2-Jun-20	16-Mar-21	1U01AA027681-01
 geo	GSE126288	Platinoid drugs augment immunotherapy via histone acetylation of MHCI machinery genes	"Public on Feb 01, 2021"	8-Feb-19	16-Mar-21	1U01AA027681-01
 geo	GSE126287	Platinoid drugs augment immunotherapy via histone acetylation of MHCI machinery genes [AT_MC]	"Public on Feb 01, 2021"	8-Feb-19	16-Mar-21	1U01AA027681-01
@@ -408,213 +338,17 @@ geo	GSE151538	T cell receptor repertoire analysis of tumor-infiltrating T cells 
 geo	GSE151537	T cell receptor repertoire analysis of tumor-infiltrating T cells in non-small cell lung cancer [tumor_T_cells]	"Public on Mar 11, 2021"	1-Jun-20	23-Mar-21	1U54CA232568-01
 geo	GSE151531	T cell receptor repertoire analysis of tumor-infiltrating T cells in non-small cell lung cancer [tet_sorted_PBLT_cells]	"Public on Mar 11, 2021"	1-Jun-20	23-Mar-21	1U54CA232568-01
 geo	GSE159907	DNA methylation analysis of acute myeloid leukemia (AML)	"Public on Mar 09, 2021"	23-Oct-20	19-May-21	1U54CA224019-01
+geo	GSE120575	Defining T cell states associated with response to checkpoint immunotherapy in melanoma	"Public on Oct 05, 2018"	27-Sep-18	26-Mar-19	1U01CA233100-01
+geo	GSE120575	Defining T cell states associated with response to checkpoint immunotherapy in melanoma	"Public on Oct 05, 2018"	27-Sep-18	26-Mar-19	1U2CCA233195-01
+geo	GSE140628	Regulatory T Cell depletion causes compensatory immune suppression and accelerated pancreatic carcinogenesis	"Public on Jan 13, 2020"	18-Nov-19	17-Jan-21	1U01CA224145-01
 geo	GSE158356	Pancreatic cancer is marked by complement-high blood monocytes and tumor-associated macrophages	"Public on Mar 24, 2021"	22-Sep-20	12-May-21	1U01CA224145-01
+geo	GSE155698	Multimodal Mapping of the Tumor and Peripheral Blood Immune Landscape in Human Pancreatic Cancer	"Public on Oct 01, 2020"	4-Aug-20	28-Jul-21	1U01CA224145-01
 geo	GSE164950	Transient “rest” induces functional reinvigoration and epigenetic remodeling in exhausted CAR-T cells Mediate Enhanced Antitumor Activity	"Public on Jan 16, 2021"	15-Jan-21	18-Apr-21	1U54CA232568-01
 geo	GSE164949	Transient “rest” induces functional reinvigoration and epigenetic remodeling in exhausted CAR-T cells Mediate Enhanced Antitumor Activity [RNA-seq]	"Public on Jan 16, 2021"	15-Jan-21	18-Apr-21	1U54CA232568-01
 geo	GSE164947	"Transient “rest” induces functional reinvigoration and epigenetic remodeling in exhausted CAR-T cells Mediate Enhanced Antitumor Activity [ATAC-seq, ChIP-seq]"	"Public on Jan 16, 2021"	15-Jan-21	18-Apr-21	1U54CA232568-01
 geo	GSE164946	Transient “rest” induces functional reinvigoration and epigenetic remodeling in exhausted CAR-T cells Mediate Enhanced Antitumor Activity [ATAC-seq]	"Public on Jan 16, 2021"	15-Jan-21	18-Apr-21	1U54CA232568-01
 geo	GSE161466	CRISPR genome editing of human dendritic cells (treatments of knockout dendritic cells)	"Public on Apr 27, 2021"	13-Nov-20	1-May-21	1U54CA224081-01
 geo	GSE161401	CRISPR genome editing of human dendritic cells (treatments of unedited dendritic cells)	"Public on Apr 27, 2021"	13-Nov-20	1-May-21	1U54CA224081-01
-geo	GSE167746	Targeting Treg cells with GITR activation alleviates resistance to immunotherapy in murine glioblastomas	"Public on Mar 27, 2021"	26-Feb-21	19-May-21	1U01CA224348-01
-geo	GSE167746	Targeting Treg cells with GITR activation alleviates resistance to immunotherapy in murine glioblastomas	"Public on Mar 27, 2021"	26-Feb-21	19-May-21	1U2CCA233262-01
-geo	GSE150272	cIAP1/2 antagonism eliminates MHC class I negative tumors through T cell-dependent reprogramming of mononuclear phagocytes	"Public on Apr 30, 2021"	11-May-20	30-Jul-21	1U01CA224146-01
-geo	GSE150271	cIAP1/2 antagonism eliminates MHC class I negative tumors through T cell-dependent reprogramming of mononuclear phagocytes	"Public on Apr 30, 2021"	11-May-20	30-Jul-21	1U01CA224146-01
-geo	GSE150270	cIAP1/2 antagonism eliminates MHC class I negative tumors through T cell-dependent reprogramming of mononuclear phagocytes	"Public on Apr 30, 2021"	11-May-20	30-Jul-21	1U01CA224146-01
-geo	GSE150269	cIAP1/2 antagonism eliminates MHC class I negative tumors through T cell-dependent reprogramming of mononuclear phagocytes	"Public on Apr 30, 2021"	11-May-20	30-Jul-21	1U01CA224146-01
-geo	GSE124230	Pancreatic cancer prognosis is predicted by chromatin accessibility (Quantseq)	"Public on Mar 30, 2021"	20-Dec-18	29-Jun-21	1U01CA224175-01
-geo	GSE124229	Pancreatic cancer prognosis is predicted by chromatin accessibility (ATAC-Seq)	"Public on Mar 30, 2021"	20-Dec-18	29-Jun-21	1U01CA224175-01
-geo	GSE160592	Apolipoprotein E promotes immune suppression in pancreatic cancer through NF-kB-mediated production of CXCL1 	"Public on May 12, 2021"	1-Nov-20	4-Jun-21	1U01CA224145-01
-geo	GSE162664	MOCCASIN: A method for correcting for known and unknown confounders in RNA splicing analysis	"Public on Dec 06, 2020"	4-Dec-20	15-Jun-21	1U01CA232563-01
-geo	GSE156160	TNF blockade uncouples toxicity and anti-tumor efficacy induced with an agonist CD40 antibody	"Public on Sep 08, 2021"	13-Aug-20	8-Sep-21	1U01CA224193-01
-geo	GSE159275	PELP1/SRC-3-dependent regulation of metabolic kinases drives therapy resistant ER+ breast cancer [3D]	"Public on Apr 01, 2021"	8-Oct-20	1-Jul-21	3U54CA224076-01S2
-geo	GSE126776	MCF-7 cell RNA-seq analysis of PELP1-induced gene expression	"Public on Jul 05, 2021"	19-Feb-19	5-Jul-21	3U54CA224076-01S2
-geo	GSE173550	mSWI/SNF promotes polycomb repression both directly and through genome-wide redistribution [ChIP-seq]	"Public on Jun 11, 2021"	29-Apr-21	10-Sep-21	3R01CA163915-07S1
-geo	GSE173499	mSWI/SNF promotes polycomb repression both directly and through genome-wide redistribution [RNA-seq]	"Public on Jun 11, 2021"	28-Apr-21	10-Sep-21	3R01CA163915-07S1
-geo	GSE145016	mSWI/SNF promotes distal repression by titrating polycomb dosage	"Public on Jun 11, 2021"	10-Feb-20	10-Sep-21	3R01CA163915-07S1
-geo	GSE165977	The effect of STAG2 loss in Ewing sarcoma [HiChIP]	"Public on May 14, 2021"	2-Feb-21	17-Jul-21	3R01CA204915-02S1
-geo	GSE165783	The effect of STAG2 loss in Ewing sarcoma [ChIP-seq]	"Public on May 14, 2021"	29-Jan-21	16-Jun-21	3R01CA204915-02S1
-geo	GSE116495	The effect of STAG2 loss in Ewing sarcoma	"Public on May 13, 2021"	2-Jul-18	17-Jul-21	3R01CA204915-02S1
-geo	GSE116494	The effect of STAG2 loss in Ewing sarcoma [ATAC-Seq]	"Public on May 14, 2021"	2-Jul-18	16-Jun-21	3R01CA204915-02S1
-geo	GSE116492	The effect of STAG2 loss in Ewing sarcoma [RNA-Seq]	"Public on May 14, 2021"	2-Jul-18	16-Jun-21	3R01CA204915-02S1
-geo	GSE137396	Characterization of transcriptional analysis of LKB1 mutant lung nodules	"Public on Mar 17, 2021"	13-Sep-19	20-Jun-21	1U01CA233084-01
-geo	GSE137244	Characterization of tumor mutational burden in LKB1 mutant lung tumors	"Public on Mar 17, 2021"	10-Sep-19	19-Jun-21	1U01CA233084-01
-geo	GSE147877	"Chromatin Occupancy of AR, BRD4, and H3K27Ac in MR42D Cells in response to Enzalutamide"	"Public on Jun 22, 2021"	1-Apr-20	22-Jun-21	1U54CA224079-01
-geo	GSE147876	"Chromatin Occupancy of AR, BRD4, and H3K27Ac in MR42D Cells in response to Enzalutamide [RNA-seq]"	"Public on Jun 22, 2021"	1-Apr-20	22-Jun-21	1U54CA224079-01
-geo	GSE147875	"Chromatin Occupancy of AR, BRD4, and H3K27Ac in MR42D Cells in response to Enzalutamide [ChIP-seq]"	"Public on Jun 22, 2021"	1-Apr-20	22-Jun-21	1U54CA224079-01
-geo	GSE147874	"Chromatin Occupancy of AR, BRD4, and H3K27Ac in MR42D Cells in response to Enzalutamide [ATAC-seq]"	"Public on Jun 22, 2021"	1-Apr-20	22-Jun-21	1U54CA224079-01
-geo	GSE174787	Multiplexed functional genomic analysis of somatic 5’ untranslated region mutations across the spectrum of human prostate cancer (Exome-Seq)	"Public on May 20, 2021"	20-May-21	27-Jul-21	1U54CA224079-01
-geo	GSE171729	Multiplexed functional genomic analysis of somatic 5' untranslated region mutations across the spectrum of human prostate cancer (RNASeq)	"Public on May 17, 2021"	8-Apr-21	27-Jul-21	1U54CA224079-01
-geo	GSE149489	Multiplexed functional genomic analysis of somatic 5’ untranslated region mutations across the spectrum of human prostate cancer	"Public on May 17, 2021"	28-Apr-20	27-Jul-21	1U54CA224079-01
-geo	GSE149487	Multiplexed functional genomic analysis of somatic 5' untranslated region mutations across the spectrum of human prostate cancer (PLUMAGE)	"Public on May 17, 2021"	28-Apr-20	27-Jul-21	1U54CA224079-01
-geo	GSE130465	Multiplexed functional genomic analysis of somatic 5' untranslated region mutations across the spectrum of human prostate cancer (Ribosome Profiling)	"Public on May 17, 2021"	29-Apr-19	27-Jul-21	1U54CA224079-01
-geo	GSE155698	Multimodal Mapping of the Tumor and Peripheral Blood Immune Landscape in Human Pancreatic Cancer	"Public on Oct 01, 2020"	4-Aug-20	28-Jul-21	1U01CA224145-01
-geo	GSE148248	SMAD4 represses FOSL1 expression and pancreatic cancer metastatic colonization	"Public on Aug 02, 2021"	7-Apr-20	2-Aug-21	1U01CA224146-01
-geo	GSE157830	Labile Iron Release Primes Pancreatic Cancer for Ferroptosis	"Public on Jun 03, 2021"	11-Sep-20	8-Sep-21	1U01CA224145-01
-geo	GSE48277	Identification of distinct basal and luminal subsets of human bladder cancers with different sensitivities to frontline chemotherapy	"Public on Feb 10, 2014"	25-Jun-13	22-Jun-20	3R01CA175397-07S1
-geo	GSE70235	Using single-cell RNA-Seq for unbiased analysis of developmental hierarchies (Bulk RNA-Seq)	"Public on Aug 26, 2016"	24-Jun-15	15-May-19	3R01CA196658-02S1
-geo	GSE57114	FLT3-ITD mutations and TET2 loss synergistically alter global DNA methylation in AML	"Public on Apr 14, 2015"	25-Apr-14	15-May-19	3R01CA196658-02S1
-geo	GSE79290	BET bromodomain proteins function as master transcription elongation factors independent of CDK9 recruitment	"Public on Sep 18, 2017"	16-Mar-16	15-May-19	5R01CA176745-09
-geo	GSE22138	Expression Data from Uveal Melanoma primary tumors.	"Public on Dec 14, 2010"	4-Jun-10	25-Mar-19	3U24CA210999-02S1
-geo	GSE35069	Differential DNA Methylation in Purified Human Blood Cells	"Public on Aug 03, 2012"	12-Jan-12	22-Mar-19	3U24CA210999-02S1
-geo	GSE29179	Identification of differentially expressed genes upon shRNA knockdown of TAL1 and its regulatory partners in T-ALL cells (Jurkat)	"Public on Aug 16, 2012"	10-May-11	15-Nov-12	3R00CA181500-04S1
-geo	GSE36139	SNP and Expression data from the Cancer Cell Line Encyclopedia (CCLE)	"Public on Mar 20, 2012"	28-Feb-12	13-Mar-18	3R00CA181500-04S1
-geo	GSE36139	SNP and Expression data from the Cancer Cell Line Encyclopedia (CCLE)	"Public on Mar 20, 2012"	28-Feb-12	13-Mar-18	5U19CA214253-02
-geo	GSE13159	Microarray Innovations in LEukemia (MILE) study: Stage 1 data	"Public on Sep 30, 2009"	10-Oct-08	25-Mar-20	3R00CA181500-04S1
-geo	GSE26713	Integrated transcript and genome analyses reveal NKX2-1 and MEF2C as potential oncogenes in T-ALL	"Public on Apr 11, 2011"	19-Jan-11	25-Mar-19	3R00CA181500-04S1
-geo	GSE32894	A Molecular Taxonomy of Urothelial Carcinoma	"Public on May 24, 2012"	11-Oct-11	12-Mar-20	3U24CA210999-02S1
-geo	GSE32894	A Molecular Taxonomy of Urothelial Carcinoma	"Public on May 24, 2012"	11-Oct-11	12-Mar-20	3R01CA175397-07S1
-geo	GSE97768	RNA sequencing data for 30 bladder cancer cell lines	"Public on Sep 14, 2017"	13-Apr-17	15-May-19	3U24CA210999-02S1
-geo	GSE92597	"Aire, guardian of immunological tolerance, binds to and activates super-enhancers [ChIP-seq]"	"Public on Jan 22, 2017"	19-Dec-16	15-May-19	3R01CA163915-07S1
-geo	GSE39513	Regulation of pluripotency and self-renewal of ES cells through epigenetic-threshold modulation and mRNA pruning	"Public on Oct 26, 2012"	19-Jul-12	15-May-19	3R01CA163915-07S1
-geo	GSE42466	RYBP and Cbx7 define specific biological functions of PRC1 complexes in mouse embryonic stem cells	"Public on Jan 01, 2013"	21-Nov-12	15-May-19	3R01CA163915-07S1
-geo	GSE28247	CTCF-Mediated Functional Chromatin Interactome in Pluripotent Cells	"Public on Jun 23, 2011"	29-Mar-11	15-May-19	3R01CA163915-07S1
-geo	GSE27841	Enhancer Decommissioning by LSD1 During Embryonic Stem Cell Differentiation (ChIP-seq)	"Public on Jan 03, 2012"	8-Mar-11	15-May-19	3R01CA163915-07S1
-geo	GSE55753	Inflammation induced repression of Foxp3-bound chromatin in regulatory T cells	"Public on Apr 12, 2014"	10-Mar-14	15-May-19	5R01CA221290-02
-geo	GSE61077	Continuous requirement for the T cell receptor for regulatory T cell function	"Public on Sep 08, 2014"	3-Sep-14	4-May-18	5R01CA221290-02
-geo	GSE98263	The TNF receptor super family - NF-κB axis is critical to maintain effector regulatory T cells in lymphoid and non-lymphoid tissues [ChIP-seq]	"Public on Aug 28, 2017"	26-Apr-17	15-May-19	5R01CA221290-02
-geo	GSE37751	Molecular Profiles of Human Breast Cancer and Their Association with Tumor Subtypes and Disease Prognosis (Affymetrix)	"Public on Nov 01, 2013"	3-May-12	16-Aug-19	1R33CA225291-01
-geo	GSE14520	Gene expression data of human hepatocellular carcinoma (HCC)	"Public on Dec 01, 2010"	22-Jan-09	1-Apr-21	1R33CA225291-01
-geo	GSE63630	The reversed evolution from multicellularity to unicellularity during carcinogenesis	"Public on Nov 27, 2014"	25-Nov-14	27-Nov-18	1R33CA225291-01
-geo	GSE46517	Human melanoma samples comparing nevi and primary and metastatic melanoma	"Public on May 01, 2013"	30-Apr-13	10-Aug-18	1R33CA225291-01
-geo	GSE46517	Human melanoma samples comparing nevi and primary and metastatic melanoma	"Public on May 01, 2013"	30-Apr-13	10-Aug-18	1U54CA224070-01
-geo	GSE113627	Transcriptional effects of the BAF inhibitor BRD-K98645985 on mouse embryonic stem cells	"Public on Jul 26, 2018"	24-Apr-18	21-Mar-19	3R01CA163915-07S1
-geo	GSE22886	Expression profiles from a variety of resting and activated human immune cells	"Public on Jul 13, 2010"	12-Jul-10	10-Aug-18	3R01CA196658-02S1
-geo	GSE15907	ImmGen Microarray Phase 1	"Public on May 02, 2009"	30-Apr-09	21-Jul-21	3R01CA196658-02S1
-geo	GSE26928	Human peripheral blood CD4+ T cell subsets	"Public on Aug 04, 2011"	28-Jan-11	25-Mar-19	3R01CA196658-02S1
-geo	GSE23321	"Expression data from human naïve (TN), stem cell memory (TSCM), central memory (TCM) and effector memory (TEM) CD8+ T cells"	"Public on Jul 13, 2011"	29-Jul-10	25-Jan-19	3R01CA196658-02S1
-geo	GSE79450	Expression data from infant ALL with MLL-AF4 rearrangement	"Public on Mar 22, 2016"	21-Mar-16	16-Sep-19	5R01CA176745-09
-geo	GSE19475	Gene expression data from infants (&lt;1 year of age) diagnosed with Acute Lymphoblastic Leukemia (ALL)	"Public on Dec 16, 2009"	15-Dec-09	13-Mar-20	5R01CA176745-09
-geo	GSE77416	Deciphering KRAS and NRAS mutated clones dynamics in MLL-AF4 pediatric leukemia by ultra deep sequencing analysis	"Public on Oct 04, 2016"	29-Jan-16	25-Mar-19	5R01CA176745-09
-geo	GSE85534	Single Cell Transcriptome Conservation in Cryopreserved Cells and Tissues	"Public on Feb 13, 2017"	12-Aug-16	15-May-19	1U2CCA233291-01
-geo	GSE117616	E14.5 pancreatic islet single-cell RNA-seq [wt]	"Public on Oct 23, 2018"	24-Jul-18	25-Mar-19	1U2CCA233291-01
-geo	GSE102698	Colonic single-cell RNA-seq	"Public on Nov 15, 2017"	15-Aug-17	25-Jul-21	1U2CCA233291-01
-geo	GSE75330	RNA-seq analysis of single cells of the oligodendrocyte lineage from nine distinct regions of the anterior-posterior and dorsal-ventral axis of the mouse juvenile central nervous system	"Public on Jun 10, 2016"	24-Nov-15	15-May-19	1U2CCA233291-01
-geo	GSE100597	Single-cell landscape of transcriptional heterogeneity and cell fate decisions during mouse early gastrulation	"Public on Jun 28, 2017"	28-Jun-17	15-May-19	1U2CCA233291-01
-geo	GSE72857	Transcriptional heterogeneity and lineage commitment in myeloid progenitors [single cell RNA-seq]	"Public on Nov 25, 2015"	9-Sep-15	15-May-19	1U2CCA233291-01
-geo	GSE91061	Molecular portraits of tumor mutational and micro-environmental sculpting by immune checkpoint blockade therapy	"Public on Jan 23, 2018"	8-Dec-16	15-May-19	1U54CA224068-01
-geo	GSE91061	Molecular portraits of tumor mutational and micro-environmental sculpting by immune checkpoint blockade therapy	"Public on Jan 23, 2018"	8-Dec-16	15-May-19	1U54CA224070-01
-geo	GSE72056	Single cell RNA-seq analysis of melanoma	"Public on Apr 05, 2016"	13-Aug-15	7-Nov-19	1U54CA224068-01
-geo	GSE72056	Single cell RNA-seq analysis of melanoma	"Public on Apr 05, 2016"	13-Aug-15	7-Nov-19	1U01DE028227-01
-geo	GSE89308	Epigenetic analysis of tumor-specific CD8 T cells in murine and solid tumors	"Public on May 17, 2017"	29-Oct-16	15-May-19	1U54CA224068-01
-geo	GSE92332	A single-cell survey of the small intestinal epithelium	"Public on Nov 06, 2017"	13-Dec-16	10-May-20	1U54CA224068-01
-geo	GSE14350	IL-2 dependent genes of T regulatory and T effector cells	"Public on Feb 22, 2009"	8-Jan-09	11-Feb-19	5R01CA221290-02
-geo	GSE52529	Pseudo-temporal ordering of individual cells reveals regulators of differentiation	"Public on Mar 23, 2014"	19-Nov-13	15-May-19	1U2CCA233291-01
-geo	GSE60781	Identification of subset-specific dendritic cell progenitors reveals early commitment in the bone marrow [RNA-Seq]	"Public on Jun 01, 2015"	26-Aug-14	15-May-19	1U2CCA233291-01
-geo	GSE94097	Analysis of transgenerational effects on DNA copy number aberrations in male mice exposed to continuous 20mGy/day gamma-rays for 400 days (Secondary screening for 0GyD family1)	"Public on Jan 27, 2017"	26-Jan-17	28-Jan-17	1U01AA027681-01
-geo	GSE52070	Genome-wide maps of Tcf1 binding locations in splenic CD8 T cells.	"Public on Mar 05, 2014"	4-Nov-13	15-May-19	5R01CA221290-02
-geo	GSE38808	The Transcription Factor T-bet Is Induced by Multiple Pathways and Prevents an Endogenous Th2 Cell Program during Th1 Cell Responses	"Public on Oct 04, 2012"	19-Jun-12	15-May-19	5R01CA221290-02
-geo	GSE19825	Prolonged IL-2R alpha expression on virus-specific CD8+ T cells favors terminal effector differentiation in vivo	"Public on Jan 21, 2010"	11-Jan-10	11-Feb-19	5R01CA221290-02
-geo	GSE84105	Defining memory-like CD8 T cells that respond to PD-1 therapy in chronic viral infection	"Public on Aug 02, 2016"	6-Jul-16	11-Feb-19	5R01CA221290-02
-geo	GSE76279	CXCR5+ Follicular Cytotoxic T cells Control Viral Infection in B Cell follicles	"Public on Jul 31, 2016"	22-Dec-15	15-May-19	5R01CA221290-02
-geo	GSE95864	Gastrointestinal Stromal Tumor Enhancers Support a Transcription Factor Network Predictive of Clinical Outcome	"Public on May 21, 2018"	9-Mar-17	25-Jul-21	5R01CA176745-09
-geo	GSE106626	FOXF1 defines the core-regulatory circuitry in gastrointestinal stromal tumor (GIST)	"Public on Feb 01, 2018"	7-Nov-17	27-Mar-19	5R01CA176745-09
-geo	GSE58164	The Alarmin IL-33 Promotes Regulatory T Cell Function in the Intestine	"Public on Jun 03, 2014"	2-Jun-14	16-Jan-19	1U01CA232491-01
-geo	GSE94278	Cancer-specific retargeting of BAF complexes by a prion-like domain	"Public on Aug 24, 2017"	30-Jan-17	15-May-19	1U54CA231641-01
-geo	GSE75492	Determination of a comprehensive alternative splicing regulatory network and the combinatorial regulation by key factors during Epithelial-to-Mesenchymal Transition	"Public on Apr 05, 2016"	30-Nov-15	15-May-19	1U01CA233074-01
-geo	GSE64409	Direct regulation of T cell exhaustion by NFAT	"Public on Feb 13, 2015"	21-Dec-14	15-May-19	1U01DE028227-01
-geo	GSE60740	Expression profiles of Ewing family of tumors authenticate distinct molecular entities	"Public on Jun 30, 2015"	25-Aug-14	1-Jul-15	1U54CA224081-01
-geo	GSE109774	Tabula Muris: Transcriptomic characterization of 20 organs and tissues from Mus musculus at single cell resolution	"Public on Mar 19, 2018"	29-Jan-18	4-Jun-19	3R01CA196658-02S1
-geo	GSE70245	Using single-cell RNA-Seq for unbiased analysis of developmental hierarchies	"Public on Aug 26, 2016"	24-Jun-15	15-May-19	3R01CA196658-02S1
-geo	GSE136088	Single-Cell RNA-Seq of Myocardial Infarction in Mouse	"Public on Sep 02, 2019"	20-Aug-19	4-Dec-19	3R01CA196658-02S1
-geo	GSE116481	Venetoclax with azacitidine disrupts energy metabolism and targets leukemia stem cells in patients with acute myeloid leukemia	"Public on Jan 30, 2019"	1-Jul-18	21-Mar-19	3R01CA196658-02S1
-geo	GSE49642	Leucegene: AML sequencing (part 1)	"Public on Nov 06, 2013"	8-Aug-13	11-May-21	3R01CA196658-02S1
-geo	GSE52656	Leucegene: AML sequencing (part 2)	"Public on Feb 05, 2014"	22-Nov-13	11-May-21	3R01CA196658-02S1
-geo	GSE62190	Leucegene: AML sequencing (part 3)	"Public on Jul 09, 2015"	8-Oct-14	11-May-21	3R01CA196658-02S1
-geo	GSE67040	Leucegene: AML sequencing	"Public on Jul 09, 2015"	18-Mar-15	13-May-21	3R01CA196658-02S1
-geo	GSE48846	Transcriptome of Primitive Human Hematopoietic Cells: A New Resource to Find hHSC-Specific Genes	"Public on Nov 06, 2013"	12-Jul-13	15-May-19	3R01CA196658-02S1
-geo	GSE51984	RNA-Seq analysis of human adult peripheral blood populations	"Public on Jul 20, 2016"	1-Nov-13	15-May-19	3R01CA196658-02S1
-geo	GSE96561	Gene expression profile during cardiac stress induced by transverse aortic constriction (TAC) and myocardial infarction (MI) with or without BET protein inhibitor JQ1 in mouse hearts	"Public on Mar 30, 2017"	13-Mar-17	15-May-19	3R01CA196658-02S1
-geo	GSE33912	Functional Identification of Critical Bmi1 target genes in Neural Progenitor and Malignant Glioma cells	"Public on May 21, 2013"	23-Nov-11	15-May-19	1U24CA224020-01
-geo	GSE21512	Simple combinations of lineage-determining transcription factors prime cis-regulatory elements required for macrophage and B cell identities	"Public on May 27, 2010"	26-Apr-10	19-Aug-19	1U24CA224020-01
-geo	GSE31477	ENCODE Transcription Factor Binding Sites by ChIP-seq from Stanford/Yale/USC/Harvard	"Public on Aug 30, 2011"	18-Aug-11	9-Apr-20	1U24CA224020-01
-geo	GSE39860	Transcriptional Architecture and Chromatin Landscape of the Core Circadian Clock in Mammals	"Public on Aug 31, 2012"	3-Aug-12	15-May-19	1U24CA224020-01
-geo	GSE56872	Transcription factor cooperativity in early adipogenic hotspots and super-enhancers	"Public on Apr 17, 2014"	17-Apr-14	15-May-19	1U24CA224020-01
-geo	GSE39756	BATF-JUN is critical for IRF4-mediated transcription in T cells	"Public on Sep 18, 2012"	30-Jul-12	15-May-19	1U24CA224020-01
-geo	GSE46166	Insights into the invasiveness of triple negative breast cancer from genome-wide profiling of transcription factor AP-1 (ChIP-seq)	"Public on Jun 30, 2014"	17-Apr-13	15-May-19	1U24CA224020-01
-geo	GSE29422	Chromatin and Transcriptional Signatures for Nodal Signaling During Endoderm Formation in hESCs	"Public on May 21, 2011"	20-May-11	15-May-19	1U24CA224020-01
-geo	GSE36673	Genome wide binding sites of Smad3 and JMJD3 in neural stem cells	"Public on May 30, 2012"	21-Mar-12	15-May-19	1U24CA224020-01
-geo	GSE36030	Transcription Factor Binding Sites by ChIP-seq from ENCODE/Stanford/Yale	"Public on Apr 11, 2012"	23-Feb-12	20-Nov-19	1U24CA224020-01
-geo	GSE34871	Genome-wide mapping of HIF-2 binding in 786-O clear cell renal carcinoma cells	"Public on Feb 01, 2012"	5-Jan-12	15-May-19	1U24CA224020-01
-geo	GSE35681	ChIP-seq and mRNA-seq experiment to find the direct target genes of ATF4 and CHOP	"Public on Apr 11, 2013"	9-Feb-12	15-May-19	1U24CA224020-01
-geo	GSE30298	Identification and analysis of pancreatic islet specific enhancers	"Public on Jun 30, 2011"	29-Jun-11	15-May-19	1U24CA224020-01
-geo	GSE44420	BACH2 mediates negative selection and p53-dependent tumor suppression at the pre-B cell receptor checkpoint.	"Public on Jun 27, 2013"	20-Feb-13	15-May-19	1U24CA224020-01
-geo	GSE54963	High-resolution Brachyury DNA-binding Sites Mapping by ChIP-exo	"Public on Mar 10, 2014"	13-Feb-14	15-May-19	1U24CA224020-01
-geo	GSE32465	Transcription Factor Binding Sites by ChIP-seq from ENCODE/HAIB	"Public on Sep 29, 2011"	28-Sep-11	15-May-19	1U24CA224020-01
-geo	GSE11431	Mapping of transcription factor binding sites in mouse embryonic stem cells	"Public on Jun 12, 2008"	13-May-08	22-Aug-19	1U24CA224020-01
-geo	GSE20898	Genome-wide Analyses of Transcription Factor GATA3-Mediated Gene Regulation in Distinct T Cell Types	"Public on Aug 26, 2011"	16-Mar-10	15-May-19	1U24CA224020-01
-geo	GSE20685	Microarray-based molecular subtyping of breast cancer	"Public on Apr 24, 2011"	8-Mar-10	25-Mar-19	3R01CA163915-07S1
-geo	GSE20685	Microarray-based molecular subtyping of breast cancer	"Public on Apr 24, 2011"	8-Mar-10	25-Mar-19	5U19CA214253-02
-geo	GSE45255	Expression Profiles of Breast Tumors from Singapore and Europe	"Public on Mar 21, 2013"	18-Mar-13	10-Aug-18	3R01CA163915-07S1
-geo	GSE65194	Expression profiling of breast cancer samples from Institut Curie (Maire cohort) --Affy CDF	"Public on Jan 23, 2015"	22-Jan-15	25-Mar-19	3R01CA163915-07S1
-geo	GSE65194	Expression profiling of breast cancer samples from Institut Curie (Maire cohort) --Affy CDF	"Public on Jan 23, 2015"	22-Jan-15	25-Mar-19	5U19CA214253-02
-geo	GSE54191	"ChIP-Seq analysis of BATF, IRF4, the Jun proteins, and histone modifications in effector CD8+ T cells"	"Public on Mar 02, 2014"	17-Jan-14	15-May-19	5R01CA221290-02
-geo	GSE66332	Gene expression profiling of perinatal or adult regulatory T cells (Tregs)	"Public on Feb 27, 2015"	26-Feb-15	4-Mar-19	5R01CA221290-02
-geo	GSE83315	Memory of inflammation in regulatory T cells	"Public on Aug 04, 2016"	13-Jun-16	15-May-19	5R01CA221290-02
-geo	GSE32269	Expression data for primary localized prostate cancer versus castration-resistant bone metastatic prostate cancer	"Public on Sep 22, 2011"	21-Sep-11	10-Aug-18	1U01CA233084-01
-geo	GSE14615	Microarray analyses of induction failure in T-ALL (COG study 9404)	"Public on Jan 29, 2009"	28-Jan-09	8-Aug-19	3R00CA181500-04S1
-geo	GSE60052	The RNAseq of 79 small cell lung cancer (sclc) and 7 normal control	"Public on Feb 10, 2016"	4-Aug-14	15-May-19	1U54CA232568-01
-geo	GSE94782	Genome-wide binding of MYCN protein in MYCN-amplified neuroblastoma cell lines	"Public on Aug 02, 2017"	10-Feb-17	27-Apr-20	1U54CA232568-01
-geo	GSE54187	Metastatic potential is determined early in synovial sarcoma development and reflected by tumor molecular features  [transcriptome]	"Public on Jul 31, 2014"	17-Jan-14	9-Jan-18	1U54CA231652-01
-geo	GSE117156	Single cell dissection of plasma cell heterogeneity in symptomatic and asymptomatic myeloma	"Public on Dec 07, 2018"	16-Jul-18	26-Mar-19	2P01CA155258-06
-geo	GSE108097	Mapping Mouse Cell Atlas by Microwell-seq	"Public on Feb 14, 2018"	14-Dec-17	15-May-19	1U2CCA233291-01
-geo	GSE60426	mRNA destabilization is the dominant effect of mammalian microRNAs by the time substantial repression ensues (sequencing)	"Public on Sep 25, 2014"	14-Aug-14	15-May-19	1U01DE028227-01
-geo	GSE62247	Cell fate determination by ubiquitin-dependent regulation of translation	"Public on Sep 23, 2015"	10-Oct-14	15-May-19	1U01DE028227-01
-geo	GSE65885	Ribosome profiling and RNA sequencing of MCF10A-ER-Src and fibroblast cell transformation	"Public on Nov 13, 2015"	12-Feb-15	15-May-19	1U01DE028227-01
-geo	GSE41246	Ribosome profiling in muscle reveals the translation landscape of the giant protein titin	"Public on Sep 01, 2015"	1-Oct-12	15-May-19	1U01DE028227-01
-geo	GSE72064	Genome-wide profilings of transcriptome and translatome in mouse hippocampi after contextual fear conditioning	"Public on Oct 07, 2015"	14-Aug-15	15-May-19	1U01DE028227-01
-geo	GSE89108	Integrative analysis of translatome and transcriptome of adipocytes	"Public on Aug 04, 2017"	24-Oct-16	15-May-19	1U01DE028227-01
-geo	GSE66715	Integrated Transcriptome and Proteome Analyses Reveal Organ-Specific Proteome Deterioration in Old Rats	"Public on Sep 22, 2015"	9-Mar-15	26-Jul-19	1U01DE028227-01
-geo	GSE96624	ArrayCGH on a cohort of pediatric T-ALLs to investigate the mechanism of primary chemotherapy resistance	"Public on Oct 16, 2018"	15-Mar-17	15-Jan-19	3R00CA181500-04S1
-geo	GSE130148	Single cell RNA sequencing analysis of fresh resected human lung tissue	"Public on Apr 23, 2019"	22-Apr-19	1-Oct-20	1U54CA224081-01
-geo	GSE147507	Transcriptional response to SARS-CoV-2 infection	"Public on Mar 25, 2020"	24-Mar-20	7-Apr-21	1U2CCA233262-01
-geo	GSE147507	Transcriptional response to SARS-CoV-2 infection	"Public on Mar 25, 2020"	24-Mar-20	7-Apr-21	1U2CCA233280-01
-geo	GSE119228	A cell atlas of mouse lung development reveals a signaling role for lung basophils in alveolar macrophage maturation	"Public on Oct 12, 2018"	30-Aug-18	25-Mar-19	1U2CCA233262-01
-geo	GSE119228	A cell atlas of mouse lung development reveals a signaling role for lung basophils in alveolar macrophage maturation	"Public on Oct 12, 2018"	30-Aug-18	25-Mar-19	1U2CCA233280-01
-geo	GSE121611	Single-Cell Transcriptomic Analysis of Human Lung Reveals Complex Multicellular Changes During Pulmonary Fibrosis	"Public on Dec 15, 2018"	22-Oct-18	25-Mar-19	1U2CCA233262-01
-geo	GSE121611	Single-Cell Transcriptomic Analysis of Human Lung Reveals Complex Multicellular Changes During Pulmonary Fibrosis	"Public on Dec 15, 2018"	22-Oct-18	25-Mar-19	1U2CCA233280-01
-geo	GSE11877	Children's Oncology Group Study 9906 for High-Risk Pediatric ALL	"Public on Jun 25, 2009"	24-Jun-08	8-Nov-19	1U01CA232563-01
-geo	GSE86897	Super-enhancer reprogramming drives a B cell-epithelial transition and high-risk leukemia	"Public on Oct 06, 2016"	13-Sep-16	15-May-19	1U01CA232563-01
-geo	GSE58825	Genome wide mapping of IKAROS binding (ChIP-Seq) in human patient-derived BCR-ABL1+ (Ph+) pre-B ALL xenograft cells	"Public on Feb 06, 2017"	25-Jun-14	15-May-19	1U01CA232563-01
-geo	GSE90656	Genetic analysis of Ikaros target genes and tumor suppressor function in BCR-ABL1+ pre-B ALL [ChIP-seq]	"Public on Feb 06, 2017"	29-Nov-16	15-May-19	1U01CA232563-01
-geo	GSE152748	Fate and Functional Roles of Prominin 1+ Cells in Liver Injury and Cancer	"Public on Dec 17, 2020"	18-Jun-20	19-Dec-20	1U01AA027681-01
-geo	GSE120852	Wipi1 is a Genetic Hub that Mediates Right Ventricular Failure	"Public on Oct 05, 2018"	4-Oct-18	8-May-19	1U24CA224067-01
-geo	GSE12276	Expression data from primary breast tumors	"Public on Jun 13, 2009"	29-Jul-08	25-Mar-19	1U54CA224083-01
-geo	GSE12276	Expression data from primary breast tumors	"Public on Jun 13, 2009"	29-Jul-08	25-Mar-19	5U19CA214253-02
-geo	GSE124647	SET ER/PR - A robust 18-gene Predictor for Sensitivity to Endocrine Therapy for Metastatic Breast Cancer	"Public on May 30, 2019"	3-Jan-19	29-Jun-19	1U54CA224083-01
-geo	GSE48075	Identification of subsets of urothelial carcinoma	"Public on Feb 10, 2014"	18-Jun-13	22-Jun-20	3R01CA175397-07S1
-geo	GSE31507	Host cell gene expression in Influenza A/duck/Malaysia/F59/04/1998 (H5N2) infected CEF cells at 10 hour post infection	"Public on Aug 10, 2014"	18-Aug-11	30-Mar-20	3R01CA175397-07S1
-geo	GSE31684	Combination of a novel gene expression signature with a clinical nomogram improves the prediction of survival in high-risk bladder cancer  	"Public on Jan 23, 2012"	26-Aug-11	25-Mar-19	3R01CA175397-07S1
-geo	GSE52219	Tumors with neoadjuvant chemotherapy	"Public on Feb 10, 2014"	8-Nov-13	22-Dec-17	3R01CA175397-07S1
-geo	GSE69795	a phase 2 trial of DDMVAC and bevacizumab in urothelial cancer	"Public on Aug 18, 2015"	11-Jun-15	3-Jul-19	3R01CA175397-07S1
-geo	GSE90653	Data from hepatocellular carcinoma PDX	"Public on Dec 01, 2016"	29-Nov-16	21-Aug-19	1U24CA224067-01
-geo	GSE90653	Data from hepatocellular carcinoma PDX	"Public on Dec 01, 2016"	29-Nov-16	21-Aug-19	1U54CA224070-01
-geo	GSE90653	Data from hepatocellular carcinoma PDX	"Public on Dec 01, 2016"	29-Nov-16	21-Aug-19	1U54CA224083-01
-geo	GSE90653	Data from hepatocellular carcinoma PDX	"Public on Dec 01, 2016"	29-Nov-16	21-Aug-19	3U54CA224065-01S1
-geo	GSE33006	Gene expression profiles from the hepatocellular carcinoma (HCC) tissues	"Public on Aug 31, 2012"	15-Oct-11	25-Mar-19	1U24CA224067-01
-geo	GSE33006	Gene expression profiles from the hepatocellular carcinoma (HCC) tissues	"Public on Aug 31, 2012"	15-Oct-11	25-Mar-19	1U54CA224070-01
-geo	GSE33006	Gene expression profiles from the hepatocellular carcinoma (HCC) tissues	"Public on Aug 31, 2012"	15-Oct-11	25-Mar-19	1U54CA224083-01
-geo	GSE33006	Gene expression profiles from the hepatocellular carcinoma (HCC) tissues	"Public on Aug 31, 2012"	15-Oct-11	25-Mar-19	3U54CA224065-01S1
-geo	GSE123728	Clinical and Immunologic Activity of a Single Dose of Neoadjuvant PD-1 Blockade and Predictors of Clinical Outcomes in Resectable Melanoma	"Public on Feb 11, 2019"	12-Dec-18	31-Aug-20	1U54CA224070-01
-geo	GSE13591	Integrated genomics approach to detect allelic imbalances in multiple myeloma	"Public on Apr 14, 2009"	13-Nov-08	10-Aug-18	2P01CA155258-06
-geo	GSE75688	Single cell RNA sequencing of primary breast cancer.	"Public on Dec 09, 2016"	3-Dec-15	15-May-19	1U01CA233084-01
-geo	GSE118390	Unravelling subclonal heterogeneity and aggressive disease states in TNBC through single-cell RNA-seq	"Public on Aug 11, 2018"	10-Aug-18	27-Mar-19	1U01CA233084-01
-geo	GSE118389	Unravelling subclonal heterogeneity and aggressive disease states in TNBC through single-cell RNA-seq [RNA-Seq]	"Public on Aug 11, 2018"	10-Aug-18	21-Feb-19	1U01CA233084-01
-geo	GSE114621	Exon level expression analysis from rhabdomyosarcoma patient tumors.	"Public on May 18, 2018"	17-May-18	18-Feb-19	1U54CA231630-01A1
-geo	GSE14764	A Prognostic Gene Expression Index in Ovarian Cancer	"Public on Feb 09, 2009"	9-Feb-09	10-Aug-18	1R01CA226983-01
-geo	GSE15622	Expression data from the CTCR-OV01 study	"Public on Apr 09, 2009"	9-Apr-09	27-Jun-19	1R01CA226983-01
-geo	GSE18520	Whole-genome oligonucleotide expression analysis of papillary serous ovarian adenocarcinomas	"Public on Oct 17, 2009"	11-Oct-09	25-Mar-19	1R01CA226983-01
-geo	GSE18520	Whole-genome oligonucleotide expression analysis of papillary serous ovarian adenocarcinomas	"Public on Oct 17, 2009"	11-Oct-09	25-Mar-19	5U19CA214253-02
-geo	GSE19829	A gene expression profile of BRCAness that is associated with outcome in ovarian cancer	"Public on Jul 11, 2010"	11-Jan-10	25-Mar-19	1R01CA226983-01
-geo	GSE23554	Ovarian Cancer Dataset	"Public on Oct 03, 2011"	10-Aug-10	10-Aug-18	1R01CA226983-01
-geo	GSE26193	Control of oxidative stress by miRNA and impact on ovarian tumorigenesis	"Public on Nov 01, 2011"	20-Dec-10	2-Mar-21	1R01CA226983-01
-geo	GSE26193	Control of oxidative stress by miRNA and impact on ovarian tumorigenesis	"Public on Nov 01, 2011"	20-Dec-10	2-Mar-21	5U19CA214253-02
-geo	GSE26712	A Gene Signature Predicting for Survival in Suboptimally Debulked Patients with Ovarian Cancer	"Public on Jan 20, 2011"	19-Jan-11	10-Aug-18	1R01CA226983-01
-geo	GSE27651	The Anterior Gradient Homolog 3 (AGR3) Gene Is Associated with Differentiation and Survival in Ovarian Cancer	"Public on Mar 04, 2011"	2-Mar-11	25-Mar-19	1R01CA226983-01
-geo	GSE30161	Genomic Multivariate Predictors of Response to Adjuvant Chemotherapy in Ovarian Carcinoma: Predicting Platinum Resistance	"Public on Aug 21, 2012"	22-Jun-11	25-Mar-19	1R01CA226983-01
-geo	GSE51373	Gene expression data from high grade serous ovarian cancer	"Public on Jan 01, 2014"	17-Oct-13	25-Mar-19	1R01CA226983-01
-geo	GSE51373	Gene expression data from high grade serous ovarian cancer	"Public on Jan 01, 2014"	17-Oct-13	25-Mar-19	5U19CA214253-02
-geo	GSE63885	Gene expression profiling in ovarian cancer	"Public on Dec 06, 2014"	5-Dec-14	28-Jun-19	1R01CA226983-01
-geo	GSE65986	Integrated copy number and expression analysis identifies profiles of whole-arm chromosomal alterations and subgroups with favorable outcome in ovarian clear cell carcinomas	"Public on May 11, 2015"	17-Feb-15	12-Jul-19	1R01CA226983-01
 geo	GSE169008	Human stem cell-derived pancreatic acini-like and duct-like organoids demonstrate lineage-specific differences to oncogene activation	"Public on Apr 16, 2021"	16-Mar-21	2-Jul-21	1U01CA224193-01
 geo	GSE36771	Expression data from primary breast tumors (Auckland)	"Public on Mar 31, 2012"	23-Mar-12	25-Mar-19	5U19CA214253-02
 geo	GSE21653	A gene expression signature identifies two prognostic subgroups of basal breast cancer	"Public on May 05, 2010"	4-May-10	25-Mar-19	5U19CA214253-02
@@ -630,6 +364,7 @@ geo	GSE41328	Colorectal adenocarcinomas and matched normal colonic tissues	"Publ
 geo	GSE33114	Methylation of Cancer Stem Cell-associated Wnt target genes predicts poor prognosis in colorectal cancer patients	"Public on Nov 05, 2011"	20-Oct-11	25-Mar-19	5U19CA214253-02
 geo	GSE26906	APC colon stage II	"Public on Jan 28, 2011"	27-Jan-11	25-Mar-19	5U19CA214253-02
 geo	GSE39582	"Gene expression Classification of Colon Cancer defines six molecular subtypes with distinct clinical, molecular and survival characteristics [Expression]"	"Public on May 22, 2013"	23-Jul-12	18-Jun-21	5U19CA214253-02
+geo	GSE39582	"Gene expression Classification of Colon Cancer defines six molecular subtypes with distinct clinical, molecular and survival characteristics [Expression]"	"Public on May 22, 2013"	23-Jul-12	18-Jun-21	1U01CA232491-01
 geo	GSE62080	"Gene expression signature in advanced colorectal cancer patients select drugs and response for the use of leucovorin, fluorouracil, and irinotecan"	"Public on Oct 06, 2014"	6-Oct-14	25-Mar-19	5U19CA214253-02
 geo	GSE20916	Modeling oncogenic signaling in colon tumors by multidirectional analyses of microarray data	"Public on Aug 01, 2010"	16-Mar-10	25-Mar-19	5U19CA214253-02
 geo	GSE18088	Correlation of molecular profiles and clinical outcome of stage UICC II colon cancer patients	"Public on Apr 10, 2011"	11-Sep-09	25-Mar-19	5U19CA214253-02
@@ -695,18 +430,177 @@ geo	GSE103990	Tumor evolution and drug response in patient-derived organoid mode
 geo	GSE109982	Molecular signature of human cerebral organoids glioma model	"Public on Apr 25, 2018"	1-Feb-18	18-Sep-19	5U19CA214253-02
 geo	GSE115978	Single-cell RNA-seq of melanoma ecosystems reveals sources of T cells exclusion linked to immunotherapy clinical outcomes	"Public on Nov 01, 2018"	18-Jun-18	26-Mar-19	5U19CA214253-02
 geo	GSE84465	Single-Cell RNAseq analysis of diffuse neoplastic infiltrating cells at the migrating front of human glioblastoma	"Public on Nov 01, 2017"	15-Jul-16	15-May-19	5U19CA214253-02
+geo	GSE167746	Targeting Treg cells with GITR activation alleviates resistance to immunotherapy in murine glioblastomas	"Public on Mar 27, 2021"	26-Feb-21	19-May-21	1U01CA224348-01
+geo	GSE167746	Targeting Treg cells with GITR activation alleviates resistance to immunotherapy in murine glioblastomas	"Public on Mar 27, 2021"	26-Feb-21	19-May-21	1U2CCA233262-01
+geo	GSE150272	cIAP1/2 antagonism eliminates MHC class I negative tumors through T cell-dependent reprogramming of mononuclear phagocytes	"Public on Apr 30, 2021"	11-May-20	30-Jul-21	1U01CA224146-01
+geo	GSE150271	cIAP1/2 antagonism eliminates MHC class I negative tumors through T cell-dependent reprogramming of mononuclear phagocytes	"Public on Apr 30, 2021"	11-May-20	30-Jul-21	1U01CA224146-01
+geo	GSE150270	cIAP1/2 antagonism eliminates MHC class I negative tumors through T cell-dependent reprogramming of mononuclear phagocytes	"Public on Apr 30, 2021"	11-May-20	30-Jul-21	1U01CA224146-01
+geo	GSE150269	cIAP1/2 antagonism eliminates MHC class I negative tumors through T cell-dependent reprogramming of mononuclear phagocytes	"Public on Apr 30, 2021"	11-May-20	30-Jul-21	1U01CA224146-01
+geo	GSE124230	Pancreatic cancer prognosis is predicted by chromatin accessibility (Quantseq)	"Public on Mar 30, 2021"	20-Dec-18	29-Jun-21	1U01CA224175-01
+geo	GSE124229	Pancreatic cancer prognosis is predicted by chromatin accessibility (ATAC-Seq)	"Public on Mar 30, 2021"	20-Dec-18	29-Jun-21	1U01CA224175-01
 geo	GSE19417	Human esophageal adenocarcinomas	"Public on Jun 01, 2010"	10-Dec-09	21-Mar-12	2P01CA155258-06
 geo	GSE39754	Gene Expression profiling of Multiple Myeloma	"Public on Sep 10, 2012"	30-Jul-12	1-Aug-19	2P01CA155258-06
 geo	GSE24080	MAQC-II Project: Multiple myeloma (MM) data set	"Public on Sep 11, 2010"	10-Sep-10	18-Jul-19	2P01CA155258-06
+geo	GSE160592	Apolipoprotein E promotes immune suppression in pancreatic cancer through NF-kB-mediated production of CXCL1 	"Public on May 12, 2021"	1-Nov-20	4-Jun-21	1U01CA224145-01
+geo	GSE162664	MOCCASIN: A method for correcting for known and unknown confounders in RNA splicing analysis	"Public on Dec 06, 2020"	4-Dec-20	15-Jun-21	1U01CA232563-01
 geo	GSE54652	A circadian gene expression atlas in mammals: Implications for biology and medicine	"Public on Sep 30, 2014"	4-Feb-14	15-May-19	1U01CA232563-01
 geo	GSE44229	The Neuron-specific chromatin regulatory subunit BAF53b is necessary for synaptic plasticity and memory.	"Public on Mar 24, 2013"	11-Feb-13	19-Aug-19	1U01CA232563-01
 geo	GSE63412	RNA-seq analysis of contextual fear conditioning	"Public on Jul 22, 2015"	18-Nov-14	15-May-19	1U01CA232563-01
+geo	GSE156160	TNF blockade uncouples toxicity and anti-tumor efficacy induced with an agonist CD40 antibody	"Public on Sep 08, 2021"	13-Aug-20	8-Sep-21	1U01CA224193-01
+geo	GSE159275	PELP1/SRC-3-dependent regulation of metabolic kinases drives therapy resistant ER+ breast cancer [3D]	"Public on Apr 01, 2021"	8-Oct-20	1-Jul-21	3U54CA224076-01S2
+geo	GSE126776	MCF-7 cell RNA-seq analysis of PELP1-induced gene expression	"Public on Jul 05, 2021"	19-Feb-19	5-Jul-21	3U54CA224076-01S2
 geo	GSE151047	HFD activated FAO mediates intestinal stemness and tumorgenicity	"Public on Jun 01, 2021"	22-May-20	1-Jun-21	1U54CA224068-01
 geo	GSE164832	High-fat diet activated fatty acid oxidation mediates intestinal stemness and tumorigenicity	"Public on Jun 01, 2021"	14-Jan-21	14-Jul-21	1U54CA224068-01
+geo	GSE173550	mSWI/SNF promotes polycomb repression both directly and through genome-wide redistribution [ChIP-seq]	"Public on Jun 11, 2021"	29-Apr-21	10-Sep-21	3R01CA163915-07S1
+geo	GSE173499	mSWI/SNF promotes polycomb repression both directly and through genome-wide redistribution [RNA-seq]	"Public on Jun 11, 2021"	28-Apr-21	10-Sep-21	3R01CA163915-07S1
+geo	GSE145016	mSWI/SNF promotes distal repression by titrating polycomb dosage	"Public on Jun 11, 2021"	10-Feb-20	10-Sep-21	3R01CA163915-07S1
+geo	GSE165977	The effect of STAG2 loss in Ewing sarcoma [HiChIP]	"Public on May 14, 2021"	2-Feb-21	17-Jul-21	3R01CA204915-02S1
+geo	GSE165783	The effect of STAG2 loss in Ewing sarcoma [ChIP-seq]	"Public on May 14, 2021"	29-Jan-21	16-Jun-21	3R01CA204915-02S1
+geo	GSE116495	The effect of STAG2 loss in Ewing sarcoma	"Public on May 13, 2021"	2-Jul-18	17-Jul-21	3R01CA204915-02S1
+geo	GSE116494	The effect of STAG2 loss in Ewing sarcoma [ATAC-Seq]	"Public on May 14, 2021"	2-Jul-18	16-Jun-21	3R01CA204915-02S1
+geo	GSE116492	The effect of STAG2 loss in Ewing sarcoma [RNA-Seq]	"Public on May 14, 2021"	2-Jul-18	16-Jun-21	3R01CA204915-02S1
+geo	GSE137396	Characterization of transcriptional analysis of LKB1 mutant lung nodules	"Public on Mar 17, 2021"	13-Sep-19	20-Jun-21	1U01CA233084-01
+geo	GSE137244	Characterization of tumor mutational burden in LKB1 mutant lung tumors	"Public on Mar 17, 2021"	10-Sep-19	19-Jun-21	1U01CA233084-01
+geo	GSE147877	"Chromatin Occupancy of AR, BRD4, and H3K27Ac in MR42D Cells in response to Enzalutamide"	"Public on Jun 22, 2021"	1-Apr-20	22-Jun-21	1U54CA224079-01
+geo	GSE147876	"Chromatin Occupancy of AR, BRD4, and H3K27Ac in MR42D Cells in response to Enzalutamide [RNA-seq]"	"Public on Jun 22, 2021"	1-Apr-20	22-Jun-21	1U54CA224079-01
+geo	GSE147875	"Chromatin Occupancy of AR, BRD4, and H3K27Ac in MR42D Cells in response to Enzalutamide [ChIP-seq]"	"Public on Jun 22, 2021"	1-Apr-20	22-Jun-21	1U54CA224079-01
+geo	GSE147874	"Chromatin Occupancy of AR, BRD4, and H3K27Ac in MR42D Cells in response to Enzalutamide [ATAC-seq]"	"Public on Jun 22, 2021"	1-Apr-20	22-Jun-21	1U54CA224079-01
 geo	GSE160898	The FLI portion of EWS/FLI contributes a transcriptional regulatory function that is distinct from its DNA-binding function in Ewing sarcoma	"Public on Jun 15, 2021"	5-Nov-20	15-Jun-21	1U54CA231641-01
+geo	GSE139335	MUC1-C Drives Lineage Plasticity in Progression to Neuroendocrine Prostate Cancer	"Public on Dec 02, 2019"	24-Oct-19	17-Aug-21	1U01CA233084-01
 geo	GSE174307	10X Genomics single-cell RNAseq combined with CRISPR tiling of Dot1l in mouse MLL-AF9 leukemia	"Public on Jun 02, 2021"	12-May-21	27-Jul-21	5R01CA176745-09
+geo	GSE147190	Metabolic control of Tfh and humoral immunity by phosphatidylethanolamine	"Public on May 26, 2021"	18-Mar-20	10-Jul-21	5R01CA221290-02
+geo	GSE175838	RNA sequencing comparing in-vitro lentiviral CRISPR-Cas9 knockdown of Non-Canonical Polycomb Repressive Complex 1.6 members from a Kras G12D Trp53 -/- background mouse lung cancer cell line	"Public on Jun 01, 2021"	31-May-21	20-Jul-21	3P30CA054174-25S2
+geo	GSE175838	RNA sequencing comparing in-vitro lentiviral CRISPR-Cas9 knockdown of Non-Canonical Polycomb Repressive Complex 1.6 members from a Kras G12D Trp53 -/- background mouse lung cancer cell line	"Public on Jun 01, 2021"	31-May-21	20-Jul-21	3P30CA054174-25S1
+geo	GSE161609	RNA sequencing comparing mouse Kras G12D lung tumors that have WT or inactivated Mga via CRISPR	"Public on Nov 17, 2020"	17-Nov-20	20-Jul-21	3P30CA054174-25S2
+geo	GSE161609	RNA sequencing comparing mouse Kras G12D lung tumors that have WT or inactivated Mga via CRISPR	"Public on Nov 17, 2020"	17-Nov-20	20-Jul-21	3P30CA054174-25S1
+geo	GSE161606	RNA sequencing comparing mouse lung cancer cell lines derived from Kras G12D Trp53 -/- and Kras G12D Trp53 -/- sgMga tumors	"Public on Nov 17, 2020"	17-Nov-20	20-Jul-21	3P30CA054174-25S2
+geo	GSE161606	RNA sequencing comparing mouse lung cancer cell lines derived from Kras G12D Trp53 -/- and Kras G12D Trp53 -/- sgMga tumors	"Public on Nov 17, 2020"	17-Nov-20	20-Jul-21	3P30CA054174-25S1
+geo	GSE161543	RNA sequencing comparing human colon organoids transduced with Empty control vs. sgMGA (guide RNA targeting MGA)	"Public on Nov 16, 2020"	16-Nov-20	20-Jul-21	3P30CA054174-25S2
+geo	GSE161543	RNA sequencing comparing human colon organoids transduced with Empty control vs. sgMGA (guide RNA targeting MGA)	"Public on Nov 16, 2020"	16-Nov-20	20-Jul-21	3P30CA054174-25S1
+geo	GSE161541	"Genomic occupancy of MYC and members of the PRC1.6 complex (MGA, E2F6, MAX, L3MBTL2) in MGA WT (Empty) and MGA depleted (sgMga) KrasG12D Trp53 -/- mouse lung cancer lines"	"Public on Nov 16, 2020"	16-Nov-20	20-Jul-21	3P30CA054174-25S2
+geo	GSE161541	"Genomic occupancy of MYC and members of the PRC1.6 complex (MGA, E2F6, MAX, L3MBTL2) in MGA WT (Empty) and MGA depleted (sgMga) KrasG12D Trp53 -/- mouse lung cancer lines"	"Public on Nov 16, 2020"	16-Nov-20	20-Jul-21	3P30CA054174-25S1
+geo	GSE161539	"CUT&amp;RUN studies comparing occupancy of MAX, MGA, MYC and L3MBTL2 occupancy in Empty vector and sgMGA transduced A549 lung adenocarcinoma cells"	"Public on Nov 16, 2020"	16-Nov-20	20-Jul-21	3P30CA054174-25S2
+geo	GSE161539	"CUT&amp;RUN studies comparing occupancy of MAX, MGA, MYC and L3MBTL2 occupancy in Empty vector and sgMGA transduced A549 lung adenocarcinoma cells"	"Public on Nov 16, 2020"	16-Nov-20	20-Jul-21	3P30CA054174-25S1
+geo	GSE163198	The role of histone variant H3.3 regulation by HIRA in hematopoiesis (RNA-seq)	"Public on Jul 08, 2021"	14-Dec-20	31-Aug-21	3P30CA125123-14S6
+geo	GSE163052	The role of histone variant H3.3 regulation by HIRA in hematopoiesis	"Public on Jul 08, 2021"	11-Dec-20	31-Aug-21	3P30CA125123-14S6
+geo	GSE163051	The role of histone variant H3.3 regulation by HIRA in hematopoiesis (ChIP-Seq)	"Public on Jul 08, 2021"	11-Dec-20	31-Aug-21	3P30CA125123-14S6
+geo	GSE163050	The role of histone variant H3.3 regulation by HIRA in hematopoiesis (ATAC-Seq)	"Public on Jul 08, 2021"	11-Dec-20	31-Aug-21	3P30CA125123-14S6
+geo	GSE151828	Arginine methylation promotes siRNA-binding specificity for a spermatogenesis-specific isoform of the Argonaute protein CSR-1	"Public on Jun 04, 2021"	4-Jun-20	27-Jul-21	3P30CA014089-45S6
+geo	GSE174787	Multiplexed functional genomic analysis of somatic 5’ untranslated region mutations across the spectrum of human prostate cancer (Exome-Seq)	"Public on May 20, 2021"	20-May-21	27-Jul-21	1U54CA224079-01
+geo	GSE171729	Multiplexed functional genomic analysis of somatic 5' untranslated region mutations across the spectrum of human prostate cancer (RNASeq)	"Public on May 17, 2021"	8-Apr-21	27-Jul-21	1U54CA224079-01
+geo	GSE149489	Multiplexed functional genomic analysis of somatic 5’ untranslated region mutations across the spectrum of human prostate cancer	"Public on May 17, 2021"	28-Apr-20	27-Jul-21	1U54CA224079-01
+geo	GSE149487	Multiplexed functional genomic analysis of somatic 5' untranslated region mutations across the spectrum of human prostate cancer (PLUMAGE)	"Public on May 17, 2021"	28-Apr-20	27-Jul-21	1U54CA224079-01
+geo	GSE130465	Multiplexed functional genomic analysis of somatic 5' untranslated region mutations across the spectrum of human prostate cancer (Ribosome Profiling)	"Public on May 17, 2021"	29-Apr-19	27-Jul-21	1U54CA224079-01
+geo	GSE149401	HIF1α enrichment on KSHV genome in normoxia and hypoxia	"Public on Nov 01, 2020"	27-Apr-20	3-Aug-21	3P30CA016520-44S5
+geo	GSE149401	HIF1α enrichment on KSHV genome in normoxia and hypoxia	"Public on Nov 01, 2020"	27-Apr-20	3-Aug-21	3P30CA016520-44S6
+geo	GSE171565	Transcriptomic effects of nicotinamide nucleotide adenylyltransferase 1 (NMNAT1) deletion on human AML cells	"Public on Jul 28, 2021"	6-Apr-21	28-Jul-21	3P30CA125123-14S6
+geo	GSE175368	Identification of 22 novel susceptibility loci associated with testicular germ cell tumors	"Public on Jun 01, 2021"	23-May-21	18-Aug-21	3P30CA016520-44S5
+geo	GSE175368	Identification of 22 novel susceptibility loci associated with testicular germ cell tumors	"Public on Jun 01, 2021"	23-May-21	18-Aug-21	3P30CA016520-44S6
+geo	GSE175367	Identification of 22 novel susceptibility loci associated with testicular germ cell tumors [ATAC-seq]	"Public on Jun 01, 2021"	23-May-21	18-Aug-21	3P30CA016520-44S5
+geo	GSE175367	Identification of 22 novel susceptibility loci associated with testicular germ cell tumors [ATAC-seq]	"Public on Jun 01, 2021"	23-May-21	18-Aug-21	3P30CA016520-44S6
+geo	GSE175366	Identification of 22 novel susceptibility loci associated with testicular germ cell tumors [Capture C]	"Public on Jun 01, 2021"	23-May-21	18-Aug-21	3P30CA016520-44S5
+geo	GSE175366	Identification of 22 novel susceptibility loci associated with testicular germ cell tumors [Capture C]	"Public on Jun 01, 2021"	23-May-21	18-Aug-21	3P30CA016520-44S6
+geo	GSE148248	SMAD4 represses FOSL1 expression and pancreatic cancer metastatic colonization	"Public on Aug 02, 2021"	7-Apr-20	2-Aug-21	1U01CA224146-01
+geo	GSE147891	human prostate cell lines	"Public on Aug 11, 2021"	1-Apr-20	12-Aug-21	3P30CA054174-25S2
+geo	GSE147891	human prostate cell lines	"Public on Aug 11, 2021"	1-Apr-20	12-Aug-21	3P30CA054174-25S1
+geo	GSE147885	N6-methyladenosine RNA methylome analyses in human prostate cell lines.	"Public on Aug 11, 2021"	1-Apr-20	12-Aug-21	3P30CA054174-25S2
+geo	GSE147885	N6-methyladenosine RNA methylome analyses in human prostate cell lines.	"Public on Aug 11, 2021"	1-Apr-20	12-Aug-21	3P30CA054174-25S1
+geo	GSE147884	"RNA transcriptome analyses in shcontrol, shMETTL3, shMETTL3-resistant METTL3 wildtype and catalytically dead mutant LNCaP cells."	"Public on Aug 11, 2021"	1-Apr-20	11-Aug-21	3P30CA054174-25S2
+geo	GSE147884	"RNA transcriptome analyses in shcontrol, shMETTL3, shMETTL3-resistant METTL3 wildtype and catalytically dead mutant LNCaP cells."	"Public on Aug 11, 2021"	1-Apr-20	11-Aug-21	3P30CA054174-25S1
+geo	GSE153747	A GrgA-Euo-HrcA transcriptional regulatory network controls the growth and development of the obligate intracellular bacterium Chlamydia	"Public on Jul 08, 2021"	2-Jul-20	14-Sep-21	3P30CA054174-25S2
+geo	GSE153747	A GrgA-Euo-HrcA transcriptional regulatory network controls the growth and development of the obligate intracellular bacterium Chlamydia	"Public on Jul 08, 2021"	2-Jul-20	14-Sep-21	3P30CA054174-25S1
+geo	GSE144311	CHAF1A Blocks Neuronal Differentiation and Promotes Neuroblastoma Oncogenesis via Metabolic Reprogramming	"Public on Jul 20, 2021"	27-Jan-20	11-Aug-21	3P30CA125123-14S6
+geo	GSE178797	Multifactorial role of mitochondria in echinocandin tolerance revealed by transcriptome analysis of drug-tolerant cells	"Public on Jun 25, 2021"	23-Jun-21	14-Sep-21	3P30CA013696-45S1
+geo	GSE178656	Multifactorial role of mitochondria in echinocandin tolerance revealed by transcriptome analysis of drug-tolerant cells	"Public on Jun 23, 2021"	22-Jun-21	14-Sep-21	3P30CA013696-45S1
+geo	GSE175365	Sex-specific differences in the function and differentiation of ABCs contribute to the female bias in lupus pathogenesis	"Public on May 24, 2021"	23-May-21	23-Aug-21	3P30CA016520-44S5
+geo	GSE175365	Sex-specific differences in the function and differentiation of ABCs contribute to the female bias in lupus pathogenesis	"Public on May 24, 2021"	23-May-21	23-Aug-21	3P30CA016520-44S6
+geo	GSE157830	Labile Iron Release Primes Pancreatic Cancer for Ferroptosis	"Public on Jun 03, 2021"	11-Sep-20	8-Sep-21	1U01CA224145-01
+geo	GSE132137	Chd1 regulates repair of promoter-proximal DNA breaks to sustain hypertranscription in embryonic stem cells	"Public on Jun 10, 2021"	3-Jun-19	8-Sep-21	3P30CA082103-21S9
+geo	GSE132137	Chd1 regulates repair of promoter-proximal DNA breaks to sustain hypertranscription in embryonic stem cells	"Public on Jun 10, 2021"	3-Jun-19	8-Sep-21	3P30CA082103-21S6
 geo	GSE178388	Downregulation of exhausted cytotoxic T cells in gene expression networks of multisystem inflammatory syndrome in children	"Public on Jun 18, 2021"	17-Jun-21	17-Sep-21	1U24CA224319-01
 geo	GSE178388	Downregulation of exhausted cytotoxic T cells in gene expression networks of multisystem inflammatory syndrome in children	"Public on Jun 18, 2021"	17-Jun-21	17-Sep-21	1U01DK124165-01
 geo	GSE73464	Diagnosis of Kawasaki Disease in children using host RNA expression	"Public on Aug 09, 2018"	25-Sep-15	16-Aug-18	1U24CA224319-01
 geo	GSE73464	Diagnosis of Kawasaki Disease in children using host RNA expression	"Public on Aug 09, 2018"	25-Sep-15	16-Aug-18	1U01DK124165-01
-geo	GSE120848	Isolation and genome-wide characterization of cellular DNA:RNA triplex structures III	"Public on Dec 20, 2018"	4-Oct-18	26-Mar-19	1U24CA224067-01
+geo	GSE140383	Integrated multi-omics analysis of RB-loss identifies widespread cellular programming and synthetic weaknesses.	"Public on Feb 15, 2021"	14-Nov-19	8-Sep-21	3P30CA016058-44S3
+geo	GSE162006	Profiling of indolent and aggressive mammary lesions	"Public on Jun 17, 2021"	23-Nov-20	8-Sep-21	3P30CA046592-31S8
+geo	GSE162006	Profiling of indolent and aggressive mammary lesions	"Public on Jun 17, 2021"	23-Nov-20	8-Sep-21	3P30CA046592-31S4
+geo	GSE162005	Transcriptional profiling of indolent and aggressive mammary lesions	"Public on Jun 17, 2021"	23-Nov-20	8-Sep-21	3P30CA046592-31S8
+geo	GSE162005	Transcriptional profiling of indolent and aggressive mammary lesions	"Public on Jun 17, 2021"	23-Nov-20	8-Sep-21	3P30CA046592-31S4
+geo	GSE161983	Single-cell transcriptional profiling of indolent and aggressive mammary lesions	"Public on Jun 17, 2021"	23-Nov-20	8-Sep-21	3P30CA046592-31S8
+geo	GSE161983	Single-cell transcriptional profiling of indolent and aggressive mammary lesions	"Public on Jun 17, 2021"	23-Nov-20	8-Sep-21	3P30CA046592-31S4
+geo	GSE153237	Acute depletion of CTCF rewires genome-wide chromatin accessibility	"Public on Aug 26, 2021"	25-Jun-20	28-Aug-21	3P30CA021765-41S3
+geo	GSE161574	Aurora A kinase Inhibition Reprograms Metabolism dependent on PGC1α to Drive Synthetic Lethality with Fatty Acid Oxidation Inhibition in Glioblastoma	"Public on Jun 01, 2021"	16-Nov-20	5-Sep-21	3P30CA013696-45S1
+geo	GSE161573	Aurora A kinase Inhibition Reprograms Metabolism dependent on PGC1α to Drive Synthetic Lethality with Fatty Acid Oxidation Inhibition in Glioblastoma [ChIP-Seq]	"Public on Jun 01, 2021"	16-Nov-20	5-Sep-21	3P30CA013696-45S1
+geo	GSE161572	Aurora A kinase Inhibition Reprograms Metabolism dependent on PGC1α to Drive Synthetic Lethality with Fatty Acid Oxidation Inhibition in Glioblastoma [ATAC-Seq]	"Public on Jun 01, 2021"	16-Nov-20	5-Sep-21	3P30CA013696-45S1
+geo	GSE152612	AURKA Inhibition Reprograms Metabolism dependent on PGC1α to Drive Synthetic Lethality with Fatty Acid Oxidation Inhibition in Glioblastoma	"Public on Jun 17, 2021"	16-Jun-20	16-Sep-21	3P30CA013696-45S1
+geo	GSE127298	A novel Menin-MLL inhibitor induces specific chromatin changes and eradicates disease in models of MLL-rearranged leukemia	"Public on Feb 28, 2019"	27-Feb-19	27-Mar-19	5R01CA176745-09
+geo	GSE70991	Insulator dysfunction and oncogene activation in IDH mutant gliomas	"Public on Dec 23, 2015"	16-Jul-15	27-Mar-19	1U01CA224160-01
+geo	GSE53169	Yap1 activation enables bypass of oncogenic Kras addiction in pancreatic cancer	"Public on Dec 31, 2014"	10-Dec-13	11-Feb-19	1U24CA224020-01
+geo	GSE145837	Transcriptome analysis of tumor infiltrating NK and T cells in CT26-bearing BALB/C mice	"Public on Jun 01, 2020"	24-Feb-20	1-Jun-20	1U01CA224166-01
+geo	GSE31873	Selective roles of p300 and CBP in androgen regulated gene expression	"Public on Dec 15, 2011"	5-Sep-11	13-Aug-18	1U54CA233223-01
+geo	GSE120084	Macrophage Ad5f35 PhenoMap	"Public on Sep 01, 2019"	17-Sep-18	1-Sep-19	1R01CA226983-01
+geo	GSE120086	Macrophage Ad5f35 M2 Challenge	"Public on Sep 01, 2019"	17-Sep-18	1-Sep-19	1R01CA226983-01
+geo	GSE41258	Expression data from colorectal cancer patients	"Public on Oct 02, 2012"	1-Oct-12	23-May-19	1U01CA232491-01
+geo	GSE36369	DNA methylation contributes to natural human variation	"Public on Jul 22, 2013"	8-Mar-12	18-Mar-20	3U24CA210999-02S1
+geo	GSE41826	A Cell Epigenotype Specific Model for the Correction of Cellular Heterogeneity in the Brain	"Public on Feb 22, 2013"	24-Oct-12	22-Mar-19	3U24CA210999-02S1
+geo	GSE53816	The effect of genotype and in utero environment on inter-individual variation in neonate DNA methylomes (methylomes)	"Public on Apr 02, 2014"	3-Jan-14	22-Mar-19	3U24CA210999-02S1
+geo	GSE101431	Worldwide patterns of human epigenetic variation	"Public on Aug 01, 2017"	14-Jul-17	25-Jul-21	3U24CA210999-02S1
+geo	GSE75214	Mucosal gene expression profiling in patients with inflammatory bowel disease study	"Public on Sep 14, 2017"	19-Nov-15	26-Jul-18	1U01CA233084-01
+geo	GSE144319	MUC1-c is a target for suppressing stemness in the progression of colitis and colorectal cancer	"Public on Oct 12, 2020"	27-Jan-20	12-Oct-20	1U01CA233084-01
+geo	GSE17054	Dysregulated gene expression networks in human acute myelogenous leukemia stem cells	"Public on Jul 14, 2009"	10-Jul-09	25-Mar-19	1U54CA224019-01
+geo	GSE19599	Expression data for normal flow sorted hematopietic cell subpopulations	"Public on Feb 21, 2010"	22-Dec-09	12-Nov-20	1U54CA224019-01
+geo	GSE11864	Effect of interferon-gamma on macrophage differentiation and response to Toll-like receptor ligands	"Public on Dec 31, 2008"	23-Jun-08	12-Nov-20	1U54CA224019-01
+geo	GSE158459	Targeted single-cell RNAseq of tonsil organoid cultures	"Public on Sep 24, 2020"	23-Sep-20	27-Sep-20	1U54CA224081-01
+geo	GSE93326	Gene expression from laser capture microdissected pancreatic cancer epithelium and stroma	"Public on Nov 27, 2018"	9-Jan-17	2-Feb-21	1U01CA224145-01
+geo	GSE161939	Transcriptome Analysis of treated cells in Philadelphia Chromosome-Like Acute Lymphoblastic Leukemia	"Public on Sep 22, 2021"	21-Nov-20	22-Sep-21	1U01CA232486-01
+geo	GSE96356	ChIP-seq from K562 (ENCSR757IIU)	"Public on Mar 12, 2017"	12-Mar-17	15-May-19	3P30CA054174-25S2
+geo	GSE96356	ChIP-seq from K562 (ENCSR757IIU)	"Public on Mar 12, 2017"	12-Mar-17	15-May-19	3P30CA054174-25S1
+geo	GSE130891	MeRIP-seq for host response to Flaviviridae infection	"Public on May 09, 2019"	8-May-19	27-Apr-20	3P30CA054174-25S2
+geo	GSE130891	MeRIP-seq for host response to Flaviviridae infection	"Public on May 09, 2019"	8-May-19	27-Apr-20	3P30CA054174-25S1
+geo	GSE37003	m6A mapping in human RNA (untreated)	"Public on Apr 25, 2012"	3-Apr-12	15-May-19	3P30CA054174-25S2
+geo	GSE37003	m6A mapping in human RNA (untreated)	"Public on Apr 25, 2012"	3-Apr-12	15-May-19	3P30CA054174-25S1
+geo	GSE76367	METTL3 promotes translation in human cancer cells	"Public on Jan 01, 2016"	28-Dec-15	27-May-20	3P30CA054174-25S2
+geo	GSE76367	METTL3 promotes translation in human cancer cells	"Public on Jan 01, 2016"	28-Dec-15	27-May-20	3P30CA054174-25S1
+geo	GSE35988	The Mutational Landscape of Lethal Castrate Resistant Prostate Cancer	"Public on May 23, 2012"	21-Feb-12	23-Jan-19	3P30CA054174-25S2
+geo	GSE35988	The Mutational Landscape of Lethal Castrate Resistant Prostate Cancer	"Public on May 23, 2012"	21-Feb-12	23-Jan-19	3P30CA054174-25S1
+geo	GSE14520	Gene expression data of human hepatocellular carcinoma (HCC)	"Public on Dec 01, 2010"	22-Jan-09	1-Apr-21	3P30CA054174-25S2
+geo	GSE14520	Gene expression data of human hepatocellular carcinoma (HCC)	"Public on Dec 01, 2010"	22-Jan-09	1-Apr-21	3P30CA054174-25S1
+geo	GSE31210	Gene expression data for pathological stage I-II lung adenocarcinomas	"Public on Nov 01, 2011"	4-Aug-11	25-Mar-19	3P30CA054174-25S2
+geo	GSE31210	Gene expression data for pathological stage I-II lung adenocarcinomas	"Public on Nov 01, 2011"	4-Aug-11	25-Mar-19	3P30CA054174-25S1
+geo	GSE150244	RNA-seq profiling of Ewing sarcoma cells after TRIM8 knockout and EWS/FLI over-expression	"Public on Jun 30, 2021"	11-May-20	30-Jun-21	1U54CA231637-01
+geo	GSE150244	RNA-seq profiling of Ewing sarcoma cells after TRIM8 knockout and EWS/FLI over-expression	"Public on Jun 30, 2021"	11-May-20	30-Jun-21	1U54CA231641-01
+geo	GSE150244	RNA-seq profiling of Ewing sarcoma cells after TRIM8 knockout and EWS/FLI over-expression	"Public on Jun 30, 2021"	11-May-20	30-Jun-21	3R01CA204915-02S1
+geo	GSE63473	Highly parallel genome-wide expression profiling of individual cells using nanoliter droplets	"Public on May 20, 2015"	19-Nov-14	15-May-19	1U54CA231637-01
+geo	GSE63473	Highly parallel genome-wide expression profiling of individual cells using nanoliter droplets	"Public on May 20, 2015"	19-Nov-14	15-May-19	1U54CA231641-01
+geo	GSE63473	Highly parallel genome-wide expression profiling of individual cells using nanoliter droplets	"Public on May 20, 2015"	19-Nov-14	15-May-19	3R01CA204915-02S1
+geo	GSE60052	The RNAseq of 79 small cell lung cancer (sclc) and 7 normal control	"Public on Feb 10, 2016"	4-Aug-14	15-May-19	3P30CA016520-44S5
+geo	GSE60052	The RNAseq of 79 small cell lung cancer (sclc) and 7 normal control	"Public on Feb 10, 2016"	4-Aug-14	15-May-19	3P30CA016520-44S6
+geo	GSE125903	Non-coding and coding transcriptional profiles are significantly altered in pediatric Retinoblastoma tumors	"Public on Apr 30, 2019"	30-Jan-19	21-Aug-20	3P30CA016520-44S5
+geo	GSE125903	Non-coding and coding transcriptional profiles are significantly altered in pediatric Retinoblastoma tumors	"Public on Apr 30, 2019"	30-Jan-19	21-Aug-20	3P30CA016520-44S6
+geo	GSE111168	Next Generation Sequencing Facilitates Quantitative Analysis of Retinoblastoma Transcriptomes	"Public on Feb 28, 2018"	27-Feb-18	20-Jul-20	3P30CA016520-44S5
+geo	GSE111168	Next Generation Sequencing Facilitates Quantitative Analysis of Retinoblastoma Transcriptomes	"Public on Feb 28, 2018"	27-Feb-18	20-Jul-20	3P30CA016520-44S6
+geo	GSE87042	"The Dynamic Epigenetic Landscape of the Retina During Development, Reprogramming, and Tumorigenesis [RNA-Seq_Hs]"	"Public on May 03, 2017"	16-Sep-16	15-May-19	3P30CA016520-44S5
+geo	GSE87042	"The Dynamic Epigenetic Landscape of the Retina During Development, Reprogramming, and Tumorigenesis [RNA-Seq_Hs]"	"Public on May 03, 2017"	16-Sep-16	15-May-19	3P30CA016520-44S6
+geo	GSE176496	Exocyst protein subnetworks integrate Hippo and mTOR signaling to promote virus detection and cancer	"Public on Jun 10, 2021"	9-Jun-21	10-Jun-21	1U54CA224081-01
+geo	GSE12845	B cell subsets from human tonsil and blood	"Public on Sep 19, 2008"	18-Sep-08	13-Feb-20	3P30CA016520-44S5
+geo	GSE12845	B cell subsets from human tonsil and blood	"Public on Sep 19, 2008"	18-Sep-08	13-Feb-20	3P30CA016520-44S6
+geo	GSE82127	Chemical Mapping Reveals Novel Features of The Nucleosome Landscape in Mouse Embryonic Stem Cells 	"Public on Nov 23, 2016"	1-Jun-16	15-May-19	3P30CA082103-21S9
+geo	GSE82127	Chemical Mapping Reveals Novel Features of The Nucleosome Landscape in Mouse Embryonic Stem Cells 	"Public on Nov 23, 2016"	1-Jun-16	15-May-19	3P30CA082103-21S6
+geo	GSE57609	Chd1 is essential for the high transcriptional output and rapid growth of the mouse epiblast	"Public on Dec 31, 2014"	13-May-14	15-May-19	3P30CA082103-21S9
+geo	GSE57609	Chd1 is essential for the high transcriptional output and rapid growth of the mouse epiblast	"Public on Dec 31, 2014"	13-May-14	15-May-19	3P30CA082103-21S6
+geo	GSE78220	mRNA expressions in pre-treatment melanomas undergoing anti-PD-1 checkpoint inhibition therapy	"Public on Mar 18, 2016"	23-Feb-16	15-May-19	3P30CA016058-44S3
+geo	GSE150674	Transcriptional analysis of cystic fibrosis airways at single-cell resolution reveals altered epithelial cell states and composition	"Public on Mar 10, 2021"	15-May-20	10-May-21	3P30CA014089-45S6
+geo	GSE68379	The landscape of pharmacogenomic interactions in human cancer	"Public on Jul 05, 2016"	28-Apr-15	22-Mar-19	3P30CA054174-25S2
+geo	GSE68379	The landscape of pharmacogenomic interactions in human cancer	"Public on Jul 05, 2016"	28-Apr-15	22-Mar-19	3P30CA054174-25S1
+geo	GSE163398	Glucocorticoid Receptor (GR) ChIP-seq in A549 and U2OS cells	"Public on Dec 18, 2020"	17-Dec-20	21-Dec-20	3P30CA082103-21S9
+geo	GSE163398	Glucocorticoid Receptor (GR) ChIP-seq in A549 and U2OS cells	"Public on Dec 18, 2020"	17-Dec-20	21-Dec-20	3P30CA082103-21S6
+geo	GSE120781	Acute depletion of CTCF directly affects MYC regulation through loss of enhancer–promoter looping	"Public on May 14, 2019"	3-Oct-18	17-May-21	3P30CA021765-41S3
+geo	GSE126619	Acute depletion of CTCF directly affects MYC regulation through loss of enhancer-promoter looping	"Public on May 14, 2019"	15-Feb-19	17-May-21	3P30CA021765-41S3
+geo	GSE138862	Acute depletion of CTCF directly affects MYC regulation through loss of enhancer–promoter looping 	"Public on Oct 16, 2019"	15-Oct-19	17-May-21	3P30CA021765-41S3
+geo	GSE136256	Tumor-initiating stem cell shapes its microenvironment into an immunosuppressive barrier and pro-tumorigenic niche	"Public on Jul 02, 2021"	23-Aug-19	7-Sep-21	3P30CA168524-09S3
+geo	GSE89377	Identifying novel drivers of human hepatocellular carcinoma and revealing clinical relevance as early diagnostic and prognostic biomarker	"Public on Dec 31, 2017"	1-Nov-16	10-Sep-21	3P30CA016056-43S5
+geo	GSE56545	mRNA profiling  of Hepatocellular carcinoma (HCC)	"Public on Jan 30, 2016"	7-Apr-14	15-May-19	3P30CA016056-43S5
+geo	GSE76427	Microarray expression data for tumor and adjacent non-tumor tissues from hepatocellular carcinoma patients	"Public on May 26, 2017"	30-Dec-15	13-Aug-18	3P30CA016056-43S5
+geo	GSE98377	Impact of DNA demethylation agents (5-azacitidine or vitamin C) on DNA copy number in gliobalstoma HSR-GBM1 cells	"Public on Dec 26, 2018"	1-May-17	25-Jul-21	3P30CA016056-43S5
+geo	GSE62452	Microarray gene-expression profiles of 69 pancreatic tumors and 61 adjacent non-tumor tissue from patients with pancreatic ductal adenocarcinoma	"Public on Jul 01, 2016"	17-Oct-14	26-Jul-18	3P30CA016056-43S5
+geo	GSE57477	Molecular subtyping of serous ovarian tumors reveals multiple connections to intrinsic breast cancer subtypes	"Public on Aug 15, 2014"	8-May-14	13-Aug-18	3P30CA016056-43S5

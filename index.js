@@ -17,7 +17,7 @@ readXlsxFile(file_path, { sheet: 1 }).then(async (rows) => {
     let projects = {};
     
     rows.forEach((item, idx) => {
-        if(idx >0 && idx <= 161){
+        if(idx >0){
           projects[item[0]] = {};
           projects[item[0]].project_type = item[1];
           projects[item[0]].program = item[3];
