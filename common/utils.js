@@ -7,8 +7,7 @@ const dataFilesDir = path.join(__dirname, "data_files");
 
 const fetch = async (url) => {
   try {
-      const response = await axios.get(url)
-      //console.log(response.data);
+      const response = await axios.get(url, {timeout: 60000, clarifyTimeoutError: false})
       return response.data;
   } catch (error) {
       return "failed";
@@ -31,6 +30,11 @@ const getCoreId = (projectId) => {
   if(idx > 0){
       result = result.substring(0, idx);
   }
+  return result;
+};
+
+const getActivityCode = (projectId) => {
+  let result = projectId.substring(1, 3);
   return result;
 };
 
@@ -63,6 +67,7 @@ module.exports = {
 	fetch,
   post,
   getCoreId,
+  getActivityCode,
   readCachedPublications,
   readCachedGEOs,
   readCachedSRAs,
