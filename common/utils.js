@@ -34,7 +34,7 @@ const getCoreId = (projectId) => {
 };
 
 const getActivityCode = (projectId) => {
-  let result = projectId.substring(1, 3);
+  let result = projectId.substring(1, 4);
   return result;
 };
 

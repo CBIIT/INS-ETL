@@ -41,7 +41,18 @@ const run = async (projects, publications, clinicalTrials) => {
           idx = d.indexOf("</span>");
           d = d.substring(idx + 7);
           let status = d.substring(0, d.indexOf("<div")).replace(" :", "").trim();
-          clinicalTrials[clinicaltrialID].recruitment_status = status.indexOf("Terminated") > -1 ? "Terminated" : status;
+          if(status.indexOf("Terminated") > -1){
+            clinicalTrials[clinicaltrialID].recruitment_status = "Terminated";
+          }
+          else if(status.indexOf("Suspended") > -1) {
+            clinicalTrials[clinicaltrialID].recruitment_status = "Suspended";
+          }
+          else if(status.indexOf("Withdrawn") > -1) {
+            clinicalTrials[clinicaltrialID].recruitment_status = "Withdrawn";
+          }
+          else {
+            clinicalTrials[clinicaltrialID].recruitment_status = status;
+          }
           idx = d.indexOf(">Last Update Posted <i");
           d = d.substring(idx);
           idx = d.indexOf("</span>");

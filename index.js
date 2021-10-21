@@ -44,7 +44,7 @@ readXlsxFile(file_path, { sheet: 1 }).then(async (rows) => {
         //if(idx > 109 && idx < 150){
         //if(idx > 149 && idx < 180){
         //if(idx > 179){
-        //if(idx > 190 && idx < 192){
+        //if(idx > 184 && idx < 186){
         if(idx > 0){
           projects[item[0]] = {};
           projects[item[0]].project_type = item[1];

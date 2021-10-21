@@ -130,8 +130,8 @@ const run = async (projects, publications) => {
       keyword = project_activity_code + " " + project_core_id;
       let pubs_2 = await searchPublications(keyword, project_award_date, project_core_id);
       //search by core_id only
-      keyword = project_core_id;
-      let pubs_3 = await searchPublications(keyword, project_award_date, project_core_id);
+      //keyword = project_core_id;
+      //let pubs_3 = await searchPublications(keyword, project_award_date, project_core_id);
       let pubs = {};
       Object.keys(pubs_1).forEach((key) => {
         if(!(key in pubs)){
@@ -143,11 +143,13 @@ const run = async (projects, publications) => {
           pubs[key] = pubs_2[key];
         }
       });
+      /*
       Object.keys(pubs_3).forEach((key) => {
         if(!(key in pubs)){
           pubs[key] = pubs_3[key];
         }
       });
+      */
       await getIciteData(pubs);
       count = Object.keys(pubs).length;
       Object.keys(pubs).forEach((key) => {
