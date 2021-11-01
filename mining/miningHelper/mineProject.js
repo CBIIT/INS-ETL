@@ -55,7 +55,7 @@ const run = async (projectsTodo) => {
         }
       }
     }
-    console.log(`Collected project detail data for : ${projectNums[i]}`);
+    console.log(`Collected project detail data for : ${projectNums[i]} [${i+1} of ${projectNums.length}]`);
   }
   return projectsTodo;
 };
