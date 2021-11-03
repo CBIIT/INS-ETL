@@ -18,9 +18,10 @@
   "homepage": "https://github.com/David-YuWei/INS-ETL#readme",
   "dependencies": {
     "axios": "^0.21.1",
-    "read-excel-file": "^5.1.0",
     "dotenv": "^10.0.0",
     "lodash": "^4.17.21",
+    "node-html-parser": "^5.1.0",
+    "read-excel-file": "^5.1.0",
     "winston": "^3.3.3"
   }
 }

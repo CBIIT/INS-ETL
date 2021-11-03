@@ -45,8 +45,9 @@ readXlsxFile(file_path, { sheet: 1 }).then(async (rows) => {
         //if(idx > 149 && idx < 180){
         //if(idx > 179){
         //if(idx > 184 && idx < 186){
-        if (idx > 426){  // 11/01/2021 adeforge, Moonshot of interest that return 1 result on pubMed, causes scraping issue
-        // if(idx > 0){
+        //if (idx === 437 || idx === 427){  // 11/01/2021 adeforge, Moonshot of interest that return 1 result on pubMed, causes scraping issue
+        if (idx <= 161) {
+        //if(idx > 0){
           projects[item[0]] = {};
           projects[item[0]].project_type = item[1];
           projects[item[0]].program = item[3];
