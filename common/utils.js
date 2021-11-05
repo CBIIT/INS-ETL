@@ -1,4 +1,4 @@
-const axios = require('axios');
+const axios = require('axios').default;
 const path = require('path');
 const fs = require("fs");
 
@@ -7,20 +7,19 @@ const dataFilesDir = path.join(__dirname, "data_files");
 
 const fetch = async (url) => {
   try {
-      const response = await axios.get(url, {timeout: 60000, clarifyTimeoutError: false})
+      const response = await axios.get(url, {timeout: 60000, clarifyTimeoutError: false});
       return response.data;
   } catch (error) {
-      return "failed";
+      return "GET failed";
   }
 };
 
 const post = async (url, body) => {
   try {
-      const response = await axios.post(url, body)
-      //console.log(response.data);
-      return response.data;
+    const response = await axios.post(url, body);
+    return response.data;
   } catch (error) {
-      return "failed";
+    return "POST failed";
   }
 };
 

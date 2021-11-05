@@ -77,7 +77,7 @@ const parsePublicationPage = async (uri, filter_date) => {
   let d = await fetch(uri);
   let ddom = HTMLParser.parse(d);
 
-  let data_article_id = ddom.querySelector(".article-page").getAttribute("data-article-pmid");
+  let data_article_id = ddom.querySelector("#article-page").getAttribute("data-article-pmid");
   let citation = ddom.querySelector(".cit").rawText;
   let publish_date = citation.split(";")[0];  // before the ';', first element
   if(Date.parse(publish_date) >= filter_date){
@@ -101,12 +101,11 @@ const parsePublicationsPages = async (uri, filter_date) => {
     let d = await fetch(uri + pagination_sort_params + currPage);
     let ddom = HTMLParser.parse(d);
 
-    let items = ddom.querySelectorAll(".docsum-content");  
-    for (var i; i < items.length; i++) {
+    let items = ddom.querySelectorAll(".docsum-content");
+    for (var i = 0; i < items.length; i++) {
       var item = items[i];
-      console.log(item);
-      let data_article_id = item.getAttribute("data-article-id");
-      let full_journal_citation = item.parentNode.querySelector("full-journal-citation").rawText;
+      let data_article_id = item.querySelector(".docsum-title").getAttribute("data-article-id");
+      let full_journal_citation = item.parentNode.querySelector(".full-journal-citation").rawText;
       let publish_date = full_journal_citation.split(". ")[1].split(";")[0];  // after the '. ' and before the ';'
       if(Date.parse(publish_date) >= filter_date){
         pubs[data_article_id] = {}
@@ -127,6 +126,7 @@ const searchPublications = async (keyword, project_award_date, project_core_id) 
 
   // pre-flight, check for single result or no results
   var uri = apis.pmWebsite + keyword;
+  console.log(uri);
   let c = await fetch(uri);
   let cdom = HTMLParser.parse(c);
 
@@ -134,6 +134,7 @@ const searchPublications = async (keyword, project_award_date, project_core_id) 
   if (cdom.querySelector("#page-number-input") === null){
     console.log("Single result");
     pubs = await parsePublicationPage(uri, filter_date);
+    console.log(pubs.keys() + " result");
     return pubs;
   }
   
@@ -150,7 +151,8 @@ const searchPublications = async (keyword, project_award_date, project_core_id) 
   }
 
   console.log("Multiple results");
-  pubs = parsePublicationsPages(uri, filter_date);
+  pubs = await parsePublicationsPages(uri, filter_date);
+  console.log(pubs.keys().length + " results");
 
   // let idx_start = 0;
   // let currPage = 1;
