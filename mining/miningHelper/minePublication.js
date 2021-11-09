@@ -91,36 +91,47 @@ const parsePublicationPage = async (uri, filter_date) => {
 const parsePublicationsPages = async (uri, filter_date) => {
   let pubs = {};
   let pagination_sort_params = "&sort=date&size=200&page=";
-
-  // figure out how many pages
-  let c = await fetch(uri);
-  let cdom = HTMLParser.parse(c);
-  let max = cdom.querySelector("#page-number-input").getAttribute('max');
-  
-  for (var currPage = 1; currPage <= max; currPage++) {
+  let idx_start = 0;
+  let currPage = 1;
+  let isEnd = false;
+  while (!isEnd){
     let d = await fetch(uri + pagination_sort_params + currPage);
-    let ddom = HTMLParser.parse(d);
-
-    let items = ddom.querySelectorAll(".docsum-content");
-    for (var i = 0; i < items.length; i++) {
-      var item = items[i];
-      let data_article_id = item.querySelector(".docsum-title").getAttribute("data-article-id");
-      let full_journal_citation = item.parentNode.querySelector(".full-journal-citation").rawText;
-      let publish_date = full_journal_citation.split(". ")[1].split(";")[0];  // after the '. ' and before the ';'
-      if(Date.parse(publish_date) >= filter_date){
-        pubs[data_article_id] = {}
-        pubs[data_article_id].publish_date = publish_date
-      }
-      // don't go further back than we have to
-      else {
-        break;
-      }
+    currPage ++;
+    idx_start = d.indexOf("data-article-id=");
+    if(idx_start === -1){
+      break;
+    }
+    let tmp = d;
+    while(idx_start > -1){
+        tmp = tmp.substring(idx_start + 17);
+        let str = tmp.substring(0, 8);
+        if(str.length !== 8){
+          console.log(tmp);
+          console.log(str);
+        }
+        idx_start = tmp.indexOf("full-journal-citation");
+        tmp = tmp.substring(idx_start + 23);
+        idx_start = tmp.indexOf(". ");
+        tmp = tmp.substring(idx_start + 2);
+        idx_start = tmp.indexOf(";") === -1 ? 99999999 : tmp.indexOf(";");
+        let idx_start_1 = tmp.indexOf(":") === -1 ? 99999999 : tmp.indexOf(":");
+        let idx_start_2 = tmp.indexOf(".") === -1 ? 99999999 : tmp.indexOf(".");
+        idx_start = Math.min(idx_start, idx_start_1, idx_start_2);
+        let publish_date = tmp.substring(0, idx_start);
+        if(Date.parse(publish_date) >= filter_date){
+          pubs[str] = {};
+          pubs[str].publish_date = publish_date;
+        }
+        else{
+          isEnd = true;
+        }
+        idx_start = tmp.indexOf("data-article-id=");
     }
   }
   return pubs;
 };
 
-const searchPublications = async (keyword, project_award_date, project_core_id) => {
+const searchPublications = async (keyword, project_award_date) => {
   let filter_date = Date.parse(project_award_date);
   let pubs = {};
 
@@ -134,7 +145,7 @@ const searchPublications = async (keyword, project_award_date, project_core_id) 
   if (cdom.querySelector("#page-number-input") === null){
     console.log("Single result");
     pubs = await parsePublicationPage(uri, filter_date);
-    console.log(pubs.keys() + " result");
+    console.log(Object.keys(pubs) + " result");
     return pubs;
   }
   
@@ -152,50 +163,7 @@ const searchPublications = async (keyword, project_award_date, project_core_id) 
 
   console.log("Multiple results");
   pubs = await parsePublicationsPages(uri, filter_date);
-  console.log(pubs.keys().length + " results");
-
-  // let idx_start = 0;
-  // let currPage = 1;
-  // let isEnd = false;
-  // while (!isEnd){
-  //   let d = await fetch(apis.pmWebsite +  keyword +"&sort=date&size=200&page=" + currPage);
-  //   // if(currPage === 1 && d.indexOf("The following term was not found in PubMed: " + project_core_id) > -1){
-  //   //   console.log("No direct results");
-  //   //   break;
-  //   // }
-  //   currPage ++;
-  //   idx_start = d.indexOf("data-article-id=");
-  //   if(idx_start === -1){
-  //     break;
-  //   }
-  //   let tmp = d;
-  //   while(idx_start > -1){
-  //       tmp = tmp.substring(idx_start + 17);
-  //       let str = tmp.substring(0, 8);
-  //       if(str.length !== 8){
-  //         console.log(tmp);
-  //         console.log(str);
-  //       }
-  //       idx_start = tmp.indexOf("full-journal-citation");
-  //       tmp = tmp.substring(idx_start + 23);
-  //       idx_start = tmp.indexOf(". ");
-  //       tmp = tmp.substring(idx_start + 2);
-  //       idx_start = tmp.indexOf(";") === -1 ? 99999999 : tmp.indexOf(";");
-  //       let idx_start_1 = tmp.indexOf(":") === -1 ? 99999999 : tmp.indexOf(":");
-  //       let idx_start_2 = tmp.indexOf(".") === -1 ? 99999999 : tmp.indexOf(".");
-  //       idx_start = Math.min(idx_start, idx_start_1, idx_start_2);
-  //       let publish_date = tmp.substring(0, idx_start);
-  //       console.log(keyword, str, publish_date, project_award_date);
-  //       if(Date.parse(publish_date) >= filter_date){
-  //         pubs[str] = {};
-  //         pubs[str].publish_date = publish_date;
-  //       }
-  //       else{
-  //         isEnd = true;
-  //       }
-  //       idx_start = tmp.indexOf("data-article-id=");
-  //   }
-  // }
+  console.log(Object.keys(pubs).length + " results");
   
   return pubs;
 };
@@ -210,11 +178,11 @@ const run = async (projects, publications) => {
       let project_activity_code = getActivityCode(projectNums[i]);
       //search by activity_code + core_id
       let keyword = project_activity_code + project_core_id;
-      let pubs_1 = await searchPublications(keyword, project_award_date, project_core_id);
+      let pubs_1 = await searchPublications(keyword, project_award_date);
       //search by activity_code + " " + core_id
-      // 11/02/2021 adeforge the '+' replace the space because the get request does it that way
-      keyword = project_activity_code + "+" + project_core_id;
-      let pubs_2 = await searchPublications(keyword, project_award_date, project_core_id);
+      // 11/02/2021 adeforge replace the space with '+' because the GET request does it that way?
+      keyword = project_activity_code + " " + project_core_id;
+      let pubs_2 = await searchPublications(keyword, project_award_date);
       //search by core_id only
       //keyword = project_core_id;
       //let pubs_3 = await searchPublications(keyword, project_award_date, project_core_id);
