@@ -37,6 +37,20 @@ const getActivityCode = (projectId) => {
   return result;
 };
 
+const getLeadingNumeral = (projectId) => {
+  let result = projectId.substring(0,1);
+  return result;
+}
+
+const getSuffix = (projectId) => {
+  let result = "";
+  let idx = projectId.indexOf("-");
+  if (idx > -1) {
+    result = projectId.substring(idx);
+  }
+  return result;
+}
+
 const readCachedPublications = () => {
   let content = fs.readFileSync(dataFilesDir + "/ins_publications.js").toString();
   return JSON.parse(content);
@@ -67,6 +81,8 @@ module.exports = {
   post,
   getCoreId,
   getActivityCode,
+  getLeadingNumeral,
+  getSuffix,
   readCachedPublications,
   readCachedGEOs,
   readCachedSRAs,

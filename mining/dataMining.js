@@ -208,23 +208,24 @@ const run = async (projectsTodo) => {
   // 11/1/2021 adeforge, other functionality commented out to isolate problem
   projects = await mineProject.run(projectsTodo);
   await minePublication.run(projects, publications);
-  // await minePM.run(publications);
-  // await mineResearchOutputsFromPMC.run(publications);
-  // await mineClinicalTrials.run(projects);
+  console.log("Number of publications: " + Object.keys(publications).length);
+  await minePM.run(publications);
+  await mineResearchOutputsFromPMC.run(publications);
+  await mineClinicalTrials.run(projects);
 
-  // await mineSRADetail.run(publications, sras);
-  // await mineGEODetail.run(publications, geos);
+  await mineSRADetail.run(publications, sras);
+  await mineGEODetail.run(publications, geos);
   
-  // await mineDBGapDetail.run(publications, dbgaps);
-  // await mineClinicalTrialsDetail.run(projects, publications, clinicalTrials);
-  // await generateDataModel();
+  await mineDBGapDetail.run(publications, dbgaps);
+  await mineClinicalTrialsDetail.run(projects, publications, clinicalTrials);
+  await generateDataModel();
 
   writeToProjectFile();
   writeToPublicationFile();
-  // writeToGEOFile();
-  // writeToSRAFile();
-  // writeToDBGapFile();
-  // writeToClinicalTrialsFile();
+  writeToGEOFile();
+  writeToSRAFile();
+  writeToDBGapFile();
+  writeToClinicalTrialsFile();
 };
 
 module.exports = {

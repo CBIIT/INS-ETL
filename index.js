@@ -18,14 +18,14 @@ readXlsxFile(file_path, { sheet: 1 }).then(async (rows) => {
     let projects = {};
     
     rows.forEach((item, idx) => {
-        if (idx >= 447) {  // 11/03/2021 adeforge, Moonshot project id's of interest in 'moonshot_ccdi_projects_all.xlsx'
+        if (idx >= 667) {  // 11/03/2021 adeforge, see 'moonshot_ccdi_projects_all.xlsx', projects sheet
           projects[item[0]] = {};
           projects[item[0]].project_type = item[1];
           projects[item[0]].program = item[3];
           projects[item[0]].lead_doc = item[4];
         }
     });
-    
+
     console.time('full_run');
     await dataMining.run(projects);
     console.timeEnd('full_run');
