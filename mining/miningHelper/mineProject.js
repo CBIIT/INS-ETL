@@ -17,7 +17,7 @@ const run = async (projectsTodo) => {
     let d = await post(apis.nihReporterApi, body);
     // if the POST request fails, rate limit and retry
     if (d === null) {
-      await new Promise(resolve => setTimeout(resolve, 500));
+      await new Promise(resolve => setTimeout(resolve, 500));  // the RePorter API seems to have issues if we query too quickly, no robot.txt found for guidance
       i = i-1;
     }
     else if(d.meta && d.meta.total > 0){
@@ -61,7 +61,6 @@ const run = async (projectsTodo) => {
       }
     }
     console.log(`Collected project detail data for : ${projectNums[i]} [${i+1} of ${projectNums.length}]`);
-    //await new Promise(resolve => setTimeout(resolve, 100));  // the RePorter API seems to have issues if we query too quickly, no robot.txt found for guidance
   }
   return projectsTodo;
 };
