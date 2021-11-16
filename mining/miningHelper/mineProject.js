@@ -15,7 +15,12 @@ const run = async (projectsTodo) => {
     body.sort_field = "fiscal_year";
     body.sort_order = "desc";
     let d = await post(apis.nihReporterApi, body);
-    if(d.meta && d.meta.total > 0){
+    // if the POST request fails, rate limit and retry
+    if (d === null) {
+      await new Promise(resolve => setTimeout(resolve, 500));
+      i = i-1;
+    }
+    else if(d.meta && d.meta.total > 0){
       for(let j = 0; j < d.results.length ; j++){
         if(d.results[j].subproject_id === null){
           let dt = d.results[j];
@@ -56,6 +61,7 @@ const run = async (projectsTodo) => {
       }
     }
     console.log(`Collected project detail data for : ${projectNums[i]} [${i+1} of ${projectNums.length}]`);
+    //await new Promise(resolve => setTimeout(resolve, 100));  // the RePorter API seems to have issues if we query too quickly, no robot.txt found for guidance
   }
   return projectsTodo;
 };

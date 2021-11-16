@@ -132,6 +132,11 @@ const parsePublicationsPages = async (uri, filter_date, project_core_id) => {
   let isEnd = false;
   while (!isEnd){
     let d = await fetch(uri + pagination_param + currPage);
+    // if the GET request fails, rate limit and retry
+    if (d === null) {
+      await new Promise(resolve => setTimeout(resolve, 500));
+      continue;
+    }
     
     // check to see if project core id was excluded by PubMed search (mostly needed for Advanced Search query)
     if (currPage === 1) {
@@ -300,20 +305,21 @@ const run = async (projects, publications) => {
               advanced_keywords.push(num + base);
           });
         });
-        
+
         // prepare the Advanced Search query
         let advanced_keyword = "";
         for (var j = 0; j < advanced_keywords.length; j++) {
           if (j > 0) {
             advanced_keyword += " OR ";
           }
-          advanced_keyword = "(" + advanced_keywords[j] + ")";
+          advanced_keyword += "(" + advanced_keywords[j] + ")";
         }
         keywords.push(advanced_keyword);
       }
 
-      for (var j = 0; j < keywords.length; j++) {
-        let pubs_1 = await searchPublications(keywords[j], project_award_date, project_core_id);
+      // scrape PubMed for all keywords
+      for (var k = 0; k < keywords.length; k++) {
+        let pubs_1 = await searchPublications(keywords[k], project_award_date, project_core_id);
         Object.keys(pubs_1).forEach((key) => {
           if(!(key in pubs)){
             pubs[key] = pubs_1[key];
@@ -331,7 +337,8 @@ const run = async (projects, publications) => {
         publications[key].projects.push(projectNums[i]);
       });
     }
-    console.log(`Collected ${Object.keys(pubs).length} Publications from PubMed for project: ${projectNums[i]} in ${console.timeEnd("pubmed_project_scrape")} [project ${i+1} of ${projectNums.length}]\n`);
+    console.timeEnd("pubmed_project_scrape");
+    console.log(`Collected ${Object.keys(pubs).length} Publications from PubMed for project: ${projectNums[i]} [project ${i+1} of ${projectNums.length}]\n`);
   }
 };
 

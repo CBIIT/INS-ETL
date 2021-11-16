@@ -10,7 +10,8 @@ const fetch = async (url) => {
       const response = await axios.get(url, {timeout: 60000, clarifyTimeoutError: false});
       return response.data;
   } catch (error) {
-      return "GET failed";
+    console.log("GET failed");
+      return null;
   }
 };
 
@@ -19,7 +20,8 @@ const post = async (url, body) => {
     const response = await axios.post(url, body);
     return response.data;
   } catch (error) {
-    return "POST failed";
+    console.log("POST failed");
+    return null;
   }
 };
 
