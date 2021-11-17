@@ -6,22 +6,34 @@ const fs = require("fs");
 const dataFilesDir = path.join(__dirname, "data_files");
 
 const fetch = async (url) => {
-  try {
+  let counter = 0;
+  while (true) {
+    try {
       const response = await axios.get(url, {timeout: 60000, clarifyTimeoutError: false});
       return response.data;
-  } catch (error) {
-    console.log("GET failed");
-      return null;
+    } catch (error) {
+      console.log("GET failed");
+      console.log(url);
+      counter++;
+      console.log("Retry Attempt: " + counter);
+      await new Promise(resolve => setTimeout(resolve, 500));
+    }
   }
 };
 
 const post = async (url, body) => {
-  try {
-    const response = await axios.post(url, body);
-    return response.data;
-  } catch (error) {
-    console.log("POST failed");
-    return null;
+  let counter = 0;
+  while (true) {
+    try {
+      const response = await axios.post(url, body);
+      return response.data;
+    } catch (error) {
+      console.log("POST failed");
+      console.log(url);
+      counter++;
+      console.log("Retry Attempt: " + counter);
+      await new Promise(resolve => setTimeout(resolve, 500));
+    }
   }
 };
 

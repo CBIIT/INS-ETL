@@ -17,6 +17,11 @@ const getIciteData = async (publications) => {
   const pmIds = Object.keys(publications);
   for(let p = 0; p < pmIds.length; p++){
     let d = await fetch(apis.iciteApi +  pmIds[p]);
+    // // if the GET request fails, rate limit and retry
+    // if (d === null) {
+    //   await new Promise(resolve => setTimeout(resolve, 500));
+    //   p = p - 1;
+    // }
     if(d.data && d.data.length > 0){
       let pmData = d.data[0];
       publications[pmIds[p]].journal = pmData.journal;
@@ -69,7 +74,6 @@ const getIciteData = async (publications) => {
       publications[pmIds[p]].nih_percentile = "N/A";
       console.log(`No data found, initiated Publication data from icite for : ${pmIds[p]}, (${p+1}/${pmIds.length})`);
     }
-
   }
 };
 
@@ -124,37 +128,46 @@ const parsePublicationPage = async (hypertext, filter_date) => {
 };
 
 // returns a parsed page of publications
-const parsePublicationsPages = async (uri, filter_date, project_core_id) => {
+const parsePublicationsPages = async (hypertext, uri, filter_date, project_core_id) => {
   let pubs = {};
-  let pagination_param = "&page=";
+  // let pagination_param = "&page=";
   let idx_start = 0;
   let currPage = 1;
   let isEnd = false;
   while (!isEnd){
-    let d = await fetch(uri + pagination_param + currPage);
-    // if the GET request fails, rate limit and retry
-    if (d === null) {
-      await new Promise(resolve => setTimeout(resolve, 500));
-      continue;
+    let d = null;
+    // the first page is given as the 'hypertext' parameter
+    if (currPage >= 2) {
+      d = await fetch(uri + currPage); //pagination_param + currPage);
+      // // if the GET request fails, rate limit and retry
+      // if (d === null) {
+      //   await new Promise(resolve => setTimeout(resolve, 500));
+      //   continue;
+      // }
+    }
+    else {
+      d = hypertext;
     }
     
     // check to see if project core id was excluded by PubMed search (mostly needed for Advanced Search query)
     if (currPage === 1) {
-      let idx_not_found = d.indexOf("The following term was not found in PubMed: ");
+      let idx_not_found_0 = d.indexOf("The following term was not found in PubMed: ");  // 44 characters
+      let idx_not_found_1 = d.indexOf("The following terms were not found in PubMed: ");  // 46 characters
+      let idx_not_found = Math.max(idx_not_found_0, idx_not_found_1);
       if (idx_not_found > -1) {
-        let temp_d = d.substring(idx_not_found);
-        let idx_terms_not_found = temp_d.indexOf("\"");
-        if (idx_terms_not_found > -1) {
-          let temp_terms_not_found = temp_d.substring(idx_terms_not_found);
-          let terms_not_found = temp_terms_not_found.split(", ");
-          if (project_core_id in terms_not_found) {
+        let message_offset = (idx_not_found === idx_not_found_0) ? 44 : 46;  // figure out how many characters to skip to get to terms
+        let temp_d = d.substring(idx_not_found + message_offset);  // offset substring past 'The following term...'
+        let idx_terms_not_found_0 = temp_d.indexOf("\"");
+        let idx_terms_not_found_1 = temp_d.indexOf("<");
+        let idx_terms_not_found = Math.min(idx_terms_not_found_0, idx_terms_not_found_1);  // no need to check for positive index
+        let temp_terms_not_found = temp_d.substring(0, idx_terms_not_found);
+        let terms_not_found = temp_terms_not_found.split(", ");
+        // strip any suffixes from the excluded terms
+        for (var i = 0; i < terms_not_found.length; i++) {
+          if (terms_not_found[i].split("-")[0] === project_core_id){
             // core project id found in excluded terms
             break;
           }
-        }
-        else {
-          console.log("Failed to parse Multiple Page Results. Could not parse terms excluded from PubMed search.")
-          break;
         }
       }
     }
@@ -183,7 +196,7 @@ const parsePublicationsPages = async (uri, filter_date, project_core_id) => {
         }
         else{
           isEnd = true;
-          break;  // 11/12/2021 adeforge, make sure this doesn't break anything, would be a performance upgrade for large pages of results that are mostly too old (common)
+          //break;  // 11/12/2021 adeforge, make sure this doesn't break anything, would be a performance upgrade for large pages of results that are mostly too old (common)
         }
         idx_start = tmp.indexOf("data-article-id=");
     }
@@ -196,16 +209,27 @@ const searchPublications = async (keyword, project_award_date, project_core_id) 
   let pubs = {};
 
   // pre-flight, check for single result or no results
-  let sort_size_params = "&sort=date&size=200";
-  var uri = apis.pmWebsite + keyword + sort_size_params;
+  let GET_params = "&sort=date&size=200&page=";
+  var uri = apis.pmWebsite + keyword + GET_params + "1";  // 11/17/2021 adeforge, start on the first page manually here, might break single page results(?)
   console.log(uri);
   console.log("Project Award Date " + project_award_date);
+  // let hit = false;
+  // let hypertext = null;
+  // while (!hit) {
   let hypertext = await fetch(uri);
+    // if the GET request fails, rate limit and retry
+  //   if (hypertext === null) {
+  //     await new Promise(resolve => setTimeout(resolve, 500));
+  //   }
+  //   else {
+  //     hit = true;
+  //   }
+  // }
 
   // the search returned a single result
-  if (hypertext.indexOf("id=\"article-page") > -1){ // cdom.querySelector("#article-page") != null){
+  if (hypertext.indexOf("id=\"article-page") > -1){
     console.log("Single result");
-    pubs = await parsePublicationPage(hypertext, filter_date); // cdom, filter_date);
+    pubs = await parsePublicationPage(hypertext, filter_date);
     return pubs;
   }
   
@@ -237,12 +261,12 @@ const searchPublications = async (keyword, project_award_date, project_core_id) 
 
   // the search returned multiple results
   console.log("Multiple results");
-  pubs = await parsePublicationsPages(uri, filter_date, project_core_id);
+  pubs = await parsePublicationsPages(hypertext, uri, filter_date, project_core_id);
   console.log(Object.keys(pubs).length + " results");
   return pubs;
 };
 
-const generateFilter = (projects) => {
+const generateAdvancedSearchCoreTerms = (projects) => {
   let result = {};
   let projectNums = Object.keys(projects);
   for (var i = 0; i < projectNums.length; i++) {
@@ -266,7 +290,7 @@ const generateFilter = (projects) => {
 }
 
 const run = async (projects, publications) => {
-  let advanced_search_filter = generateFilter(projects);
+  let advanced_search_core_terms = generateAdvancedSearchCoreTerms(projects);
   let projectNums = Object.keys(projects);
   
   for(let i = 0; i< projectNums.length; i++){
@@ -284,17 +308,34 @@ const run = async (projects, publications) => {
       // aside from Advanced Search, query the raw project id (with its associated project award date)
       //  if it has a suffix
       if (project_suffix != "") {
-        keywords.push(projectNums[i]);
+        let advanced_keywords = []
+        let leading_numeral = getLeadingNumeral(projectNums[i]);
+        // project id with and without space separating between activity code with leading numeral and project core id with suffix
+        advanced_keywords.push(projectNums[i]);
+        advanced_keywords.push(leading_numeral + project_activity_code + " " + project_core_id + project_suffix);
+        // project id with and without space separating between activity code without leading numeral and project core id with suffix
+        advanced_keywords.push(project_activity_code + project_core_id + project_suffix);
+        advanced_keywords.push(project_activity_code + " " + project_core_id + project_suffix);
+
+        // prepare the Advanced Search query
+        let advanced_keyword = "";
+        for (var j = 0; j < advanced_keywords.length; j++) {
+          if (j > 0) {
+            advanced_keyword += " OR ";
+          }
+          advanced_keyword += "(" + advanced_keywords[j] + ")";
+        }
+        keywords.push(advanced_keyword);
       }
 
       // determine whether or not to run Advanced Search query
       //  we want to run the Advanced Search query once and with the oldest project award date
-      let filter_key = project_activity_code + project_core_id;
-      if (advanced_search_filter[filter_key]["award_date"] === project_award_date && advanced_search_filter[filter_key]["hit"] === false) {
-        advanced_search_filter[filter_key]["hit"] = true;
+      let core_terms_key = project_activity_code + project_core_id;
+      if (advanced_search_core_terms[core_terms_key]["award_date"] === project_award_date && advanced_search_core_terms[core_terms_key]["hit"] === false) {
+        advanced_search_core_terms[core_terms_key]["hit"] = true;
 
         let bases = [project_activity_code + project_core_id, project_activity_code + " " + project_core_id];
-        let leading_numerals = Array.from(advanced_search_filter[filter_key]["leading_numerals"]);
+        let leading_numerals = Array.from(advanced_search_core_terms[core_terms_key]["leading_numerals"]);
         if (!("" in leading_numerals)) {
           leading_numerals.push("");  // empty string for the case when there is no leading numeral
         }
