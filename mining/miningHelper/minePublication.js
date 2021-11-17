@@ -139,15 +139,16 @@ const parsePublicationsPages = async (hypertext, uri, filter_date, project_core_
       d = hypertext;
     }
     
-    // check to see if project core id was excluded by PubMed search (mostly needed for queries on terms with a space)
-    // 11/17/2021 adeforge, may need to revisit the reason for this (was for Advanced Search, now its for search terms with a space(?))
+    // check to see if project core id was excluded by PubMed search
+    // only searches on a single 'term with a space' need this, the problem with terms with a space is part of the term can be excluded,
+    //  leaving results for only part of a search term (false positives).
     if (currPage === 1) {
       let idx_not_found_0 = d.indexOf("The following term was not found in PubMed: ");  // 44 characters
-      let idx_not_found_1 = d.indexOf("The following terms were not found in PubMed: ");  // 46 characters
-      let idx_not_found = Math.max(idx_not_found_0, idx_not_found_1);
-      if (idx_not_found > -1) {
-        let message_offset = (idx_not_found === idx_not_found_0) ? 44 : 46;  // figure out how many characters to skip to get to terms
-        let temp_d = d.substring(idx_not_found + message_offset);  // offset substring past 'The following term...'
+      // let idx_not_found_1 = d.indexOf("The following terms were not found in PubMed: ");  // 46 characters
+      // let idx_not_found = Math.max(idx_not_found_0, idx_not_found_1);
+      if (idx_not_found_0 > -1) {  // idx_not_found > -1) {
+        // let message_offset = (idx_not_found === idx_not_found_0) ? 44 : 46;  // figure out how many characters to skip to get to terms
+        let temp_d = d.substring(idx_not_found_0 + 44);  // idx_not_found + message_offset);  // offset substring past 'The following term...'
         let idx_terms_not_found_0 = temp_d.indexOf("\"");
         let idx_terms_not_found_1 = temp_d.indexOf("<");
         let idx_terms_not_found = Math.min(idx_terms_not_found_0, idx_terms_not_found_1);  // no need to check for positive index
@@ -157,7 +158,7 @@ const parsePublicationsPages = async (hypertext, uri, filter_date, project_core_
         // for when terms with a space are searched (individually)
         let excluded = false;
         for (var i = 0; i < terms_not_found.length; i++) {
-          if (terms_not_found[i].split("-")[0] === project_core_id) {
+          if (terms_not_found[i].split("-")[0] === project_core_id) {  // doesn't matter if it has a suffix
             excluded = true;
             break;
           }
