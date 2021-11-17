@@ -144,11 +144,11 @@ const parsePublicationsPages = async (hypertext, uri, filter_date, project_core_
     //  leaving results for only part of a search term (false positives).
     if (currPage === 1) {
       let idx_not_found_0 = d.indexOf("The following term was not found in PubMed: ");  // 44 characters
-      // let idx_not_found_1 = d.indexOf("The following terms were not found in PubMed: ");  // 46 characters
-      // let idx_not_found = Math.max(idx_not_found_0, idx_not_found_1);
-      if (idx_not_found_0 > -1) {  // idx_not_found > -1) {
-        // let message_offset = (idx_not_found === idx_not_found_0) ? 44 : 46;  // figure out how many characters to skip to get to terms
-        let temp_d = d.substring(idx_not_found_0 + 44);  // idx_not_found + message_offset);  // offset substring past 'The following term...'
+      let idx_not_found_1 = d.indexOf("The following terms were not found in PubMed: ");  // 46 characters
+      let idx_not_found = Math.max(idx_not_found_0, idx_not_found_1);
+      if (idx_not_found > -1) {
+        let message_offset = (idx_not_found === idx_not_found_0) ? 44 : 46;  // figure out how many characters to skip to get to terms
+        let temp_d = d.substring(idx_not_found + message_offset);  // offset substring past 'The following term...'
         let idx_terms_not_found_0 = temp_d.indexOf("\"");
         let idx_terms_not_found_1 = temp_d.indexOf("<");
         let idx_terms_not_found = Math.min(idx_terms_not_found_0, idx_terms_not_found_1);  // no need to check for positive index
