@@ -14,12 +14,7 @@ const run = async (projectsTodo) => {
     body.limit = 100;
     body.sort_field = "fiscal_year";
     body.sort_order = "desc";
-    let d = await post(apis.nihReporterApi, body);
-    // if the POST request fails, rate limit and retry
-    // if (d === null) {
-    //   await new Promise(resolve => setTimeout(resolve, 500));  // the RePorter API seems to have issues if we query too quickly, no robot.txt found for guidance
-    //   i = i-1;
-    // }
+    let d = await post(apis.nihReporterApi, body, true);  // true is keep trying until successful response
     if(d.meta && d.meta.total > 0){
       for(let j = 0; j < d.results.length ; j++){
         if(d.results[j].subproject_id === null){

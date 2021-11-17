@@ -5,8 +5,9 @@ const fs = require("fs");
 
 const dataFilesDir = path.join(__dirname, "data_files");
 
-const fetch = async (url) => {
+const fetch = async (url, keep_trying=false) => {
   let counter = 0;
+  const MAX_RETRIES = 200;
   while (true) {
     try {
       const response = await axios.get(url, {timeout: 60000, clarifyTimeoutError: false});
@@ -14,6 +15,9 @@ const fetch = async (url) => {
     } catch (error) {
       console.log("GET failed");
       console.log(url);
+      if (keep_trying === false || counter >= MAX_RETRIES) {
+        return "failed";
+      }
       counter++;
       console.log("Retry Attempt: " + counter);
       await new Promise(resolve => setTimeout(resolve, 500));
@@ -21,8 +25,9 @@ const fetch = async (url) => {
   }
 };
 
-const post = async (url, body) => {
+const post = async (url, body, keep_trying=false) => {
   let counter = 0;
+  const MAX_RETRIES = 200;
   while (true) {
     try {
       const response = await axios.post(url, body);
@@ -30,6 +35,9 @@ const post = async (url, body) => {
     } catch (error) {
       console.log("POST failed");
       console.log(url);
+      if (keep_trying === false || counter >=MAX_RETRIES) {
+        return "failed";
+      }
       counter++;
       console.log("Retry Attempt: " + counter);
       await new Promise(resolve => setTimeout(resolve, 500));

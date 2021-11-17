@@ -16,7 +16,7 @@ const { filter, set } = require('lodash');
 const getIciteData = async (publications) => {
   const pmIds = Object.keys(publications);
   for(let p = 0; p < pmIds.length; p++){
-    let d = await fetch(apis.iciteApi +  pmIds[p]);
+    let d = await fetch(apis.iciteApi +  pmIds[p], true);  // true to keep trying until successful response
 
     if(d.data && d.data.length > 0){
       let pmData = d.data[0];
@@ -133,7 +133,7 @@ const parsePublicationsPages = async (hypertext, uri, filter_date, project_core_
     let d = null;
     // the first page is given as the 'hypertext' parameter
     if (currPage >= 2) {
-      d = await fetch(uri + currPage);
+      d = await fetch(uri + currPage, true);  // true to keep trying until successful response
     }
     else {
       d = hypertext;
@@ -209,7 +209,7 @@ const searchPublications = async (keyword, project_award_date, project_core_id) 
   var uri = apis.pmWebsite + keyword + GET_params + "1";  // start on the first page manually here
   console.log(uri);
   console.log("Project Award Date " + project_award_date);
-  let hypertext = await fetch(uri);
+  let hypertext = await fetch(uri, true);  // true to keep trying until successful response
 
   // the search returned a single result
   if (hypertext.indexOf("id=\"article-page") > -1){
