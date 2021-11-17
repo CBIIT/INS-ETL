@@ -17,11 +17,7 @@ const getIciteData = async (publications) => {
   const pmIds = Object.keys(publications);
   for(let p = 0; p < pmIds.length; p++){
     let d = await fetch(apis.iciteApi +  pmIds[p]);
-    // // if the GET request fails, rate limit and retry
-    // if (d === null) {
-    //   await new Promise(resolve => setTimeout(resolve, 500));
-    //   p = p - 1;
-    // }
+
     if(d.data && d.data.length > 0){
       let pmData = d.data[0];
       publications[pmIds[p]].journal = pmData.journal;
@@ -130,7 +126,6 @@ const parsePublicationPage = async (hypertext, filter_date) => {
 // returns a parsed page of publications
 const parsePublicationsPages = async (hypertext, uri, filter_date, project_core_id) => {
   let pubs = {};
-  // let pagination_param = "&page=";
   let idx_start = 0;
   let currPage = 1;
   let isEnd = false;
@@ -138,18 +133,14 @@ const parsePublicationsPages = async (hypertext, uri, filter_date, project_core_
     let d = null;
     // the first page is given as the 'hypertext' parameter
     if (currPage >= 2) {
-      d = await fetch(uri + currPage); //pagination_param + currPage);
-      // // if the GET request fails, rate limit and retry
-      // if (d === null) {
-      //   await new Promise(resolve => setTimeout(resolve, 500));
-      //   continue;
-      // }
+      d = await fetch(uri + currPage);
     }
     else {
       d = hypertext;
     }
     
-    // check to see if project core id was excluded by PubMed search (mostly needed for Advanced Search query)
+    // check to see if project core id was excluded by PubMed search (mostly needed for queries on terms with a space)
+    // 11/17/2021 adeforge, may need to revisit the reason for this (was for Advanced Search, now its for search terms with a space(?))
     if (currPage === 1) {
       let idx_not_found_0 = d.indexOf("The following term was not found in PubMed: ");  // 44 characters
       let idx_not_found_1 = d.indexOf("The following terms were not found in PubMed: ");  // 46 characters
@@ -162,12 +153,17 @@ const parsePublicationsPages = async (hypertext, uri, filter_date, project_core_
         let idx_terms_not_found = Math.min(idx_terms_not_found_0, idx_terms_not_found_1);  // no need to check for positive index
         let temp_terms_not_found = temp_d.substring(0, idx_terms_not_found);
         let terms_not_found = temp_terms_not_found.split(", ");
-        // strip any suffixes from the excluded terms
+        // check if project core id was excluded from search terms
+        // for when terms with a space are searched (individually)
+        let excluded = false;
         for (var i = 0; i < terms_not_found.length; i++) {
-          if (terms_not_found[i].split("-")[0] === project_core_id){
-            // core project id found in excluded terms
+          if (terms_not_found[i].split("-")[0] === project_core_id) {
+            excluded = true;
             break;
           }
+        }
+        if (excluded === true) {
+          break;
         }
       }
     }
@@ -210,21 +206,10 @@ const searchPublications = async (keyword, project_award_date, project_core_id) 
 
   // pre-flight, check for single result or no results
   let GET_params = "&sort=date&size=200&page=";
-  var uri = apis.pmWebsite + keyword + GET_params + "1";  // 11/17/2021 adeforge, start on the first page manually here, might break single page results(?)
+  var uri = apis.pmWebsite + keyword + GET_params + "1";  // start on the first page manually here
   console.log(uri);
   console.log("Project Award Date " + project_award_date);
-  // let hit = false;
-  // let hypertext = null;
-  // while (!hit) {
   let hypertext = await fetch(uri);
-    // if the GET request fails, rate limit and retry
-  //   if (hypertext === null) {
-  //     await new Promise(resolve => setTimeout(resolve, 500));
-  //   }
-  //   else {
-  //     hit = true;
-  //   }
-  // }
 
   // the search returned a single result
   if (hypertext.indexOf("id=\"article-page") > -1){
@@ -303,19 +288,26 @@ const run = async (projects, publications) => {
       let project_activity_code = getActivityCode(projectNums[i]);
       let project_suffix = getSuffix(projectNums[i]);
 
+      // 11/17/2021 adeforge, terms with a space in them need to be searched individually, otherwise we get false negatives (missed publications).
+      //  In an advanced search, if a term with a space fails (its project core id is excluded), it nullifies any good results from any other terms
+      //  in an irrecoverable way -- completely pollutes the results; therefore, all are rejected resulting in lost good publications
       let keywords = [];
 
-      // aside from Advanced Search, query the raw project id (with its associated project award date)
+      // aside from the core advanced search, query the raw project id (with its associated project award date)
       //  if it has a suffix
+      // 11/17/2021 adeforge, this isn't included with the core advanced search terms because I think:
+      //   if we're searching by a full project id, then it should be filtered by its own award date,
+      //   as opposed to the oldest award date for the group of related projects.
+      //   Otherwise we could do one advanced search for the entire group and filter by the oldest award date
       if (project_suffix != "") {
         let advanced_keywords = []
         let leading_numeral = getLeadingNumeral(projectNums[i]);
         // project id with and without space separating between activity code with leading numeral and project core id with suffix
         advanced_keywords.push(projectNums[i]);
-        advanced_keywords.push(leading_numeral + project_activity_code + " " + project_core_id + project_suffix);
+        keywords.push(leading_numeral + project_activity_code + " " + project_core_id + project_suffix);  // terms with a space must be searched individually
         // project id with and without space separating between activity code without leading numeral and project core id with suffix
         advanced_keywords.push(project_activity_code + project_core_id + project_suffix);
-        advanced_keywords.push(project_activity_code + " " + project_core_id + project_suffix);
+        keywords.push(project_activity_code + " " + project_core_id + project_suffix);  // terms with a space must be searched individually
 
         // prepare the Advanced Search query
         let advanced_keyword = "";
@@ -343,7 +335,12 @@ const run = async (projects, publications) => {
         let advanced_keywords = [];
         leading_numerals.forEach(num => {
           bases.forEach(base => {
-              advanced_keywords.push(num + base);
+              if (base.indexOf(" ") > -1) {
+                keywords.push(num + base);  // terms with a space must be searched individually
+              }
+              else {
+                advanced_keywords.push(num + base);
+              }
           });
         });
 
