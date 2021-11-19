@@ -252,20 +252,33 @@ const searchPublications = async (keyword, project_award_date, project_core_id) 
   return pubs;
 };
 
-const generateAdvancedSearchCoreTerms = (projects) => {
+const getSearchTermComponents = (projects) => {
   let result = {};
   let projectNums = Object.keys(projects);
   for (var i = 0; i < projectNums.length; i++) {
     let core_id = getCoreId(projectNums[i]);
     let activity_code = getActivityCode(projectNums[i]);
     let leading_numeral = getLeadingNumeral(projectNums[i]);
+    let suffix = getSuffix(projectNums[i]);
     let key = activity_code + core_id;
     if (!(key in result)) {
-      result[key] = {"award_date": projects[projectNums[i]].award_notice_date, "leading_numerals": new Set(leading_numeral), "hit": false};
+      result[key] = {"award_date": projects[projectNums[i]].award_notice_date, "leading_numerals": new Set(), "suffix_pairs": {}, "hit": false};
+      result[key]["leading_numerals"].add(leading_numeral); // we want all of the leading numerals
+      if (suffix != "") {
+        result[key]["suffix_pairs"][suffix] = [];  // we want all of the suffixes and their associated leading numerals
+        result[key]["suffix_pairs"][suffix].push(leading_numeral);
+      }
     }
     else {
       // we want all of the leading numerals
       result[key]["leading_numerals"].add(leading_numeral);
+      // we want all of the suffixes and their associated leading numerals
+      if (suffix != "") {
+        if (!(suffix in result[key]["suffix_pairs"])) {
+          result[key]["suffix_pairs"][suffix] = [];
+        }
+        result[key]["suffix_pairs"][suffix].push(leading_numeral);
+      }
       // we want the oldest award date
       if (result[key]["award_date"] > projects[projectNums[i]].award_notice_date) {
         result[key]["award_date"] = projects[projectNums[i]].award_notice_date;
@@ -276,7 +289,7 @@ const generateAdvancedSearchCoreTerms = (projects) => {
 }
 
 const run = async (projects, publications) => {
-  let advanced_search_core_terms = generateAdvancedSearchCoreTerms(projects);
+  let search_term_components = getSearchTermComponents(projects);
   let projectNums = Object.keys(projects);
   
   for(let i = 0; i< projectNums.length; i++){
@@ -287,28 +300,87 @@ const run = async (projects, publications) => {
       let project_award_date = projects[projectNums[i]].award_notice_date;
       let project_core_id = getCoreId(projectNums[i]);
       let project_activity_code = getActivityCode(projectNums[i]);
-      let project_suffix = getSuffix(projectNums[i]);
+      // let project_suffix = getSuffix(projectNums[i]);
 
       // 11/17/2021 adeforge, terms with a space in them need to be searched individually, otherwise we get false negatives (missed publications).
       //  In an advanced search, if a term with a space fails (its project core id is excluded), it nullifies any good results from any other terms
       //  in an irrecoverable way -- completely pollutes the results; therefore, all are rejected resulting in lost good publications
       let keywords = [];
 
-      // aside from the core advanced search, query the raw project id (with its associated project award date)
-      //  if it has a suffix
-      // 11/17/2021 adeforge, this isn't included with the core advanced search terms because I think:
-      //   if we're searching by a full project id, then it should be filtered by its own award date,
-      //   as opposed to the oldest award date for the group of related projects.
-      //   Otherwise we could do one advanced search for the entire group and filter by the oldest award date
-      if (project_suffix != "") {
-        let advanced_keywords = []
-        let leading_numeral = getLeadingNumeral(projectNums[i]);
-        // project id with and without space separating between activity code with leading numeral and project core id with suffix
-        advanced_keywords.push(projectNums[i]);
-        keywords.push(leading_numeral + project_activity_code + " " + project_core_id + project_suffix);  // terms with a space must be searched individually
-        // project id with and without space separating between activity code without leading numeral and project core id with suffix
-        advanced_keywords.push(project_activity_code + project_core_id + project_suffix);
-        keywords.push(project_activity_code + " " + project_core_id + project_suffix);  // terms with a space must be searched individually
+      // // aside from the core advanced search, query the raw project id (with its associated project award date)
+      // //  if it has a suffix
+      // // 11/17/2021 adeforge, this isn't included with the core advanced search terms because I think:
+      // //   if we're searching by a full project id, then it should be filtered by its own award date,
+      // //   as opposed to the oldest award date for the group of related projects.
+      // //   Otherwise we could do one advanced search for the entire group and filter by the oldest award date
+      // if (project_suffix != "") {
+      //   let advanced_keywords = []
+      //   let leading_numeral = getLeadingNumeral(projectNums[i]);
+      //   // project id with and without space separating between activity code with leading numeral and project core id with suffix
+      //   advanced_keywords.push(projectNums[i]);
+      //   keywords.push(leading_numeral + project_activity_code + " " + project_core_id + project_suffix);  // terms with a space must be searched individually
+      //   // project id with and without space separating between activity code without leading numeral and project core id with suffix
+      //   // advanced_keywords.push(project_activity_code + project_core_id + project_suffix);
+      //   // keywords.push(project_activity_code + " " + project_core_id + project_suffix);  // terms with a space must be searched individually
+
+      //   // prepare the Advanced Search query
+      //   let advanced_keyword = "";
+      //   for (var j = 0; j < advanced_keywords.length; j++) {
+      //     if (j > 0) {
+      //       advanced_keyword += " OR ";
+      //     }
+      //     advanced_keyword += "(" + advanced_keywords[j] + ")";
+      //   }
+      //   keywords.push(advanced_keyword);
+      // }
+
+      // determine whether or not to run Advanced Search query
+      //  we want to run the Advanced Search query once and with the oldest project award date
+      let search_term_key = project_activity_code + project_core_id;
+      if (search_term_components[search_term_key]["award_date"] === project_award_date && search_term_components[search_term_key]["hit"] === false) {
+        search_term_components[search_term_key]["hit"] = true;
+
+        let bases = [project_activity_code + project_core_id, project_activity_code + " " + project_core_id];
+
+        let leading_numerals = Array.from(search_term_components[search_term_key]["leading_numerals"]);
+        if (!("" in leading_numerals)) {
+          leading_numerals.push("");  // empty string for the case when there is no leading numeral
+        }
+
+        let suffix_pairs = search_term_components[search_term_key]["suffix_pairs"];
+
+        let advanced_keywords = [];
+        bases.forEach(base => {
+          // all combinations of bases and leading numerals
+          leading_numerals.forEach(num => {
+              // if a term doesn't have a leading numeral, it shouldn't have a suffix
+              // terms with a space must be searched individually
+              if (base.indexOf(" ") > -1) {
+                keywords.push(num + base);
+              }
+              else {
+                advanced_keywords.push(num + base);
+              }
+          });
+          // we only want to search a term with a suffix also too with a leading numeral,
+          //  we also don't want to pair a suffix with a leading numeral that isn't seen
+          //  in one of the raw project ids
+          // key is a suffix, value is an array of associated leading numerals
+          for (const [key, value] of Object.entries(suffix_pairs)) {
+            value.forEach(val => {
+              if (base.indexOf(" ") > -1) {
+                keywords.push(val + base + key);
+              }
+              else {
+                advanced_keywords.push(val + base + key);
+              }
+            });
+          }
+        });
+
+        // make sure keywords are unique
+        keywords = Array.from(new Set(keywords));
+        advanced_keywords = Array.from(new Set(advanced_keywords));
 
         // prepare the Advanced Search query
         let advanced_keyword = "";
@@ -320,40 +392,8 @@ const run = async (projects, publications) => {
         }
         keywords.push(advanced_keyword);
       }
-
-      // determine whether or not to run Advanced Search query
-      //  we want to run the Advanced Search query once and with the oldest project award date
-      let core_terms_key = project_activity_code + project_core_id;
-      if (advanced_search_core_terms[core_terms_key]["award_date"] === project_award_date && advanced_search_core_terms[core_terms_key]["hit"] === false) {
-        advanced_search_core_terms[core_terms_key]["hit"] = true;
-
-        let bases = [project_activity_code + project_core_id, project_activity_code + " " + project_core_id];
-        let leading_numerals = Array.from(advanced_search_core_terms[core_terms_key]["leading_numerals"]);
-        if (!("" in leading_numerals)) {
-          leading_numerals.push("");  // empty string for the case when there is no leading numeral
-        }
-
-        let advanced_keywords = [];
-        leading_numerals.forEach(num => {
-          bases.forEach(base => {
-              if (base.indexOf(" ") > -1) {
-                keywords.push(num + base);  // terms with a space must be searched individually
-              }
-              else {
-                advanced_keywords.push(num + base);
-              }
-          });
-        });
-
-        // prepare the Advanced Search query
-        let advanced_keyword = "";
-        for (var j = 0; j < advanced_keywords.length; j++) {
-          if (j > 0) {
-            advanced_keyword += " OR ";
-          }
-          advanced_keyword += "(" + advanced_keywords[j] + ")";
-        }
-        keywords.push(advanced_keyword);
+      else {
+        console.log("Project ID " + projectNums[i] + " line item skipped to optimize results for group " + project_activity_code + project_core_id);
       }
 
       // scrape PubMed for all keywords
