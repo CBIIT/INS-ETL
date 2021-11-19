@@ -1,0 +1,20 @@
+#######################################################
+11/19/2021 adeforge     Document creation
+#######################################################
+
+
+## PubMed scrape estimate, no caching, doesn't account for 'slipping' (POST or GET reequests that fail and are retried)
+# current search term logic, per group (share an activity code + core id)
+# the advanced search contains terms without a space between the activity code and core id (one hit), all other hits counted have that separator (terms with the separator are hit individually)
+hits_per_group = (number of unique leading numeral/suffix pairs) + (number of unique leading numerals) + 1 (activity code and core id only) + 1 (account for advanced search)
+
+num_groups = number of unique activity code/core id pairs (for all project ids the script inputs)
+
+time_to_hit_pubmed = 1-4 seconds (on my local over the VPN)  # these are very much eyeball estimates
+
+time_to_hit_icite = ~0.1 seconds (on my local over the VPN)  # these are very much eyeball estimates
+
+# pubmed_scrape_elapsed_time is not the full runtime of the script
+pubmed_scrape_elapsed_estimate = (num_groups * hits_per_group * time_to_hit_pubmed) + (time_to_hit_icite * total_publications_scraped)
+
+The first term for pubmed_scrape_elapsed_estimate can be known before the script runs while the second term can only be known after the script runs (or estimated based upon past script runs)
