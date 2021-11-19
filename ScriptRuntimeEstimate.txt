@@ -15,6 +15,6 @@ time_to_hit_pubmed = 1-4 seconds (on my local over the VPN)  # these are very mu
 time_to_hit_icite = ~0.1 seconds (on my local over the VPN)  # these are very much eyeball estimates
 
 # pubmed_scrape_elapsed_time is not the full runtime of the script
-pubmed_scrape_elapsed_estimate = (num_groups * hits_per_group * time_to_hit_pubmed) + (time_to_hit_icite * total_publications_scraped)
+pubmed_scrape_elapsed_estimate = (num_groups * avg(hits_per_group) * time_to_hit_pubmed) + (time_to_hit_icite * total_publications_scraped)
 
 The first term for pubmed_scrape_elapsed_estimate can be known before the script runs while the second term can only be known after the script runs (or estimated based upon past script runs)
