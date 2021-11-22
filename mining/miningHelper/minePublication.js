@@ -1,6 +1,3 @@
-const HTMLParser = require('node-html-parser');
-
-
 let _ = require("lodash");
 const {
   fetch,
@@ -16,6 +13,7 @@ const { filter, set } = require('lodash');
 const getIciteData = async (publications) => {
   const pmIds = Object.keys(publications);
   for(let p = 0; p < pmIds.length; p++){
+    // 11/22/2021 adeforge, TODO: cache this
     let d = await fetch(apis.iciteApi +  pmIds[p], true);  // true to keep trying until successful response
 
     if(d.data && d.data.length > 0){
@@ -306,33 +304,6 @@ const run = async (projects, publications) => {
       //  In an advanced search, if a term with a space fails (its project core id is excluded), it nullifies any good results from any other terms
       //  in an irrecoverable way -- completely pollutes the results; therefore, all are rejected resulting in lost good publications
       let keywords = [];
-
-      // // aside from the core advanced search, query the raw project id (with its associated project award date)
-      // //  if it has a suffix
-      // // 11/17/2021 adeforge, this isn't included with the core advanced search terms because I think:
-      // //   if we're searching by a full project id, then it should be filtered by its own award date,
-      // //   as opposed to the oldest award date for the group of related projects.
-      // //   Otherwise we could do one advanced search for the entire group and filter by the oldest award date
-      // if (project_suffix != "") {
-      //   let advanced_keywords = []
-      //   let leading_numeral = getLeadingNumeral(projectNums[i]);
-      //   // project id with and without space separating between activity code with leading numeral and project core id with suffix
-      //   advanced_keywords.push(projectNums[i]);
-      //   keywords.push(leading_numeral + project_activity_code + " " + project_core_id + project_suffix);  // terms with a space must be searched individually
-      //   // project id with and without space separating between activity code without leading numeral and project core id with suffix
-      //   // advanced_keywords.push(project_activity_code + project_core_id + project_suffix);
-      //   // keywords.push(project_activity_code + " " + project_core_id + project_suffix);  // terms with a space must be searched individually
-
-      //   // prepare the Advanced Search query
-      //   let advanced_keyword = "";
-      //   for (var j = 0; j < advanced_keywords.length; j++) {
-      //     if (j > 0) {
-      //       advanced_keyword += " OR ";
-      //     }
-      //     advanced_keyword += "(" + advanced_keywords[j] + ")";
-      //   }
-      //   keywords.push(advanced_keyword);
-      // }
 
       // determine whether or not to run Advanced Search query
       //  we want to run the Advanced Search query once and with the oldest project award date
