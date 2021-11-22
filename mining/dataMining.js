@@ -205,9 +205,9 @@ const writeToClinicalTrialsFile = () => {
 };
 
 const run = async (projectsTodo) => {
+  console.time('mineProject');
   projects = await mineProject.run(projectsTodo);
-  
-  // projects caching goes here (write to cache file)
+  console.timeEnd('mineProject');
 
   console.time('minePublication');
   await minePublication.run(projects, publications);
@@ -241,6 +241,7 @@ const run = async (projectsTodo) => {
   console.time('mineClinicalTrialsDetail');
   await mineClinicalTrialsDetail.run(projects, publications, clinicalTrials);
   console.timeEnd('mineClinicalTrialsDetail');
+  console.log("Number of clinical trials: " + Object.keys(clinicalTrials).length);
 
   await generateDataModel();
 
