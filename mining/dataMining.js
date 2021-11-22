@@ -205,21 +205,46 @@ const writeToClinicalTrialsFile = () => {
 };
 
 const run = async (projectsTodo) => {
-  // 11/1/2021 adeforge, other functionality commented out to isolate problem
   projects = await mineProject.run(projectsTodo);
-  await minePublication.run(projects, publications);
-  console.log("Number of publications: " + Object.keys(publications).length);
-  await minePM.run(publications);
-  await mineResearchOutputsFromPMC.run(publications);
-  await mineClinicalTrials.run(projects);
-
-  await mineSRADetail.run(publications, sras);
-  await mineGEODetail.run(publications, geos);
   
+  // projects caching goes here (write to cache file)
+
+  console.time('minePublication');
+  await minePublication.run(projects, publications);
+  console.timeEnd('minePublication');
+  console.log("Number of publications: " + Object.keys(publications).length);
+  
+  console.time('minePM');
+  await minePM.run(publications);
+  console.timeEnd('minePM');
+
+  console.time('mineResearchOutputsFromPMC');
+  await mineResearchOutputsFromPMC.run(publications);
+  console.timeEnd("mineResearchOutputsFromPMC");
+
+  console.time('mineClinicalTrials');
+  await mineClinicalTrials.run(projects);
+  console.timeEnd('mineClinicalTrials');
+
+  console.time('mineSRADetail');
+  await mineSRADetail.run(publications, sras);
+  console.timeEnd('mineSRADetail');
+
+  console.time('mineGEODetail');
+  await mineGEODetail.run(publications, geos);
+  console.timeEnd('mineGEODetail');
+  
+  console.time('mineDBGapDetail');
   await mineDBGapDetail.run(publications, dbgaps);
+  console.timeEnd('mineDBGapDetail');
+
+  console.time('mineClinicalTrialsDetail');
   await mineClinicalTrialsDetail.run(projects, publications, clinicalTrials);
+  console.timeEnd('mineClinicalTrialsDetail');
+
   await generateDataModel();
 
+  console.log('Writing Files...');
   writeToProjectFile();
   writeToPublicationFile();
   writeToGEOFile();
