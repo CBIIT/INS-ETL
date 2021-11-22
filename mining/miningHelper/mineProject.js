@@ -14,6 +14,7 @@ const run = async (projectsTodo) => {
     body.limit = 100;
     body.sort_field = "fiscal_year";
     body.sort_order = "desc";
+    // 11/22/2021 adeforge, TODO cache this
     let d = await post(apis.nihReporterApi, body, true);  // true is keep trying until successful response
     if(d.meta && d.meta.total > 0){
       for(let j = 0; j < d.results.length ; j++){
