@@ -1,3 +1,5 @@
+const axios = require('axios').default;
+
 const {
   fetch,
 } = require('../../common/utils');
@@ -30,7 +32,7 @@ const run = async (projects, publications, clinicalTrials) => {
         if(clinicalTrials[clinicaltrialID]){
           continue;
         }
-        console.log(apis.clinicalTrialsDetailSiteStudy + clinicaltrialID);
+        console.log("Collecting data for clinical trial " + apis.clinicalTrialsDetailSiteStudy + clinicaltrialID + " (" + ct + "/" + cts.length);
         // 11/22/2021 adeforge, custom GET logic which does not rely on utils
         //  because the clinical trials site study will error with 400, but that is actionable information.
         //  When the GET request errors, that is usually an indication that we want to hit the endpoint again
@@ -41,10 +43,11 @@ const run = async (projects, publications, clinicalTrials) => {
         const MAX_RETRIES = 100;
         let d = null;
         while (keep_trying && counter < MAX_RETRIES) {  // this handles if the request errors due to anything but a 400
-          d = await axios.get(apis.clinicalTrialsDetailSiteStudy + clinicaltrialID, {timeout: 60000, clarifyTimeoutError: false})
+          await axios.get(apis.clinicalTrialsDetailSiteStudy + clinicaltrialID, {timeout: 60000, clarifyTimeoutError: false})
                           .then(function (response) {
                             keep_trying = false;  // what if the call succeeds
                             failed = false;
+                            d = response.data;  // get the response
                           })
                           .catch(function (error) {
                             if (error.response.status === 400) {
@@ -55,12 +58,11 @@ const run = async (projects, publications, clinicalTrials) => {
                               console.log("GET failed");
                               console.log(apis.clinicalTrialsDetailSiteStudy + clinicaltrialID);
                               console.log("Retry Attempt: " + (counter + 1));
+                              await new Promise(resolve => setTimeout(resolve, 500));
                             }
                           });
           counter++;
         }
-        // let d = await fetch(apis.clinicalTrialsDetailSiteStudy + clinicaltrialID, true);  // keep_retrying?
-        // if(d.indexOf("Invalid URL Path - ClinicalTrials.gov") > -1){  // check if a bad clinical trial id was requested
         if (failed) {
           clinicalTrials[clinicaltrialID] = {};
           clinicalTrials[clinicaltrialID].title = "N/A";

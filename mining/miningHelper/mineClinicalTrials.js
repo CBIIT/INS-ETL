@@ -1,3 +1,5 @@
+const axios = require('axios').default;
+
 const {
   fetch,
   getCoreId,
@@ -12,12 +14,13 @@ const run = async (projects) => {
     if(projects[projectNums[i]].project_type !== "Contract") {
       let project_core_id = getCoreId(projectNums[i]);
       if (project_core_id in repeats) {
+        console.log("Project ID " + projectNums[i] + " line item skipped to optimize results for group " + project_core_id + "\n");
         continue;
       }
       else {
         repeats.push(project_core_id);
       }
-      console.log(apis.clinicalTrialsSite + project_core_id);
+      console.log("Getting clinical trials session for project: " + apis.clinicalTrialsSite + project_core_id);
       // 11/22/2021 adeforge, custom GET logic which does not rely on utils
       //  because the clinical trials site will error with 404, but that is actionable information.
       //  When the GET request errors, that is usually an indication that we want to hit the endpoint again
@@ -28,10 +31,11 @@ const run = async (projects) => {
       const MAX_RETRIES = 100;
       let d = null;
       while (keep_trying && counter < MAX_RETRIES) {  // this handles if the request errors due to anything but a 404
-        d = await axios.get(apis.clinicalTrialsSite + project_core_id, {timeout: 60000, clarifyTimeoutError: false})
+        await axios.get(apis.clinicalTrialsSite + project_core_id, {timeout: 60000, clarifyTimeoutError: false})
                         .then(function (response) {
                           keep_trying = false;  // what if the call succeeds
                           failed = false;
+                          d = response.data;  // get the response
                         })
                         .catch(function (error) {
                           if (error.response.status === 404) {
@@ -42,20 +46,20 @@ const run = async (projects) => {
                             console.log("GET failed");
                             console.log(apis.clinicalTrialsSite + project_core_id);
                             console.log("Retry Attempt: " + (counter + 1));
+                            await new Promise(resolve => setTimeout(resolve, 500));
                           }
                         });
         counter++;
       }
-      // if(d != "failed"){
       if (!failed) {
         let idx = d.indexOf("/ct2/results/rpc/");
         d = d.substring(idx + 17);
         idx = d.indexOf("\",");
         let session = d.substring(0, idx);
-        console.log(apis.clinicalTrialsApi + session);
-        let dt = await fetch(apis.clinicalTrialsApi + session, true);  // keep_trying?
+        console.log("Getting clinical trials for session: " + apis.clinicalTrialsApi + session);
+        let dt = await fetch(apis.clinicalTrialsApi + session, true);  // true is keep trying
         if(dt && dt.data){
-          dt.data.map((item) => {
+          dt.data.forEach((item) => {
             if(!projects[projectNums[i]].clinicalTrials){
               projects[projectNums[i]].clinicalTrials = [];
             }
@@ -65,8 +69,8 @@ const run = async (projects) => {
           });
         }
       }
-      // }
     }
+    console.log(`Collected ${projects[projectNums[i]].clinicalTrials ? projects[projectNums[i]].clinicalTrials.length : 0} Clinical Trials for project: ${projectNums[i]} [project ${i+1} of ${projectNums.length}]\n`);
   }
 };
 
