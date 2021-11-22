@@ -9,7 +9,7 @@ const run = async (publications) => {
     console.log(`Collecting More data from PubMed Central for : ${pmIds[p]}, (${p+1}/${pmIds.length})`);
     let pmcId = publications[pmIds[p]].pmc_id;
     if(pmcId){
-      let d = await fetch(apis.pmcApiPrefix + pmcId +'/');
+      let d = await fetch(apis.pmcApiPrefix + pmcId +'/');  // keep_trying?
       if(d != "failed"){
         //remove reference-list part and then search
         let idx_start = d.indexOf("reference-list");

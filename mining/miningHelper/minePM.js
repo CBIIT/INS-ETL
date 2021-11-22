@@ -7,7 +7,7 @@ const run = async (publications) => {
   let pmIds = Object.keys(publications);
   for(let p = 0; p < pmIds.length; p++){
     console.log(`Collecting PubMed Central ID for : ${pmIds[p]}`);
-    let d = await fetch(apis.pmArticleSite + pmIds[p] +'/');
+    let d = await fetch(apis.pmArticleSite + pmIds[p] +'/');  // keep_trying?
     if(d != "failed"){
         let idx = d.indexOf("\"PMCID\"");
         if(idx > -1){
@@ -27,7 +27,7 @@ const run = async (publications) => {
           let outputs = tmp.substring(0, idx_end + 5);
           //Get GEO DataSets
           if(outputs.indexOf("Related GEO DataSets") > -1){
-            d = await fetch(apis.pmGeoSite + pmIds[p]);
+            d = await fetch(apis.pmGeoSite + pmIds[p]);  // keep_trying?
             if(d != "failed"){
               publications[pmIds[p]].geos = [];
               let idx_start = d.indexOf("Accession: <");
@@ -44,7 +44,7 @@ const run = async (publications) => {
             }
           }
           if(outputs.indexOf("Links to Short Read Archive Experiments") > -1){
-            d = await fetch(apis.pmSraSite + pmIds[p]);
+            d = await fetch(apis.pmSraSite + pmIds[p]);  // keep_trying?
             if(d != "failed"){
               publications[pmIds[p]].sras = [];
               let idx = d.indexOf("Items:");
@@ -71,7 +71,7 @@ const run = async (publications) => {
                 srx = srx.substring(idx + 21);
                 idx = srx.indexOf("</dd>");
                 let accession_0 = srx.substring(0, idx);
-                let sra_detail = await fetch(apis.pmSraDetailSite + accession_0 + "[accn]");
+                let sra_detail = await fetch(apis.pmSraDetailSite + accession_0 + "[accn]");  // keep_trying?
                 let pos = 0; 
                 if(sra_detail != "failed"){
                     pos = sra_detail.indexOf("Link to SRA Study\">");
@@ -84,7 +84,7 @@ const run = async (publications) => {
             }
           }
           if(outputs.indexOf("Related dbGaP record") > -1){
-            d = await fetch(apis.pmDbgapSite + pmIds[p]);
+            d = await fetch(apis.pmDbgapSite + pmIds[p]);  // keep_trying?
             if(d != "failed"){
               publications[pmIds[p]].dbgaps = [];
               let idx_start = d.indexOf("font-weight:600");
