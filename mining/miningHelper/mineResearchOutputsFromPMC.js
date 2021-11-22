@@ -9,6 +9,7 @@ const run = async (publications) => {
     console.log(`Collecting More data from PubMed Central for : ${pmIds[p]}, (${p+1}/${pmIds.length})`);
     let pmcId = publications[pmIds[p]].pmc_id;
     if(pmcId){
+      // 11/22/2021 adeforge, TODO: cache this
       let d = await fetch(apis.pmcApiPrefix + pmcId +'/');  // keep_trying?
       if(d != "failed"){
         //remove reference-list part and then search
