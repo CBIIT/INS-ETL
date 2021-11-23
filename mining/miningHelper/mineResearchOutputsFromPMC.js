@@ -53,18 +53,20 @@ const run = async (publications) => {
           })
         }
 
+        // 11/23/2021 adeforge, we don't want to search PubMed Central for related clinical trials,
+        //  clinical trials mentioned in the body of a research paper are sometimes just cited, not related.
         //Look for clinical trials number
-        let cts = d.match(/NCT[0-9]{8}/g);
-        if(cts != null && cts.length > 0){
-          cts.map(function(ct){
-            if(!publications[pmIds[p]].clinicalTrials){
-              publications[pmIds[p]].clinicalTrials = [];
-            }
-            if(publications[pmIds[p]].clinicalTrials.indexOf(ct) === -1){
-              publications[pmIds[p]].clinicalTrials.push(ct);
-            }
-          })
-        }
+        // let cts = d.match(/NCT[0-9]{8}/g);
+        // if(cts != null && cts.length > 0){
+        //   cts.map(function(ct){
+        //     if(!publications[pmIds[p]].clinicalTrials){
+        //       publications[pmIds[p]].clinicalTrials = [];
+        //     }
+        //     if(publications[pmIds[p]].clinicalTrials.indexOf(ct) === -1){
+        //       publications[pmIds[p]].clinicalTrials.push(ct);
+        //     }
+        //   })
+        // }
       }
     }
   }
