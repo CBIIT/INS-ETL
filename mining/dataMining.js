@@ -30,7 +30,7 @@ let dbgaps = {};
 let clinicalTrials = {};
 
 const generateDataModel = async () => {
-  //clinicaltrial
+  //clinical trial by project
   for(let key in projects){
     let cts = projects[key].clinicalTrials;
     if(cts){
@@ -39,6 +39,19 @@ const generateDataModel = async () => {
           clinicalTrials[ct].projects = [];
         }
         clinicalTrials[ct].projects.push(key);
+      });
+    }
+  }
+
+  //clinical trial by publication
+  for(let key in publications){
+    let cts = publications[key].clinicalTrials;
+    if(cts){
+      cts.forEach((ct) => {
+        if(!clinicalTrials[ct].publications) {
+          clinicalTrials[ct].publications = [];
+        }
+        clinicalTrials[ct].publications.push(key);
       });
     }
   }
@@ -188,7 +201,7 @@ const writeToDBGapFile = () => {
 
 const writeToClinicalTrialsFile = () => {
   let data = "";
-  let columns = ["type", "clinical_trial_id", "title", "last_update_posted", "recruitment_status", "project.project_id"];
+  let columns = ["type", "clinical_trial_id", "title", "last_update_posted", "recruitment_status", "project.project_id", "publication"];
   data = columns.join("\t") + "\n";
   for(let clinicaltrialID in clinicalTrials){
     let tmp = [];
@@ -197,8 +210,14 @@ const writeToClinicalTrialsFile = () => {
     tmp.push(clinicalTrials[clinicaltrialID].title);
     tmp.push(clinicalTrials[clinicaltrialID].last_update_posted);
     tmp.push(clinicalTrials[clinicaltrialID].recruitment_status);
-    clinicalTrials[clinicaltrialID].projects.map((p) => {
-      data += tmp.join("\t") + "\t" + p + "\n";
+    if (clinicalTrials[clinicaltrialID].projects) {
+      clinicalTrials[clinicaltrialID].projects.map((p) => {
+        data += tmp.join("\t") + "\t" + p + "\t" + "" + "\n";  // if a clinical trial came from a project id
+      });
+    }
+    if (clinicalTrials[clinicaltrialID].publications)
+    clinicalTrials[clinicaltrialID].publications.map((p) => {
+      data += tmp.join("\t") + "\t" + "" + "\t" + p + "\n";  // if a clinical trial came from a publication id
     });
   }
   fs.writeFileSync('data/clinical_trial.tsv', data);
@@ -223,7 +242,7 @@ const run = async (projectsTodo) => {
   console.timeEnd("mineResearchOutputsFromPMC");
 
   console.time('mineClinicalTrials');
-  await mineClinicalTrials.run(projects);
+  await mineClinicalTrials.run(projects, publications);
   console.timeEnd('mineClinicalTrials');
 
   console.time('mineSRADetail');
@@ -239,6 +258,7 @@ const run = async (projectsTodo) => {
   console.timeEnd('mineDBGapDetail');
 
   console.time('mineClinicalTrialsDetail');
+  // combines clinical trials mined by project and mined by publication
   await mineClinicalTrialsDetail.run(projects, publications, clinicalTrials);
   console.timeEnd('mineClinicalTrialsDetail');
   console.log("Number of clinical trials: " + Object.keys(clinicalTrials).length);
