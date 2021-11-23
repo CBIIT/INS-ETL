@@ -6,7 +6,7 @@ const apis = require('../../common/apis');
 const run = async (publications) => {
   let pmIds = Object.keys(publications);
   for(let p = 0; p < pmIds.length; p++){
-    console.log(`Collecting PubMed Central ID for : ${pmIds[p]}`);
+    console.log(`Collecting PubMed Central ID for : ${pmIds[p]}, (${p+1}/${pmIds.length})`);
     let d = await fetch(apis.pmArticleSite + pmIds[p] +'/');  // keep_trying?
     if(d != "failed"){
         let idx = d.indexOf("\"PMCID\"");
