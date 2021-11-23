@@ -1,7 +1,7 @@
 const axios = require('axios').default;
 
 const {
-  fetch,
+  fetch, fetchWithErrorCheck,
 } = require('../../common/utils');
 const apis = require('../../common/apis');
 const _ = require('lodash');
@@ -32,37 +32,44 @@ const run = async (projects, publications, clinicalTrials) => {
         if(clinicalTrials[clinicaltrialID]){
           continue;
         }
-        console.log("Collecting data for clinical trial " + apis.clinicalTrialsDetailSiteStudy + clinicaltrialID + " (" + ct + "/" + cts.length);
+        console.log("Collecting data for clinical trial " + clinicaltrialID + " (" + (ct+1) + "/" + cts.length + ")");
+        console.log(apis.clinicalTrialsDetailSiteStudy + clinicaltrialID);
         // 11/22/2021 adeforge, custom GET logic which does not rely on utils
         //  because the clinical trials site study will error with 400, but that is actionable information.
         //  When the GET request errors, that is usually an indication that we want to hit the endpoint again
         //  until we get a non-error-producing response; not in this case, but we still want to avoid errors due to anything else
-        let failed = true; // we need to keep track of whether or not the call failed properly, aside from errors other than 400
-        let keep_trying = true;
-        let counter = 0;
-        const MAX_RETRIES = 100;
-        let d = null;
-        while (keep_trying && counter < MAX_RETRIES) {  // this handles if the request errors due to anything but a 400
-          await axios.get(apis.clinicalTrialsDetailSiteStudy + clinicaltrialID, {timeout: 60000, clarifyTimeoutError: false})
-                          .then(function (response) {
-                            keep_trying = false;  // what if the call succeeds
-                            failed = false;
-                            d = response.data;  // get the response
-                          })
-                          .catch(function (error) {
-                            if (error.response.status === 400) {
-                              keep_trying = false;
-                              failed = true;
-                            }
-                            else {
-                              console.log("GET failed");
-                              console.log(apis.clinicalTrialsDetailSiteStudy + clinicaltrialID);
-                              console.log("Retry Attempt: " + (counter + 1));
-                              await new Promise(resolve => setTimeout(resolve, 500));
-                            }
-                          });
-          counter++;
-        }
+        // let failed = true; // we need to keep track of whether or not the call failed properly, aside from errors other than 400
+        // let keep_trying = true;
+        // let counter = 0;
+        // const MAX_RETRIES = 100;
+        // let d = null;
+        // while (keep_trying && counter < MAX_RETRIES) {  // this handles if the request errors due to anything but a 400
+        //   await axios.get(apis.clinicalTrialsDetailSiteStudy + clinicaltrialID, {timeout: 60000, clarifyTimeoutError: false})
+        //                   .then(function (response) {
+        //                     keep_trying = false;  // what if the call succeeds
+        //                     failed = false;
+        //                     d = response.data;  // get the response
+        //                   })
+        //                   .catch(function (error) {
+        //                     if (error.response && error.response.status === 400) {
+        //                       keep_trying = false;
+        //                       failed = true;
+        //                     }
+        //                     else {
+        //                       console.log("GET failed");
+        //                       console.log(apis.clinicalTrialsDetailSiteStudy + clinicaltrialID);
+        //                       console.log("Retry Attempt: " + (counter + 1));
+        //                     }
+        //                   });
+        //   if (keep_trying) {
+        //     await new Promise(resolve => setTimeout(resolve, 500));
+        //   }
+        //   counter++;
+        // }
+
+        // only fail on HTTP error code 400, otherwise keep trying
+        let d = fetchWithErrorCheck(apis.clinicalTrialsDetailSiteStudy + clinicaltrialID, 400);
+
         if (failed) {
           clinicalTrials[clinicaltrialID] = {};
           clinicalTrials[clinicaltrialID].title = "N/A";
