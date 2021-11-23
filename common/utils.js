@@ -25,6 +25,36 @@ const fetch = async (url, keep_trying=false) => {
   }
 };
 
+// returns null if failed due to error code or returns the response data otherwise
+const fetchWithErrorCheck = async (url, error_code) => {
+  let keep_trying = true;
+  let counter = 0;
+  const MAX_RETRIES = 200;
+  let d = null;
+  while (keep_trying && counter < MAX_RETRIES) {  // this handles if the request errors due to anything but a 404
+    await axios.get(url, {timeout: 60000, clarifyTimeoutError: false})
+                    .then(function (response) {
+                      keep_trying = false;  // what if the call succeeds
+                      d = response.data;  // get the response
+                    })
+                    .catch(function (error) {
+                      if (error.response && error.response.status === error_code) {
+                        keep_trying = false;
+                      }
+                      else {
+                        console.log("GET failed");
+                        console.log(url);
+                        console.log("Retry Attempt: " + (counter + 1));
+                      }
+                    });
+    if (keep_trying) {
+      await new Promise(resolve => setTimeout(resolve, 500));
+    }
+    counter++;
+  }
+  return d;
+};
+
 const post = async (url, body, keep_trying=false) => {
   let counter = 0;
   const MAX_RETRIES = 200;
@@ -110,4 +140,5 @@ module.exports = {
   readCachedSRAs,
   readCachedDBGaps,
   readCachedClinicalTrials,
+  fetchWithErrorCheck,
 };
