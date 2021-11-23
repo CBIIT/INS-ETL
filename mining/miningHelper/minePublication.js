@@ -9,11 +9,61 @@ const {
 } = require('../../common/utils');
 const apis = require('../../common/apis');
 const { filter, set } = require('lodash');
+const fs = require('fs');
+
+// 11/23/2021 adeforge, TODO: partially implemented icite caching
+// let icite_cache = {};
+
+// 11/23/2021 adeforge, TODO: partially implemented icite caching
+// const loadIciteCache = () => {
+//   let columns = ["pmid", "journal", "title", "authors", "year", "citation_count", "doi", "relative_citation_ratio", "rcr_range", "nih_percentile"];
+//   fs.writeFileSync('config/icitecache.tsv', { flag: 'wx' });  // make sure the file exists
+//   var data = fs.readFileSync('config/icitecache.tsv');
+//   data = data.split('\n');  // get each line
+//   for (var i = 0; i < data.length; i++) {  // parse each line
+//     icite_cache[columns[0]] = {};
+//     for (var j = 1; j < data[i].length; j++) {  // parse columns
+//       icite_cache[columns[0]][columns[j]] = data[i][j]; 
+//     }
+//   }
+// }
+
+// 11/23/2021 adeforge, TODO: partially implemented icite caching
+// const writeToIciteCache = (entry, pmid) => {
+//   let data = "";
+//   let columns = ["pmid", "journal", "title", "authors", "year", "citation_count", "doi", "relative_citation_ratio", "rcr_range", "nih_percentile"];
+//   data = columns.join("\t") + "\n";
+//   tmp.push(projects[projectID].project_id);
+//   let tmp = [];
+//   tmp.push(pmid);
+//   tmp.push(entry.journal);
+//   tmp.push(entry.title);
+//   tmp.push(entry.authors);
+//   tmp.push(entry.year);
+//   tmp.push(entry.citation_count);
+//   tmp.push(entry.doi);
+//   tmp.push(entry.relative_citation_ratio);
+//   tmp.push(entry.rcr_range);
+//   tmp.push(entry.nih_percentile);
+//   data += tmp.join("\t") + "\n";
+//   fs.appendFileSync('config/icitecache.tsv', data);
+// }
 
 const getIciteData = async (publications) => {
   const pmIds = Object.keys(publications);
   for(let p = 0; p < pmIds.length; p++){
-    // 11/22/2021 adeforge, TODO: cache this
+    // 11/23/2021 adeforge, TODO: partially implemented icite caching
+    // if (icite_cache[pmIds[p]]) {
+    //   publications[pmIds[p]].journal = icite_cache[pmIds[p]]["journal"];
+    //   publications[pmIds[p]].title = icite_cache[pmIds[p]]["title"];
+    //   publications[pmIds[p]].authors = icite_cache[pmIds[p]]["authors"];
+    //   publications[pmIds[p]].year = icite_cache[pmIds[p]]["year"];
+    //   publications[pmIds[p]].citation_count = icite_cache[pmIds[p]]["citation_count"];
+    //   publications[pmIds[p]].doi = icite_cache[pmIds[p]]["doi"];
+    //   publications[pmIds[p]].relative_citation_ratio = icite_cache[pmIds[p]]["relative_citation_ratio"];
+    //   publications[pmIds[p]].rcr_range = icite_cache[pmIds[p]]["rcr_range"];
+    //   publications[pmIds[p]].nih_percentile = icite_cache[pmIds[p]]["nih_percentile"];
+    // }
     let d = await fetch(apis.iciteApi +  pmIds[p], true);  // true to keep trying until successful response
 
     if(d.data && d.data.length > 0){
@@ -53,6 +103,10 @@ const getIciteData = async (publications) => {
       }
 
       publications[pmIds[p]].nih_percentile = pmData.nih_percentile;
+
+      // 11/23/2021 adeforge, TODO: partially implemented icite caching
+      // writeToIciteCache(publications[pmIds[p]], pmIds[p])
+
       console.log(`Updated Publication data from icite for : ${pmIds[p]}, (${p+1}/${pmIds.length})`);
     }
     else{
@@ -377,6 +431,8 @@ const run = async (projects, publications) => {
         });
       }
 
+      // 11/23/2021 adeforge, TODO: partially implemented icite caching
+      // loadIciteCache();
       await getIciteData(pubs);
   
       Object.keys(pubs).forEach((key) => {
