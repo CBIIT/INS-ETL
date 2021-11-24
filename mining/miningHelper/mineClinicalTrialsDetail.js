@@ -1,5 +1,3 @@
-const axios = require('axios').default;
-
 const {
   fetch, fetchWithErrorCheck,
 } = require('../../common/utils');
