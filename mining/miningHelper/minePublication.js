@@ -314,12 +314,14 @@ const getSearchTermComponents = (projects) => {
     let suffix = getSuffix(projectNums[i]);
     let key = activity_code + core_id;
     if (!(key in result)) {
-      result[key] = {"award_date": projects[projectNums[i]].award_notice_date, "leading_numerals": new Set(), "suffix_pairs": {}, "hit": false};
+      result[key] = {"award_date": projects[projectNums[i]].award_notice_date, "leading_numerals": new Set(), "suffix_pairs": {}, "group_terms": [], "hit": false};
       result[key]["leading_numerals"].add(leading_numeral); // we want all of the leading numerals
       if (suffix != "") {
         result[key]["suffix_pairs"][suffix] = [];  // we want all of the suffixes and their associated leading numerals
         result[key]["suffix_pairs"][suffix].push(leading_numeral);
       }
+      // we want the project ids in the group
+      result[key]["group_terms"].push(projectNums[i]);
     }
     else {
       // we want all of the leading numerals
@@ -331,6 +333,8 @@ const getSearchTermComponents = (projects) => {
         }
         result[key]["suffix_pairs"][suffix].push(leading_numeral);
       }
+      // we want the project ids in the group
+      result[key]["group_terms"].push(projectNums[i]);
       // we want the oldest award date
       if (result[key]["award_date"] > projects[projectNums[i]].award_notice_date) {
         result[key]["award_date"] = projects[projectNums[i]].award_notice_date;
@@ -440,7 +444,12 @@ const run = async (projects, publications) => {
           publications[key] = pubs[key];
           publications[key].projects = [];
         }
-        publications[key].projects.push(projectNums[i]);
+        // 11/24/2021 adeforge, we only do one publication scrape per group, this ensure that
+        //  all of the project ids for the group are associated with the
+        //  scraped publications
+        for (var proj in search_term_components["group_terms"]) {
+          publications[key].projects.push(proj);
+        }
       });
     }
     console.timeEnd("pubmed_project_scrape");
