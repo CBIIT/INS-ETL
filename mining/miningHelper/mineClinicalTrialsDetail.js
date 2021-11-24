@@ -9,21 +9,24 @@ const _ = require('lodash');
 const run = async (projects, publications, clinicalTrials) => {
   let pmIds = Object.keys(publications);
   for(let p = 0; p < pmIds.length; p++){
-    let cts = publications[pmIds[p]].clinicalTrials;
+    let cts = publications[pmIds[p]].clinicalTrials;  // publications can have clinical trials
     if(cts){
-      let prs = publications[pmIds[p]].projects;
+      let prs = publications[pmIds[p]].projects;  // publications have projects
       prs.forEach((pr) => {
         if(!projects[pr].clinicalTrials) {
-          projects[pr].clinicalTrials = [];
+          projects[pr].clinicalTrials = [];  // projects can have clinical trials (separate from their publications)
         }
-        // add clinical trials from publications data structure to projects data structure
+        // add to the projects data structure any clinical trials its publications have associated with them
         projects[pr].clinicalTrials = _.concat(projects[pr].clinicalTrials, cts);
       });
     }
   }
 
+  // we are ultimately populating the clinicalTrials data structures based off of the clinical trials in the
+  //  projects data structure, plus added information along the way
   let ps = Object.keys(projects);
   for(let k = 0; k < ps.length; k++){
+    // get clinical trial details by project, which now has all of its associated publications clinical trials
     console.log(`Collecting Clinical Trials Detail for project : ${ps[k]}, (${k+1}/${ps.length})`);
     let cts = projects[ps[k]].clinicalTrials;
     if(cts && cts.length > 0){
@@ -35,38 +38,6 @@ const run = async (projects, publications, clinicalTrials) => {
         }
         console.log("Collecting data for clinical trial " + clinicaltrialID + " (" + (ct+1) + "/" + cts.length + ")");
         console.log(apis.clinicalTrialsDetailSiteStudy + clinicaltrialID);
-        // 11/22/2021 adeforge, custom GET logic which does not rely on utils
-        //  because the clinical trials site study will error with 400, but that is actionable information.
-        //  When the GET request errors, that is usually an indication that we want to hit the endpoint again
-        //  until we get a non-error-producing response; not in this case, but we still want to avoid errors due to anything else
-        // let failed = true; // we need to keep track of whether or not the call failed properly, aside from errors other than 400
-        // let keep_trying = true;
-        // let counter = 0;
-        // const MAX_RETRIES = 100;
-        // let d = null;
-        // while (keep_trying && counter < MAX_RETRIES) {  // this handles if the request errors due to anything but a 400
-        //   await axios.get(apis.clinicalTrialsDetailSiteStudy + clinicaltrialID, {timeout: 60000, clarifyTimeoutError: false})
-        //                   .then(function (response) {
-        //                     keep_trying = false;  // what if the call succeeds
-        //                     failed = false;
-        //                     d = response.data;  // get the response
-        //                   })
-        //                   .catch(function (error) {
-        //                     if (error.response && error.response.status === 400) {
-        //                       keep_trying = false;
-        //                       failed = true;
-        //                     }
-        //                     else {
-        //                       console.log("GET failed");
-        //                       console.log(apis.clinicalTrialsDetailSiteStudy + clinicaltrialID);
-        //                       console.log("Retry Attempt: " + (counter + 1));
-        //                     }
-        //                   });
-        //   if (keep_trying) {
-        //     await new Promise(resolve => setTimeout(resolve, 500));
-        //   }
-        //   counter++;
-        // }
 
         // only fail on HTTP error code 400, otherwise keep trying
         let d = await fetchWithErrorCheck(apis.clinicalTrialsDetailSiteStudy + clinicaltrialID, 400);
