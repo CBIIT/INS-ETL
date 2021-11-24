@@ -43,6 +43,7 @@ const run = async (publications) => {
               }
             }
           }
+          // get SRA datasets
           if(outputs.indexOf("Links to Short Read Archive Experiments") > -1){
             d = await fetch(apis.pmSraSite + pmIds[p]);  // keep_trying?
             if(d != "failed"){
@@ -83,6 +84,7 @@ const run = async (publications) => {
               }
             }
           }
+          // get DBGap datasets
           if(outputs.indexOf("Related dbGaP record") > -1){
             d = await fetch(apis.pmDbgapSite + pmIds[p]);  // keep_trying?
             if(d != "failed"){
