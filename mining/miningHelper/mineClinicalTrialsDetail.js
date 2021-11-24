@@ -30,6 +30,7 @@ const run = async (projects, publications, clinicalTrials) => {
       for(let ct = 0; ct < cts.length; ct++){
         let clinicaltrialID = cts[ct];
         if(clinicalTrials[clinicaltrialID]){
+          console.log("Clinical trial data already collected for " + clinicaltrialID + ", skipping.");
           continue;
         }
         console.log("Collecting data for clinical trial " + clinicaltrialID + " (" + (ct+1) + "/" + cts.length + ")");
@@ -68,9 +69,9 @@ const run = async (projects, publications, clinicalTrials) => {
         // }
 
         // only fail on HTTP error code 400, otherwise keep trying
-        let d = fetchWithErrorCheck(apis.clinicalTrialsDetailSiteStudy + clinicaltrialID, 400);
+        let d = await fetchWithErrorCheck(apis.clinicalTrialsDetailSiteStudy + clinicaltrialID, 400);
 
-        if (failed) {
+        if (d === null) {
           clinicalTrials[clinicaltrialID] = {};
           clinicalTrials[clinicaltrialID].title = "N/A";
           clinicalTrials[clinicaltrialID].recruitment_status = "N/A";

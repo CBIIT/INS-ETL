@@ -24,43 +24,11 @@ const run = async (projects, publications) => {
       }
       console.log("Getting clinical trials session for project: " + project_core_id);
       console.log(apis.clinicalTrialsSite + project_core_id);
-      // 11/22/2021 adeforge, custom GET logic which does not rely on utils
-      //  because the clinical trials site will error with 404, but that is actionable information.
-      //  When the GET request errors, that is usually an indication that we want to hit the endpoint again
-      //  until we get a non-error-producing response; not in this case, but we still want to avoid errors due to anything else
-      // let failed = true;  // we need to keep track of whether or not the call failed properly, aside from errors other than 404
-      // let keep_trying = true;
-      // let counter = 0;
-      // const MAX_RETRIES = 100;
-      // let d = null;
-      // while (keep_trying && counter < MAX_RETRIES) {  // this handles if the request errors due to anything but a 404
-      //   await axios.get(apis.clinicalTrialsSite + project_core_id, {timeout: 60000, clarifyTimeoutError: false})
-      //                   .then(function (response) {
-      //                     keep_trying = false;  // what if the call succeeds
-      //                     failed = false;
-      //                     d = response.data;  // get the response
-      //                   })
-      //                   .catch(function (error) {
-      //                     if (error.response && error.response.status === 404) {
-      //                       keep_trying = false;
-      //                       failed = true;
-      //                     }
-      //                     else {
-      //                       console.log("GET failed");
-      //                       console.log(apis.clinicalTrialsSite + project_core_id);
-      //                       console.log("Retry Attempt: " + (counter + 1));
-      //                     }
-      //                   });
-      //   if (keep_trying) {
-      //     await new Promise(resolve => setTimeout(resolve, 500));
-      //   }
-      //   counter++;
-      // }
 
       // only fail on HTTP error code 404, otherwise keep trying
-      let d = fetchWithErrorCheck(apis.clinicalTrialsSite + project_core_id, 404);
+      let d = await fetchWithErrorCheck(apis.clinicalTrialsSite + project_core_id, 404);
 
-      if (d) {
+      if (d != null) {
         let idx = d.indexOf("/ct2/results/rpc/");
         d = d.substring(idx + 17);
         idx = d.indexOf("\",");
@@ -87,43 +55,11 @@ const run = async (projects, publications) => {
   for (var i = 0; i < publicationNums.length; i++) {
     console.log(`Collecting Clinical Trials data for publication: ${publicationNums[i]}`);
     console.log(apis.pmArticleSite + publicationNums[i]);
-    // 11/23/2021 adeforge, custom GET logic which does not rely on utils
-    //  because PubMed will error with 404, but that is actionable information.
-    //  When the GET request errors, that is usually an indication that we want to hit the endpoint again
-    //  until we get a non-error-producing response; not in this case, but we still want to avoid errors due to anything else
-    // let failed = true;  // we need to keep track of whether or not the call failed properly, aside from errors other than 404
-    // let keep_trying = true;
-    // let counter = 0;
-    // const MAX_RETRIES = 100;
-    // let d = null;
-    // while (keep_trying && counter < MAX_RETRIES) {  // this handles if the request errors due to anything but a 404
-    //   await axios.get(apis.pmArticleSite + publicationNums[i], {timeout: 60000, clarifyTimeoutError: false})
-    //                   .then(function (response) {
-    //                     keep_trying = false;  // what if the call succeeds
-    //                     failed = false;
-    //                     d = response.data;  // get the response
-    //                   })
-    //                   .catch(function (error) {
-    //                     if (error.response && error.response.status === 404) {
-    //                       keep_trying = false;
-    //                       failed = true;
-    //                     }
-    //                     else {
-    //                       console.log("GET failed");
-    //                       console.log(apis.pmArticleSite + publicationNums[i]);
-    //                       console.log("Retry Attempt: " + (counter + 1));
-    //                     }
-    //                   });
-    //   if (keep_trying) {
-    //     await new Promise(resolve => setTimeout(resolve, 500));
-    //   }
-    //   counter++;
-    // }
 
     // only fail on HTTP error code 404, otherwise keep trying
-    let d = fetchWithErrorCheck(apis.pmArticleSite + publicationNums[i], 404);
+    let d = await fetchWithErrorCheck(apis.pmArticleSite + publicationNums[i], 404);
 
-    if (d) {
+    if (d != null) {
       let tmp = d;
       idx_start = tmp.indexOf("id=\"supplemental-data-ClinicalTrials.gov-NCT");  // 41 characters before 'NCT'
       while(idx_start > -1){
