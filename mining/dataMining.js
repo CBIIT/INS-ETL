@@ -19,11 +19,9 @@ const mineGEODetail = require('./miningHelper/mineGEODetail');
 const mineDBGapDetail = require('./miningHelper/mineDBGapDetail');
 const mineClinicalTrialsDetail = require('./miningHelper/mineClinicalTrialsDetail');
 
-//projects {pubs: [], clinicalTrials: []}
+
 let projects = {};
-// publications {geos: [], sras: [], dbgaps: [], clinicalTrials: []}
 let publications = {};
-//details for research outputs
 let geos = {};
 let sras = {};
 let dbgaps = {};
@@ -31,6 +29,8 @@ let clinicalTrials = {};
 
 const generateDataModel = async () => {
   //clinical trial by project
+  // we want to preserve which projects a clinical trial
+  //  is associated with
   for(let key in projects){
     let cts = projects[key].clinicalTrials;
     if(cts){
@@ -44,6 +44,8 @@ const generateDataModel = async () => {
   }
 
   //clinical trial by publication
+  // we want to preserve which publications a clinical trial
+  //  is associated with
   for(let key in publications){
     let cts = publications[key].clinicalTrials;
     if(cts){
@@ -54,6 +56,12 @@ const generateDataModel = async () => {
         clinicalTrials[ct].publications.push(key);
       });
     }
+  }
+
+  // make publication and project associations unique for clinical trials
+  for (var ct in clinicalTrials) {
+    clinicalTrials[ct].projects = Array.from(new Set(clinicalTrials[ct].projects));
+    clinicalTrials[ct].publications = Array.from(new Set(clinicalTrials[ct].publications));
   }
 
   //GEO, SRA, dbGap, 
@@ -233,29 +241,29 @@ const run = async (projectsTodo) => {
   console.timeEnd('minePublication');
   console.log("Number of publications: " + Object.keys(publications).length);
   
-  console.time('minePM');
-  await minePM.run(publications);
-  console.timeEnd('minePM');
+  // console.time('minePM');
+  // await minePM.run(publications);
+  // console.timeEnd('minePM');
 
-  console.time('mineResearchOutputsFromPMC');
-  await mineResearchOutputsFromPMC.run(publications);
-  console.timeEnd("mineResearchOutputsFromPMC");
+  // console.time('mineResearchOutputsFromPMC');
+  // await mineResearchOutputsFromPMC.run(publications);
+  // console.timeEnd("mineResearchOutputsFromPMC");
 
   console.time('mineClinicalTrials');
   await mineClinicalTrials.run(projects, publications);
   console.timeEnd('mineClinicalTrials');
 
-  console.time('mineSRADetail');
-  await mineSRADetail.run(publications, sras);
-  console.timeEnd('mineSRADetail');
+  // console.time('mineSRADetail');
+  // await mineSRADetail.run(publications, sras);
+  // console.timeEnd('mineSRADetail');
 
-  console.time('mineGEODetail');
-  await mineGEODetail.run(publications, geos);
-  console.timeEnd('mineGEODetail');
+  // console.time('mineGEODetail');
+  // await mineGEODetail.run(publications, geos);
+  // console.timeEnd('mineGEODetail');
   
-  console.time('mineDBGapDetail');
-  await mineDBGapDetail.run(publications, dbgaps);
-  console.timeEnd('mineDBGapDetail');
+  // console.time('mineDBGapDetail');
+  // await mineDBGapDetail.run(publications, dbgaps);
+  // console.timeEnd('mineDBGapDetail');
 
   console.time('mineClinicalTrialsDetail');
   // combines clinical trials mined by project and mined by publication
@@ -268,9 +276,9 @@ const run = async (projectsTodo) => {
   console.log('Writing Files...');
   writeToProjectFile();
   writeToPublicationFile();
-  writeToGEOFile();
-  writeToSRAFile();
-  writeToDBGapFile();
+  // writeToGEOFile();
+  // writeToSRAFile();
+  // writeToDBGapFile();
   writeToClinicalTrialsFile();
 };
 
