@@ -1,7 +1,7 @@
 const {
   fetch,
   getCoreId,
-  fetchWithErrorCheck,
+  fetchWithStatusCheck,
 } = require('../../common/utils');
 const apis = require('../../common/apis');
 
@@ -26,7 +26,7 @@ const run = async (projects, publications, clinicalTrials) => {
       console.log(apis.clinicalTrialsSite + project_core_id);
 
       // only fail on HTTP error code 404, otherwise keep trying
-      let d = await fetchWithErrorCheck(apis.clinicalTrialsSite + project_core_id, 404);
+      let d = await fetchWithStatusCheck(apis.clinicalTrialsSite + project_core_id, 404);
 
       if (d != null) {
         let idx = d.indexOf("/ct2/results/rpc/");
@@ -67,7 +67,7 @@ const run = async (projects, publications, clinicalTrials) => {
     console.log(apis.pmArticleSite + publicationNums[i]);
 
     // only fail on HTTP error code 404, otherwise keep trying
-    let d = await fetchWithErrorCheck(apis.pmArticleSite + publicationNums[i], 404);
+    let d = await fetchWithStatusCheck(apis.pmArticleSite + publicationNums[i], 404);
 
     if (d != null) {
       let tmp = d;

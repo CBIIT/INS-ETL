@@ -26,7 +26,7 @@ const fetch = async (url, keep_trying=false) => {
 };
 
 // returns null if failed due to error code or returns the response data otherwise
-const fetchWithErrorCheck = async (url, error_code) => {
+const fetchWithStatusCheck = async (url, error_code) => {
   let counter = 0;
   const MAX_RETRIES = 200;
   while (true) {
@@ -131,5 +131,5 @@ module.exports = {
   readCachedSRAs,
   readCachedDBGaps,
   readCachedClinicalTrials,
-  fetchWithErrorCheck,
+  fetchWithStatusCheck,
 };

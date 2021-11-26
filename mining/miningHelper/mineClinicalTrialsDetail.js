@@ -1,5 +1,5 @@
 const {
-  fetch, fetchWithErrorCheck,
+  fetch, fetchWithStatusCheck,
 } = require('../../common/utils');
 const apis = require('../../common/apis');
 const _ = require('lodash');
@@ -11,7 +11,7 @@ const run = async (clinicalTrials) => {
     console.log(apis.clinicalTrialsDetailSiteStudy + clinicaltrialID);
 
     // only fail on HTTP error code 400, otherwise keep trying
-    let d = await fetchWithErrorCheck(apis.clinicalTrialsDetailSiteStudy + clinicaltrialID, 400);
+    let d = await fetchWithStatusCheck(apis.clinicalTrialsDetailSiteStudy + clinicaltrialID, 400);
 
     if (d === null) {
       clinicalTrials[clinicaltrialID].title = "N/A";
