@@ -28,43 +28,6 @@ let dbgaps = {};
 let clinicalTrials = {};
 
 const generateDataModel = async () => {
-  // //clinical trial by project
-  // // we want to preserve which projects a clinical trial
-  // //  is associated with
-  // for(let key in projects){
-  //   let cts = projects[key].clinicalTrials;
-  //   if(cts){
-  //     cts.forEach((ct) => {
-  //       if(!clinicalTrials[ct].projects) {
-  //         clinicalTrials[ct].projects = [];
-  //       }
-  //       clinicalTrials[ct].projects.push(key);
-  //     });
-  //   }
-  // }
-
-  // //clinical trial by publication
-  // // we want to preserve which publications a clinical trial
-  // //  is associated with
-  // for(let key in publications){
-  //   let cts = publications[key].clinicalTrials;
-  //   if(cts){
-  //     cts.forEach((ct) => {
-  //       console.log(ct);
-  //       if(!clinicalTrials[ct].publications) {
-  //         clinicalTrials[ct].publications = [];
-  //       }
-  //       clinicalTrials[ct].publications.push(key);
-  //     });
-  //   }
-  // }
-
-  // // make publication and project associations unique for clinical trials
-  // for (var ct in clinicalTrials) {
-  //   clinicalTrials[ct].projects = Array.from(new Set(clinicalTrials[ct].projects));
-  //   clinicalTrials[ct].publications = Array.from(new Set(clinicalTrials[ct].publications));
-  // }
-
   //GEO, SRA, dbGap, 
   for(let pid in publications){
     //GEO
