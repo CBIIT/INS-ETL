@@ -28,41 +28,42 @@ let dbgaps = {};
 let clinicalTrials = {};
 
 const generateDataModel = async () => {
-  //clinical trial by project
-  // we want to preserve which projects a clinical trial
-  //  is associated with
-  for(let key in projects){
-    let cts = projects[key].clinicalTrials;
-    if(cts){
-      cts.forEach((ct) => {
-        if(!clinicalTrials[ct].projects) {
-          clinicalTrials[ct].projects = [];
-        }
-        clinicalTrials[ct].projects.push(key);
-      });
-    }
-  }
+  // //clinical trial by project
+  // // we want to preserve which projects a clinical trial
+  // //  is associated with
+  // for(let key in projects){
+  //   let cts = projects[key].clinicalTrials;
+  //   if(cts){
+  //     cts.forEach((ct) => {
+  //       if(!clinicalTrials[ct].projects) {
+  //         clinicalTrials[ct].projects = [];
+  //       }
+  //       clinicalTrials[ct].projects.push(key);
+  //     });
+  //   }
+  // }
 
-  //clinical trial by publication
-  // we want to preserve which publications a clinical trial
-  //  is associated with
-  for(let key in publications){
-    let cts = publications[key].clinicalTrials;
-    if(cts){
-      cts.forEach((ct) => {
-        if(!clinicalTrials[ct].publications) {
-          clinicalTrials[ct].publications = [];
-        }
-        clinicalTrials[ct].publications.push(key);
-      });
-    }
-  }
+  // //clinical trial by publication
+  // // we want to preserve which publications a clinical trial
+  // //  is associated with
+  // for(let key in publications){
+  //   let cts = publications[key].clinicalTrials;
+  //   if(cts){
+  //     cts.forEach((ct) => {
+  //       console.log(ct);
+  //       if(!clinicalTrials[ct].publications) {
+  //         clinicalTrials[ct].publications = [];
+  //       }
+  //       clinicalTrials[ct].publications.push(key);
+  //     });
+  //   }
+  // }
 
-  // make publication and project associations unique for clinical trials
-  for (var ct in clinicalTrials) {
-    clinicalTrials[ct].projects = Array.from(new Set(clinicalTrials[ct].projects));
-    clinicalTrials[ct].publications = Array.from(new Set(clinicalTrials[ct].publications));
-  }
+  // // make publication and project associations unique for clinical trials
+  // for (var ct in clinicalTrials) {
+  //   clinicalTrials[ct].projects = Array.from(new Set(clinicalTrials[ct].projects));
+  //   clinicalTrials[ct].publications = Array.from(new Set(clinicalTrials[ct].publications));
+  // }
 
   //GEO, SRA, dbGap, 
   for(let pid in publications){
@@ -209,7 +210,7 @@ const writeToDBGapFile = () => {
 
 const writeToClinicalTrialsFile = () => {
   let data = "";
-  let columns = ["type", "clinical_trial_id", "title", "last_update_posted", "recruitment_status", "project.project_id", "publication"];
+  let columns = ["type", "clinical_trial_id", "title", "last_update_posted", "recruitment_status", "project.project_id", "publication.publication_id"];
   data = columns.join("\t") + "\n";
   for(let clinicaltrialID in clinicalTrials){
     let tmp = [];
@@ -250,8 +251,9 @@ const run = async (projectsTodo) => {
   // console.timeEnd("mineResearchOutputsFromPMC");
 
   console.time('mineClinicalTrials');
-  await mineClinicalTrials.run(projects, publications);
+  await mineClinicalTrials.run(projects, publications, clinicalTrials);
   console.timeEnd('mineClinicalTrials');
+  console.log("Number of clinical trials: " + Object.keys(clinicalTrials).length);
 
   // console.time('mineSRADetail');
   // await mineSRADetail.run(publications, sras);
@@ -266,10 +268,8 @@ const run = async (projectsTodo) => {
   // console.timeEnd('mineDBGapDetail');
 
   console.time('mineClinicalTrialsDetail');
-  // combines clinical trials mined by project and mined by publication
-  await mineClinicalTrialsDetail.run(projects, publications, clinicalTrials);
+  await mineClinicalTrialsDetail.run(clinicalTrials);
   console.timeEnd('mineClinicalTrialsDetail');
-  console.log("Number of clinical trials: " + Object.keys(clinicalTrials).length);
 
   await generateDataModel();
 
