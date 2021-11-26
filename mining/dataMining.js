@@ -189,7 +189,9 @@ const writeToClinicalTrialsFile = () => {
     }
     if (clinicalTrials[clinicaltrialID].publications)
     clinicalTrials[clinicaltrialID].publications.map((p) => {
-      data += tmp.join("\t") + "\t" + "" + "\t" + p + "\n";  // if a clinical trial came from a publication id
+      publications[p].projects.map((pp) => {
+        data += tmp.join("\t") + "\t" + pp + "\t" + p + "\n";  // if a clinical trial came from a publication id, and preserve the publication's project
+      });
     });
   }
   fs.writeFileSync('data/clinical_trial.tsv', data);
