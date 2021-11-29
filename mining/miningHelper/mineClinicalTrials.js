@@ -5,6 +5,7 @@ const {
   getActivityCode,
 } = require('../../common/utils');
 const apis = require('../../common/apis');
+const fs = require('fs');
 
 
 // caching feature for pubmed clinical trials by publication
