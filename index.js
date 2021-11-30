@@ -15,10 +15,11 @@ console.log("Start processing...");
 let file_path = path.join(__dirname, 'config', 'moonshot_ccdi_projects_all.xlsx');
 
 readXlsxFile(file_path, { sheet: 1 }).then(async (rows) => {
-    let projects = {};
+  console.time('full_run');
+  let projects = {};
     
     rows.forEach((item, idx) => {
-        if (idx >= 667) {  // 11/03/2021 adeforge, see 'moonshot_ccdi_projects_all.xlsx', projects sheet
+        if (idx >= 667) {  // 11/03/2021 adeforge, see 'moonshot_ccdi_projects_all.xlsx', projects sheet in the config directory
           projects[item[0]] = {};
           projects[item[0]].project_type = item[1];
           projects[item[0]].program = item[3];
@@ -26,7 +27,6 @@ readXlsxFile(file_path, { sheet: 1 }).then(async (rows) => {
         }
     });
 
-    console.time('full_run');
     await dataMining.run(projects);
     console.timeEnd('full_run');
 
