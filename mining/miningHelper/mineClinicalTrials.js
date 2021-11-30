@@ -76,7 +76,7 @@ const writeToPubMedClinicalTrialCache = (pmid, clinicalTrialID) => {
 const run = async (projects, publications, clinicalTrials) => {
   console.log("Loading PubMed clinical trial cache.");
   loadPubMedClinicalTrialCache();
-  console.log("Number of cached clinical trials loaded: " + Object.keys(pubmed_clinicaltrial_cache_publications).length);
+  console.log("Number of cached publications for clinical trials loaded: " + Object.keys(pubmed_clinicaltrial_cache_publications).length);
 
   // mine clinical trials by project
   let repeats = [];
