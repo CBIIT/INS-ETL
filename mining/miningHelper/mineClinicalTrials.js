@@ -86,21 +86,22 @@ const run = async (projects, publications, clinicalTrials) => {
     if(projects[projectNums[i]].project_type !== "Contract") {
       let project_activity_code = getActivityCode(projectNums[i]);
       let project_core_id = getCoreId(projectNums[i]);
+      let term = project_activity_code + project_core_id;
       
       // project core ids may not be unique
-      if (project_core_id in repeats) {
-        console.log("Project ID " + projectNums[i] + " line item skipped to optimize results for group " + project_core_id + "\n");
+      if (repeats.indexOf(term) > -1) {
+        console.log("Project ID " + projectNums[i] + " line item skipped to optimize results for group " + term + "\n");
         continue;
       }
       else {
-        repeats.push(project_core_id);
+        repeats.push(term);
       }
 
-      console.log("Getting clinical trials session for project: " + project_core_id);
-      console.log(apis.clinicalTrialsSite + project_core_id);
+      console.log("Getting clinical trials session for project: " + term);
+      console.log(apis.clinicalTrialsSite + term);
 
       // only fail on HTTP error code 404, otherwise keep trying
-      let d = await fetchWithStatusCheck(apis.clinicalTrialsSite + project_core_id, 404);
+      let d = await fetchWithStatusCheck(apis.clinicalTrialsSite + term, 404);
 
       if (d != null) {
         let idx = d.indexOf("/ct2/results/rpc/");
@@ -126,8 +127,8 @@ const run = async (projects, publications, clinicalTrials) => {
               clinicalTrials[item[1]].projects = [];
             }
             // preserve the project that this clinical trial came from, we search by core id, but want the activity code and core id association
-            if (clinicalTrials[item[1]].projects.indexOf(project_activity_code + project_core_id) === -1) {
-              clinicalTrials[item[1]].projects.push(project_activity_code + project_core_id);
+            if (clinicalTrials[item[1]].projects.indexOf(term) === -1) {
+              clinicalTrials[item[1]].projects.push(term);
             }
           });
         }
