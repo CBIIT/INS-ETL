@@ -35,6 +35,10 @@ const generateDataModel = async () => {
     if(gs){
       gs.forEach((g) => {
         geos[g].projects = publications[pid].projects;
+        if (!geos[g].publications) {
+          geos[g].publications = [];
+        }
+        geos[g].publications.push(pid);
       });
     }
     //SRA
@@ -42,6 +46,10 @@ const generateDataModel = async () => {
     if(ss){
       ss.forEach((s) => {
         sras[s].projects = publications[pid].projects;
+        if (!sras[s].publications) {
+          sras[s].publications = [];
+        }
+        sras[s].publications.push(pid)
       });
     }
     //dbGap
@@ -49,6 +57,10 @@ const generateDataModel = async () => {
     if(ds){
       ds.forEach((d) => {
         dbgaps[d].projects = publications[pid].projects;
+        if (!dbgaps[d].publications) {
+          dbgaps[d].publications = [];
+        }
+        dbgaps[d].publications.push(pid);
       });
     }
   }
@@ -119,7 +131,7 @@ const writeToPublicationFile = () => {
 const writeToGEOFile = () => {
   let data = "";
 
-  let columns = ["type","accession","title", "status", "submission_date","last_update_date", "project.project_id"];
+  let columns = ["type","accession","title", "status", "submission_date","last_update_date", "project.project_id", "publication.publication_id"];
   data = columns.join("\t") + "\n";
   for(let geoID in geos){
     let tmp = [];
@@ -130,15 +142,22 @@ const writeToGEOFile = () => {
     tmp.push(geos[geoID].submission_date);
     tmp.push(geos[geoID].last_update_date);
     geos[geoID].projects.map((p) => {
-      data += tmp.join("\t") + "\t" + p + "\n";
+      data += tmp.join("\t") + "\t" + p + "\t" + "" + "\n";  // empty string is placeholder for publication
     });
+    if (geos[geoID].publications) {
+      geos[geoID].publications.map((p) => {
+        publications[p].projects.map((pp) => {
+          data += tmp.join("\t") + "\t" + pp + "\t" + p + "\n";  // preserve the publication's project
+        });
+      });
+    }
   }
   fs.writeFileSync('data/geo.tsv', data);
 };
 
 const writeToSRAFile = () => {
   let data = "";
-  let columns = ["type","accession","study_title", "bioproject_accession", "registration_date","project.project_id"];
+  let columns = ["type","accession","study_title", "bioproject_accession", "registration_date","project.project_id", "publication.publication_id"];
   data = columns.join("\t") + "\n";
   for(let sraID in sras){
     let tmp = [];
@@ -148,15 +167,22 @@ const writeToSRAFile = () => {
     tmp.push(sras[sraID].bio_accession);
     tmp.push(sras[sraID].reg_date);
     sras[sraID].projects.map((p) => {
-      data += tmp.join("\t") + "\t" + p + "\n";
+      data += tmp.join("\t") + "\t" + p + "\t" + "" + "\n";  // empty string is placeholder for publication
     });
+    if (sras[sraID].publications) {
+      sras[sraID].publications.map((p) => {
+        publications[p].projects.map((pp) => {
+          data += tmp.join("\t") + "\t" + pp + "\t" + p + "\n";  // preserve the publication's project
+        });
+      });
+    }
   }
   fs.writeFileSync('data/sra.tsv', data);
 };
 
 const writeToDBGapFile = () => {
   let data = "";
-  let columns = ["type", "accession", "title", "release_date", "project.project_id"];
+  let columns = ["type", "accession", "title", "release_date", "project.project_id", "publication.publication_id"];
   data = columns.join("\t") + "\n";
   for(let dbgapID in dbgaps){
     let tmp = [];
@@ -165,8 +191,15 @@ const writeToDBGapFile = () => {
     tmp.push(dbgaps[dbgapID].title);
     tmp.push(dbgaps[dbgapID].release_date);
     dbgaps[dbgapID].projects.map((p) => {
-      data += tmp.join("\t") + "\t" + p + "\n";
+      data += tmp.join("\t") + "\t" + p + "\t" + "" + "\n";  // empty string is placeholder for publication
     });
+    if (dbgaps[dbgapID].publications) {
+      dbgaps[dbgapID].publications.map((p) => {
+        publications[p].projects.map((pp) => {
+          data += tmp.join("\t") + "\t" + pp + "\t" + p + "\n";  // preserve the publication's project
+        });
+      });
+    }
   }
   fs.writeFileSync('data/dbgap.tsv', data);
 };
@@ -207,9 +240,9 @@ const run = async (projectsTodo) => {
   console.timeEnd('minePublication');
   console.log("Number of publications: " + Object.keys(publications).length);
   
-  // console.time('minePM');
-  // await minePM.run(publications);
-  // console.timeEnd('minePM');
+  console.time('minePM');
+  await minePM.run(publications);
+  console.timeEnd('minePM');
 
   // console.time('mineResearchOutputsFromPMC');
   // await mineResearchOutputsFromPMC.run(publications);
@@ -217,20 +250,23 @@ const run = async (projectsTodo) => {
 
   console.time('mineClinicalTrials');
   await mineClinicalTrials.run(projects, publications, clinicalTrials);
-  console.timeEnd('mineClinicalTrials');
   console.log("Number of clinical trials: " + Object.keys(clinicalTrials).length);
+  console.timeEnd('mineClinicalTrials');
 
-  // console.time('mineSRADetail');
-  // await mineSRADetail.run(publications, sras);
-  // console.timeEnd('mineSRADetail');
+  console.time('mineSRADetail');
+  await mineSRADetail.run(publications, sras);
+  console.log("Number of SRAs: " + Object.keys(sras).length);
+  console.timeEnd('mineSRADetail');
 
-  // console.time('mineGEODetail');
-  // await mineGEODetail.run(publications, geos);
-  // console.timeEnd('mineGEODetail');
+  console.time('mineGEODetail');
+  await mineGEODetail.run(publications, geos);
+  console.log("Number of GEOs: " + Object.keys(geos).length);
+  console.timeEnd('mineGEODetail');
   
-  // console.time('mineDBGapDetail');
-  // await mineDBGapDetail.run(publications, dbgaps);
-  // console.timeEnd('mineDBGapDetail');
+  console.time('mineDBGapDetail');
+  await mineDBGapDetail.run(publications, dbgaps);
+  console.log("Number of DBGaps: " + Object.keys(dbgaps).length);
+  console.timeEnd('mineDBGapDetail');
 
   console.time('mineClinicalTrialsDetail');
   await mineClinicalTrialsDetail.run(clinicalTrials);
@@ -241,9 +277,9 @@ const run = async (projectsTodo) => {
   console.log('Writing Files...');
   writeToProjectFile();
   writeToPublicationFile();
-  // writeToGEOFile();
-  // writeToSRAFile();
-  // writeToDBGapFile();
+  writeToGEOFile();
+  writeToSRAFile();
+  writeToDBGapFile();
   writeToClinicalTrialsFile();
 };
 

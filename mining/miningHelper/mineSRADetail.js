@@ -21,6 +21,7 @@ const run = async (publications, sras) => {
           sras[srp].reg_date = "20-Jul-2017";
           continue;
         }
+        console.log(apis.pmSrpDetailSite + srp);
         let d = await fetch(apis.pmSrpDetailSite + srp);
         if(d != "failed"){
           sras[srp] = {};
@@ -32,6 +33,7 @@ const run = async (publications, sras) => {
           d = d.substring(idx);
           idx_end = d.indexOf("\">");
           sras[srp].bio_accession = d.substring(11, idx_end);
+          console.log(apis.pmBioprojectDetailSite + sras[srp].bio_accession);
           let bioproject_detail = await fetch(apis.pmBioprojectDetailSite + sras[srp].bio_accession);
           if(bioproject_detail != "failed"){
               let acc = "";
