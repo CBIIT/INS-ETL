@@ -31,37 +31,61 @@ const generateDataModel = async () => {
   //GEO, SRA, dbGap, 
   for(let pid in publications){
     //GEO
-    let gs = publications[pid].geos;
-    if(gs){
-      gs.forEach((g) => {
-        geos[g].projects = publications[pid].projects;
-        if (!geos[g].publications) {
-          geos[g].publications = [];
-        }
-        geos[g].publications.push(pid);
-      });
+    // let gs = publications[pid].geos;
+    // if(gs){
+    //   gs.forEach((g) => {
+    //     geos[g].projects = publications[pid].projects;
+    //     if (!geos[g].publications) {
+    //       geos[g].publications = [];
+    //     }
+    //     geos[g].publications.push(pid);
+    //   });
+    // }
+    let g = publications[pid].geo_accession;
+    // geos[g].projects = publications[pid].projects;
+    if (g && geos[g]) {
+      if (!geos[g].publications) {
+        geos[g].publications = [];
+      }
+      geos[g].publications.push(pid);
     }
     //SRA
-    let ss = publications[pid].sras;
-    if(ss){
-      ss.forEach((s) => {
-        sras[s].projects = publications[pid].projects;
-        if (!sras[s].publications) {
-          sras[s].publications = [];
-        }
-        sras[s].publications.push(pid)
-      });
+    // let ss = publications[pid].sras;
+    // if(ss){
+    //   ss.forEach((s) => {
+    //     sras[s].projects = publications[pid].projects;
+    //     if (!sras[s].publications) {
+    //       sras[s].publications = [];
+    //     }
+    //     sras[s].publications.push(pid)
+    //   });
+    // }
+    let s = publications[pid].sra_accession;
+    // sras[s].projects = publications[pid].projects;
+    if (s && sras[s]) {
+      if (!sras[s].publications) {
+        sras[s].publications = [];
+      }
+      sras[s].publications.push(pid);
     }
     //dbGap
-    let ds = publications[pid].dbgaps;
-    if(ds){
-      ds.forEach((d) => {
-        dbgaps[d].projects = publications[pid].projects;
-        if (!dbgaps[d].publications) {
-          dbgaps[d].publications = [];
-        }
-        dbgaps[d].publications.push(pid);
-      });
+    // let ds = publications[pid].dbgaps;
+    // if(ds){
+    //   ds.forEach((d) => {
+    //     dbgaps[d].projects = publications[pid].projects;
+    //     if (!dbgaps[d].publications) {
+    //       dbgaps[d].publications = [];
+    //     }
+    //     dbgaps[d].publications.push(pid);
+    //   });
+    // }
+    let d = publications[pid].dbgap_accession;
+    // dbgaps[d].projects = publications[pid].projects;
+    if (d && dbgaps[d]) {
+      if (!dbgaps[d].publications) {
+        dbgaps[d].publications = [];
+      }
+      dbgaps[d].publications.push(pid);
     }
   }
 };
@@ -141,9 +165,9 @@ const writeToGEOFile = () => {
     tmp.push(geos[geoID].status);
     tmp.push(geos[geoID].submission_date);
     tmp.push(geos[geoID].last_update_date);
-    geos[geoID].projects.map((p) => {
-      data += tmp.join("\t") + "\t" + p + "\t" + "" + "\n";  // empty string is placeholder for publication
-    });
+    // geos[geoID].projects.map((p) => {
+    //   data += tmp.join("\t") + "\t" + p + "\t" + "" + "\n";  // empty string is placeholder for publication
+    // });
     if (geos[geoID].publications) {
       geos[geoID].publications.map((p) => {
         publications[p].projects.map((pp) => {
@@ -166,9 +190,9 @@ const writeToSRAFile = () => {
     tmp.push(sras[sraID].study_title);
     tmp.push(sras[sraID].bio_accession);
     tmp.push(sras[sraID].reg_date);
-    sras[sraID].projects.map((p) => {
-      data += tmp.join("\t") + "\t" + p + "\t" + "" + "\n";  // empty string is placeholder for publication
-    });
+    // sras[sraID].projects.map((p) => {
+    //   data += tmp.join("\t") + "\t" + p + "\t" + "" + "\n";  // empty string is placeholder for publication
+    // });
     if (sras[sraID].publications) {
       sras[sraID].publications.map((p) => {
         publications[p].projects.map((pp) => {
@@ -190,9 +214,9 @@ const writeToDBGapFile = () => {
     tmp.push(dbgapID);
     tmp.push(dbgaps[dbgapID].title);
     tmp.push(dbgaps[dbgapID].release_date);
-    dbgaps[dbgapID].projects.map((p) => {
-      data += tmp.join("\t") + "\t" + p + "\t" + "" + "\n";  // empty string is placeholder for publication
-    });
+    // dbgaps[dbgapID].projects.map((p) => {
+    //   data += tmp.join("\t") + "\t" + p + "\t" + "" + "\n";  // empty string is placeholder for publication
+    // });
     if (dbgaps[dbgapID].publications) {
       dbgaps[dbgapID].publications.map((p) => {
         publications[p].projects.map((pp) => {
