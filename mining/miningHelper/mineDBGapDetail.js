@@ -50,6 +50,7 @@ const run = async (publications, dbgaps) => {
             temp = temp.substring(pos + 20);
             pos = temp.indexOf("</li>");
             dbgaps[accession].release_date = temp.substring(0, pos);
+            dbgaps[accession].release_date.replace("\\n", '').trim();
           }
 
         }
