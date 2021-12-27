@@ -26,23 +26,14 @@ let geos = {};
 let sras = {};
 let dbgaps = {};
 let clinicalTrials = {};
+// capture data during runtime to be written to a file
+let metrics = {};
 
 const generateDataModel = async () => {
   //GEO, SRA, dbGap, 
   for(let pid in publications){
     //GEO
-    // let gs = publications[pid].geos;
-    // if(gs){
-    //   gs.forEach((g) => {
-    //     geos[g].projects = publications[pid].projects;
-    //     if (!geos[g].publications) {
-    //       geos[g].publications = [];
-    //     }
-    //     geos[g].publications.push(pid);
-    //   });
-    // }
     let g = publications[pid].geo_accession;
-    // geos[g].projects = publications[pid].projects;
     if (g && geos[g]) {
       if (!geos[g].publications) {
         geos[g].publications = [];
@@ -50,18 +41,7 @@ const generateDataModel = async () => {
       geos[g].publications.push(pid);
     }
     //SRA
-    // let ss = publications[pid].sras;
-    // if(ss){
-    //   ss.forEach((s) => {
-    //     sras[s].projects = publications[pid].projects;
-    //     if (!sras[s].publications) {
-    //       sras[s].publications = [];
-    //     }
-    //     sras[s].publications.push(pid)
-    //   });
-    // }
     let s = publications[pid].sra_accession;
-    // sras[s].projects = publications[pid].projects;
     if (s && sras[s]) {
       if (!sras[s].publications) {
         sras[s].publications = [];
@@ -69,18 +49,7 @@ const generateDataModel = async () => {
       sras[s].publications.push(pid);
     }
     //dbGap
-    // let ds = publications[pid].dbgaps;
-    // if(ds){
-    //   ds.forEach((d) => {
-    //     dbgaps[d].projects = publications[pid].projects;
-    //     if (!dbgaps[d].publications) {
-    //       dbgaps[d].publications = [];
-    //     }
-    //     dbgaps[d].publications.push(pid);
-    //   });
-    // }
     let d = publications[pid].dbgap_accession;
-    // dbgaps[d].projects = publications[pid].projects;
     if (d && dbgaps[d]) {
       if (!dbgaps[d].publications) {
         dbgaps[d].publications = [];
@@ -89,6 +58,36 @@ const generateDataModel = async () => {
     }
   }
 };
+
+const writeToFile = (filepath, columns, dataStructure, type) => {
+  let data = "";
+  data += columns.join("\t") + "\n";
+  for (let key in dataStructure) {
+    let temp = [type];  // the first column is usually 'type' and is hard coded and the same for the entire file
+    columns.forEach(col => {
+      temp.push(dataStructure[key][col])
+    });
+    if (dataStructure[key].publications || dataStructure[key].projects) {
+      if (dataStructure[key].publications) {
+        dataStructure[key].publications.map((p) => {
+          publications[p].projects.map((pp) => {
+            data += temp.join("\t") + "\t" + pp + "\t" + p + "\n";
+          });
+        });
+      }
+      if (dataStructure[key].projects) {
+        dataStructure[key].projects.map((p) => {
+          data += temp.join("\t") + "\t" + p + "\n";
+        });
+      }
+    }
+    else {
+      data += temp.join("\t") + "\n";
+    }
+  }
+  fs.writeFileSync(filepath, data);
+};
+
 
 const writeToProjectFile = () => {
   let data = "";
@@ -165,9 +164,6 @@ const writeToGEOFile = () => {
     tmp.push(geos[geoID].status);
     tmp.push(geos[geoID].submission_date);
     tmp.push(geos[geoID].last_update_date);
-    // geos[geoID].projects.map((p) => {
-    //   data += tmp.join("\t") + "\t" + p + "\t" + "" + "\n";  // empty string is placeholder for publication
-    // });
     if (geos[geoID].publications) {
       geos[geoID].publications.map((p) => {
         publications[p].projects.map((pp) => {
@@ -190,9 +186,6 @@ const writeToSRAFile = () => {
     tmp.push(sras[sraID].study_title);
     tmp.push(sras[sraID].bio_accession);
     tmp.push(sras[sraID].reg_date);
-    // sras[sraID].projects.map((p) => {
-    //   data += tmp.join("\t") + "\t" + p + "\t" + "" + "\n";  // empty string is placeholder for publication
-    // });
     if (sras[sraID].publications) {
       sras[sraID].publications.map((p) => {
         publications[p].projects.map((pp) => {
@@ -214,9 +207,6 @@ const writeToDBGapFile = () => {
     tmp.push(dbgapID);
     tmp.push(dbgaps[dbgapID].title);
     tmp.push(dbgaps[dbgapID].release_date);
-    // dbgaps[dbgapID].projects.map((p) => {
-    //   data += tmp.join("\t") + "\t" + p + "\t" + "" + "\n";  // empty string is placeholder for publication
-    // });
     if (dbgaps[dbgapID].publications) {
       dbgaps[dbgapID].publications.map((p) => {
         publications[p].projects.map((pp) => {
@@ -254,6 +244,23 @@ const writeToClinicalTrialsFile = () => {
   fs.writeFileSync('data/clinical_trial.tsv', data);
 };
 
+const writeToMetricsFile = () => {
+  let data = "";
+  let columns = ["publication.publication_id", "totalGeoResults", "totalSrxResults", "totalSrpRunResults", "multipleSrpResults"];
+  data += columns.join("\t") + "\n";
+  let metricIds = Object.keys(metrics);
+  for (var i = 0; i < metricIds.length; i++) {
+    let tmp = [];
+    tmp.push(metricIds[i]);
+    tmp.push(metrics[metricIds[i]]["totalGeoResults"]?metrics[metricIds[i]]["totalGeoResults"]:"0");
+    tmp.push(metrics[metricIds[i]]["totalSrxResults"]?metrics[metricIds[i]]["totalSrxResults"]:"0");
+    tmp.push(metrics[metricIds[i]]["totalSrpRunResults"]?metrics[metricIds[i]]["totalSrpRunResults"]:"0")
+    tmp.push(metrics[metricIds[i]]["multipleSrpResults"]?metrics[metricIds[i]]["multipleSrpResults"]:"N/A");
+    data += tmp.join("\t") + "\n";
+  }
+  fs.writeFileSync('config/metrics.tsv', data);
+};
+
 const run = async (projectsTodo) => {
   console.time('mineProject');
   projects = await mineProject.run(projectsTodo);
@@ -265,7 +272,7 @@ const run = async (projectsTodo) => {
   console.log("Number of publications: " + Object.keys(publications).length);
   
   console.time('minePM');
-  await minePM.run(publications);
+  await minePM.run(publications, metrics);
   console.timeEnd('minePM');
 
   // console.time('mineResearchOutputsFromPMC');
@@ -278,7 +285,7 @@ const run = async (projectsTodo) => {
   console.timeEnd('mineClinicalTrials');
 
   console.time('mineSRADetail');
-  await mineSRADetail.run(publications, sras);
+  await mineSRADetail.run(publications, sras, metrics);
   console.log("Number of SRAs: " + Object.keys(sras).length);
   console.timeEnd('mineSRADetail');
 
@@ -287,10 +294,10 @@ const run = async (projectsTodo) => {
   console.log("Number of GEOs: " + Object.keys(geos).length);
   console.timeEnd('mineGEODetail');
   
-  console.time('mineDBGapDetail');
-  await mineDBGapDetail.run(publications, dbgaps);
-  console.log("Number of DBGaps: " + Object.keys(dbgaps).length);
-  console.timeEnd('mineDBGapDetail');
+  // console.time('mineDBGapDetail');
+  // await mineDBGapDetail.run(publications, dbgaps);
+  // console.log("Number of DBGaps: " + Object.keys(dbgaps).length);
+  // console.timeEnd('mineDBGapDetail');
 
   console.time('mineClinicalTrialsDetail');
   await mineClinicalTrialsDetail.run(clinicalTrials);
@@ -303,8 +310,10 @@ const run = async (projectsTodo) => {
   writeToPublicationFile();
   writeToGEOFile();
   writeToSRAFile();
-  writeToDBGapFile();
+  // writeToDBGapFile();
   writeToClinicalTrialsFile();
+
+  writeToMetricsFile();
 };
 
 module.exports = {
