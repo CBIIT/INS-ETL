@@ -1,5 +1,4 @@
 const {
-  fetch,
   fetchWithStatusCheck
 } = require('../../common/utils');
 const apis = require('../../common/apis');
@@ -13,10 +12,6 @@ const run = async (publications, dbgaps) => {
   let pmIds = Object.keys(publications);
   for(let p = 0; p < pmIds.length; p++){
     console.log(`Collecting DBGap Detail for publication : ${pmIds[p]}, (${p+1}/${pmIds.length})`);
-    // let dbs = publications[pmIds[p]].dbgaps;
-    // if(dbs && dbs.length > 0){
-    //   for(let db = 0; db < dbs.length; db++){
-    //     let accession = dbs[db];
     let accession = publications[pmIds[p]].dbgap_accession;
       if (accession) {
         if(dbgaps[accession]){
@@ -50,11 +45,10 @@ const run = async (publications, dbgaps) => {
             temp = temp.substring(pos + 20);
             pos = temp.indexOf("</li>");
             dbgaps[accession].release_date = temp.substring(0, pos);
-            dbgaps[accession].release_date.replace("\\n", '').trim();
+            dbgaps[accession].release_date = dbgaps[accession].release_date.replace(/(\r\n|\r|\n|\t|\s)/gm, "");
           }
 
         }
-      // }
     }
     else {
       console.log("No DBGaps for publication.");
