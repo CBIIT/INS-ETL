@@ -4,30 +4,37 @@ const {
 } = require('../../common/utils');
 const apis = require('../../common/apis');
 
-const run = async (publications, sras) => {
+const run = async (publications, sras, metrics) => {
   let pmIds = Object.keys(publications);
   for(let p = 0; p < pmIds.length; p++){
+    
+    // metrics[pmIds[p]]["multipleSrpResults"] = null;
+    // metrics[pmIds[p]]["totalSrpRunResults"] = null;
+
     console.log(`Collecting SRA Detail for publication : ${pmIds[p]}, (${p+1}/${pmIds.length})`);
-    // let srps = publications[pmIds[p]].sras;
-    // if(srps && srps.length > 0){
-    //   for(let s = 0; s < srps.length; s++){
-    //     let srp = srps[s];
     let srp = publications[pmIds[p]].sra_accession;  // there is one per publication
       if (srp) {
         if(sras[srp]){
           continue;  // details for this SRA were found already
         }
-        // if(srp === "SRP028271"){
-        //   sras[srp] = {};
-        //   sras[srp].study_title = "Listeria monocytogenes Genome sequencing and assembly";
-        //   sras[srp].bio_accession = "PRJNA212117";
-        //   sras[srp].reg_date = "20-Jul-2017";
-        //   continue;
-        // }
         console.log(apis.pmSrpDetailSite + srp);
         let d = await fetch(apis.pmSrpDetailSite + srp, true);  // true is keep trying
         if(d != "failed"){
           if (d.indexOf("<div class=\"error\">SRA Study " + srp + " does not exist</div>") === -1) {
+
+            // get metric related to number of runs vs number of SRX results for publication
+            // let temp = d;
+            // let idx_total_runs = temp.indexOf("href=\"https://www.ncbi.nlm.nih.gov//sra/?term=" + srp + "\">");  // 48 characters plus srp string length
+            // temp = temp.substring(idx_total_runs + 48 + srp.length);
+            // idx_total_runs = temp.indexOf("<");
+            // let run_results = parseInt(temp.substring(0,idx_total_runs));
+            // metrics[pmIds[p]]["totalSrpRunResults"] = run_results;
+            // if (run_results < metrics[pmIds[p]]["totalSrxResults"]) {
+            //   metrics[pmIds[p]]["multipleSrpResults"] = "TRUE";
+            // } else {
+            //   metrics[pmIds[p]]["multipleSrpResults"] = "FALSE";
+            // }
+
             sras[srp] = {};
             let idx = d.indexOf("h1>");
             d = d.substring(idx + 3);
