@@ -1,3 +1,5 @@
-type	accession	title	release_date	project.project_id
-dbgap	phs001577.v1.p1	Structural Alterations Driving Castration-Resistant Prostate Cancer Revealed by Linked-Read Genome Sequencing	September 12, 2018	1U54CA224079-01
-dbgap	phs000450.v3.p1	Molecular Subtypes of Diffuse Large B-cell Lymphoma are Associated with Distinct Pathogenic Mechanisms and Outcomes	October 11, 2018	3U24CA210999-02S1
+type	accession	title	release_date	project.project_id	publication.publication_id
+dbgap	phs001577.v1.p1	tructural Alterations Driving Castration-Resistant Prostate Cancer Revealed by Linked-Read Genome Sequencing	September12,2018	U54CA224079	29610475
+dbgap	phs000450.v3.p1	olecular Subtypes of Diffuse Large B-cell Lymphoma are Associated with Distinct Pathogenic Mechanisms and Outcomes	October11,2018	U24CA210999	29713087
+dbgap	phs001623.v1.p1	enomic Analysis of Head and Neck Cancers	October23,2018	U01CA209936	30134176
+dbgap	phs001234.v1.p1	argeted Sequencing of Primary ER-positive Breast Tumors Treated with 5 Years of Tamoxifen	October16,2018	U01CA209936	30181556
