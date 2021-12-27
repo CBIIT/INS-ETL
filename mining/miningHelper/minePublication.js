@@ -1,104 +1,37 @@
 let _ = require("lodash");
 const {
   fetch,
-  post,
   getCoreId,
   getActivityCode,
   getLeadingNumeral,
   getSuffix,
 } = require('../../common/utils');
 const apis = require('../../common/apis');
-const { filter, set } = require('lodash');
 const fs = require('fs');
+const {
+  loadCache,
+  writeToCache
+} = require('../miningHelper/miningCacher');
 
 // caching feature for icite publication details
 let icite_cache = {};
 const icite_cache_location = "config/icite_publication_cache.tsv";
-
-const loadIciteCache = () => {
-  let corrupt_lines = false;
-  let columns = ["pmid", "journal", "title", "authors", "year", "citation_count", "doi", "relative_citation_ratio", "rcr_range", "nih_percentile"];
-  var data = null;
-  try {
-    data = fs.readFileSync(icite_cache_location).toString();
-    data = data.split('\n');  // get each line
-    for (var i = 1; i < data.length; i++) {  // parse each line, skipping the header
-      if (data[i] === "") {  // check for empty lines
-        continue;
-      }
-      let line = data[i].split("\t");
-      if (line.length !== columns.length) {  // check line integrity
-        console.log("Icite cache line corrupted, marking cache file for correction.");
-        corrupt_lines = true;
-        continue;  // move on to next line
-      }
-      for (var j = 1; j < line.length; j++) {  // parse columns, index starts at 1 to skip the pmid, which is hard-coded as a key
-        if (!icite_cache[line[0]]) {
-          icite_cache[line[0]] = {};  // the icite_cache is a dictionary of pmid keys that point to a dictionary of publication properties (columns)
-        }
-        icite_cache[line[0]][columns[j]] = line[j]; // load the cache
-      }
-    }
-    if (corrupt_lines === true) {  // overwrite corrupted cache file with known-good read cache, if any corrupted lines
-      console.log("Rewriting cache file due to corrupted line(s).");
-      let new_data = columns.join("\t") + "\n";
-      const icite_keys = Object.keys(icite_cache);
-      for (var i = 0; i < icite_keys.length; i++) {
-        let tmp = [];
-        tmp.push(icite_keys[i]);
-        tmp.push(icite_cache[icite_keys[i]].journal);
-        tmp.push(icite_cache[icite_keys[i]].title);
-        tmp.push(icite_cache[icite_keys[i]].authors);
-        tmp.push(icite_cache[icite_keys[i]].year);
-        tmp.push(icite_cache[icite_keys[i]].citation_count);
-        tmp.push(icite_cache[icite_keys[i]].doi);
-        tmp.push(icite_cache[icite_keys[i]].relative_citation_ratio);
-        tmp.push(icite_cache[icite_keys[i]].rcr_range);
-        tmp.push(icite_cache[icite_keys[i]].nih_percentile);
-        new_data += tmp.join("\t") + "\n";
-      }
-      fs.writeFileSync(icite_cache_location, new_data)
-    }
-  }
-  catch (error) {  // check if the file exists
-    // console.log(error);
-    console.log("File doesn't exist, writing");
-    const header = columns.join("\t") + "\n";
-    fs.writeFileSync(icite_cache_location, header);
-  }
-}
-
-const writeToIciteCache = (entry, pmid) => {
-  let data = "";
-  let tmp = [];
-  tmp.push(pmid);
-  tmp.push(entry.journal);
-  tmp.push(entry.title);
-  tmp.push(entry.authors);
-  tmp.push(entry.year);
-  tmp.push(entry.citation_count);
-  tmp.push(entry.doi);
-  tmp.push(entry.relative_citation_ratio);
-  tmp.push(entry.rcr_range);
-  tmp.push(entry.nih_percentile);
-  data += tmp.join("\t") + "\n";
-  fs.appendFileSync(icite_cache_location, data);
-}
+const icite_cache_columns = ["pmid", "journal", "title", "authors", "year", "citation_count", "doi", "relative_citation_ratio", "rcr_range", "nih_percentile"];
 
 const getIciteData = async (publications) => {
   const pmIds = Object.keys(publications);
   for(let p = 0; p < pmIds.length; p++){
     // check for a cache hit
     if (icite_cache[pmIds[p]]) {
-      publications[pmIds[p]].journal = icite_cache[pmIds[p]].journal;
-      publications[pmIds[p]].title = icite_cache[pmIds[p]].title;
-      publications[pmIds[p]].authors = icite_cache[pmIds[p]].authors;
-      publications[pmIds[p]].year = icite_cache[pmIds[p]].year;
-      publications[pmIds[p]].citation_count = icite_cache[pmIds[p]].citation_count;
-      publications[pmIds[p]].doi = icite_cache[pmIds[p]].doi;
-      publications[pmIds[p]].relative_citation_ratio = icite_cache[pmIds[p]].relative_citation_ratio;
-      publications[pmIds[p]].rcr_range = icite_cache[pmIds[p]].rcr_range;
-      publications[pmIds[p]].nih_percentile = icite_cache[pmIds[p]].nih_percentile;
+      publications[pmIds[p]].journal = icite_cache[pmIds[p]]["journal"];
+      publications[pmIds[p]].title = icite_cache[pmIds[p]]["title"];
+      publications[pmIds[p]].authors = icite_cache[pmIds[p]]["authors"];
+      publications[pmIds[p]].year = icite_cache[pmIds[p]]["year"];
+      publications[pmIds[p]].citation_count = icite_cache[pmIds[p]]["citation_count"];
+      publications[pmIds[p]].doi = icite_cache[pmIds[p]]["doi"];
+      publications[pmIds[p]].relative_citation_ratio = icite_cache[pmIds[p]]["relative_citation_ratio"];
+      publications[pmIds[p]].rcr_range = icite_cache[pmIds[p]]["rcr_range"];
+      publications[pmIds[p]].nih_percentile = icite_cache[pmIds[p]]["nih_percentile"];
       console.log("Icite cache hit for publication: " + pmIds[p]);
       continue;
     }
@@ -144,7 +77,9 @@ const getIciteData = async (publications) => {
       publications[pmIds[p]].nih_percentile = pmData.nih_percentile;
 
       // write to icite publication cache since it was a cache miss
-      writeToIciteCache(publications[pmIds[p]], pmIds[p])
+      writeToCache(icite_cache_location, [pmIds[p], publications[pmIds[p]].journal, publications[pmIds[p]].title, publications[pmIds[p]].authors,
+                                          publications[pmIds[p]].year, publications[pmIds[p]].citation_count, publications[pmIds[p]].doi,
+                                          publications[pmIds[p]].relative_citation_ratio, publications[pmIds[p]].rcr_range, publications[pmIds[p]].nih_percentile]);
 
       console.log(`Updated Publication data from icite for : ${pmIds[p]}, (${p+1}/${pmIds.length})`);
     }
@@ -383,7 +318,7 @@ const run = async (projects, publications) => {
   let projectNums = Object.keys(projects);
   
   console.log("Loading icite publication cache.");
-  loadIciteCache();
+  icite_cache = loadCache(icite_cache_location, icite_cache_columns);
   console.log("Number of cached publications loaded: " + Object.keys(icite_cache).length);
 
   for(let i = 0; i< projectNums.length; i++){
