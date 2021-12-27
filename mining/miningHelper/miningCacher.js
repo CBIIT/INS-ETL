@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, appendFileSync } from 'fs';
+const fs = require('fs');
 
 
 const loadCache = (cacheFilepath, columns) => {
@@ -6,7 +6,7 @@ const loadCache = (cacheFilepath, columns) => {
     var data = null;
     let result = {};
     try {
-      data = readFileSync(cacheFilepath).toString();
+      data = fs.readFileSync(cacheFilepath).toString();
       data = data.split('\n');  // get each line
       for (var i = 1; i < data.length; i++) {  // parse each line, skipping the header
         if (data[i] === "") {  // check for empty lines
@@ -37,14 +37,14 @@ const loadCache = (cacheFilepath, columns) => {
           });
           new_data += temp.join("\t") + "\n";
         }
-        writeFileSync(cacheFilepath, new_data)
+        fs.writeFileSync(cacheFilepath, new_data)
       }
     }
     catch (error) {  // check if the file exists
       // console.log(error);
       console.log("File doesn't exist, writing");
       const header = columns.join("\t") + "\n";
-      writeFileSync(cacheFilepath, header);
+      fs.writeFileSync(cacheFilepath, header);
     }
 
     return result;
@@ -57,10 +57,10 @@ const writeToCache = (cacheFilepath, args) => {
         tmp.push(element);
     });
     data += tmp.join("\t") + "\n";
-    appendFileSync(cacheFilepath, data);
+    fs.appendFileSync(cacheFilepath, data);
 }
 
-export default {
+module.exports = {
 	loadCache,
     writeToCache
 };
