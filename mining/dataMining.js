@@ -1,18 +1,7 @@
-const {
-  fetch,
-  post,
-  getCoreId,
-  readCachedPublications,
-  readCachedGEOs,
-  readCachedSRAs,
-  readCachedDBGaps,
-  readCachedClinicalTrials
-} = require('../common/utils');
 const fs = require('fs');
 const mineProject = require('./miningHelper/mineProject');
 const minePublication = require('./miningHelper/minePublication');
 const minePM = require('./miningHelper/minePM');
-const mineResearchOutputsFromPMC = require('./miningHelper/mineResearchOutputsFromPMC');
 const mineClinicalTrials = require('./miningHelper/mineClinicalTrials');
 const mineSRADetail = require('./miningHelper/mineSRADetail');
 const mineGEODetail = require('./miningHelper/mineGEODetail');
@@ -244,22 +233,22 @@ const writeToClinicalTrialsFile = () => {
   fs.writeFileSync('data/clinical_trial.tsv', data);
 };
 
-const writeToMetricsFile = () => {
-  let data = "";
-  let columns = ["publication.publication_id", "totalGeoResults", "totalSrxResults", "totalSrpRunResults", "multipleSrpResults"];
-  data += columns.join("\t") + "\n";
-  let metricIds = Object.keys(metrics);
-  for (var i = 0; i < metricIds.length; i++) {
-    let tmp = [];
-    tmp.push(metricIds[i]);
-    tmp.push(metrics[metricIds[i]]["totalGeoResults"]?metrics[metricIds[i]]["totalGeoResults"]:"0");
-    tmp.push(metrics[metricIds[i]]["totalSrxResults"]?metrics[metricIds[i]]["totalSrxResults"]:"0");
-    tmp.push(metrics[metricIds[i]]["totalSrpRunResults"]?metrics[metricIds[i]]["totalSrpRunResults"]:"0")
-    tmp.push(metrics[metricIds[i]]["multipleSrpResults"]?metrics[metricIds[i]]["multipleSrpResults"]:"N/A");
-    data += tmp.join("\t") + "\n";
-  }
-  fs.writeFileSync('config/metrics.tsv', data);
-};
+// const writeToMetricsFile = () => {
+//   let data = "";
+//   let columns = ["publication.publication_id", "totalGeoResults", "totalSrxResults", "totalSrpRunResults", "multipleSrpResults"];
+//   data += columns.join("\t") + "\n";
+//   let metricIds = Object.keys(metrics);
+//   for (var i = 0; i < metricIds.length; i++) {
+//     let tmp = [];
+//     tmp.push(metricIds[i]);
+//     tmp.push(metrics[metricIds[i]]["totalGeoResults"]?metrics[metricIds[i]]["totalGeoResults"]:"0");
+//     tmp.push(metrics[metricIds[i]]["totalSrxResults"]?metrics[metricIds[i]]["totalSrxResults"]:"0");
+//     tmp.push(metrics[metricIds[i]]["totalSrpRunResults"]?metrics[metricIds[i]]["totalSrpRunResults"]:"0")
+//     tmp.push(metrics[metricIds[i]]["multipleSrpResults"]?metrics[metricIds[i]]["multipleSrpResults"]:"N/A");
+//     data += tmp.join("\t") + "\n";
+//   }
+//   fs.writeFileSync('config/metrics.tsv', data);
+// };
 
 const run = async (projectsTodo) => {
   console.time('mineProject');
@@ -275,6 +264,7 @@ const run = async (projectsTodo) => {
   await minePM.run(publications, metrics);
   console.timeEnd('minePM');
 
+  // deprecated
   // console.time('mineResearchOutputsFromPMC');
   // await mineResearchOutputsFromPMC.run(publications);
   // console.timeEnd("mineResearchOutputsFromPMC");
@@ -294,10 +284,10 @@ const run = async (projectsTodo) => {
   console.log("Number of GEOs: " + Object.keys(geos).length);
   console.timeEnd('mineGEODetail');
   
-  // console.time('mineDBGapDetail');
-  // await mineDBGapDetail.run(publications, dbgaps);
-  // console.log("Number of DBGaps: " + Object.keys(dbgaps).length);
-  // console.timeEnd('mineDBGapDetail');
+  console.time('mineDBGapDetail');
+  await mineDBGapDetail.run(publications, dbgaps);
+  console.log("Number of DBGaps: " + Object.keys(dbgaps).length);
+  console.timeEnd('mineDBGapDetail');
 
   console.time('mineClinicalTrialsDetail');
   await mineClinicalTrialsDetail.run(clinicalTrials);
@@ -310,10 +300,10 @@ const run = async (projectsTodo) => {
   writeToPublicationFile();
   writeToGEOFile();
   writeToSRAFile();
-  // writeToDBGapFile();
+  writeToDBGapFile();
   writeToClinicalTrialsFile();
 
-  writeToMetricsFile();
+  // writeToMetricsFile();
 };
 
 module.exports = {
