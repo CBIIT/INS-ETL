@@ -4,10 +4,11 @@
 11/30/2021 adeforge     Comment about runtime for pubmed_publication_scrape_elapsed_estimate,
                         clarification for 'PubMed scrape estimate' high level meaning,
                         started a section for scraping clinical trials by publication from PubMed
+12/28/2021 adeforge     Minor editing, added section for GEO, SRA and dbGaP data sets
 #######################################################
 
 
-## PubMed scrape estimate for publications from projects, doesn't account for 'slipping' (POST or GET reequests that fail and are retried)
+## Scrape estimate for publications from projects, doesn't account for 'slipping' (POST or GET reequests that fail and are retried)
 # current search term logic, per group (share an activity code + core id)
 # the advanced search contains terms without a space between the activity code and core id (one hit), all other hits counted have that separator (terms with the separator are hit individually)
 
@@ -28,17 +29,33 @@ The first term for pubmed_publication_scrape_elapsed_estimate can be known befor
 and is virtually 0 if caching is being used.
 
 
-## PubMed scrape estimate for clinical trials from publications, doesn't account for 'slipping' (POST or GET reequests that fail and are retried)
+## Scrape estimate for clinical trials from publications and projects, doesn't account for 'slipping' (POST or GET reequests that fail and are retried)
 # we only want to cache clinical trials for publications because publications are final,
 #  projects are not, the number of clinical trials associated with a project may change over time
 
 time_to_hit_pubmed = 0.5-4 seconds (on my local over the VPN)  # these are very much eyeball estimates
+time_to_hit_clinicaltrialsgov = 0.1-0.3 seconds (on my local over the VPN)  # these are very much eyeball estimates
 
-# pubmed_clinicaltrials_scrape_elapsed_estimate is not the full runtime of the script
+# clinicaltrials_scrape_elapsed_estimate is not the full runtime of the script
 # not a lot of publications have clinical trials (for this 810 Moonshot projects), but the scrape needs to find 'no clinical trials' just as much as 'some number of clinical trials',
 #  the caching preserves both to avoid scraping PubMed for something that doesn't change
-# with caching, the pubmed_clinicaltrials_scrape_elapsed_estimate is ~5min for the 810 Moonshot projects @ ~3015 publications scraped (on my local over the VPN)
-pubmed_clinicaltrials_scrape_elapsed_estimate = (total_publications_scraped * time_to_hit_pubmed) + (total_publications_scraped * time_to_hit_pubmed)
+# with caching, the clinicaltrials_scrape_elapsed_estimate is ~5min for the 810 Moonshot projects @ ~3015 publications scraped (on my local over the VPN)
+clinicaltrials_scrape_elapsed_estimate = (total_projects * time_to_hit_pubmed) + (total_publications_scraped * time_to_hit_pubmed) + (total_clinicaltrials_scraped * time_to_hit_clinicaltrialsgov)
 
-The first term for pubmed_clinicaltrials_scrape_elapsed_estimate can be known before the script runs,
-while second term for pubmed_clinicaltrials_scrape_elapsed_estimate is virtually 0 if caching is being used.
+The first term for clinicaltrials_scrape_elapsed_estimate can be known before the script runs,
+while second term for clinicaltrials_scrape_elapsed_estimate is virtually 0 if caching is being used.
+The third term represents getting the details for the clinical trials scraped by project and by publication, it is not cached, but could be.
+
+
+## Scrape estimate for GEO, SRA and dbGaP data from publications, doesn't account for 'slipping' (POST or GET reequests that fail and are retried)
+
+time_to_hit_ncbi = ??? seconds (on my local over the VPN)  # these are very much eyeball estimates
+time_to_hit_ncbi_geo_detail = ~0.1 seconds (on my local over the VPN)  # these are very much eyeball estimates
+time_to_hit_ncbi_sra_detail = ~5 seconds (on my local over the VPN)  # these are very much eyeball estimates
+time_to_hit_ncbi_dbgap_detail = 1-2 seconds (on my local over the VPN)  # these are very much eyeball estimates
+
+# geo_sra_dbgap_scrape_elapsed_estimate is not the full runtime of the script
+geo_sra_dbgap_scrape_elapsed_estimate = (total_publications_scraped * time_to_hit_ncbi) + (total_publications_scraped * (time_to_hit_ncbi_geo_detail + time_to_hit_ncbi_sra_detail + time_to_hit_ncbi_dbgap_detail))
+
+The first term for geo_sra_dbgap_scrape_elapsed_estimate is virtually 0 if caching is being used.
+The second terms is not cached, but it could be.
