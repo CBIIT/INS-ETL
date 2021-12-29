@@ -43,12 +43,12 @@ const run = async (publications, sras, metrics) => {
             idx = d.indexOf("bioproject\/");
             d = d.substring(idx);
             idx_end = d.indexOf("\">");
-            sras[srp].bio_accession = d.substring(11, idx_end);
-            console.log(apis.pmBioprojectDetailSite + sras[srp].bio_accession);
-            let bioproject_detail = await fetchWithStatusCheck(apis.pmBioprojectDetailSite + sras[srp].bio_accession, 404);  // keep trying unless 404
+            sras[srp].bioproject_accession = d.substring(11, idx_end);
+            console.log(apis.pmBioprojectDetailSite + sras[srp].bioproject_accession);
+            let bioproject_detail = await fetchWithStatusCheck(apis.pmBioprojectDetailSite + sras[srp].bioproject_accession, 404);  // keep trying unless 404
             if(bioproject_detail){
                 let acc = "";
-                pos  = bioproject_detail.indexOf(sras[srp].bio_accession + ";");
+                pos  = bioproject_detail.indexOf(sras[srp].bioproject_accession + ";");
                 if(pos !== -1){
                   bioproject_detail = bioproject_detail.substring(pos);
                   pos = bioproject_detail.indexOf("</td>");
@@ -66,8 +66,8 @@ const run = async (publications, sras, metrics) => {
                   }
                 }
                 pos = bioproject_detail.indexOf("Registration date");
-                sras[srp].reg_date = bioproject_detail.substring(pos+19, pos + 30);
-                sras[srp].reg_date = sras[srp].reg_date.replace('<','');
+                sras[srp].registration_date = bioproject_detail.substring(pos+19, pos + 30);
+                sras[srp].registration_date = sras[srp].registration_date.replace('<','');
             }
           }
           else {

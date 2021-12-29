@@ -19,7 +19,7 @@ let clinicalTrials = {};
 let metrics = {};
 
 const generateDataModel = async () => {
-  //GEO, SRA, dbGap, 
+  // associate publications for GEO, SRA, dbGap
   for(let pid in publications){
     //GEO
     let g = publications[pid].geo_accession;
@@ -46,25 +46,49 @@ const generateDataModel = async () => {
       dbgaps[d].publications.push(pid);
     }
   }
+
+  // format projects fields for writing to file
+  for (let projectID in projects) {
+    let keys = Object.keys(projects[projectID]);
+    keys.forEach(key => {
+      projects[projectID][key] = projects[projectID][key] ? projects[projectID][key] : "";  // ensure all values are at least empty string
+    });
+    projects[projectID].abstract_text = projects[projectID].abstract_text ? projects[projectID].abstract_text.replace(/\n/g, "\\n") : "";  // format the abstract
+  }
+
+  // format publications fields for writing to file
+  for (let pubID in publications) {
+    let keys = Object.keys(publications[pubID]);
+    keys.forEach(key => {
+      publications[pubID][key] = publications[pubID][key] ? publications[pubID][key] : "";  // ensure all values are at least empty string
+    });
+  }
 };
 
+// the column names and the data structure field names need to be the same
 const writeToFile = (filepath, columns, dataStructure, type) => {
   let data = "";
   data += columns.join("\t") + "\n";
   for (let key in dataStructure) {
-    let temp = [type];  // the first column is usually 'type' and is hard coded and the same for the entire file
-    columns.forEach(col => {
-      temp.push(dataStructure[key][col])
+    let temp = [type, key];  // the first column is 'type' and is hard coded and the same for the entire file
+                             //  the second column is the key for the data structure
+    columns.forEach(col => {  // iterate through the column properties in order
+      if (dataStructure[key][col] != undefined) {  // some columns don't represent data structure properties
+        temp.push(dataStructure[key][col]);
+      }
     });
+    // for the passed columns, if there are projects or publications, they should be listed last. project before publication or just project at the end if no publications
+    // if a data structure does not inherently have publications or projects, but that information should be listed, the generateDataModel function is where those
+    //   relationships should be populated. the note about projects and publications in the columns passed still applies
     if (dataStructure[key].publications || dataStructure[key].projects) {
-      if (dataStructure[key].publications) {
+      if (dataStructure[key].publications) {  // if there are associated publications, preserve the upstream project id before the publication id
         dataStructure[key].publications.map((p) => {
           publications[p].projects.map((pp) => {
             data += temp.join("\t") + "\t" + pp + "\t" + p + "\n";
           });
         });
       }
-      if (dataStructure[key].projects) {
+      if (dataStructure[key].projects) {  // if there are associated projects
         dataStructure[key].projects.map((p) => {
           data += temp.join("\t") + "\t" + p + "\n";
         });
@@ -78,160 +102,160 @@ const writeToFile = (filepath, columns, dataStructure, type) => {
 };
 
 
-const writeToProjectFile = () => {
-  let data = "";
-  let columns = ["type","project_id","application_id", "fiscal_year", "project_title","project_type", "abstract_text", "keywords",
-   "org_name", "org_city", "org_state", "org_country", "principal_investigators", "lead_doc", "program_officers", "award_amount",
-    "nci_funded_amount", "award_notice_date", "project_start_date", "project_end_date", "full_foa", "program.program_id"];
-  data = columns.join("\t") + "\n";
-  for(let projectID in projects){
-    let tmp = [];
-    tmp.push("project");
-    tmp.push(projects[projectID].project_id);
-    tmp.push(projects[projectID].application_id);
-    tmp.push(projects[projectID].fiscal_year);
-    tmp.push(projects[projectID].project_title);
-    tmp.push(projects[projectID].project_type);
-    tmp.push(projects[projectID].abstract_text == null ? "" : projects[projectID].abstract_text.replace(/\n/g, "\\n"));
-    tmp.push(projects[projectID].keywords);
-    tmp.push(projects[projectID].org_name);
-    tmp.push(projects[projectID].org_city);
-    tmp.push(projects[projectID].org_state);
-    tmp.push(projects[projectID].org_country);
-    tmp.push(projects[projectID].principal_investigators);
-    tmp.push(projects[projectID].lead_doc);
-    tmp.push(projects[projectID].program_officers);
-    tmp.push(projects[projectID].award_amount);
-    tmp.push(projects[projectID].nci_funded_amount);
-    tmp.push(projects[projectID].award_notice_date);
-    tmp.push(projects[projectID].project_start_date);
-    tmp.push(projects[projectID].project_end_date);
-    tmp.push(projects[projectID].full_foa);
-    tmp.push(projects[projectID].program);
-    data += tmp.join("\t") + "\n";
-  }
-  fs.writeFileSync('data/project.tsv', data);
-};
+// const writeToProjectFile = () => {
+//   let data = "";
+//   let columns = ["type","project_id","application_id", "fiscal_year", "project_title","project_type", "abstract_text", "keywords",
+//    "org_name", "org_city", "org_state", "org_country", "principal_investigators", "lead_doc", "program_officers", "award_amount",
+//     "nci_funded_amount", "award_notice_date", "project_start_date", "project_end_date", "full_foa", "program.program_id"];
+//   data = columns.join("\t") + "\n";
+//   for(let projectID in projects){
+//     let tmp = [];
+//     tmp.push("project");
+//     tmp.push(projects[projectID].project_id);
+//     tmp.push(projects[projectID].application_id);
+//     tmp.push(projects[projectID].fiscal_year);
+//     tmp.push(projects[projectID].project_title);
+//     tmp.push(projects[projectID].project_type);
+//     tmp.push(projects[projectID].abstract_text == null ? "" : projects[projectID].abstract_text.replace(/\n/g, "\\n"));
+//     tmp.push(projects[projectID].keywords);
+//     tmp.push(projects[projectID].org_name);
+//     tmp.push(projects[projectID].org_city);
+//     tmp.push(projects[projectID].org_state);
+//     tmp.push(projects[projectID].org_country);
+//     tmp.push(projects[projectID].principal_investigators);
+//     tmp.push(projects[projectID].lead_doc);
+//     tmp.push(projects[projectID].program_officers);
+//     tmp.push(projects[projectID].award_amount);
+//     tmp.push(projects[projectID].nci_funded_amount);
+//     tmp.push(projects[projectID].award_notice_date);
+//     tmp.push(projects[projectID].project_start_date);
+//     tmp.push(projects[projectID].project_end_date);
+//     tmp.push(projects[projectID].full_foa);
+//     tmp.push(projects[projectID].program);
+//     data += tmp.join("\t") + "\n";
+//   }
+//   fs.writeFileSync('data/project.tsv', data);
+// };
 
-const writeToPublicationFile = () => {
-  let data = "";
-  let columns = ["type","publication_id","pmc_id", "year", "journal","title", "authors",
-   "publish_date", "citation_count", "relative_citation_ratio", "rcr_range", "nih_percentile", "doi", "project.project_id"];
-  data = columns.join("\t") + "\n";
-  for(let pubID in publications){
-    let tmp = [];
-    tmp.push("publication");
-    tmp.push(pubID);
-    tmp.push(publications[pubID].pmc_id);
-    tmp.push(publications[pubID].year);
-    tmp.push(publications[pubID].journal);
-    tmp.push(publications[pubID].title);
-    tmp.push(publications[pubID].authors);
-    tmp.push(publications[pubID].publish_date);
-    tmp.push(publications[pubID].citation_count);
-    tmp.push(publications[pubID].relative_citation_ratio);
-    tmp.push(publications[pubID].rcr_range);
-    tmp.push(publications[pubID].nih_percentile);
-    tmp.push(publications[pubID].doi);
-    publications[pubID].projects.map((p) => {
-      data += tmp.join("\t") + "\t" + p + "\n";
-    });
-  }
-  fs.writeFileSync('data/publication.tsv', data);
-};
+// const writeToPublicationFile = () => {
+//   let data = "";
+//   let columns = ["type","publication_id","pmc_id", "year", "journal","title", "authors",
+//    "publish_date", "citation_count", "relative_citation_ratio", "rcr_range", "nih_percentile", "doi", "project.project_id"];
+//   data = columns.join("\t") + "\n";
+//   for(let pubID in publications){
+//     let tmp = [];
+//     tmp.push("publication");
+//     tmp.push(pubID);
+//     tmp.push(publications[pubID].pmc_id);
+//     tmp.push(publications[pubID].year);
+//     tmp.push(publications[pubID].journal);
+//     tmp.push(publications[pubID].title);
+//     tmp.push(publications[pubID].authors);
+//     tmp.push(publications[pubID].publish_date);
+//     tmp.push(publications[pubID].citation_count);
+//     tmp.push(publications[pubID].relative_citation_ratio);
+//     tmp.push(publications[pubID].rcr_range);
+//     tmp.push(publications[pubID].nih_percentile);
+//     tmp.push(publications[pubID].doi);
+//     publications[pubID].projects.map((p) => {
+//       data += tmp.join("\t") + "\t" + p + "\n";
+//     });
+//   }
+//   fs.writeFileSync('data/publication.tsv', data);
+// };
 
-const writeToGEOFile = () => {
-  let data = "";
+// const writeToGEOFile = () => {
+//   let data = "";
 
-  let columns = ["type","accession","title", "status", "submission_date","last_update_date", "project.project_id", "publication.publication_id"];
-  data = columns.join("\t") + "\n";
-  for(let geoID in geos){
-    let tmp = [];
-    tmp.push("geo");
-    tmp.push(geoID);
-    tmp.push(geos[geoID].title);
-    tmp.push(geos[geoID].status);
-    tmp.push(geos[geoID].submission_date);
-    tmp.push(geos[geoID].last_update_date);
-    if (geos[geoID].publications) {
-      geos[geoID].publications.map((p) => {
-        publications[p].projects.map((pp) => {
-          data += tmp.join("\t") + "\t" + pp + "\t" + p + "\n";  // preserve the publication's project
-        });
-      });
-    }
-  }
-  fs.writeFileSync('data/geo.tsv', data);
-};
+//   let columns = ["type","accession","title", "status", "submission_date","last_update_date", "project.project_id", "publication.publication_id"];
+//   data = columns.join("\t") + "\n";
+//   for(let geoID in geos){
+//     let tmp = [];
+//     tmp.push("geo");
+//     tmp.push(geoID);
+//     tmp.push(geos[geoID].title);
+//     tmp.push(geos[geoID].status);
+//     tmp.push(geos[geoID].submission_date);
+//     tmp.push(geos[geoID].last_update_date);
+//     if (geos[geoID].publications) {
+//       geos[geoID].publications.map((p) => {
+//         publications[p].projects.map((pp) => {
+//           data += tmp.join("\t") + "\t" + pp + "\t" + p + "\n";  // preserve the publication's project
+//         });
+//       });
+//     }
+//   }
+//   fs.writeFileSync('data/geo.tsv', data);
+// };
 
-const writeToSRAFile = () => {
-  let data = "";
-  let columns = ["type","accession","study_title", "bioproject_accession", "registration_date","project.project_id", "publication.publication_id"];
-  data = columns.join("\t") + "\n";
-  for(let sraID in sras){
-    let tmp = [];
-    tmp.push("sra");
-    tmp.push(sraID);
-    tmp.push(sras[sraID].study_title);
-    tmp.push(sras[sraID].bio_accession);
-    tmp.push(sras[sraID].reg_date);
-    if (sras[sraID].publications) {
-      sras[sraID].publications.map((p) => {
-        publications[p].projects.map((pp) => {
-          data += tmp.join("\t") + "\t" + pp + "\t" + p + "\n";  // preserve the publication's project
-        });
-      });
-    }
-  }
-  fs.writeFileSync('data/sra.tsv', data);
-};
+// const writeToSRAFile = () => {
+//   let data = "";
+//   let columns = ["type","accession","study_title", "bioproject_accession", "registration_date","project.project_id", "publication.publication_id"];
+//   data = columns.join("\t") + "\n";
+//   for(let sraID in sras){
+//     let tmp = [];
+//     tmp.push("sra");
+//     tmp.push(sraID);
+//     tmp.push(sras[sraID].study_title);
+//     tmp.push(sras[sraID].bio_accession);
+//     tmp.push(sras[sraID].reg_date);
+//     if (sras[sraID].publications) {
+//       sras[sraID].publications.map((p) => {
+//         publications[p].projects.map((pp) => {
+//           data += tmp.join("\t") + "\t" + pp + "\t" + p + "\n";  // preserve the publication's project
+//         });
+//       });
+//     }
+//   }
+//   fs.writeFileSync('data/sra.tsv', data);
+// };
 
-const writeToDBGapFile = () => {
-  let data = "";
-  let columns = ["type", "accession", "title", "release_date", "project.project_id", "publication.publication_id"];
-  data = columns.join("\t") + "\n";
-  for(let dbgapID in dbgaps){
-    let tmp = [];
-    tmp.push("dbgap");
-    tmp.push(dbgapID);
-    tmp.push(dbgaps[dbgapID].title);
-    tmp.push(dbgaps[dbgapID].release_date);
-    if (dbgaps[dbgapID].publications) {
-      dbgaps[dbgapID].publications.map((p) => {
-        publications[p].projects.map((pp) => {
-          data += tmp.join("\t") + "\t" + pp + "\t" + p + "\n";  // preserve the publication's project
-        });
-      });
-    }
-  }
-  fs.writeFileSync('data/dbgap.tsv', data);
-};
+// const writeToDBGapFile = () => {
+//   let data = "";
+//   let columns = ["type", "accession", "title", "release_date", "project.project_id", "publication.publication_id"];
+//   data = columns.join("\t") + "\n";
+//   for(let dbgapID in dbgaps){
+//     let tmp = [];
+//     tmp.push("dbgap");
+//     tmp.push(dbgapID);
+//     tmp.push(dbgaps[dbgapID].title);
+//     tmp.push(dbgaps[dbgapID].release_date);
+//     if (dbgaps[dbgapID].publications) {
+//       dbgaps[dbgapID].publications.map((p) => {
+//         publications[p].projects.map((pp) => {
+//           data += tmp.join("\t") + "\t" + pp + "\t" + p + "\n";  // preserve the publication's project
+//         });
+//       });
+//     }
+//   }
+//   fs.writeFileSync('data/dbgap.tsv', data);
+// };
 
-const writeToClinicalTrialsFile = () => {
-  let data = "";
-  let columns = ["type", "clinical_trial_id", "title", "last_update_posted", "recruitment_status", "project.project_id", "publication.publication_id"];
-  data = columns.join("\t") + "\n";
-  for(let clinicaltrialID in clinicalTrials){
-    let tmp = [];
-    tmp.push("clinical_trial");
-    tmp.push(clinicaltrialID);
-    tmp.push(clinicalTrials[clinicaltrialID].title);
-    tmp.push(clinicalTrials[clinicaltrialID].last_update_posted);
-    tmp.push(clinicalTrials[clinicaltrialID].recruitment_status);
-    if (clinicalTrials[clinicaltrialID].projects) {
-      clinicalTrials[clinicaltrialID].projects.map((p) => {
-        data += tmp.join("\t") + "\t" + p + "\t" + "" + "\n";  // if a clinical trial came from a project id
-      });
-    }
-    if (clinicalTrials[clinicaltrialID].publications)
-    clinicalTrials[clinicaltrialID].publications.map((p) => {
-      publications[p].projects.map((pp) => {
-        data += tmp.join("\t") + "\t" + pp + "\t" + p + "\n";  // if a clinical trial came from a publication id, and preserve the publication's project
-      });
-    });
-  }
-  fs.writeFileSync('data/clinical_trial.tsv', data);
-};
+// const writeToClinicalTrialsFile = () => {
+//   let data = "";
+//   let columns = ["type", "clinical_trial_id", "title", "last_update_posted", "recruitment_status", "project.project_id", "publication.publication_id"];
+//   data = columns.join("\t") + "\n";
+//   for(let clinicaltrialID in clinicalTrials){
+//     let tmp = [];
+//     tmp.push("clinical_trial");
+//     tmp.push(clinicaltrialID);
+//     tmp.push(clinicalTrials[clinicaltrialID].title);
+//     tmp.push(clinicalTrials[clinicaltrialID].last_update_posted);
+//     tmp.push(clinicalTrials[clinicaltrialID].recruitment_status);
+//     if (clinicalTrials[clinicaltrialID].projects) {
+//       clinicalTrials[clinicaltrialID].projects.map((p) => {
+//         data += tmp.join("\t") + "\t" + p + "\t" + "" + "\n";  // if a clinical trial came from a project id
+//       });
+//     }
+//     if (clinicalTrials[clinicaltrialID].publications)
+//     clinicalTrials[clinicaltrialID].publications.map((p) => {
+//       publications[p].projects.map((pp) => {
+//         data += tmp.join("\t") + "\t" + pp + "\t" + p + "\n";  // if a clinical trial came from a publication id, and preserve the publication's project
+//       });
+//     });
+//   }
+//   fs.writeFileSync('data/clinical_trial.tsv', data);
+// };
 
 // const writeToMetricsFile = () => {
 //   let data = "";
@@ -260,14 +284,9 @@ const run = async (projectsTodo) => {
   console.timeEnd('minePublication');
   console.log("Number of publications: " + Object.keys(publications).length);
   
-  console.time('minePM');
+  console.time('mineGeoSraDbgap');
   await minePM.run(publications, metrics);
-  console.timeEnd('minePM');
-
-  // deprecated
-  // console.time('mineResearchOutputsFromPMC');
-  // await mineResearchOutputsFromPMC.run(publications);
-  // console.timeEnd("mineResearchOutputsFromPMC");
+  console.timeEnd('mineGeoSraDbgap');
 
   console.time('mineClinicalTrials');
   await mineClinicalTrials.run(projects, publications, clinicalTrials);
@@ -296,12 +315,44 @@ const run = async (projectsTodo) => {
   await generateDataModel();
 
   console.log('Writing Files...');
-  writeToProjectFile();
-  writeToPublicationFile();
-  writeToGEOFile();
-  writeToSRAFile();
-  writeToDBGapFile();
-  writeToClinicalTrialsFile();
+  // project file
+  // writeToProjectFile();
+  let columns = ["type", "given_project_id", "project_id","application_id", "fiscal_year", "project_title", "abstract_text", "keywords",
+  "org_name", "org_city", "org_state", "org_country", "principal_investigators", "program_officers", "award_amount",
+   "nci_funded_amount", "award_notice_date", "project_start_date", "project_end_date", "full_foa"];
+  let filepath = 'data/project.tsv';
+  writeToFile(filepath, columns, projects, "project");
+
+  // publications file
+  // writeToPublicationFile();
+  columns = ["type","publication_id", "year", "journal", "title", "authors",
+   "publish_date", "citation_count", "relative_citation_ratio", "rcr_range", "nih_percentile", "doi", "project.project_id"];
+  filepath = 'data/publication.tsv';
+  writeToFile(filepath, columns, publications, "publication");
+
+  // GEO file
+  // writeToGEOFile();
+  columns = ["type","accession","title", "status", "submission_date","last_update_date", "project.project_id", "publication.publication_id"];
+  filepath = 'data/geo.tsv';
+  writeToFile(filepath, columns, geos, "geo");
+
+  // SRA file
+  // writeToSRAFile();
+  columns = ["type","accession","study_title", "bioproject_accession", "registration_date","project.project_id", "publication.publication_id"];
+  filepath = 'data/sra.tsv';
+  writeToFile(filepath, columns, sras, "sra");
+
+  // dbGaP file
+  // writeToDBGapFile();
+  columns = ["type", "accession", "title", "release_date", "project.project_id", "publication.publication_id"];
+  filepath = 'data/dbgap.tsv';
+  writeToFile(filepath, columns, dbgaps, "dbgap");
+
+  // clinical trials file
+  // writeToClinicalTrialsFile();
+  columns = ["type", "clinical_trial_id", "title", "last_update_posted", "recruitment_status", "project.project_id", "publication.publication_id"];
+  filepath = 'data/clinical_trial.tsv';
+  writeToFile(filepath, columns, clinicalTrials, "clinical_trial");
 
   // writeToMetricsFile();
 };
