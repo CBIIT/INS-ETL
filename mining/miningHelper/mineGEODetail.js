@@ -7,14 +7,14 @@ const run = async (publications, geos) => {
   let pmIds = Object.keys(publications);
   for(let p = 0; p < pmIds.length; p++){
     console.log(`Collecting GEO Detail for publication : ${pmIds[p]}, (${p+1}/${pmIds.length})`);
-    // let gs = publications[pmIds[p]].geos;
-    // if(gs && gs.length > 0){
-    //   for(let g = 0; g < gs.length; g++){
-    //     let geo_id = gs[g];
-    let geo_id = publications[pmIds[p]].geo_accession;
-      if (geo_id) {
-        if(geos[geo_id]){  // check if seen from a previous publication
-          continue;
+    if (publications[pmIds[p]].geo_accession.length === 0) {
+      console.log("No GEOs for publication.");
+    }
+    else {
+      for (let g = 0; g < publications[pmIds[p]].geo_accession.length; g++) {
+        let geo_id = publications[pmIds[p]].geo_accession[g];
+        if(!(geo_id) || geos[geo_id]){
+          continue;  // details for this GEO id was found already, or if the cache has cached duplicate GEO ids or if the GEO id isn't good
         }
         console.log(apis.pmGeoDetailSite + geo_id);
         let gd = await fetch(apis.pmGeoDetailSite + geo_id, true);  // true is keep trying
@@ -41,17 +41,14 @@ const run = async (publications, geos) => {
             gd = gd.substring(pos + 26);
             pos = gd.indexOf("</td>");
             geos[geo_id].last_update_date = gd.substring(0, pos);
+            console.log("GEO details found.");
           }
           else {
-            console.log("GEO Accession does not exist.");
+            console.log("GEO Accession does not exist for " + geo_id);
           }
         }
-      // }
+      }
     }
-    else {
-      console.log("No GEOs for publication.");
-    }
-    
   }
 };
 

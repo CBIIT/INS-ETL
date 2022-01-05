@@ -12,10 +12,14 @@ const run = async (publications, sras, metrics) => {
     // metrics[pmIds[p]]["totalSrpRunResults"] = null;
 
     console.log(`Collecting SRA Detail for publication : ${pmIds[p]}, (${p+1}/${pmIds.length})`);
-    let srp = publications[pmIds[p]].sra_accession;  // there is one per publication
-      if (srp) {
-        if(sras[srp]){
-          continue;  // details for this SRA were found already
+    if (publications[pmIds[p]].sra_accession.length === 0) {
+      console.log("No SRAs for publication.")
+    }
+    else {
+      for (let s = 0; s < publications[pmIds[p]].sra_accession.length; s++) {
+        let srp = publications[pmIds[p]].sra_accession[s];
+        if(!(srp) || sras[srp]){
+          continue;  // details for this SRA were found already, or if the cache has cached duplicate SRP numbers or if the SRP number isn't good
         }
         console.log(apis.pmSrpDetailSite + srp);
         let d = await fetch(apis.pmSrpDetailSite + srp, true);  // true is keep trying
@@ -36,11 +40,11 @@ const run = async (publications, sras, metrics) => {
             // }
 
             sras[srp] = {};
-            let idx = d.indexOf("h1>");
+            let idx = d.indexOf("h1>");  // 3 characters
             d = d.substring(idx + 3);
             let idx_end = d.indexOf("</h1>");
             sras[srp].study_title = d.substring(0, idx_end);
-            idx = d.indexOf("bioproject\/");
+            idx = d.indexOf("bioproject\/");  // 11 characters
             d = d.substring(idx);
             idx_end = d.indexOf("\">");
             sras[srp].bioproject_accession = d.substring(11, idx_end);
@@ -71,13 +75,11 @@ const run = async (publications, sras, metrics) => {
             }
           }
           else {
-            console.log("SRA Accession does not exist.");
+            console.log("SRA Accession does not exist for " + srp);
           }
         }
       }
-      else {
-        console.log("No SRAs for publication.")
-      }
+    }
   }
 };
 
