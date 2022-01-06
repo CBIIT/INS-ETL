@@ -22,28 +22,34 @@ const generateDataModel = async () => {
   // associate publications for GEO, SRA, dbGap
   for(let pid in publications){
     //GEO
-    let g = publications[pid].geo_accession;
-    if (g && geos[g]) {
-      if (!geos[g].publications) {
-        geos[g].publications = [];
+    for (let g = 0; g < publications[pid].geo_accession.length; g++) {
+      let geo = publications[pid].geo_accession[g];
+      if (geo && geos[geo]) {
+        if (!geos[geo].publications) {
+          geos[geo].publications = [];
+        }
+        geos[geo].publications.push(pid);
       }
-      geos[g].publications.push(pid);
     }
     //SRA
-    let s = publications[pid].sra_accession;
-    if (s && sras[s]) {
-      if (!sras[s].publications) {
-        sras[s].publications = [];
+    for (let s = 0; s < publications[pid].sra_accession.length; s++) {
+      let sra = publications[pid].sra_accession[s];
+      if (sra && sras[sra]) {
+        if (!sras[sra].publications) {
+          sras[sra].publications = [];
+        }
+        sras[sra].publications.push(pid);
       }
-      sras[s].publications.push(pid);
     }
     //dbGap
-    let d = publications[pid].dbgap_accession;
-    if (d && dbgaps[d]) {
-      if (!dbgaps[d].publications) {
-        dbgaps[d].publications = [];
+    for (let d = 0; d < publications[pid].dbgap_accession.length; d++) {
+      let dbgap = publications[pid].dbgap_accession[d];
+      if (dbgap && dbgaps[dbgap]) {
+        if (!dbgaps[dbgap].publications) {
+          dbgaps[dbgap].publications = [];
+        }
+        dbgaps[dbgap].publications.push(pid);
       }
-      dbgaps[d].publications.push(pid);
     }
   }
 
@@ -62,6 +68,33 @@ const generateDataModel = async () => {
     keys.forEach(key => {
       publications[pubID][key] = publications[pubID][key] ? publications[pubID][key] : "";  // ensure all values are at least empty string
     });
+  }
+
+  // format GEO fields for writing to file
+  for (let geoID in geos) {
+    let keys = Object.keys(geos[geoID]);
+    keys.forEach(key => {
+      geos[geoID][key] = geos[geoID][key] ? geos[geoID][key] : "";  // ensure all values are at least empty string
+    });
+    geos[geoID].title = geos[geoID].title ? geos[geoID].title.replace(/(\r\n|\r|\n|\t)/gm, "") : "";  // format the title
+  }
+
+  // format SRA fields for writing to file
+  for (let sraID in sras) {
+    let keys = Object.keys(sras[sraID]);
+    keys.forEach(key => {
+      sras[sraID][key] = sras[sraID][key] ? sras[sraID][key] : "";  // ensure all values are at least empty string
+    });
+    sras[sraID].study_title = sras[sraID].study_title ? sras[sraID].study_title.replace(/(\r\n|\r|\n|\t)/gm, "") : "";  // format the study_title
+  }
+
+  // format dbGaP fields for writing to file
+  for (let dbgapID in dbgaps) {
+    let keys = Object.keys(dbgaps[dbgapID]);
+    keys.forEach(key => {
+      dbgaps[dbgapID][key] = dbgaps[dbgapID][key] ? dbgaps[dbgapID][key] : "";  // ensure all values are at least empty string
+    });
+    dbgaps[dbgapID].title = dbgaps[dbgapID].title ? dbgaps[dbgapID].title.replace(/(\r\n|\r|\n|\t)/gm, "") : "";  // format the title
   }
 };
 
@@ -197,8 +230,8 @@ const writeToFile = (filepath, columns, dataStructure, type) => {
 //     tmp.push("sra");
 //     tmp.push(sraID);
 //     tmp.push(sras[sraID].study_title);
-//     tmp.push(sras[sraID].bio_accession);
-//     tmp.push(sras[sraID].reg_date);
+//     tmp.push(sras[sraID].bioproject_accession);
+//     tmp.push(sras[sraID].registration_date);
 //     if (sras[sraID].publications) {
 //       sras[sraID].publications.map((p) => {
 //         publications[p].projects.map((pp) => {
