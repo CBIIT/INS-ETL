@@ -21,10 +21,10 @@ readXlsxFile(file_path, { sheet: 1 }).then(async (rows) => {
     rows.forEach((item, idx) => {
         if (idx >= 667) {  // 11/03/2021 adeforge, see 'moonshot_ccdi_projects_all.xlsx', projects sheet in the config directory
           projects[item[0]] = {};
-          // 12/28/2021 adeforge, these are not present for the current 'moonshot_ccdi_projects_all.xlsx' project ids
-          // projects[item[0]].project_type = item[1];
-          // projects[item[0]].program = item[3];
-          // projects[item[0]].lead_doc = item[4];
+          // 12/28/2021 adeforge, not all of these are present for the current 'moonshot_ccdi_projects_all.xlsx' project ids
+          projects[item[0]].project_type = item[1];
+          projects[item[0]].program = item[3];
+          projects[item[0]].lead_doc = "N/A";
         }
     });
 
