@@ -97,11 +97,10 @@ const generateDataModel = async () => {
       projects[projectID][key] = projects[projectID][key] ? projects[projectID][key] : "";  // ensure all values are at least empty string
     });
     projects[projectID].abstract_text = projects[projectID].abstract_text ? projects[projectID].abstract_text.replace(/\n/g, "\\n") : "";  // format the abstract
-    // Publications key off of this project_id for relationships in Neo4j upon data loading. When publications are scraped, they are scraped with respect to
+    // Publications key off of this queried_project_id for relationships in Neo4j upon data loading. When publications are scraped, they are scraped with respect to
     //  the activiity code and core id -- we don't have information more granular than that -- an entire set of projects that share a (activity code + core id) are
-    //  all treated the same. Therefore, this 'project_id' property must be formatted into just the activity code + core id. The true project ids (with suffix and leading numeral)
-    //  are preserved in the 'projects' data structure as 'given_project_id'.
-    projects[projectID].project_id = getActivityCode(projects[projectID].project_id) + getCoreId(projects[projectID].project_id);
+    //  all treated the same. Therefore, this 'queried_project_id' property must be formatted into just the activity code + core id.
+    projects[projectID].queried_project_id = getActivityCode(projectID) + getCoreId(projectID);
   }
 
   // format publications fields for writing to file
@@ -445,7 +444,7 @@ const run = async (projectsTodo) => {
   console.log('Writing Files...');
   // project file
   // writeToProjectFile();
-  let columns = ["type", "given_project_id", "project_id","application_id", "fiscal_year", "project_title", "project_type", "abstract_text", "keywords",
+  let columns = ["type", "project_id", "queried_project_id","application_id", "fiscal_year", "project_title", "project_type", "abstract_text", "keywords",
    "org_name", "org_city", "org_state", "org_country", "principal_investigators", "lead_doc", "program_officers", "award_amount",
     "nci_funded_amount", "award_notice_date", "project_start_date", "project_end_date", "full_foa", "program.program_id"];
   let filepath = 'digest_data/project.tsv';
@@ -456,48 +455,48 @@ const run = async (projectsTodo) => {
   // publications file
   // writeToPublicationFile();
   columns = ["type","publication_id", "year", "journal", "title", "authors",
-   "publish_date", "citation_count", "relative_citation_ratio", "rcr_range", "nih_percentile", "doi", "project.project_id"];
+   "publish_date", "citation_count", "relative_citation_ratio", "rcr_range", "nih_percentile", "doi", "project.queried_project_id"];
   filepath = 'digest_data/publication.tsv';
   writeToDataDigestFile(filepath, columns, publications, "publication");
   columns = ["type","publication_id", "year", "journal", "title", "authors",
-  "publish_date", "citation_count", "relative_citation_ratio", "rcr_range", "nih_percentile", "doi", "project.project_id"];
+  "publish_date", "citation_count", "relative_citation_ratio", "rcr_range", "nih_percentile", "doi", "project.queried_project_id"];
   filepath = 'data/publication.tsv';
   writeToDataFile(filepath, columns, publications, "publication");
 
   // GEO file
   // writeToGEOFile();
-  columns = ["type","accession","title", "status", "submission_date","last_update_date", "project.project_id", "publication.publication_id"];
+  columns = ["type","accession","title", "status", "submission_date","last_update_date", "project.queried_project_id", "publication.publication_id"];
   filepath = 'digest_data/geo.tsv';
   writeToDataDigestFile(filepath, columns, geos, "geo");
-  columns = ["type","accession","title", "status", "submission_date","last_update_date", "project.project_id"];
+  columns = ["type","accession","title", "status", "submission_date","last_update_date", "project.queried_project_id"];
   filepath = 'data/geo.tsv';
   writeToDataFile(filepath, columns, geos, "geo");
 
   // SRA file
   // writeToSRAFile();
-  columns = ["type","accession","study_title", "bioproject_accession", "registration_date", "project.project_id", "publication.publication_id"];
+  columns = ["type","accession","study_title", "bioproject_accession", "registration_date", "project.queried_project_id", "publication.publication_id"];
   filepath = 'digest_data/sra.tsv';
   writeToDataDigestFile(filepath, columns, sras, "sra");
-  columns = ["type","accession","study_title", "bioproject_accession", "registration_date", "project.project_id"];
+  columns = ["type","accession","study_title", "bioproject_accession", "registration_date", "project.queried_project_id"];
   filepath = 'data/sra.tsv';
   writeToDataFile(filepath, columns, sras, "sra");
 
   // dbGaP file
   // writeToDBGapFile();
-  columns = ["type", "accession", "title", "release_date", "project.project_id", "publication.publication_id"];
+  columns = ["type", "accession", "title", "release_date", "project.queried_project_id", "publication.publication_id"];
   filepath = 'digest_data/dbgap.tsv';
   writeToDataDigestFile(filepath, columns, dbgaps, "dbgap");
-  columns = ["type", "accession", "title", "release_date", "project.project_id"];
+  columns = ["type", "accession", "title", "release_date", "project.queried_project_id"];
   filepath = 'data/dbgap.tsv';
   writeToDataFile(filepath, columns, dbgaps, "dbgap");
 
 
   // clinical trials file
   // writeToClinicalTrialsFile();
-  columns = ["type", "clinical_trial_id", "title", "last_update_posted", "recruitment_status", "project.project_id", "publication.publication_id"];
+  columns = ["type", "clinical_trial_id", "title", "last_update_posted", "recruitment_status", "project.queried_project_id", "publication.publication_id"];
   filepath = 'digest_data/clinical_trial.tsv';
   writeToDataDigestFile(filepath, columns, clinicalTrials, "clinical_trial");
-  columns = ["type", "clinical_trial_id", "title", "last_update_posted", "recruitment_status", "project.project_id"];
+  columns = ["type", "clinical_trial_id", "title", "last_update_posted", "recruitment_status", "project.queried_project_id"];
   filepath = 'data/clinical_trial.tsv';
   writeToDataFile(filepath, columns, clinicalTrials, "clinical_trial");
 
