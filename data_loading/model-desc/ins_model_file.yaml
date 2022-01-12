@@ -7,7 +7,8 @@ Nodes:
       - program_website
   project:
     Props:
-      - project_id
+      - project_id  # this has the leading numeral, suffix, everything (can't tie publications to it)
+      - queried_project_id  # this is just the activity code and core id (can tie publications to it), and there are duplicates
       - application_id
       - fiscal_year
       - project_title
@@ -65,7 +66,7 @@ Nodes:
       - title
       - last_update_posted
       - recruitment_status
-Relationships:
+Relationships:  # tie everything back to a project, projects are tied to programs
   has_publication:
     Mul: many_to_many
     Ends:
