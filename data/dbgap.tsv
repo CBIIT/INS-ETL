@@ -1,4 +1,4 @@
-type	accession	title	release_date	project.project_id
+type	accession	title	release_date	project.queried_project_id
 dbgap	phs001041.v1.p1	enetic Basis for Clinical Response to CTLA-4 Blockade in Melanoma	June10,2016	R01CA205426
 dbgap	phs000980.v1.p1	utational Landscape Determines Sensitivity to PD-1 Blockade in Non-Small Cell Lung Cancer	November19,2015	R01CA205426
 dbgap	phs001577.v1.p1	tructural Alterations Driving Castration-Resistant Prostate Cancer Revealed by Linked-Read Genome Sequencing	September12,2018	U54CA224079

@@ -1,4 +1,4 @@
-type	accession	study_title	bioproject_accession	registration_date	project.project_id
+type	accession	study_title	bioproject_accession	registration_date	project.queried_project_id
 sra	SRP097738	esBAF chromatin remodeling complexes promote spacing of nucleosomes flanking pluripotency factor binding sites	PRJNA368640	25-Jan-2017	R01CA163915
 sra	SRP097737	TOP2 synergizes with BAF chromatin remodeling for resolution of facultative heterochromatin	PRJNA368641	25-Jan-2017	R01CA163915
 sra	SRP091873	Reconstituting development of pancreatic intraepithelial neoplasia from primary human pancreas duct cells	PRJNA349475	20-Oct-2016	R01CA211927
@@ -416,6 +416,7 @@ sra	SRP295518	Chromatin accessibility associates with protein-RNA correlation in
 sra	SRP309174	Pathway Signatures Derived from On-treatment Tumor Specimens Predict Response to Anti-PD1 Blockade in Metastatic Melanoma	PRJNA706446	3-Mar-2021	U54CA224070
 sra	SRP256724	Potent androgen receptor inhibition unleashes oncogenic action of the KLF5 stem cell transcription factor in castration-resistant prostate cancer [ChIP-seq]	PRJNA625790	16-Apr-2020	R37CA230617
 sra	SRP256723	Potent androgen receptor inhibition unleashes oncogenic action of the KLF5 stem cell transcription factor in castration-resistant prostate cancer [RNA-seq]	PRJNA625789	16-Apr-2020	R37CA230617
+sra	SRP323037	Single-cell Multi-omics Defines Tolerogenic Extrathymic Aire-Expressing Populations with Unique Homology to Thymic Epithelium	PRJNA735721	7-Jun-2021	P01AI118688
 sra	SRP301119	Exceptional response of high-risk neuroblastoma to RBM39 degrader Indisulam (ATAC-Seq)	PRJNA691027	10-Jan-2021	U01CA232488
 sra	SRP301121	Exceptional response of high-risk neuroblastoma to RBM39 degrader Indisulam  (RNA-Seq)	PRJNA691032	10-Jan-2021	U01CA232488
 sra	SRP294135	Immune cell topography predicts response to PD-1 blockade in cutaneous T cell lymphoma	PRJNA680750	25-Nov-2020	U2CCA233195
