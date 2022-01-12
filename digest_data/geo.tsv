@@ -1,4 +1,4 @@
-type	accession	title	status	submission_date	last_update_date	project.project_id	publication.publication_id
+type	accession	title	status	submission_date	last_update_date	project.queried_project_id	publication.publication_id
 geo	GSE94041	TOP2 synergizes with BAF chromatin remodeling for both resolutions and formation of facultative heterochromatin	Public on Mar 01, 2017	Jan 25, 2017	May 15, 2019	R01CA163915	28250416
 geo	GSE94041	TOP2 synergizes with BAF chromatin remodeling for both resolutions and formation of facultative heterochromatin	Public on Mar 01, 2017	Jan 25, 2017	May 15, 2019	R01CA163915
 geo	GSE94040	esBAF chromatin remodeling complexes promote spacing of nucleosomes flanking pluripotency factor binding sites	Public on Mar 01, 2017	Jan 25, 2017	May 15, 2019	R01CA163915	28250416
@@ -636,8 +636,8 @@ geo	GSE136579	Impact of BHLHE40-AS1 over expression in MCF10A cells	Public on Ju
 geo	GSE136579	Impact of BHLHE40-AS1 over expression in MCF10A cells	Public on Jun 10, 2020	Aug 28, 2019	Jun 10, 2020	R01CA207445
 geo	GSE66301	Gene expression profiling of patient's DCIS-IDC tandem lesions by RNA sequencing analysis	Public on Feb 26, 2015	Feb 25, 2015	Jun 10, 2020	R01CA207445	31907974
 geo	GSE66301	Gene expression profiling of patient's DCIS-IDC tandem lesions by RNA sequencing analysis	Public on Feb 26, 2015	Feb 25, 2015	Jun 10, 2020	R01CA207445
-geo	GSE140628	Regulatory T Cell depletion causes compensatory immune suppression and accelerated pancreatic carcinogenesis	Public on Jan 13, 2020	Nov 18, 2019	Jan 17, 2021	U01CA224145	31911451
-geo	GSE140628	Regulatory T Cell depletion causes compensatory immune suppression and accelerated pancreatic carcinogenesis	Public on Jan 13, 2020	Nov 18, 2019	Jan 17, 2021	U01CA224145
+geo	GSE140628	Regulatory T Cell depletion causes compensatory immune suppression and accelerated pancreatic carcinogenesis	Public on Jan 13, 2020	Nov 18, 2019	Jan 11, 2022	U01CA224145	31911451
+geo	GSE140628	Regulatory T Cell depletion causes compensatory immune suppression and accelerated pancreatic carcinogenesis	Public on Jan 13, 2020	Nov 18, 2019	Jan 11, 2022	U01CA224145
 geo	GSE128707	Regulatory T cell depletion causes compensatory immune suppression and accelerated pancreatic carcinogenesis.	Public on Mar 23, 2019	Mar 22, 2019	Jan 13, 2020	U01CA224145	31911451
 geo	GSE128707	Regulatory T cell depletion causes compensatory immune suppression and accelerated pancreatic carcinogenesis.	Public on Mar 23, 2019	Mar 22, 2019	Jan 13, 2020	U01CA224145
 geo	GSE141499	Homeostasis and transitional activation of regulatory T cells require c-Myc	Public on Jan 10, 2020	Dec 04, 2019	May 14, 2020	R01CA221290	31911938
@@ -1437,6 +1437,8 @@ geo	GSE148807	Potent androgen receptor inhibition unleashes oncogenic action of 
 geo	GSE148807	Potent androgen receptor inhibition unleashes oncogenic action of the KLF5 stem cell transcription factor in castration-resistant prostate cancer [ChIP-seq]	Public on Sep 21, 2021	Apr 16, 2020	Dec 29, 2021	R37CA230617
 geo	GSE148806	Potent androgen receptor inhibition unleashes oncogenic action of the KLF5 stem cell transcription factor in castration-resistant prostate cancer [RNA-seq]	Public on Sep 21, 2021	Apr 16, 2020	Dec 29, 2021	R37CA230617	34737261
 geo	GSE148806	Potent androgen receptor inhibition unleashes oncogenic action of the KLF5 stem cell transcription factor in castration-resistant prostate cancer [RNA-seq]	Public on Sep 21, 2021	Apr 16, 2020	Dec 29, 2021	R37CA230617
+geo	GSE176282	Single-cell Multi-omics Defines Tolerogenic Extrathymic Aire-Expressing Populations with Unique Homology to Thymic Epithelium	Public on Dec 15, 2021	Jun 07, 2021	Dec 15, 2021	P01AI118688	34767455
+geo	GSE176282	Single-cell Multi-omics Defines Tolerogenic Extrathymic Aire-Expressing Populations with Unique Homology to Thymic Epithelium	Public on Dec 15, 2021	Jun 07, 2021	Dec 15, 2021	P01AI118688
 geo	GSE164506	Exceptional response of high-risk neuroblastoma to RBM39 degrader Indisulam	Public on Nov 24, 2021	Jan 10, 2021	Nov 25, 2021	U01CA232488	34788094
 geo	GSE164506	Exceptional response of high-risk neuroblastoma to RBM39 degrader Indisulam	Public on Nov 24, 2021	Jan 10, 2021	Nov 25, 2021	U01CA232488
 geo	GSE164505	Exceptional response of high-risk neuroblastoma to RBM39 degrader Indisulam  (RNA-Seq)	Public on Nov 24, 2021	Jan 10, 2021	Nov 25, 2021	U01CA232488	34788094

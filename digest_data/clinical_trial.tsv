@@ -1,4 +1,4 @@
-type	clinical_trial_id	title	last_update_posted	recruitment_status	project.project_id	publication.publication_id
+type	clinical_trial_id	title	last_update_posted	recruitment_status	project.queried_project_id	publication.publication_id
 clinical_trial	NCT01697566	An Endometrial Cancer Chemoprevention Study of Metformin	June 5, 2019	Active, not recruiting	P50CA098258
 clinical_trial	NCT01737619	PET/CT and Lymph Node Mapping in Finding Lymph Node Metastasis in Patients With High-Risk Endometrial Cancer	November 19, 2021	Active, not recruiting	P50CA098258
 clinical_trial	NCT00788671	Levonorgestrel-Releasing Intrauterine System in Treating Patients With Complex Atypical Hyperplasia or Grade I Endometrial Cancer	October 8, 2021	Active, not recruiting	P50CA098258	32805208
@@ -13,9 +13,9 @@ clinical_trial	NCT04314284	Patient-Centered Intervention to Reduce Cancer Patien
 clinical_trial	NCT04585919	Paired Promotion of Colorectal Cancer and Social Determinants of Health Screening	April 1, 2021	Enrolling by invitation	P50CA244433
 clinical_trial	NCT04867850	Effect of Behavioral Nudges on Serious Illness Conversation Documentation (SPP2)	September 14, 2021	Recruiting	P50CA244690	34563227
 clinical_trial	NCT04867850	Effect of Behavioral Nudges on Serious Illness Conversation Documentation (SPP2)	September 14, 2021	Recruiting	P50CA244690
-clinical_trial	NCT04737031	Improving Tobacco Treatment Rates for Outpatient Cancer Patients Who Smoke (SPP1)	July 23, 2021	Recruiting	P50CA244690	34266468
-clinical_trial	NCT04737031	Improving Tobacco Treatment Rates for Outpatient Cancer Patients Who Smoke (SPP1)	July 23, 2021	Recruiting	P50CA244690
-clinical_trial	NCT05021133	Tele-Navigation of Lung Cancer Screening (Tele-Navi LCS)	August 31, 2021	Not yet recruiting	P50CA244693
+clinical_trial	NCT04737031	Improving Tobacco Treatment Rates for Outpatient Cancer Patients Who Smoke (SPP1)	January 11, 2022	Recruiting	P50CA244690	34266468
+clinical_trial	NCT04737031	Improving Tobacco Treatment Rates for Outpatient Cancer Patients Who Smoke (SPP1)	January 11, 2022	Recruiting	P50CA244690
+clinical_trial	NCT05021133	Tele-Navigation of Lung Cancer Screening (Tele-Navi LCS)	January 11, 2022	Not yet recruiting	P50CA244693
 clinical_trial	NCT04337203	Shared Healthcare Actions and Reflections Electronic Systems in Survivorship	December 8, 2021	Recruiting	P50CA244693
 clinical_trial	NCT01548768	RHYTHM (Formerly Escape II Myocardium) (RHYTHM)	November 27, 2020	Completed	R01AR050026
 clinical_trial	NCT04199026	Implantable Microdevice for the Delivery of Drugs and Their Effect on Tumors in Patients With Metastatic or Recurrent Sarcoma	November 26, 2021	Not yet recruiting	R01CA180279
