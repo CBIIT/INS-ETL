@@ -20,7 +20,7 @@ const run = async (projectsTodo) => {
       for(let j = 0; j < d.results.length ; j++){
         if(d.results[j].subproject_id === null){
           let dt = d.results[j];
-          projectsTodo[projectNums[i]].project_id = dt.project_num;
+          // projectsTodo[projectNums[i]].project_id = dt.project_num;  // this is redundant information
           projectsTodo[projectNums[i]].application_id = dt.appl_id;
           projectsTodo[projectNums[i]].fiscal_year = dt.fiscal_year;
           projectsTodo[projectNums[i]].project_title = dt.project_title;
