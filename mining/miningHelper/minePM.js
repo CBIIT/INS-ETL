@@ -2,7 +2,6 @@ const {
   fetch,
 } = require('../../common/utils');
 const apis = require('../../common/apis');
-const fs = require('fs');
 const {
   loadCache,
   writeToCache
@@ -45,13 +44,8 @@ const run = async (publications, metrics) => {
 
   let pmIds = Object.keys(publications);
   for(let p = 0; p < pmIds.length; p++){
-    
-    // setup for metrics
-    // metrics[pmIds[p]] = {};
-    // metrics[pmIds[p]]["totalGeoResults"] = null;
-    // metrics[pmIds[p]]["totalSrxResults"] = null;
-
-    if (ncbi_geo_sra_dbgap_cache_publications[pmIds[p]]) {  // check for cache hit
+    // check for cache hit
+    if (ncbi_geo_sra_dbgap_cache_publications[pmIds[p]]) {  
       publications[pmIds[p]].geo_accession = ncbi_geo_sra_dbgap_cache_publications[pmIds[p]]["geo"];
       publications[pmIds[p]].sra_accession = ncbi_geo_sra_dbgap_cache_publications[pmIds[p]]["sra"];
       publications[pmIds[p]].dbgap_accession = ncbi_geo_sra_dbgap_cache_publications[pmIds[p]]["dbgap"];
@@ -69,31 +63,6 @@ const run = async (publications, metrics) => {
     d = await fetch(apis.pmGeoSite + pmIds[p], true);  // true is keep trying
     if(d != "failed"){
       if (d.indexOf("<title>Error - GEO DataSets - NCBI</title>") === -1 && d.indexOf("<title>No items found - GEO DataSets - NCBI</title>") === -1) {  // check if GEO datasets exist for this publication
-        // get how many GEOs were returned for metrics
-        // let temp_items = d;
-        // let idx_items = temp_items.indexOf("Items: ");
-        // if (idx_items > -1) {
-        //   idx_items = temp_items.indexOf("Items: 1 to ");  // 12 characters
-        //   if (idx_items > -1) {
-        //     // multiple pages of results
-        //     // we substring to 'Items: 1 to ' for consistency, to get the first occurrence of 'of ' for sure
-        //     temp_items = temp_items.substring(idx_items + 12); // get past 'Items: 1 to '
-        //     idx_items = temp_items.indexOf("of ");  // 3 characters, it is unknown how many characters between 'Items: 1 to ' and 'of '
-        //     temp_items = temp_items.substring(idx_items + 3);  // get just past 'of ' to get to number of interest
-        //   }
-        //   else {
-        //     // single page of results
-        //     idx_items = temp_items.indexOf("Items: ");  // get past 'Items: '
-        //     temp_items = temp_items.substring(idx_items + 7);
-        //   }
-        //   idx_items = temp_items.indexOf("<");
-        //   temp_items = temp_items.substring(0,idx_items);
-        //   // metrics[pmIds[p]]["totalGeoResults"] = temp_items;
-        // }
-        // else {
-        //   // single result
-        //   // metrics[pmIds[p]]["totalGeoResults"] = 1;
-        // }
         let tmp = d;
         let idx_start = tmp.indexOf("Accession: <");
         while (idx_start > -1) {
@@ -128,25 +97,6 @@ const run = async (publications, metrics) => {
           publications[pmIds[p]].sra_accession.push(str);
         }
         else {
-          // multiple sra results
-          // how many SRX numbers were returned for metrics
-          // let temp_items = d;
-          // let idx_items = temp_items.indexOf("Items: 1 to ");  // 12 characters, check for multiple pages of results
-          // if (idx_items > -1) {
-          //   // multiple pages of results
-          //   // we substring to 'Items: 1 to ' for consistence, to get the first occurrence of 'of ' for sure
-          //   temp_items = temp_items.substring(idx_items + 12); // get past 'Items: 1 to '
-          //   idx_items = temp_items.indexOf("of ");  // 3 characters, it is unknown how many characters between 'Items: 1 to ' and 'of '
-          //   temp_items = temp_items.substring(idx_items + 3);  // get just past 'of ' to get to number of interest
-          // }
-          // else {
-          //   // single page of results
-          //   idx_items = temp_items.indexOf("Items: ");  // get past 'Items: '
-          //   temp_items = temp_items.substring(idx_items + 7);
-          // }
-          // idx_items = temp_items.indexOf("<");
-          // temp_items = parseInt(temp_items.substring(0,idx_items));
-          // // metrics[pmIds[p]]["totalSrxResults"] = temp_items;
           let tmp = d;
           let idx_start = tmp.indexOf("<dt>Accession: </dt> <dd>");  // 25 characters
           while (idx_start > -1) {
@@ -157,14 +107,14 @@ const run = async (publications, metrics) => {
             let sra_detail = await fetch(apis.pmSraDetailSite + accession + "[accn]", true);  // true is keep trying
             let pos_start = 0; 
             if(sra_detail != "failed"){
-                let pos_end = 0;
-                pos_start = sra_detail.indexOf("Link to SRA Study\">");  // 19 characters
-                sra_detail = sra_detail.substring(pos_start + 19);
-                pos_end = sra_detail.indexOf("</a>");
-                let str = sra_detail.substring(0, pos_end);
-                if (publications[pmIds[p]].sra_accession.indexOf(str) === -1) {  // there are multiple accessions (SRX numbers) per SRP number, only save the unique SRPs
-                  publications[pmIds[p]].sra_accession.push(str);                //  such that an SRP number is related to an SRA data set
-                }
+              let pos_end = 0;
+              pos_start = sra_detail.indexOf("Link to SRA Study\">");  // 19 characters
+              sra_detail = sra_detail.substring(pos_start + 19);
+              pos_end = sra_detail.indexOf("</a>");
+              let str = sra_detail.substring(0, pos_end);  // the SRP number we want
+              if (publications[pmIds[p]].sra_accession.indexOf(str) === -1) {  // there are multiple accessions (SRX numbers) per SRP number, only save the unique SRPs
+                publications[pmIds[p]].sra_accession.push(str);                //  such that an SRP number is related to an SRA data set
+              }
             }
             tmp = tmp.substring(idx_end);
             idx_start = tmp.indexOf("<dt>Accession: </dt> <dd>");  // 25 characters

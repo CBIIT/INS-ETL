@@ -7,10 +7,6 @@ const apis = require('../../common/apis');
 const run = async (publications, sras, metrics) => {
   let pmIds = Object.keys(publications);
   for(let p = 0; p < pmIds.length; p++){
-    
-    // metrics[pmIds[p]]["multipleSrpResults"] = null;
-    // metrics[pmIds[p]]["totalSrpRunResults"] = null;
-
     console.log(`Collecting SRA Detail for publication : ${pmIds[p]}, (${p+1}/${pmIds.length})`);
     if (publications[pmIds[p]].sra_accession.length === 0) {
       console.log("No SRAs for publication.")
