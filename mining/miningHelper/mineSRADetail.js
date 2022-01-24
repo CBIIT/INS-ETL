@@ -4,7 +4,7 @@ const {
 } = require('../../common/utils');
 const apis = require('../../common/apis');
 
-const run = async (publications, sras, metrics) => {
+const run = async (publications, sras) => {
   let pmIds = Object.keys(publications);
   for(let p = 0; p < pmIds.length; p++){
     console.log(`Collecting SRA Detail for publication : ${pmIds[p]}, (${p+1}/${pmIds.length})`);
@@ -21,19 +21,21 @@ const run = async (publications, sras, metrics) => {
         let d = await fetch(apis.pmSrpDetailSite + srp, true);  // true is keep trying
         if(d != "failed"){
           if (d.indexOf("<div class=\"error\">SRA Study " + srp + " does not exist</div>") === -1) {
-
+            let cumulative_srx_runs = 0;
             // get metric related to number of runs vs number of SRX results for publication
-            // let temp = d;
-            // let idx_total_runs = temp.indexOf("href=\"https://www.ncbi.nlm.nih.gov//sra/?term=" + srp + "\">");  // 48 characters plus srp string length
-            // temp = temp.substring(idx_total_runs + 48 + srp.length);
-            // idx_total_runs = temp.indexOf("<");
-            // let run_results = parseInt(temp.substring(0,idx_total_runs));
-            // metrics[pmIds[p]]["totalSrpRunResults"] = run_results;
-            // if (run_results < metrics[pmIds[p]]["totalSrxResults"]) {
-            //   metrics[pmIds[p]]["multipleSrpResults"] = "TRUE";
-            // } else {
-            //   metrics[pmIds[p]]["multipleSrpResults"] = "FALSE";
-            // }
+            let temp = d;
+            let idx_total_runs = temp.indexOf("href=\"https://www.ncbi.nlm.nih.gov//sra/?term=" + srp + "\">");  // 48 characters plus srp string length
+            temp = temp.substring(idx_total_runs + 48 + srp.length);
+            idx_total_runs = temp.indexOf("<");
+            let run_results = parseInt(temp.substring(0,idx_total_runs));
+            cumulative_srx_runs += run_results;
+            // 20 is the max results for the page originally scraped
+            if (cumulative_srx_runs > 20 && publications[pmIds[p]].total_srx_results > cumulative_srx_runs) {  // the second part of the conditional is to check if any results past 20 belong to the same SRA being checked
+              publications[pmIds[p]].sra_overflow = cumulative_srx_runs;  // where to start for the sra overflow portion of the script, otherwise undefined
+            }
+            else {
+              s += run_results;  // skip past the accessions in the same SRA
+            }
 
             sras[srp] = {};
             let idx = d.indexOf("h1>");  // 3 characters
