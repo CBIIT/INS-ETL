@@ -11,6 +11,7 @@ const {
   getCoreId,
   getActivityCode
 } = require('../common/utils');
+const { mineSRAInteractive } = require('./miningHelper/mineSRAInteractive');
 
 
 let projects = {};
@@ -411,9 +412,14 @@ const run = async (projectsTodo) => {
   console.timeEnd('minePublication');
   console.log("Number of publications: " + Object.keys(publications).length);
   
-  console.time('mineGeoSraDbgap');
-  await minePM.run(publications, metrics);
-  console.timeEnd('mineGeoSraDbgap');
+  console.time('mineGeoDbgap');
+  await minePM.run(publications);
+  console.timeEnd('mineGeoDbgap');
+
+  // console.time('mineSRAInteractive');
+  // await mineSRAInteractive(publications, sras);  // only SRAs
+  // console.log("Number of SRAs: " + Object.keys(sras).length);
+  // console.timeEnd('mineSRAInteractive');
 
   console.time('mineClinicalTrials');
   await mineClinicalTrials.run(projects, publications, clinicalTrials);
@@ -421,7 +427,7 @@ const run = async (projectsTodo) => {
   console.timeEnd('mineClinicalTrials');
 
   console.time('mineSRADetail');
-  await mineSRADetail.run(publications, sras, metrics);
+  await mineSRADetail.run(publications, sras);
   console.log("Number of SRAs: " + Object.keys(sras).length);
   console.timeEnd('mineSRADetail');
 
@@ -434,6 +440,11 @@ const run = async (projectsTodo) => {
   await mineDBGapDetail.run(publications, dbgaps);
   console.log("Number of DBGaps: " + Object.keys(dbgaps).length);
   console.timeEnd('mineDBGapDetail');
+
+  console.time('mineSRAInteractive');
+  await mineSRAInteractive(publications, sras);
+  console.log("Number of SRAs: " + Object.keys(sras).length);
+  console.timeEnd('mineSRAInteractive');
 
   console.time('mineClinicalTrialsDetail');
   await mineClinicalTrialsDetail.run(clinicalTrials);
