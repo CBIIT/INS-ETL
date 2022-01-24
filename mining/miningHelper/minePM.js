@@ -36,7 +36,121 @@ const formatCache = () => {
   }
 };
 
-const run = async (publications, metrics) => {
+const getGEOData = (publications, pmId) => {
+  console.log(apis.pmGeoSite + pmId);
+  let d = await fetch(apis.pmGeoSite + pmId, true);  // true is keep trying
+  if(d != "failed"){
+    if (d.indexOf("<title>Error - GEO DataSets - NCBI</title>") === -1 && d.indexOf("<title>No items found - GEO DataSets - NCBI</title>") === -1) {  // check if GEO datasets exist for this publication
+      let temp = d;
+      let idx_start = temp.indexOf("Accession: <");
+      while (idx_start > -1) {
+        let idx_end = 0;
+        temp = temp.substring(idx_start + 20);
+        idx_end = temp.indexOf("</dd>");
+        let str = temp.substring(0, idx_end);
+        publications[pmId].geo_accession.push(str);
+        temp = temp.substring(idx_end);
+        idx_start = temp.indexOf("Accession: <");
+      }
+      console.log(publications[pmId].geo_accession.length + " GEOs found.");
+    }
+    else {
+      console.log("No GEO found.");
+    }
+  }
+}
+
+const getTotalSRXResults = (temp) => {
+  let idx = temp.indexOf("Items: ");  // if there aren't multiple results, this accession shouldn't be here
+  temp = temp.substring(idx);
+  idx = temp.indexOf("of ");
+  temp = temp.substring(idx);
+  idx = temp.indexOf("</h3");
+  let total_results = parseInt(temp.substring(0,idx));  // get the total number of results on the first page visit
+  return total_results;
+}
+
+const getMultipleSRXResults =(temp) => {
+  let result = [];
+  let idx_start = temp.indexOf("<dt>Accession: </dt> <dd>");  // 25 characters
+  while (idx_start > -1) {
+    temp = temp.substring(idx_start + 25);
+    let idx_end = temp.indexOf("</dd>");
+    let accession = temp.substring(0, idx_end);
+    console.log(apis.pmSraDetailSite + accession + "[accn]");
+    let sra_detail = await fetch(apis.pmSraDetailSite + accession + "[accn]", true);  // true is keep trying
+    let pos_start = 0; 
+    if(sra_detail != "failed"){
+      let pos_end = 0;
+      pos_start = sra_detail.indexOf("Link to SRA Study\">");  // 19 characters
+      sra_detail = sra_detail.substring(pos_start + 19);
+      pos_end = sra_detail.indexOf("</a>");
+      let str = sra_detail.substring(0, pos_end);  // the SRP number we want
+      if (result.indexOf(str) === -1) {  // there are multiple accessions (SRX numbers) per SRP number, only save the unique SRPs
+        result.push(str);                //  such that an SRP number is related to an SRA data set
+      }
+    }
+    temp = temp.substring(idx_end);
+    idx_start = temp.indexOf("<dt>Accession: </dt> <dd>");  // 25 characters
+  }
+  return result;
+}
+
+const getSRAData = (publications, pmId) => {
+  console.log(apis.pmSraSite + pmId);
+  let d = await fetch(apis.pmSraSite + pmId, true);  // true is keep trying
+  if(d != "failed"){
+    if (d.indexOf("<title>Error - SRA - NCBI</title>") === -1 && d.indexOf("<title>No items found - SRA - NCBI</title>") === -1) {  // check if SRA datasets exist for this publication
+      let idx = d.indexOf("Items:");
+      if(idx === -1){
+        let temp = d;
+        //single sra result
+        let pos = temp.indexOf("Link to SRA Study\">");  // 19 characters
+        temp = temp.substring(pos + 19);
+        pos = temp.indexOf("</a>");
+        let str = temp.substring(0, pos);
+        publications[pmId].sra_accession.push(str);
+      }
+      else {
+        let temp = d;
+        publications[pmId].total_srx_results = getTotalSRXResults(temp);
+
+        temp = d;  // re-initialize the temp variable containing the hypertext
+        publications[pmId].sra_accession = getMultipleSRXResults(temp);
+      }
+      console.log(publications[pmId].sra_accession.length + " SRAs found.");
+    }
+    else {
+      console.log("No SRA found.");
+    }
+  }
+}
+
+const getDBGapData = (publications, pmId) => {
+  console.log(apis.pmDbgapSite + pmId);
+  let d = await fetch(apis.pmDbgapSite + pmId, true);  // true is keep trying
+  if(d != "failed"){
+    if (d.indexOf("<title>Error - dbGaP - NCBI</title>") === -1 && d.indexOf("<title>No items found - dbGaP - NCBI</title>") === -1) {  // check if DBGap datasets exist for this publication
+      let tmp = d;
+      let idx_start = tmp.indexOf("href=\"/projects/gap/cgi-bin/study.cgi?study_id="); // 47 characters
+      while (idx_start > -1) {
+        let idx_end = 0;
+        tmp = tmp.substring(idx_start + 47);
+        idx_end = tmp.indexOf("\"");
+        let str = tmp.substring(0, idx_end);
+        publications[pmId].dbgap_accession.push(str);
+        tmp = tmp.substring(idx_end);
+        idx_start = tmp.indexOf("href=\"/projects/gap/cgi-bin/study.cgi?study_id="); // 47 characters
+      }
+      console.log(publications[pmId].dbgap_accession.length + " dbGaPs found.")
+    }
+    else {
+      console.log("No dbGaP found.");
+    }
+  }
+}
+
+const run = async (publications) => {
   console.log("Loading NCBI GEO, SRA and DBGap cache.");
   ncbi_geo_sra_dbgap_cache_publications = loadCache(ncbi_geo_sra_dbgap_cache_publications_location, ncbi_geo_sra_dbgap_cache_publications_columns);
   formatCache();
@@ -59,96 +173,13 @@ const run = async (publications, metrics) => {
     publications[pmIds[p]].dbgap_accession = [];
 
     // get GEO data, get one accession out of results to mine for GEO details later
-    console.log(apis.pmGeoSite + pmIds[p]);
-    d = await fetch(apis.pmGeoSite + pmIds[p], true);  // true is keep trying
-    if(d != "failed"){
-      if (d.indexOf("<title>Error - GEO DataSets - NCBI</title>") === -1 && d.indexOf("<title>No items found - GEO DataSets - NCBI</title>") === -1) {  // check if GEO datasets exist for this publication
-        let tmp = d;
-        let idx_start = tmp.indexOf("Accession: <");
-        while (idx_start > -1) {
-          let idx_end = 0;
-          tmp = tmp.substring(idx_start + 20);
-          idx_end = tmp.indexOf("</dd>");
-          let str = tmp.substring(0, idx_end);
-          publications[pmIds[p]].geo_accession.push(str);
-          tmp = tmp.substring(idx_end);
-          idx_start = tmp.indexOf("Accession: <");
-        }
-        console.log(publications[pmIds[p]].geo_accession.length + " GEOs found.");
-      }
-      else {
-        console.log("No GEO found.");
-      }
-    }
+    getGEOData(publications, pmIds[p]);
 
     // get SRA data, get one accession out of results to mine for SRA details later
-    console.log(apis.pmSraSite + pmIds[p]);
-    d = await fetch(apis.pmSraSite + pmIds[p], true);  // true is keep trying
-    if(d != "failed"){
-      if (d.indexOf("<title>Error - SRA - NCBI</title>") === -1 && d.indexOf("<title>No items found - SRA - NCBI</title>") === -1) {  // check if SRA datasets exist for this publication
-        let idx = d.indexOf("Items:");
-        if(idx === -1){
-          let tmp = d;
-          //single sra result
-          let pos = tmp.indexOf("Link to SRA Study\">");  // 19 characters
-          tmp = tmp.substring(pos + 19);
-          pos = tmp.indexOf("</a>");
-          let str = tmp.substring(0, pos);
-          publications[pmIds[p]].sra_accession.push(str);
-        }
-        else {
-          let tmp = d;
-          let idx_start = tmp.indexOf("<dt>Accession: </dt> <dd>");  // 25 characters
-          while (idx_start > -1) {
-            tmp = tmp.substring(idx_start + 25);
-            let idx_end = tmp.indexOf("</dd>");
-            let accession = tmp.substring(0, idx_end);
-            console.log(apis.pmSraDetailSite + accession + "[accn]");
-            let sra_detail = await fetch(apis.pmSraDetailSite + accession + "[accn]", true);  // true is keep trying
-            let pos_start = 0; 
-            if(sra_detail != "failed"){
-              let pos_end = 0;
-              pos_start = sra_detail.indexOf("Link to SRA Study\">");  // 19 characters
-              sra_detail = sra_detail.substring(pos_start + 19);
-              pos_end = sra_detail.indexOf("</a>");
-              let str = sra_detail.substring(0, pos_end);  // the SRP number we want
-              if (publications[pmIds[p]].sra_accession.indexOf(str) === -1) {  // there are multiple accessions (SRX numbers) per SRP number, only save the unique SRPs
-                publications[pmIds[p]].sra_accession.push(str);                //  such that an SRP number is related to an SRA data set
-              }
-            }
-            tmp = tmp.substring(idx_end);
-            idx_start = tmp.indexOf("<dt>Accession: </dt> <dd>");  // 25 characters
-          }
-        }
-        console.log(publications[pmIds[p]].sra_accession.length + " SRAs found.");
-      }
-      else {
-        console.log("No SRA found.");
-      }
-    }
+    getSRAData(publications, pmIds[p]);
 
     // get DBGap data, get one accession out of results to mine the DBGap details later
-    console.log(apis.pmDbgapSite + pmIds[p]);
-    d = await fetch(apis.pmDbgapSite + pmIds[p], true);  // true is keep trying
-    if(d != "failed"){
-      if (d.indexOf("<title>Error - dbGaP - NCBI</title>") === -1 && d.indexOf("<title>No items found - dbGaP - NCBI</title>") === -1) {  // check if DBGap datasets exist for this publication
-        let tmp = d;
-        let idx_start = tmp.indexOf("href=\"/projects/gap/cgi-bin/study.cgi?study_id="); // 47 characters
-        while (idx_start > -1) {
-          let idx_end = 0;
-          tmp = tmp.substring(idx_start + 47);
-          idx_end = tmp.indexOf("\"");
-          let str = tmp.substring(0, idx_end);
-          publications[pmIds[p]].dbgap_accession.push(str);
-          tmp = tmp.substring(idx_end);
-          idx_start = tmp.indexOf("href=\"/projects/gap/cgi-bin/study.cgi?study_id="); // 47 characters
-        }
-        console.log(publications[pmIds[p]].dbgap_accession.length + " dbGaPs found.")
-      }
-      else {
-        console.log("No dbGaP found.");
-      }
-    }
+    getDBGapData(publications, pmIds[p]);
 
     // preserve whether there were GEOs, SRAs or DBGaps or not (empty string)
     writeToCache(ncbi_geo_sra_dbgap_cache_publications_location, [pmIds[p], publications[pmIds[p]].geo_accession?publications[pmIds[p]].geo_accession.join(","):"",
