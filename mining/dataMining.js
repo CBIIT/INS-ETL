@@ -11,7 +11,7 @@ const {
   getCoreId,
   getActivityCode
 } = require('../common/utils');
-const { mineSRAInteractive } = require('./miningHelper/mineSRAInteractive');
+// const { mineSRAInteractive } = require('./miningHelper/mineSRAInteractive');
 
 
 let projects = {};
@@ -441,11 +441,6 @@ const run = async (projectsTodo) => {
   console.log("Number of DBGaps: " + Object.keys(dbgaps).length);
   console.timeEnd('mineDBGapDetail');
 
-  console.time('mineSRAInteractive');
-  await mineSRAInteractive(publications, sras);
-  console.log("Number of SRAs: " + Object.keys(sras).length);
-  console.timeEnd('mineSRAInteractive');
-
   console.time('mineClinicalTrialsDetail');
   await mineClinicalTrialsDetail.run(clinicalTrials);
   console.timeEnd('mineClinicalTrialsDetail');
@@ -510,8 +505,6 @@ const run = async (projectsTodo) => {
   columns = ["type", "clinical_trial_id", "title", "last_update_posted", "recruitment_status", "project.queried_project_id"];
   filepath = 'data/clinical_trial.tsv';
   writeToDataFile(filepath, columns, clinicalTrials, "clinical_trial");
-
-  // writeToMetricsFile();
 };
 
 module.exports = {
