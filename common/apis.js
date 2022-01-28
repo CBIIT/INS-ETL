@@ -15,6 +15,8 @@ const clinicalTrialsApi = "https://clinicaltrials.gov/ct2/results/rpc/";
 const clinicalTrialsDetailSiteStudy = "https://clinicaltrials.gov/ct2/show/study/";
 const clinicalTrialsDetailSiteRecord = "https://clinicaltrials.gov/ct2/show/record/";
 const iciteApi = "https://itools.od.nih.gov/icite/api/pubs?pmids=";
+const usptoPatentsSite = "https://uspto.report/patent/search/";
+const usptoPatentsDetailSite = "https://uspto.report/patent/app/";
 
 module.exports = {
   nihReporterApi,
@@ -34,4 +36,7 @@ module.exports = {
   clinicalTrialsDetailSiteStudy,
   clinicalTrialsDetailSiteRecord,
   iciteApi,
+  usptoPatentsSite,
+  usptoPatentsDetailSite,
+  usptoPatentsDetailSiteSuffix,
 };
