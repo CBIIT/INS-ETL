@@ -7,6 +7,8 @@ const mineSRADetail = require('./miningHelper/mineSRADetail');
 const mineGEODetail = require('./miningHelper/mineGEODetail');
 const mineDBGapDetail = require('./miningHelper/mineDBGapDetail');
 const mineClinicalTrialsDetail = require('./miningHelper/mineClinicalTrialsDetail');
+const minePatents = require('./miningHelper/minePatents');
+const minePatentsDetail = require('./miningHelper/minePatentsDetail');
 const {
   getCoreId,
   getActivityCode
@@ -20,8 +22,7 @@ let geos = {};
 let sras = {};
 let dbgaps = {};
 let clinicalTrials = {};
-// capture data during runtime to be written to a file
-let metrics = {};
+let patents = {};
 
 const generateDataModel = async () => {
   // associate publications and projects for GEO, SRA, dbGap
@@ -411,6 +412,10 @@ const run = async (projectsTodo) => {
   await minePublication.run(projects, publications);
   console.timeEnd('minePublication');
   console.log("Number of publications: " + Object.keys(publications).length);
+
+  console.time('minePatents');
+  await minePatents.run(projects, patents);
+  console.timeEnd('minePatents');
   
   console.time('mineGeoDbgap');
   await minePM.run(publications);
@@ -425,6 +430,10 @@ const run = async (projectsTodo) => {
   await mineClinicalTrials.run(projects, publications, clinicalTrials);
   console.log("Number of clinical trials: " + Object.keys(clinicalTrials).length);
   console.timeEnd('mineClinicalTrials');
+
+  console.time('minePatentsDetail');
+  await mineClinicalTrialsDetail.run(patents);
+  console.timeEnd('minePatentsDetail');
 
   console.time('mineSRADetail');
   await mineSRADetail.run(publications, sras);
