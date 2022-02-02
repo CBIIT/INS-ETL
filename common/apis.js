@@ -37,6 +37,5 @@ module.exports = {
   clinicalTrialsDetailSiteRecord,
   iciteApi,
   usptoPatentsSite,
-  usptoPatentsDetailSite,
-  usptoPatentsDetailSiteSuffix,
+  usptoPatentsDetailSite
 };
