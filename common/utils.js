@@ -1,4 +1,5 @@
 const axios = require('axios').default;
+const https = require('https');
 const path = require('path');
 const fs = require("fs");
 
@@ -6,15 +7,20 @@ const fs = require("fs");
 const dataFilesDir = path.join(__dirname, "data_files");
 
 const fetch = async (url, keep_trying=false) => {
+  // 01/31/2022 adeforge, this is to ignore any SSL cert errors, required for uspto.report site for patents
+  const agent = new https.Agent({  
+    rejectUnauthorized: false
+  });
   let counter = 0;
   const MAX_RETRIES = 200;
   while (true) {
     try {
-      const response = await axios.get(url, {timeout: 60000, clarifyTimeoutError: false});
+      const response = await axios.get(url, {timeout: 10000, clarifyTimeoutError: false, httpsAgent: agent});  // 01/31/2022 adeforge, timeout bumped to 10 seconds because uspto.report site is inherently slow
       return response.data;
     } catch (error) {
       console.log("GET failed");
       console.log(url);
+      console.log(error);
       if (keep_trying === false || counter >= MAX_RETRIES) {
         return "failed";
       }
@@ -27,11 +33,15 @@ const fetch = async (url, keep_trying=false) => {
 
 // returns null if failed due to error code or returns the response data otherwise
 const fetchWithStatusCheck = async (url, error_code) => {
+  // 01/31/2022 adeforge, this is to ignore any SSL cert errors, required for uspto.report site for patents
+  const agent = new https.Agent({  
+    rejectUnauthorized: false
+  });
   let counter = 0;
   const MAX_RETRIES = 200;
   while (true) {
     try {
-      const response = await axios.get(url, {timeout: 60000, clarifyTimeoutError: false});
+      const response = await axios.get(url, {timeout: 10000, clarifyTimeoutError: false, httpsAgent: agent});  // 01/31/2022 adeforge, timeout bumped to 10 seconds because uspto.report site is inherently slow
       return response.data;
     } catch (error) {
       console.log("GET failed");
