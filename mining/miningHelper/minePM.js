@@ -36,7 +36,7 @@ const formatCache = () => {
   }
 };
 
-const getGEOData = (publications, pmId) => {
+const getGEOData = async (publications, pmId) => {
   console.log(apis.pmGeoSite + pmId);
   let d = await fetch(apis.pmGeoSite + pmId, true);  // true is keep trying
   if(d != "failed"){
@@ -70,7 +70,7 @@ const getTotalSRXResults = (temp) => {
   return total_results;
 }
 
-const getMultipleSRXResults =(temp) => {
+const getMultipleSRXResults = async (temp) => {
   let result = [];
   let idx_start = temp.indexOf("<dt>Accession: </dt> <dd>");  // 25 characters
   while (idx_start > -1) {
@@ -80,7 +80,7 @@ const getMultipleSRXResults =(temp) => {
     console.log(apis.pmSraDetailSite + accession + "[accn]");
     let sra_detail = await fetch(apis.pmSraDetailSite + accession + "[accn]", true);  // true is keep trying
     let pos_start = 0; 
-    if(sra_detail != "failed"){
+    if(sra_detail !== "failed"){
       let pos_end = 0;
       pos_start = sra_detail.indexOf("Link to SRA Study\">");  // 19 characters
       sra_detail = sra_detail.substring(pos_start + 19);
@@ -96,7 +96,7 @@ const getMultipleSRXResults =(temp) => {
   return result;
 }
 
-const getSRAData = (publications, pmId) => {
+const getSRAData = async (publications, pmId) => {
   console.log(apis.pmSraSite + pmId);
   let d = await fetch(apis.pmSraSite + pmId, true);  // true is keep trying
   if(d != "failed"){
@@ -116,7 +116,7 @@ const getSRAData = (publications, pmId) => {
         publications[pmId].total_srx_results = getTotalSRXResults(temp);
 
         temp = d;  // re-initialize the temp variable containing the hypertext
-        publications[pmId].sra_accession = getMultipleSRXResults(temp);
+        publications[pmId].sra_accession = await getMultipleSRXResults(temp);
       }
       console.log(publications[pmId].sra_accession.length + " SRAs found.");
     }
@@ -126,7 +126,7 @@ const getSRAData = (publications, pmId) => {
   }
 }
 
-const getDBGapData = (publications, pmId) => {
+const getDBGapData = async (publications, pmId) => {
   console.log(apis.pmDbgapSite + pmId);
   let d = await fetch(apis.pmDbgapSite + pmId, true);  // true is keep trying
   if(d != "failed"){
@@ -173,13 +173,13 @@ const run = async (publications) => {
     publications[pmIds[p]].dbgap_accession = [];
 
     // get GEO data, get one accession out of results to mine for GEO details later
-    getGEOData(publications, pmIds[p]);
+    await getGEOData(publications, pmIds[p]);
 
     // get SRA data, get one accession out of results to mine for SRA details later
-    getSRAData(publications, pmIds[p]);
+    await getSRAData(publications, pmIds[p]);
 
     // get DBGap data, get one accession out of results to mine the DBGap details later
-    getDBGapData(publications, pmIds[p]);
+    await getDBGapData(publications, pmIds[p]);
 
     // preserve whether there were GEOs, SRAs or DBGaps or not (empty string)
     writeToCache(ncbi_geo_sra_dbgap_cache_publications_location, [pmIds[p], publications[pmIds[p]].geo_accession?publications[pmIds[p]].geo_accession.join(","):"",

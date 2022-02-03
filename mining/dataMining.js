@@ -157,6 +157,23 @@ const generateDataModel = async () => {
     }
     clinicalTrials[clinicalTrialID].projects = [...new Set(clinicalTrials[clinicalTrialID].projects)];  // unique projects
   }
+
+  // format patent fields for writing to file
+  let patents_to_remove = [];
+  for (let patentID in patents) {
+    let keys = Object.keys(patents[patentID]);
+    keys.forEach(key => {
+      patents[patentID][key] = patents[patentID][key] ? patents[patentID][key] : "";  // ensure all values are at least empty string
+      if (patents[patentID][key] === "N/A") {
+        if (patents_to_remove.indexOf(patentID) === -1) {
+          patents_to_remove.push(patentID);
+        }
+      }
+    });
+  }
+  for (let patentID in patents_to_remove) {  // remove patents with "N/A" entries
+    delete patents[patentID];
+  }
 };
 
 // the column names and the data structure field names need to be the same
@@ -413,27 +430,9 @@ const run = async (projectsTodo) => {
   console.timeEnd('minePublication');
   console.log("Number of publications: " + Object.keys(publications).length);
 
-  console.time('minePatents');
-  await minePatents.run(projects, patents);
-  console.timeEnd('minePatents');
-  
-  console.time('mineGeoDbgap');
+  console.time('mineGeoSraDbgap');
   await minePM.run(publications);
-  console.timeEnd('mineGeoDbgap');
-
-  // console.time('mineSRAInteractive');
-  // await mineSRAInteractive(publications, sras);  // only SRAs
-  // console.log("Number of SRAs: " + Object.keys(sras).length);
-  // console.timeEnd('mineSRAInteractive');
-
-  console.time('mineClinicalTrials');
-  await mineClinicalTrials.run(projects, publications, clinicalTrials);
-  console.log("Number of clinical trials: " + Object.keys(clinicalTrials).length);
-  console.timeEnd('mineClinicalTrials');
-
-  console.time('minePatentsDetail');
-  await mineClinicalTrialsDetail.run(patents);
-  console.timeEnd('minePatentsDetail');
+  console.timeEnd('mineGeoSraDbgap');
 
   console.time('mineSRADetail');
   await mineSRADetail.run(publications, sras);
@@ -450,9 +449,23 @@ const run = async (projectsTodo) => {
   console.log("Number of DBGaps: " + Object.keys(dbgaps).length);
   console.timeEnd('mineDBGapDetail');
 
+  console.time('mineClinicalTrials');
+  await mineClinicalTrials.run(projects, publications, clinicalTrials);
+  console.log("Number of clinical trials: " + Object.keys(clinicalTrials).length);
+  console.timeEnd('mineClinicalTrials');
+
   console.time('mineClinicalTrialsDetail');
   await mineClinicalTrialsDetail.run(clinicalTrials);
   console.timeEnd('mineClinicalTrialsDetail');
+
+  console.time('minePatents');
+  await minePatents.run(projects, patents);
+  console.log("Number of Patents: " + Object.keys(patents).length);
+  console.timeEnd('minePatents');
+
+  console.time('minePatentsDetail');
+  await minePatentsDetail.run(patents);
+  console.timeEnd('minePatentsDetail');
 
   await generateDataModel();
 
@@ -505,7 +518,6 @@ const run = async (projectsTodo) => {
   filepath = 'data/dbgap.tsv';
   writeToDataFile(filepath, columns, dbgaps, "dbgap");
 
-
   // clinical trials file
   // writeToClinicalTrialsFile();
   columns = ["type", "clinical_trial_id", "title", "last_update_posted", "recruitment_status", "project.queried_project_id", "publication.publication_id"];
@@ -514,6 +526,15 @@ const run = async (projectsTodo) => {
   columns = ["type", "clinical_trial_id", "title", "last_update_posted", "recruitment_status", "project.queried_project_id"];
   filepath = 'data/clinical_trial.tsv';
   writeToDataFile(filepath, columns, clinicalTrials, "clinical_trial");
+
+  // patents file
+  columns = ["type", "patent_id", "queried_project_id", "kind_code", "filed_date", "cited_pattern_project_id", "cited_raw_project_id", "project.project_id"];
+  filepath = 'digest_data/patent.tsv';
+  writeToDataDigestFile(filepath, columns, patents, "patent");
+  // 01/31/2022 adeforge, only the data digest file for now, for exploration purposes
+  // columns = ["type", "patent_id", "kind_code", "filed_date", "cited_pattern_project_id", "cited_raw_project_id", "project.queried_project_id"];
+  // filepath = 'data/patent.tsv';
+  // writeToDataFile(filepath, columns, patents, "patent");
 };
 
 module.exports = {
