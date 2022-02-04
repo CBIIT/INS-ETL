@@ -463,11 +463,11 @@ const run = async (projectsTodo) => {
   console.log("Number of Patents: " + Object.keys(patents).length);
   console.timeEnd('minePatents');
 
-  console.time('minePatentsDetail');
-  await minePatentsDetail.run(patents);
-  console.timeEnd('minePatentsDetail');
+  // console.time('minePatentsDetail');  // 02/03/2022 adeforge, maybe deprecated
+  // await minePatentsDetail.run(patents);
+  // console.timeEnd('minePatentsDetail');
 
-  await generateDataModel();
+  // await generateDataModel();
 
   console.log('Writing Files...');
   // project file
@@ -528,7 +528,7 @@ const run = async (projectsTodo) => {
   writeToDataFile(filepath, columns, clinicalTrials, "clinical_trial");
 
   // patents file
-  columns = ["type", "patent_id", "queried_project_id", "kind_code", "filed_date", "cited_pattern_project_id", "cited_raw_project_id", "project.project_id"];
+  columns = ["type", "patent_id", "grant_date", "fulfilled_date", "project.project_id"];
   filepath = 'digest_data/patent.tsv';
   writeToDataDigestFile(filepath, columns, patents, "patent");
   // 01/31/2022 adeforge, only the data digest file for now, for exploration purposes
