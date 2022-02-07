@@ -8,12 +8,11 @@ const mineGEODetail = require('./miningHelper/mineGEODetail');
 const mineDBGapDetail = require('./miningHelper/mineDBGapDetail');
 const mineClinicalTrialsDetail = require('./miningHelper/mineClinicalTrialsDetail');
 const minePatents = require('./miningHelper/minePatents');
-const minePatentsDetail = require('./miningHelper/minePatentsDetail');
 const {
   getCoreId,
   getActivityCode
 } = require('../common/utils');
-// const { mineSRAInteractive } = require('./miningHelper/mineSRAInteractive');
+const util = require('util');
 
 
 let projects = {};
@@ -76,7 +75,6 @@ const generateDataModel = async () => {
       }
     }
   }
-
   // associate projects for ClinicalTrials
   let keys = Object.keys(clinicalTrials);
   for (let i = 0; i < keys.length; i++) {
@@ -91,7 +89,7 @@ const generateDataModel = async () => {
       });
     }
   }
-
+  
   // format projects fields for writing to file
   for (let projectID in projects) {
     let keys = Object.keys(projects[projectID]);
@@ -103,6 +101,15 @@ const generateDataModel = async () => {
     //  the activiity code and core id -- we don't have information more granular than that -- an entire set of projects that share a (activity code + core id) are
     //  all treated the same. Therefore, this 'queried_project_id' property must be formatted into just the activity code + core id.
     projects[projectID].queried_project_id = getActivityCode(projectID) + getCoreId(projectID);
+    // date formatting DD-AbrevMonth-YYYY, 25-Jan-2017
+    const date_format = '%s-%s-%s';
+    const formatter = new Intl.DateTimeFormat('us', { month: 'short' });
+    let temp = new Date(projects[projectID].award_notice_date);
+    projects[projectID].award_notice_date = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
+    temp = new Date(projects[projectID].project_start_date);
+    projects[projectID].project_start_date = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
+    temp = new Date(projects[projectID].project_end_date);
+    projects[projectID].project_end_date = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
   }
 
   // format publications fields for writing to file
@@ -111,6 +118,11 @@ const generateDataModel = async () => {
     keys.forEach(key => {
       publications[pubID][key] = publications[pubID][key] ? publications[pubID][key] : "";  // ensure all values are at least empty string
     });
+    // date formatting DD-AbrevMonth-YYYY, 25-Jan-2017
+    const date_format = '%s-%s-%s';
+    const formatter = new Intl.DateTimeFormat('us', { month: 'short' });
+    let temp = new Date(publications[pubID].publish_date);
+    publications[pubID].publish_date = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
   }
 
   // format GEO fields for writing to file
@@ -122,6 +134,13 @@ const generateDataModel = async () => {
     geos[geoID].title = geos[geoID].title ? geos[geoID].title.replace(/(\r\n|\r|\n|\t)/gm, "") : "";  // format the title
     geos[geoID].publications = [...new Set(geos[geoID].publications)];  // unique publications
     geos[geoID].projects = [...new Set(geos[geoID].projects)];  // unique projects
+    // date formatting DD-AbrevMonth-YYYY, 25-Jan-2017
+    const date_format = '%s-%s-%s';
+    const formatter = new Intl.DateTimeFormat('us', { month: 'short' });
+    let temp = new Date(geos[geoID].submission_date);
+    geos[geoID].submission_date = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
+    temp = new Date(geos[geoID].last_update_date);
+    geos[geoID].last_update_date = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
   }
 
   // format SRA fields for writing to file
@@ -133,6 +152,11 @@ const generateDataModel = async () => {
     sras[sraID].study_title = sras[sraID].study_title ? sras[sraID].study_title.replace(/(\r\n|\r|\n|\t)/gm, "") : "";  // format the study_title
     sras[sraID].publications = [...new Set(sras[sraID].publications)];  // unique publications
     sras[sraID].projects = [...new Set(sras[sraID].projects)];  // unique projects
+    // date formatting DD-AbrevMonth-YYYY, 25-Jan-2017
+    const date_format = '%s-%s-%s';
+    const formatter = new Intl.DateTimeFormat('us', { month: 'short' });
+    let temp = new Date(sras[sraID].registration_date);
+    sras[sraID].registration_date = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
   }
 
   // format dbGaP fields for writing to file
@@ -144,6 +168,11 @@ const generateDataModel = async () => {
     dbgaps[dbgapID].title = dbgaps[dbgapID].title ? dbgaps[dbgapID].title.replace(/(\r\n|\r|\n|\t)/gm, "") : "";  // format the title
     dbgaps[dbgapID].publications = [...new Set(dbgaps[dbgapID].publications)];  // unique publications
     dbgaps[dbgapID].projects = [...new Set(dbgaps[dbgapID].projects)];  // unique projects
+    // date formatting DD-AbrevMonth-YYYY, 25-Jan-2017
+    const date_format = '%s-%s-%s';
+    const formatter = new Intl.DateTimeFormat('us', { month: 'short' });
+    let temp = new Date(dbgaps[dbgapID].release_date);
+    dbgaps[dbgapID].release_date = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
   }
 
   // format clinicalTrial fields for writing to file
@@ -156,23 +185,24 @@ const generateDataModel = async () => {
       clinicalTrials[clinicalTrialID].publications = [...new Set(clinicalTrials[clinicalTrialID].publications)];  // unique publications
     }
     clinicalTrials[clinicalTrialID].projects = [...new Set(clinicalTrials[clinicalTrialID].projects)];  // unique projects
+    // date formatting DD-AbrevMonth-YYYY, 25-Jan-2017
+    const date_format = '%s-%s-%s';
+    const formatter = new Intl.DateTimeFormat('us', { month: 'short' });
+    let temp = new Date(clinicalTrials[clinicalTrialID].last_update_posted);
+    clinicalTrials[clinicalTrialID].last_update_posted = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
   }
 
   // format patent fields for writing to file
-  let patents_to_remove = [];
   for (let patentID in patents) {
     let keys = Object.keys(patents[patentID]);
     keys.forEach(key => {
       patents[patentID][key] = patents[patentID][key] ? patents[patentID][key] : "";  // ensure all values are at least empty string
-      if (patents[patentID][key] === "N/A") {
-        if (patents_to_remove.indexOf(patentID) === -1) {
-          patents_to_remove.push(patentID);
-        }
-      }
     });
-  }
-  for (let patentID in patents_to_remove) {  // remove patents with "N/A" entries
-    delete patents[patentID];
+    // date formatting DD-AbrevMonth-YYYY, 25-Jan-2017
+    const date_format = '%s-%s-%s';
+    const formatter = new Intl.DateTimeFormat('us', { month: 'short' });
+    let temp = new Date(patents[patentID].fulfilled_date);
+    patents[patentID].fulfilled_date = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
   }
 };
 
@@ -247,179 +277,6 @@ const writeToDataDigestFile = (filepath, columns, dataStructure, type) => {
   fs.writeFileSync(filepath, data);
 };
 
-
-// const writeToProjectFile = () => {
-//   let data = "";
-//   let columns = ["type","project_id","application_id", "fiscal_year", "project_title","project_type", "abstract_text", "keywords",
-//    "org_name", "org_city", "org_state", "org_country", "principal_investigators", "lead_doc", "program_officers", "award_amount",
-//     "nci_funded_amount", "award_notice_date", "project_start_date", "project_end_date", "full_foa", "program.program_id"];
-//   data = columns.join("\t") + "\n";
-//   for(let projectID in projects){
-//     let tmp = [];
-//     tmp.push("project");
-//     tmp.push(projects[projectID].project_id);
-//     tmp.push(projects[projectID].application_id);
-//     tmp.push(projects[projectID].fiscal_year);
-//     tmp.push(projects[projectID].project_title);
-//     tmp.push(projects[projectID].project_type);
-//     tmp.push(projects[projectID].abstract_text == null ? "" : projects[projectID].abstract_text.replace(/\n/g, "\\n"));
-//     tmp.push(projects[projectID].keywords);
-//     tmp.push(projects[projectID].org_name);
-//     tmp.push(projects[projectID].org_city);
-//     tmp.push(projects[projectID].org_state);
-//     tmp.push(projects[projectID].org_country);
-//     tmp.push(projects[projectID].principal_investigators);
-//     tmp.push(projects[projectID].lead_doc);
-//     tmp.push(projects[projectID].program_officers);
-//     tmp.push(projects[projectID].award_amount);
-//     tmp.push(projects[projectID].nci_funded_amount);
-//     tmp.push(projects[projectID].award_notice_date);
-//     tmp.push(projects[projectID].project_start_date);
-//     tmp.push(projects[projectID].project_end_date);
-//     tmp.push(projects[projectID].full_foa);
-//     tmp.push(projects[projectID].program);
-//     data += tmp.join("\t") + "\n";
-//   }
-//   fs.writeFileSync('data/project.tsv', data);
-// };
-
-// const writeToPublicationFile = () => {
-//   let data = "";
-//   let columns = ["type","publication_id","pmc_id", "year", "journal","title", "authors",
-//    "publish_date", "citation_count", "relative_citation_ratio", "rcr_range", "nih_percentile", "doi", "project.project_id"];
-//   data = columns.join("\t") + "\n";
-//   for(let pubID in publications){
-//     let tmp = [];
-//     tmp.push("publication");
-//     tmp.push(pubID);
-//     tmp.push(publications[pubID].pmc_id);
-//     tmp.push(publications[pubID].year);
-//     tmp.push(publications[pubID].journal);
-//     tmp.push(publications[pubID].title);
-//     tmp.push(publications[pubID].authors);
-//     tmp.push(publications[pubID].publish_date);
-//     tmp.push(publications[pubID].citation_count);
-//     tmp.push(publications[pubID].relative_citation_ratio);
-//     tmp.push(publications[pubID].rcr_range);
-//     tmp.push(publications[pubID].nih_percentile);
-//     tmp.push(publications[pubID].doi);
-//     publications[pubID].projects.map((p) => {
-//       data += tmp.join("\t") + "\t" + p + "\n";
-//     });
-//   }
-//   fs.writeFileSync('data/publication.tsv', data);
-// };
-
-// const writeToGEOFile = () => {
-//   let data = "";
-
-//   let columns = ["type","accession","title", "status", "submission_date","last_update_date", "project.project_id", "publication.publication_id"];
-//   data = columns.join("\t") + "\n";
-//   for(let geoID in geos){
-//     let tmp = [];
-//     tmp.push("geo");
-//     tmp.push(geoID);
-//     tmp.push(geos[geoID].title);
-//     tmp.push(geos[geoID].status);
-//     tmp.push(geos[geoID].submission_date);
-//     tmp.push(geos[geoID].last_update_date);
-//     if (geos[geoID].publications) {
-//       geos[geoID].publications.map((p) => {
-//         publications[p].projects.map((pp) => {
-//           data += tmp.join("\t") + "\t" + pp + "\t" + p + "\n";  // preserve the publication's project
-//         });
-//       });
-//     }
-//   }
-//   fs.writeFileSync('data/geo.tsv', data);
-// };
-
-// const writeToSRAFile = () => {
-//   let data = "";
-//   let columns = ["type","accession","study_title", "bioproject_accession", "registration_date","project.project_id", "publication.publication_id"];
-//   data = columns.join("\t") + "\n";
-//   for(let sraID in sras){
-//     let tmp = [];
-//     tmp.push("sra");
-//     tmp.push(sraID);
-//     tmp.push(sras[sraID].study_title);
-//     tmp.push(sras[sraID].bioproject_accession);
-//     tmp.push(sras[sraID].registration_date);
-//     if (sras[sraID].publications) {
-//       sras[sraID].publications.map((p) => {
-//         publications[p].projects.map((pp) => {
-//           data += tmp.join("\t") + "\t" + pp + "\t" + p + "\n";  // preserve the publication's project
-//         });
-//       });
-//     }
-//   }
-//   fs.writeFileSync('data/sra.tsv', data);
-// };
-
-// const writeToDBGapFile = () => {
-//   let data = "";
-//   let columns = ["type", "accession", "title", "release_date", "project.project_id", "publication.publication_id"];
-//   data = columns.join("\t") + "\n";
-//   for(let dbgapID in dbgaps){
-//     let tmp = [];
-//     tmp.push("dbgap");
-//     tmp.push(dbgapID);
-//     tmp.push(dbgaps[dbgapID].title);
-//     tmp.push(dbgaps[dbgapID].release_date);
-//     if (dbgaps[dbgapID].publications) {
-//       dbgaps[dbgapID].publications.map((p) => {
-//         publications[p].projects.map((pp) => {
-//           data += tmp.join("\t") + "\t" + pp + "\t" + p + "\n";  // preserve the publication's project
-//         });
-//       });
-//     }
-//   }
-//   fs.writeFileSync('data/dbgap.tsv', data);
-// };
-
-// const writeToClinicalTrialsFile = () => {
-//   let data = "";
-//   let columns = ["type", "clinical_trial_id", "title", "last_update_posted", "recruitment_status", "project.project_id", "publication.publication_id"];
-//   data = columns.join("\t") + "\n";
-//   for(let clinicaltrialID in clinicalTrials){
-//     let tmp = [];
-//     tmp.push("clinical_trial");
-//     tmp.push(clinicaltrialID);
-//     tmp.push(clinicalTrials[clinicaltrialID].title);
-//     tmp.push(clinicalTrials[clinicaltrialID].last_update_posted);
-//     tmp.push(clinicalTrials[clinicaltrialID].recruitment_status);
-//     if (clinicalTrials[clinicaltrialID].projects) {
-//       clinicalTrials[clinicaltrialID].projects.map((p) => {
-//         data += tmp.join("\t") + "\t" + p + "\t" + "" + "\n";  // if a clinical trial came from a project id
-//       });
-//     }
-//     if (clinicalTrials[clinicaltrialID].publications)
-//     clinicalTrials[clinicaltrialID].publications.map((p) => {
-//       publications[p].projects.map((pp) => {
-//         data += tmp.join("\t") + "\t" + pp + "\t" + p + "\n";  // if a clinical trial came from a publication id, and preserve the publication's project
-//       });
-//     });
-//   }
-//   fs.writeFileSync('data/clinical_trial.tsv', data);
-// };
-
-// const writeToMetricsFile = () => {
-//   let data = "";
-//   let columns = ["publication.publication_id", "totalGeoResults", "totalSrxResults", "totalSrpRunResults", "multipleSrpResults"];
-//   data += columns.join("\t") + "\n";
-//   let metricIds = Object.keys(metrics);
-//   for (var i = 0; i < metricIds.length; i++) {
-//     let tmp = [];
-//     tmp.push(metricIds[i]);
-//     tmp.push(metrics[metricIds[i]]["totalGeoResults"]?metrics[metricIds[i]]["totalGeoResults"]:"0");
-//     tmp.push(metrics[metricIds[i]]["totalSrxResults"]?metrics[metricIds[i]]["totalSrxResults"]:"0");
-//     tmp.push(metrics[metricIds[i]]["totalSrpRunResults"]?metrics[metricIds[i]]["totalSrpRunResults"]:"0")
-//     tmp.push(metrics[metricIds[i]]["multipleSrpResults"]?metrics[metricIds[i]]["multipleSrpResults"]:"N/A");
-//     data += tmp.join("\t") + "\n";
-//   }
-//   fs.writeFileSync('config/metrics.tsv', data);
-// };
-
 const run = async (projectsTodo) => {
   console.time('mineProject');
   projects = await mineProject.run(projectsTodo);
@@ -463,11 +320,7 @@ const run = async (projectsTodo) => {
   console.log("Number of Patents: " + Object.keys(patents).length);
   console.timeEnd('minePatents');
 
-  // console.time('minePatentsDetail');  // 02/03/2022 adeforge, maybe deprecated
-  // await minePatentsDetail.run(patents);
-  // console.timeEnd('minePatentsDetail');
-
-  // await generateDataModel();
+  await generateDataModel();
 
   console.log('Writing Files...');
   // project file
@@ -528,7 +381,7 @@ const run = async (projectsTodo) => {
   writeToDataFile(filepath, columns, clinicalTrials, "clinical_trial");
 
   // patents file
-  columns = ["type", "patent_id", "grant_date", "fulfilled_date", "project.project_id"];
+  columns = ["type", "patent_id", "fulfilled_date", "project.project_id"];
   filepath = 'digest_data/patent.tsv';
   writeToDataDigestFile(filepath, columns, patents, "patent");
   // 01/31/2022 adeforge, only the data digest file for now, for exploration purposes
