@@ -1,126 +1,138 @@
 type	clinical_trial_id	title	last_update_posted	recruitment_status	project.queried_project_id
-clinical_trial	NCT01697566	An Endometrial Cancer Chemoprevention Study of Metformin	June 5, 2019	Active, not recruiting	P50CA098258
-clinical_trial	NCT01737619	PET/CT and Lymph Node Mapping in Finding Lymph Node Metastasis in Patients With High-Risk Endometrial Cancer	November 19, 2021	Active, not recruiting	P50CA098258
-clinical_trial	NCT00788671	Levonorgestrel-Releasing Intrauterine System in Treating Patients With Complex Atypical Hyperplasia or Grade I Endometrial Cancer	October 8, 2021	Active, not recruiting	P50CA098258
-clinical_trial	NCT01935973	Trametinib With or Without GSK2141795 in Treating Patients With Recurrent or Persistent Endometrial Cancer	October 14, 2020	Completed	P50CA098258
-clinical_trial	NCT01440998	Dasatinib, Paclitaxel, and Carboplatin in Treating Patients With Stage III-IV or Recurrent Endometrial Cancer	April 5, 2018	Completed	P50CA098258
-clinical_trial	NCT04614766	A Clinical Trial Evaluating the Safety of Combining Lutathera(R) and Azedra(R) to Treat Mid-gut Neuroendocrine Tumors (SPORE-3)	September 29, 2021	Not yet recruiting	P50CA174521
-clinical_trial	NCT03724409	Selective Intra-arterial Injection of PRRT in Neuroendocrine Tumor Patients With Liver Metastases	January 28, 2021	Enrolling by invitation	P50CA174521
-clinical_trial	NCT03335670	Gallium 68 Pentixafor in Patients With Neuroendocrine Tumors	April 13, 2021	Recruiting	P50CA174521
-clinical_trial	NCT03044977	Study to Evaluate the Safety of Combining Two Radionuclide Therapies to Treat Mid-gut Neuroendocrine Tumors	November 17, 2021	Active, not recruiting	P50CA174521
-clinical_trial	NCT04314284	Patient-Centered Intervention to Reduce Cancer Patients' Financial Toxicity	January 14, 2022	Recruiting	P50CA244431
-clinical_trial	NCT04585919	Paired Promotion of Colorectal Cancer and Social Determinants of Health Screening	April 1, 2021	Enrolling by invitation	P50CA244433
-clinical_trial	NCT04867850	Effect of Behavioral Nudges on Serious Illness Conversation Documentation (SPP2)	September 14, 2021	Recruiting	P50CA244690
-clinical_trial	NCT04737031	Improving Tobacco Treatment Rates for Outpatient Cancer Patients Who Smoke (SPP1)	January 11, 2022	Recruiting	P50CA244690
-clinical_trial	NCT05021133	Tele-Navigation of Lung Cancer Screening (Tele-Navi LCS)	January 11, 2022	Not yet recruiting	P50CA244693
-clinical_trial	NCT04337203	Shared Healthcare Actions and Reflections Electronic Systems in Survivorship	December 8, 2021	Recruiting	P50CA244693
-clinical_trial	NCT01548768	RHYTHM (Formerly Escape II Myocardium) (RHYTHM)	November 27, 2020	Completed	R01AR050026
-clinical_trial	NCT04199026	Implantable Microdevice for the Delivery of Drugs and Their Effect on Tumors in Patients With Metastatic or Recurrent Sarcoma	November 26, 2021	Not yet recruiting	R01CA180279
-clinical_trial	NCT00338377	Lymphodepletion Plus Adoptive Cell Transfer With or Without Dendritic Cell Immunization in Patients With Metastatic Melanoma	August 3, 2021	Active, not recruiting	R01CA187076
-clinical_trial	NCT03278340	Using Technology to Scale-Up an Occupational Sun Protection Policy Program (SSW-T)	July 9, 2021	Enrolling by invitation	R01CA210259
-clinical_trial	NCT04131062	Trial to Compare eConsent With Standard Consent Among Prospective Biobank Participants	December 21, 2021	Enrolling by invitation	R01CA211723
-clinical_trial	NCT03264898	Comparative Effectiveness of FITs With Colonoscopy	May 22, 2018	Recruiting	R01CA215034
-clinical_trial	NCT03592771	THRIVE Breast Cancer App Study (THRIVE)	January 18, 2022	Active, not recruiting	R01CA218155
-clinical_trial	NCT05006482	Geriatric Evaluation and Management With Survivorship Health Education (GEMS) for Older Survivors of Cancer	December 7, 2021	Not yet recruiting	R01CA249467
-clinical_trial	NCT04428905	Self-Management Survivorship Care in Stage I-III Non-small Cell Lung Cancer or Colorectal Cancer	February 16, 2021	Recruiting	R01CA249501
-clinical_trial	NCT03698162	Precise DCE-MRI in Diagnosing Participants With Recurrent High Grade Glioma or Melanoma Brain Metastases	October 18, 2021	Recruiting	R33CA225400
-clinical_trial	NCT04746794	Early Detection of GEnetic Risk (EDGE)	February 10, 2021	Recruiting	U01CA232795
-clinical_trial	NCT04763915	Improving Care After Inherited Cancer Testing (IMPACT)	January 3, 2022	Recruiting	U01CA254832
-clinical_trial	NCT04539366	Testing a New Immune Cell Therapy, GD2-Targeted Modified T-cells (GD2CART), in Children, Adolescents, and Young Adults With Relapsed/Refractory Osteosarcoma and Neuroblastoma, The GD2-CAR PERSIST Trial	December 29, 2021	Recruiting	U24CA224309
-clinical_trial	NCT04539366	Testing a New Immune Cell Therapy, GD2-Targeted Modified T-cells (GD2CART), in Children, Adolescents, and Young Adults With Relapsed/Refractory Osteosarcoma and Neuroblastoma, The GD2-CAR PERSIST Trial	December 29, 2021	Recruiting	UM1CA154967
-clinical_trial	NCT04410302	Patient-Derived Xenografts to Reduce Cancer Health Disparities	July 13, 2021	Recruiting	U54CA233306
-clinical_trial	NCT04514341	Implementing a Multilevel Intervention to Accelerate Colorectal Cancer Screening and Follow-up	August 14, 2020	Not yet recruiting	UH3CA233229
-clinical_trial	NCT04406714	Scaling CRC Screening Through Outreach, Referral, and Engagement (SCORE) (SCORE)	May 12, 2021	Recruiting	UH3CA233251
-clinical_trial	NCT04427527	Accelerating Colorectal Cancer Screening Through Implementation Science in Appalachia (ACCSIS)	May 3, 2021	Recruiting	UH3CA233282
-clinical_trial	NCT04941300	ColoRectal Cancer Screening for Southern California Community Health Centers	October 28, 2021	Enrolling by invitation	UH3CA233314
-clinical_trial	NCT04500548	Testing the Combination of Two Immunotherapy Drugs (Nivolumab and Ipilimumab) in Children, Adolescent, and Young Adult Patients With Relapsed/Refractory Cancers That Have an Increased Number of Genetic Changes, The 3CI Study	February 4, 2022	Recruiting	UM1CA154967
-clinical_trial	NCT03892967	Enhanced, EHR-facilitated Cancer Symptom Control (E2C2) Pragmatic Clinical Trial (E2C2)	January 31, 2022	Recruiting	UM1CA233033
-clinical_trial	NCT03988543	Bilingual Electronic Symptom Management Program Across Multi-site, Comprehensive Cancer Center (NU IMPACT)	March 3, 2021	Recruiting	UM1CA233035
-clinical_trial	NCT03850912	Symptom Management Implementation of Patient Reported Outcomes in Oncology (SIMPRO)	November 9, 2021	Recruiting	UM1CA233080
-clinical_trial	NCT01727076	Recombinant Interleukin-15 in Treating Patients With Advanced Melanoma, Kidney Cancer, Non-small Cell Lung Cancer, or Squamous Cell Head and Neck Cancer	September 15, 2017	Completed
-clinical_trial	NCT01628913	Efficacy and Safety of BEZ235 Compared to Everolimus in Patients With Advanced Pancreatic Neuroendocrine Tumors	April 7, 2016	Terminated
-clinical_trial	NCT01576172	Abiraterone Acetate and Prednisone With or Without Veliparib in Treating Patients With Metastatic Castration-Resistant Prostate Cancer	November 12, 2020	Completed
-clinical_trial	NCT02435849	Study of Efficacy and Safety of CTL019 in Pediatric ALL Patients (ELIANA)	November 22, 2021	Active, not recruiting
-clinical_trial	NCT01295827	Study of Pembrolizumab (MK-3475) in Participants With Progressive Locally Advanced or Metastatic Carcinoma, Melanoma, or Non-small Cell Lung Carcinoma (P07990/MK-3475-001/KEYNOTE-001) (KEYNOTE-001)	December 13, 2019	Completed
-clinical_trial	NCT02957526	Web-Base App To Improve Aromatase Inhibitor Adherence (AETAPP)	July 19, 2018	Completed
-clinical_trial	NCT00033631	Radiation Therapy in Treating Patients With Stage II Prostate Cancer	July 29, 2021	Active, not recruiting
-clinical_trial	NCT02135406	CART-19 for Multiple Myeloma	February 13, 2018	Completed
-clinical_trial	NCT01578239	A Study Comparing Treatment With 177Lu-DOTA0-Tyr3-Octreotate to Octreotide LAR in Patients With Inoperable, Progressive, Somatostatin Receptor Positive Midgut Carcinoid Tumours (NETTER-1)	October 7, 2021	Completed
-clinical_trial	NCT02546167	CART-BCMA Cells for Multiple Myeloma	August 4, 2020	Completed
-clinical_trial	NCT01626495	Phase I/IIA Study of CART19 Cells for Patients With Chemotherapy Resistant or Refractory CD19+ Leukemia and Lymphoma (Pedi CART19)	March 23, 2020	Completed
-clinical_trial	NCT02303990	RADVAX: A Stratified Phase I Trial of Pembrolizumab With Hypofractionated Radiotherapy in Patients With Advanced and Metastatic Cancers	May 12, 2021	Completed
-clinical_trial	NCT01302834	Radiation Therapy With Cisplatin or Cetuximab in Treating Patients With Oropharyngeal Cancer	February 23, 2021	Unknown
-clinical_trial	NCT02267603	Pembrolizumab in Treating Patients With Advanced Merkel Cell Cancer	October 4, 2021	Active, not recruiting
-clinical_trial	NCT03478397	Evaluation of a mHealth Intervention to Increase Adherence to Triage of Self-collected HPV+ Women (ATICA Project) (ATICA)	April 6, 2021	Completed
-clinical_trial	NCT01623349	Phase I Study of the Oral PI3kinase Inhibitor BKM120 or BYL719 and the Oral PARP Inhibitor Olaparib in Patients With Recurrent Triple Negative Breast Cancer or High Grade Serous Ovarian Cancer	February 10, 2021	Completed
-clinical_trial	NCT00750269	Stereotactic Body Radiation Therapy in Treating Patients With Stage I Non-Small Cell Lung Cancer	May 7, 2019	Unknown
-clinical_trial	NCT00346164	Observation, Radiation Therapy, Combination Chemotherapy, and/or Surgery in Treating Young Patients With Soft Tissue Sarcoma	August 19, 2021	Active, not recruiting
-clinical_trial	NCT01747486	Dose Optimization Trial of CD19 Redirected Autologous T Cells	August 30, 2019	Completed
-clinical_trial	NCT01029366	CART19 to Treat B-Cell Leukemia or Lymphoma That Are Resistant or Refractory to Chemotherapy	June 26, 2019	Completed
-clinical_trial	NCT01821729	Proton w/FOLFIRINOX-Losartan for Pancreatic Cancer	September 25, 2020	Active, not recruiting
-clinical_trial	NCT02595866	Testing the Addition of an Experimental Medication MK-3475 (Pembrolizumab) to Usual Anti-Retroviral Medications in Patients With HIV and Cancer	December 28, 2021	Recruiting
-clinical_trial	NCT00920621	Randomized Trial: Maternal Vitamin D Supplementation to Prevent Childhood Asthma (VDAART) (VDAART)	January 28, 2021	Active, not recruiting
-clinical_trial	NCT03639350	The Healthy Diet and Lifestyle Study (HDL)	August 21, 2018	Completed
-clinical_trial	NCT01277757	Akt Inhibitor MK2206 in Treating Patients With Advanced Breast Cancer	December 19, 2018	Completed
-clinical_trial	NCT00822120	S0816 Fludeoxyglucose F 18-PET/CT Imaging and Combination Chemotherapy With or Without Additional Chemotherapy and G-CSF in Treating Patients With Stage III or Stage IV Hodgkin Lymphoma	January 26, 2022	Active, not recruiting
-clinical_trial	NCT02243579	Pembrolizumab in Treating Patients With Relapsed or Refractory Stage IB-IVB Mycosis Fungoides or Sezary Syndrome	September 20, 2019	Completed
-clinical_trial	NCT01522443	Study of Cabozantinib (XL184) Versus Mitoxantrone Plus Prednisone in Men With Previously Treated Symptomatic Castration-resistant Prostate Cancer (COMET-2)	May 23, 2018	Terminated
-clinical_trial	NCT01343043	A Pilot Study of Genetically Engineered NY-ESO-1 Specific NY-ESO-1&#7580;&#178;&#8309;&#8313;T in HLA-A2+ Patients With Synovial Sarcoma (NY-ESO-1)	June 30, 2021	Completed
-clinical_trial	NCT01307631	Akt Inhibitor MK2206 in Treating Patients With Recurrent or Advanced Endometrial Cancer	September 5, 2017	Completed
-clinical_trial	NCT02030847	Study of Redirected Autologous T Cells Engineered to Contain Anti-CD19 Attached to TCR and 4-1BB Signaling Domains in Patients With Chemotherapy Resistant or Refractory Acute Lymphoblastic Leukemia	August 30, 2019	Completed
-clinical_trial	NCT00533949	High-Dose or Standard-Dose Radiation Therapy and Chemotherapy With or Without Cetuximab in Treating Patients With Newly Diagnosed Stage III Non-Small Cell Lung Cancer That Cannot Be Removed by Surgery	February 5, 2020	Unknown
-clinical_trial	NCT02092324	Ruxolitinib Phosphate in Treating Patients With Chronic Neutrophilic Leukemia or Atypical Chronic Myeloid Leukemia	November 16, 2020	Completed
-clinical_trial	NCT01677910	TELESTAR (Telotristat Etiprate for Somatostatin Analogue Not Adequately Controlled Carcinoid Syndrome)	February 27, 2018	Completed
-clinical_trial	NCT02063659	Telotristat Etiprate for Carcinoid Syndrome Therapy (TELECAST)	February 26, 2018	Completed
-clinical_trial	NCT00002874	Radiation Therapy With or Without Bicalutamide for Recurrent pT3N0 Prostate Cancer After Radical Prostatectomy	August 18, 2020	Unknown
-clinical_trial	NCT02315612	Anti-CD22 Chimeric Receptor T Cells in Pediatric and Young Adults With Recurrent or Refractory CD22-expressing B Cell Malignancies	December 30, 2021	Recruiting
-clinical_trial	NCT01363206	Granulocyte Macrophage-Colony Stimulating Factor and Ipilimumab as Therapy in Melanoma (GIPI)	March 19, 2020	Completed
-clinical_trial	NCT00064129	Ipilimumab and Sargramostim in Treating Patients With Metastatic Prostate Cancer	July 30, 2020	Completed
-clinical_trial	NCT03799432	Collaborative Organizational Approach to Selecting and Tailoring Implementation Strategies (COAST-IS)	January 8, 2021	Active, not recruiting
-clinical_trial	NCT00557193	Combination Chemotherapy With or Without Lestaurtinib in Treating Younger Patients With Newly Diagnosed Acute Lymphoblastic Leukemia	March 25, 2021	Active, not recruiting
-clinical_trial	NCT01454297	Relating Clinical Outcomes in Multiple Myeloma to Personal Assessment of Genetic Profile (CoMMpass)	August 16, 2018	Active, not recruiting
-clinical_trial	NCT02451423	Neoadjuvant Atezolizumab in Localized Bladder Cancer	March 30, 2020	Recruiting
-clinical_trial	NCT02296684	Immunotherapy With MK-3475 in Surgically Resectable Head and Neck Squamous Cell Carcinoma	August 30, 2021	Active, not recruiting
-clinical_trial	NCT00902044	Her2 Chimeric Antigen Receptor Expressing T Cells in Advanced Sarcoma	December 30, 2021	Active, not recruiting
-clinical_trial	NCT01191060	Study Comparing Conventional Dose Combination RVD to High-Dose Treatment With ASCT in the Initial Myeloma up to 65 Years (IFM/DFCI2009)	April 18, 2019	Completed
-clinical_trial	NCT02180867	Radiation Therapy With or Without Combination Chemotherapy or Pazopanib Before Surgery in Treating Patients With Newly Diagnosed Non-rhabdomyosarcoma Soft Tissue Sarcomas That Can Be Removed by Surgery	October 4, 2021	Active, not recruiting
-clinical_trial	NCT04358276	Technology-Enabled Activation of Skin Cancer Screening for Stem Cell Transplant Survivors and Their Primary Care Providers, TEACH Study	February 16, 2021	Recruiting
-clinical_trial	NCT00500591	Prevalence of Endometrial Abnormalities In Obese Women	February 25, 2021	Active, not recruiting
-clinical_trial	NCT03051659	A Randomized Phase II Study Of Eribulin Mesylate With or Without Pembrolizumab For Metastatic Hormone Receptor Positive Breast Cancer	December 21, 2021	Active, not recruiting
-clinical_trial	NCT03287908	A Study to Assess AMG 701 Montherapy, or in Combination With Pomalidomide, With or Without, Dexamethasone in Subjects With Relapsed or Refractory Multiple Myeloma	December 27, 2021	Recruiting
-clinical_trial	NCT04071366	A Study of Itacitinib for the Prevention of Cytokine Release Syndrome Induced by Immune Effector Cell Therapy	September 30, 2021	Recruiting
-clinical_trial	NCT03837353	A Parallel Arm Phase 1b/2a Study of DKN-01 as Monotherapy or in Combination With Docetaxel for the Treatment of Advanced Prostate Cancer With Elevated DKK1	March 23, 2021	Recruiting
-clinical_trial	NCT04302675	Adapting Motivational Interviewing for Maternal Immunizations (MI4MI) (MI4MI)	July 26, 2021	Active, not recruiting
-clinical_trial	NCT00022737	Combination Chemotherapy With or Without Peripheral Stem Cell Transplant in Treating Children With Acute Lymphoblastic Leukemia	February 27, 2014	Completed
-clinical_trial	NCT00287105	Safety and Efficacy of Imatinib Added to Chemotherapy in Treatment of Ph+ Acute Lymphoblastic Leukemia in Children (ESPHALL)	October 20, 2017	Completed
-clinical_trial	NCT00720109	Dasatinib and Combination Chemotherapy in Treating Young Patients With Newly Diagnosed Acute Lymphoblastic Leukemia	April 13, 2020	Completed
-clinical_trial	NCT01460160	Pediatric Philadelphia Positive Acute Lymphoblastic Leukemia	December 8, 2021	Completed
-clinical_trial	NCT01423747	Allogeneic Stem Cell Transplantation in Children and Adolescents With Acute Lymphoblastic Leukaemia	June 26, 2015	Unknown
-clinical_trial	NCT01423500	ALL-SCT BFM International- HSCT in Children and Adolescents With ALL (ALL-SCT-BFMi)	June 26, 2015	Unknown
-clinical_trial	NCT01949129	Allogeneic Stem Cell Transplantation for Children and Adolescents With Acute Lymphoblastic Leukaemia	October 1, 2020	Recruiting
-clinical_trial	NCT01117441	International Collaborative Treatment Protocol For Children And Adolescents With Acute Lymphoblastic Leukemia	October 20, 2020	Active, not recruiting
-clinical_trial	NCT02066181	Sorafenib Tosylate in Treating Patients With Desmoid Tumors or Aggressive Fibromatosis	December 16, 2021	Active, not recruiting
-clinical_trial	NCT02906371	Study of the Tocilizumab Optimization Timing for CART19 Associated Cytokine Release Syndrome	July 2, 2021	Completed
-clinical_trial	NCT01970358	A Phase I Study With a Personalized NeoAntigen Cancer Vaccine in Melanoma	December 9, 2020	Completed
-clinical_trial	NCT02228096	Study of Efficacy and Safety of CTL019 in Pediatric ALL Patients (ENSIGN)	November 23, 2020	Completed
-clinical_trial	NCT02058706	LHRH Analogue Therapy With Enzalutamide or Bicalutamide in Treating Patients With Metastatic Hormone Sensitive Prostate Cancer	March 3, 2021	Active, not recruiting
-clinical_trial	NCT02254278	Reduced-Dose Intensity-Modulated Radiation Therapy With or Without Cisplatin in Treating Patients With Advanced Oropharyngeal Cancer	October 25, 2021	Active, not recruiting
-clinical_trial	NCT02136134	Addition of Daratumumab to Combination of Bortezomib and Dexamethasone in Participants With Relapsed or Refractory Multiple Myeloma	January 28, 2022	Active, not recruiting
-clinical_trial	NCT02076009	A Study Comparing Daratumumab, Lenalidomide, and Dexamethasone With Lenalidomide and Dexamethasone in Relapsed or Refractory Multiple Myeloma	January 28, 2022	Active, not recruiting
-clinical_trial	NCT03224520	Smoker-to-Smoker (S2S) Peer Marketing and Messaging to Disseminate Tobacco Interventions	March 26, 2021	Completed
-clinical_trial	NCT01497808	RADVAX&#8482;: A STRATIFIED PHASE I/II DOSE ESCALATION TRIAL OF HYPOFRACTIONATED RADIOTHERAPY FOLLOWED BY IPILIMUMAB IN METASTATIC MELANOMA	August 10, 2021	Completed
-clinical_trial	NCT01822509	Ipilimumab or Nivolumab in Treating Patients With Relapsed Hematologic Malignancies After Donor Stem Cell Transplant	June 24, 2021	Completed
-clinical_trial	NCT02206334	Stereotactic Body Radiation Therapy in Treating Patients With Metastatic Breast Cancer, Non-small Cell Lung Cancer, or Prostate Cancer	March 1, 2021	Active, not recruiting
-clinical_trial	NCT02588456	Pilot Study of Autologous Anti-CD22 Chimeric Antigen Receptor Redirected T Cells In Patients With Chemotherapy Resistant Or Refractory Acute Lymphoblastic Leukemia	January 12, 2018	Terminated
-clinical_trial	NCT02650414	CD22 Redirected Autologous T Cells for ALL	January 21, 2022	Recruiting
-clinical_trial	NCT01804465	Sipuleucel-T With Immediate vs. Delayed Cytotoxic T-Lymphocyte-Associated Protein 4 (CTLA-4) Blockade for Prostate Cancer	August 18, 2021	Completed
-clinical_trial	NCT02501096	A Trial of Lenvatinib (E7080) Plus Pembrolizumab in Participants With Selected Solid Tumors	December 6, 2021	Active, not recruiting
-clinical_trial	NCT03985852	Broadening the Reach, Impact, and Delivery of Genetic Services (BRIDGE)	August 27, 2021	Enrolling by invitation
-clinical_trial	NCT00085735	Comparison of Radiation Therapy Regimens in Combination With Chemotherapy in Treating Young Patients With Newly Diagnosed Standard-Risk Medulloblastoma	February 25, 2021	Active, not recruiting
-clinical_trial	NCT03607617	ASCEND: ApproacheS to CHC ImplEmeNtation of SDH Data Collection and Action (ASCEND)	June 15, 2021	Active, not recruiting
-clinical_trial	NCT02054741	Geriatric Assessment Intervention for Reducing Toxicity in Older Patients With Advanced Cancer	March 4, 2021	Active, not recruiting
-clinical_trial	NCT03233854	CD19/CD22 Chimeric Antigen Receptor(CAR) T Cells in Adults With Recurrent/Refractory B Cell Malignancies	August 17, 2021	Recruiting
-clinical_trial	NCT03971799	Study of Anti-CD33 Chimeric Antigen Receptor-Expressing T Cells (CD33CART) in Children and Young Adults With Relapsed/Refractory Acute Myeloid Leukemia	October 14, 2021	Recruiting
-clinical_trial	NCT02478931	Study of Personalized Cancer Therapy to Determine Response and Toxicity (UCSD_PREDICT)	April 5, 2021	Recruiting
-clinical_trial	NCT02355262	CATCH-UP Intervention in Increasing Cancer Screening and Prevention Care in Uninsured Patients at Community Health Centers	August 19, 2020	Completed
-clinical_trial	NCT02888743	Durvalumab and Tremelimumab With or Without High or Low-Dose Radiation Therapy in Treating Patients With Metastatic Colorectal or Non-small Cell Lung Cancer	January 6, 2022	Active, not recruiting
+clinical_trial	NCT01697566	An Endometrial Cancer Chemoprevention Study of Metformin	5-Jun-2019	Active, not recruiting	P50CA098258
+clinical_trial	NCT01737619	PET/CT and Lymph Node Mapping in Finding Lymph Node Metastasis in Patients With High-Risk Endometrial Cancer	19-Nov-2021	Active, not recruiting	P50CA098258
+clinical_trial	NCT00788671	Levonorgestrel-Releasing Intrauterine System in Treating Patients With Complex Atypical Hyperplasia or Grade I Endometrial Cancer	8-Oct-2021	Active, not recruiting	P50CA098258
+clinical_trial	NCT01935973	Trametinib With or Without GSK2141795 in Treating Patients With Recurrent or Persistent Endometrial Cancer	14-Oct-2020	Completed	P50CA098258
+clinical_trial	NCT01440998	Dasatinib, Paclitaxel, and Carboplatin in Treating Patients With Stage III-IV or Recurrent Endometrial Cancer	5-Apr-2018	Completed	P50CA098258
+clinical_trial	NCT04614766	A Clinical Trial Evaluating the Safety of Combining Lutathera(R) and Azedra(R) to Treat Mid-gut Neuroendocrine Tumors (SPORE-3)	29-Sep-2021	Not yet recruiting	P50CA174521
+clinical_trial	NCT03724409	Selective Intra-arterial Injection of PRRT in Neuroendocrine Tumor Patients With Liver Metastases	28-Jan-2021	Enrolling by invitation	P50CA174521
+clinical_trial	NCT03335670	Gallium 68 Pentixafor in Patients With Neuroendocrine Tumors	13-Apr-2021	Recruiting	P50CA174521
+clinical_trial	NCT03044977	Study to Evaluate the Safety of Combining Two Radionuclide Therapies to Treat Mid-gut Neuroendocrine Tumors	17-Nov-2021	Active, not recruiting	P50CA174521
+clinical_trial	NCT04314284	Patient-Centered Intervention to Reduce Cancer Patients' Financial Toxicity	14-Jan-2022	Recruiting	P50CA244431
+clinical_trial	NCT04585919	Paired Promotion of Colorectal Cancer and Social Determinants of Health Screening	1-Apr-2021	Enrolling by invitation	P50CA244433
+clinical_trial	NCT04867850	Effect of Behavioral Nudges on Serious Illness Conversation Documentation (SPP2)	14-Sep-2021	Recruiting	P50CA244690
+clinical_trial	NCT04737031	Improving Tobacco Treatment Rates for Outpatient Cancer Patients Who Smoke (SPP1)	11-Jan-2022	Recruiting	P50CA244690
+clinical_trial	NCT05021133	Tele-Navigation of Lung Cancer Screening (Tele-Navi LCS)	11-Jan-2022	Not yet recruiting	P50CA244693
+clinical_trial	NCT04337203	Shared Healthcare Actions and Reflections Electronic Systems in Survivorship	8-Dec-2021	Recruiting	P50CA244693
+clinical_trial	NCT01548768	RHYTHM (Formerly Escape II Myocardium) (RHYTHM)	27-Nov-2020	Completed	R01AR050026
+clinical_trial	NCT04199026	Implantable Microdevice for the Delivery of Drugs and Their Effect on Tumors in Patients With Metastatic or Recurrent Sarcoma	26-Nov-2021	Not yet recruiting	R01CA180279
+clinical_trial	NCT00338377	Lymphodepletion Plus Adoptive Cell Transfer With or Without Dendritic Cell Immunization in Patients With Metastatic Melanoma	3-Aug-2021	Active, not recruiting	R01CA187076
+clinical_trial	NCT03278340	Using Technology to Scale-Up an Occupational Sun Protection Policy Program (SSW-T)	9-Jul-2021	Enrolling by invitation	R01CA210259
+clinical_trial	NCT04131062	Trial to Compare eConsent With Standard Consent Among Prospective Biobank Participants	21-Dec-2021	Enrolling by invitation	R01CA211723
+clinical_trial	NCT03264898	Comparative Effectiveness of FITs With Colonoscopy	22-May-2018	Recruiting	R01CA215034
+clinical_trial	NCT03592771	THRIVE Breast Cancer App Study (THRIVE)	18-Jan-2022	Active, not recruiting	R01CA218155
+clinical_trial	NCT05006482	Geriatric Evaluation and Management With Survivorship Health Education (GEMS) for Older Survivors of Cancer	7-Dec-2021	Not yet recruiting	R01CA249467
+clinical_trial	NCT04428905	Self-Management Survivorship Care in Stage I-III Non-small Cell Lung Cancer or Colorectal Cancer	16-Feb-2021	Recruiting	R01CA249501
+clinical_trial	NCT03698162	Precise DCE-MRI in Diagnosing Participants With Recurrent High Grade Glioma or Melanoma Brain Metastases	18-Oct-2021	Recruiting	R33CA225400
+clinical_trial	NCT04746794	Early Detection of GEnetic Risk (EDGE)	10-Feb-2021	Recruiting	U01CA232795
+clinical_trial	NCT04763915	Improving Care After Inherited Cancer Testing (IMPACT)	3-Jan-2022	Recruiting	U01CA254832
+clinical_trial	NCT04539366	Testing a New Immune Cell Therapy, GD2-Targeted Modified T-cells (GD2CART), in Children, Adolescents, and Young Adults With Relapsed/Refractory Osteosarcoma and Neuroblastoma, The GD2-CAR PERSIST Trial	29-Dec-2021	Recruiting	U24CA224309
+clinical_trial	NCT04539366	Testing a New Immune Cell Therapy, GD2-Targeted Modified T-cells (GD2CART), in Children, Adolescents, and Young Adults With Relapsed/Refractory Osteosarcoma and Neuroblastoma, The GD2-CAR PERSIST Trial	29-Dec-2021	Recruiting	UM1CA154967
+clinical_trial	NCT04410302	Patient-Derived Xenografts to Reduce Cancer Health Disparities	13-Jul-2021	Recruiting	U54CA233306
+clinical_trial	NCT04514341	Implementing a Multilevel Intervention to Accelerate Colorectal Cancer Screening and Follow-up	14-Aug-2020	Not yet recruiting	UH3CA233229
+clinical_trial	NCT04514341	Implementing a Multilevel Intervention to Accelerate Colorectal Cancer Screening and Follow-up	14-Aug-2020	Not yet recruiting	UG3CA233229
+clinical_trial	NCT04406714	Scaling CRC Screening Through Outreach, Referral, and Engagement (SCORE) (SCORE)	12-May-2021	Recruiting	UH3CA233251
+clinical_trial	NCT04406714	Scaling CRC Screening Through Outreach, Referral, and Engagement (SCORE) (SCORE)	12-May-2021	Recruiting	UG3CA233251
+clinical_trial	NCT04427527	Accelerating Colorectal Cancer Screening Through Implementation Science in Appalachia (ACCSIS)	3-May-2021	Recruiting	UH3CA233282
+clinical_trial	NCT04941300	ColoRectal Cancer Screening for Southern California Community Health Centers	28-Oct-2021	Enrolling by invitation	UH3CA233314
+clinical_trial	NCT04500548	Testing the Combination of Two Immunotherapy Drugs (Nivolumab and Ipilimumab) in Children, Adolescent, and Young Adult Patients With Relapsed/Refractory Cancers That Have an Increased Number of Genetic Changes, The 3CI Study	4-Feb-2022	Recruiting	UM1CA154967
+clinical_trial	NCT03892967	Enhanced, EHR-facilitated Cancer Symptom Control (E2C2) Pragmatic Clinical Trial (E2C2)	31-Jan-2022	Recruiting	UM1CA233033
+clinical_trial	NCT03988543	Bilingual Electronic Symptom Management Program Across Multi-site, Comprehensive Cancer Center (NU IMPACT)	3-Mar-2021	Recruiting	UM1CA233035
+clinical_trial	NCT03850912	Symptom Management Implementation of Patient Reported Outcomes in Oncology (SIMPRO)	9-Nov-2021	Recruiting	UM1CA233080
+clinical_trial	NCT01727076	Recombinant Interleukin-15 in Treating Patients With Advanced Melanoma, Kidney Cancer, Non-small Cell Lung Cancer, or Squamous Cell Head and Neck Cancer	15-Sep-2017	Completed	UM1CA154967
+clinical_trial	NCT01628913	Efficacy and Safety of BEZ235 Compared to Everolimus in Patients With Advanced Pancreatic Neuroendocrine Tumors	7-Apr-2016	Terminated	P50CA174521
+clinical_trial	NCT01576172	Abiraterone Acetate and Prednisone With or Without Veliparib in Treating Patients With Metastatic Castration-Resistant Prostate Cancer	12-Nov-2020	Completed	P50CA186786
+clinical_trial	NCT02435849	Study of Efficacy and Safety of CTL019 in Pediatric ALL Patients (ELIANA)	22-Nov-2021	Active, not recruiting	P01CA214278
+clinical_trial	NCT01295827	Study of Pembrolizumab (MK-3475) in Participants With Progressive Locally Advanced or Metastatic Carcinoma, Melanoma, or Non-small Cell Lung Carcinoma (P07990/MK-3475-001/KEYNOTE-001) (KEYNOTE-001)	13-Dec-2019	Completed	R01CA205426
+clinical_trial	NCT02957526	Web-Base App To Improve Aromatase Inhibitor Adherence (AETAPP)	19-Jul-2018	Completed	R01CA218155
+clinical_trial	NCT00033631	Radiation Therapy in Treating Patients With Stage II Prostate Cancer	29-Jul-2021	Active, not recruiting	U24CA180803
+clinical_trial	NCT02135406	CART-19 for Multiple Myeloma	13-Feb-2018	Completed	P01CA214278
+clinical_trial	NCT01578239	A Study Comparing Treatment With 177Lu-DOTA0-Tyr3-Octreotate to Octreotide LAR in Patients With Inoperable, Progressive, Somatostatin Receptor Positive Midgut Carcinoid Tumours (NETTER-1)	7-Oct-2021	Completed	P50CA174521
+clinical_trial	NCT02546167	CART-BCMA Cells for Multiple Myeloma	4-Aug-2020	Completed	P01CA214278
+clinical_trial	NCT01626495	Phase I/IIA Study of CART19 Cells for Patients With Chemotherapy Resistant or Refractory CD19+ Leukemia and Lymphoma (Pedi CART19)	23-Mar-2020	Completed	P01CA214278
+clinical_trial	NCT02303990	RADVAX: A Stratified Phase I Trial of Pembrolizumab With Hypofractionated Radiotherapy in Patients With Advanced and Metastatic Cancers	12-May-2021	Completed	P01CA210944
+clinical_trial	NCT01302834	Radiation Therapy With Cisplatin or Cetuximab in Treating Patients With Oropharyngeal Cancer	23-Feb-2021	Unknown	U24CA180803
+clinical_trial	NCT02267603	Pembrolizumab in Treating Patients With Advanced Merkel Cell Cancer	4-Oct-2021	Active, not recruiting	UM1CA154967
+clinical_trial	NCT03478397	Evaluation of a mHealth Intervention to Increase Adherence to Triage of Self-collected HPV+ Women (ATICA Project) (ATICA)	6-Apr-2021	Completed	R01CA218306
+clinical_trial	NCT01623349	Phase I Study of the Oral PI3kinase Inhibitor BKM120 or BYL719 and the Oral PARP Inhibitor Olaparib in Patients With Recurrent Triple Negative Breast Cancer or High Grade Serous Ovarian Cancer	10-Feb-2021	Completed	R01CA226776
+clinical_trial	NCT00750269	Stereotactic Body Radiation Therapy in Treating Patients With Stage I Non-Small Cell Lung Cancer	7-May-2019	Unknown	U24CA180803
+clinical_trial	NCT00346164	Observation, Radiation Therapy, Combination Chemotherapy, and/or Surgery in Treating Young Patients With Soft Tissue Sarcoma	19-Aug-2021	Active, not recruiting	U24CA180803
+clinical_trial	NCT01747486	Dose Optimization Trial of CD19 Redirected Autologous T Cells	30-Aug-2019	Completed	P01CA214278
+clinical_trial	NCT01029366	CART19 to Treat B-Cell Leukemia or Lymphoma That Are Resistant or Refractory to Chemotherapy	26-Jun-2019	Completed	P01CA214278
+clinical_trial	NCT01821729	Proton w/FOLFIRINOX-Losartan for Pancreatic Cancer	25-Sep-2020	Active, not recruiting	R01CA208205
+clinical_trial	NCT01821729	Proton w/FOLFIRINOX-Losartan for Pancreatic Cancer	25-Sep-2020	Active, not recruiting	U01CA224348
+clinical_trial	NCT02595866	Testing the Addition of an Experimental Medication MK-3475 (Pembrolizumab) to Usual Anti-Retroviral Medications in Patients With HIV and Cancer	28-Dec-2021	Recruiting	UM1CA154967
+clinical_trial	NCT00920621	Randomized Trial: Maternal Vitamin D Supplementation to Prevent Childhood Asthma (VDAART) (VDAART)	28-Jan-2021	Active, not recruiting	U01CA164973
+clinical_trial	NCT03639350	The Healthy Diet and Lifestyle Study (HDL)	21-Aug-2018	Completed	U01CA164973
+clinical_trial	NCT01277757	Akt Inhibitor MK2206 in Treating Patients With Advanced Breast Cancer	19-Dec-2018	Completed	R01CA226776
+clinical_trial	NCT00822120	S0816 Fludeoxyglucose F 18-PET/CT Imaging and Combination Chemotherapy With or Without Additional Chemotherapy and G-CSF in Treating Patients With Stage III or Stage IV Hodgkin Lymphoma	26-Jan-2022	Active, not recruiting	U24CA180803
+clinical_trial	NCT02243579	Pembrolizumab in Treating Patients With Relapsed or Refractory Stage IB-IVB Mycosis Fungoides or Sezary Syndrome	20-Sep-2019	Completed	UM1CA154967
+clinical_trial	NCT02243579	Pembrolizumab in Treating Patients With Relapsed or Refractory Stage IB-IVB Mycosis Fungoides or Sezary Syndrome	20-Sep-2019	Completed	U2CCA233195
+clinical_trial	NCT02243579	Pembrolizumab in Treating Patients With Relapsed or Refractory Stage IB-IVB Mycosis Fungoides or Sezary Syndrome	20-Sep-2019	Completed	U2CCA233238
+clinical_trial	NCT01522443	Study of Cabozantinib (XL184) Versus Mitoxantrone Plus Prednisone in Men With Previously Treated Symptomatic Castration-resistant Prostate Cancer (COMET-2)	23-May-2018	Terminated	U01CA233046
+clinical_trial	NCT01343043	A Pilot Study of Genetically Engineered NY-ESO-1 Specific NY-ESO-1&#7580;&#178;&#8309;&#8313;T in HLA-A2+ Patients With Synovial Sarcoma (NY-ESO-1)	30-Jun-2021	Completed	P01CA214278
+clinical_trial	NCT01307631	Akt Inhibitor MK2206 in Treating Patients With Recurrent or Advanced Endometrial Cancer	5-Sep-2017	Completed	P50CA098258
+clinical_trial	NCT02030847	Study of Redirected Autologous T Cells Engineered to Contain Anti-CD19 Attached to TCR and 4-1BB Signaling Domains in Patients With Chemotherapy Resistant or Refractory Acute Lymphoblastic Leukemia	30-Aug-2019	Completed	P01CA214278
+clinical_trial	NCT00533949	High-Dose or Standard-Dose Radiation Therapy and Chemotherapy With or Without Cetuximab in Treating Patients With Newly Diagnosed Stage III Non-Small Cell Lung Cancer That Cannot Be Removed by Surgery	5-Feb-2020	Unknown	U24CA180803
+clinical_trial	NCT02092324	Ruxolitinib Phosphate in Treating Patients With Chronic Neutrophilic Leukemia or Atypical Chronic Myeloid Leukemia	16-Nov-2020	Completed	U54CA224019
+clinical_trial	NCT01677910	TELESTAR (Telotristat Etiprate for Somatostatin Analogue Not Adequately Controlled Carcinoid Syndrome)	27-Feb-2018	Completed	P50CA174521
+clinical_trial	NCT02063659	Telotristat Etiprate for Carcinoid Syndrome Therapy (TELECAST)	26-Feb-2018	Completed	P50CA174521
+clinical_trial	NCT00002874	Radiation Therapy With or Without Bicalutamide for Recurrent pT3N0 Prostate Cancer After Radical Prostatectomy	18-Aug-2020	Unknown	P50CA186786
+clinical_trial	NCT02315612	Anti-CD22 Chimeric Receptor T Cells in Pediatric and Young Adults With Recurrent or Refractory CD22-expressing B Cell Malignancies	30-Dec-2021	Recruiting	U01CA224766
+clinical_trial	NCT01363206	Granulocyte Macrophage-Colony Stimulating Factor and Ipilimumab as Therapy in Melanoma (GIPI)	19-Mar-2020	Completed	U01CA233100
+clinical_trial	NCT00064129	Ipilimumab and Sargramostim in Treating Patients With Metastatic Prostate Cancer	30-Jul-2020	Completed	U01CA233100
+clinical_trial	NCT03799432	Collaborative Organizational Approach to Selecting and Tailoring Implementation Strategies (COAST-IS)	8-Jan-2021	Active, not recruiting	P50CA244431
+clinical_trial	NCT00557193	Combination Chemotherapy With or Without Lestaurtinib in Treating Younger Patients With Newly Diagnosed Acute Lymphoblastic Leukemia	25-Mar-2021	Active, not recruiting	U01CA232486
+clinical_trial	NCT01454297	Relating Clinical Outcomes in Multiple Myeloma to Personal Assessment of Genetic Profile (CoMMpass)	16-Aug-2018	Active, not recruiting	U2CCA233303
+clinical_trial	NCT02451423	Neoadjuvant Atezolizumab in Localized Bladder Cancer	30-Mar-2020	Recruiting	R01CA194511
+clinical_trial	NCT02451423	Neoadjuvant Atezolizumab in Localized Bladder Cancer	30-Mar-2020	Recruiting	U01CA233100
+clinical_trial	NCT02451423	Neoadjuvant Atezolizumab in Localized Bladder Cancer	30-Mar-2020	Recruiting	U01CA244452
+clinical_trial	NCT02296684	Immunotherapy With MK-3475 in Surgically Resectable Head and Neck Squamous Cell Carcinoma	30-Aug-2021	Active, not recruiting	U01CA209936
+clinical_trial	NCT00902044	Her2 Chimeric Antigen Receptor Expressing T Cells in Advanced Sarcoma	30-Dec-2021	Active, not recruiting	U54CA232568
+clinical_trial	NCT01191060	Study Comparing Conventional Dose Combination RVD to High-Dose Treatment With ASCT in the Initial Myeloma up to 65 Years (IFM/DFCI2009)	18-Apr-2019	Completed	P01CA155258
+clinical_trial	NCT02180867	Radiation Therapy With or Without Combination Chemotherapy or Pazopanib Before Surgery in Treating Patients With Newly Diagnosed Non-rhabdomyosarcoma Soft Tissue Sarcomas That Can Be Removed by Surgery	4-Oct-2021	Active, not recruiting	U24CA180803
+clinical_trial	NCT04358276	Technology-Enabled Activation of Skin Cancer Screening for Stem Cell Transplant Survivors and Their Primary Care Providers, TEACH Study	16-Feb-2021	Recruiting	R01CA249460
+clinical_trial	NCT00500591	Prevalence of Endometrial Abnormalities In Obese Women	25-Feb-2021	Active, not recruiting	P50CA098258
+clinical_trial	NCT03051659	A Randomized Phase II Study Of Eribulin Mesylate With or Without Pembrolizumab For Metastatic Hormone Receptor Positive Breast Cancer	21-Dec-2021	Active, not recruiting	R01CA226776
+clinical_trial	NCT03287908	A Study to Assess AMG 701 Montherapy, or in Combination With Pomalidomide, With or Without, Dexamethasone in Subjects With Relapsed or Refractory Multiple Myeloma	27-Dec-2021	Recruiting	P01CA155258
+clinical_trial	NCT04071366	A Study of Itacitinib for the Prevention of Cytokine Release Syndrome Induced by Immune Effector Cell Therapy	30-Sep-2021	Recruiting	P01CA214278
+clinical_trial	NCT03837353	A Parallel Arm Phase 1b/2a Study of DKN-01 as Monotherapy or in Combination With Docetaxel for the Treatment of Advanced Prostate Cancer With Elevated DKK1	23-Mar-2021	Recruiting	U54CA224079
+clinical_trial	NCT04302675	Adapting Motivational Interviewing for Maternal Immunizations (MI4MI) (MI4MI)	26-Jul-2021	Active, not recruiting	P50CA244688
+clinical_trial	NCT00022737	Combination Chemotherapy With or Without Peripheral Stem Cell Transplant in Treating Children With Acute Lymphoblastic Leukemia	27-Feb-2014	Completed	U01CA232486
+clinical_trial	NCT00287105	Safety and Efficacy of Imatinib Added to Chemotherapy in Treatment of Ph+ Acute Lymphoblastic Leukemia in Children (ESPHALL)	20-Oct-2017	Completed	U01CA232486
+clinical_trial	NCT00720109	Dasatinib and Combination Chemotherapy in Treating Young Patients With Newly Diagnosed Acute Lymphoblastic Leukemia	13-Apr-2020	Completed	U01CA232486
+clinical_trial	NCT01460160	Pediatric Philadelphia Positive Acute Lymphoblastic Leukemia	8-Dec-2021	Completed	U01CA232486
+clinical_trial	NCT01423747	Allogeneic Stem Cell Transplantation in Children and Adolescents With Acute Lymphoblastic Leukaemia	26-Jun-2015	Unknown	U01CA232486
+clinical_trial	NCT01423500	ALL-SCT BFM International- HSCT in Children and Adolescents With ALL (ALL-SCT-BFMi)	26-Jun-2015	Unknown	U01CA232486
+clinical_trial	NCT01949129	Allogeneic Stem Cell Transplantation for Children and Adolescents With Acute Lymphoblastic Leukaemia	1-Oct-2020	Recruiting	U01CA232486
+clinical_trial	NCT01117441	International Collaborative Treatment Protocol For Children And Adolescents With Acute Lymphoblastic Leukemia	20-Oct-2020	Active, not recruiting	U01CA232486
+clinical_trial	NCT02066181	Sorafenib Tosylate in Treating Patients With Desmoid Tumors or Aggressive Fibromatosis	16-Dec-2021	Active, not recruiting	U01CA233046
+clinical_trial	NCT02906371	Study of the Tocilizumab Optimization Timing for CART19 Associated Cytokine Release Syndrome	2-Jul-2021	Completed	P01CA214278
+clinical_trial	NCT01970358	A Phase I Study With a Personalized NeoAntigen Cancer Vaccine in Melanoma	9-Dec-2020	Completed	U24CA224331
+clinical_trial	NCT02228096	Study of Efficacy and Safety of CTL019 in Pediatric ALL Patients (ENSIGN)	23-Nov-2020	Completed	P01CA214278
+clinical_trial	NCT02058706	LHRH Analogue Therapy With Enzalutamide or Bicalutamide in Treating Patients With Metastatic Hormone Sensitive Prostate Cancer	3-Mar-2021	Active, not recruiting	P50CA186786
+clinical_trial	NCT02254278	Reduced-Dose Intensity-Modulated Radiation Therapy With or Without Cisplatin in Treating Patients With Advanced Oropharyngeal Cancer	25-Oct-2021	Active, not recruiting	U24CA180803
+clinical_trial	NCT02136134	Addition of Daratumumab to Combination of Bortezomib and Dexamethasone in Participants With Relapsed or Refractory Multiple Myeloma	28-Jan-2022	Active, not recruiting	P01CA155258
+clinical_trial	NCT02076009	A Study Comparing Daratumumab, Lenalidomide, and Dexamethasone With Lenalidomide and Dexamethasone in Relapsed or Refractory Multiple Myeloma	28-Jan-2022	Active, not recruiting	P01CA155258
+clinical_trial	NCT03224520	Smoker-to-Smoker (S2S) Peer Marketing and Messaging to Disseminate Tobacco Interventions	26-Mar-2021	Completed	P50CA244693
+clinical_trial	NCT01497808	RADVAX&#8482;: A STRATIFIED PHASE I/II DOSE ESCALATION TRIAL OF HYPOFRACTIONATED RADIOTHERAPY FOLLOWED BY IPILIMUMAB IN METASTATIC MELANOMA	10-Aug-2021	Completed	P01CA210944
+clinical_trial	NCT01822509	Ipilimumab or Nivolumab in Treating Patients With Relapsed Hematologic Malignancies After Donor Stem Cell Transplant	24-Jun-2021	Completed	U01DK124165
+clinical_trial	NCT01822509	Ipilimumab or Nivolumab in Treating Patients With Relapsed Hematologic Malignancies After Donor Stem Cell Transplant	24-Jun-2021	Completed	U24CA224316
+clinical_trial	NCT01822509	Ipilimumab or Nivolumab in Treating Patients With Relapsed Hematologic Malignancies After Donor Stem Cell Transplant	24-Jun-2021	Completed	U24CA224319
+clinical_trial	NCT01822509	Ipilimumab or Nivolumab in Treating Patients With Relapsed Hematologic Malignancies After Donor Stem Cell Transplant	24-Jun-2021	Completed	U24CA224331
+clinical_trial	NCT02206334	Stereotactic Body Radiation Therapy in Treating Patients With Metastatic Breast Cancer, Non-small Cell Lung Cancer, or Prostate Cancer	1-Mar-2021	Active, not recruiting	U24CA180803
+clinical_trial	NCT02588456	Pilot Study of Autologous Anti-CD22 Chimeric Antigen Receptor Redirected T Cells In Patients With Chemotherapy Resistant Or Refractory Acute Lymphoblastic Leukemia	12-Jan-2018	Terminated	P01CA214278
+clinical_trial	NCT02650414	CD22 Redirected Autologous T Cells for ALL	21-Jan-2022	Recruiting	P01CA214278
+clinical_trial	NCT01804465	Sipuleucel-T With Immediate vs. Delayed Cytotoxic T-Lymphocyte-Associated Protein 4 (CTLA-4) Blockade for Prostate Cancer	18-Aug-2021	Completed	U01CA233100
+clinical_trial	NCT01804465	Sipuleucel-T With Immediate vs. Delayed Cytotoxic T-Lymphocyte-Associated Protein 4 (CTLA-4) Blockade for Prostate Cancer	18-Aug-2021	Completed	U01CA244452
+clinical_trial	NCT02501096	A Trial of Lenvatinib (E7080) Plus Pembrolizumab in Participants With Selected Solid Tumors	6-Dec-2021	Active, not recruiting	R01CA205426
+clinical_trial	NCT03985852	Broadening the Reach, Impact, and Delivery of Genetic Services (BRIDGE)	27-Aug-2021	Enrolling by invitation	U01CA232826
+clinical_trial	NCT00085735	Comparison of Radiation Therapy Regimens in Combination With Chemotherapy in Treating Young Patients With Newly Diagnosed Standard-Risk Medulloblastoma	25-Feb-2021	Active, not recruiting	U24CA180803
+clinical_trial	NCT03607617	ASCEND: ApproacheS to CHC ImplEmeNtation of SDH Data Collection and Action (ASCEND)	15-Jun-2021	Active, not recruiting	P50CA244289
+clinical_trial	NCT02054741	Geriatric Assessment Intervention for Reducing Toxicity in Older Patients With Advanced Cancer	4-Mar-2021	Active, not recruiting	U01CA233167
+clinical_trial	NCT03233854	CD19/CD22 Chimeric Antigen Receptor(CAR) T Cells in Adults With Recurrent/Refractory B Cell Malignancies	17-Aug-2021	Recruiting	U54CA232568
+clinical_trial	NCT03971799	Study of Anti-CD33 Chimeric Antigen Receptor-Expressing T Cells (CD33CART) in Children and Young Adults With Relapsed/Refractory Acute Myeloid Leukemia	14-Oct-2021	Recruiting	U01CA232486
+clinical_trial	NCT02478931	Study of Personalized Cancer Therapy to Determine Response and Toxicity (UCSD_PREDICT)	5-Apr-2021	Recruiting	U01CA217885
+clinical_trial	NCT02355262	CATCH-UP Intervention in Increasing Cancer Screening and Prevention Care in Uninsured Patients at Community Health Centers	19-Aug-2020	Completed	P50CA244289
+clinical_trial	NCT02888743	Durvalumab and Tremelimumab With or Without High or Low-Dose Radiation Therapy in Treating Patients With Metastatic Colorectal or Non-small Cell Lung Cancer	6-Jan-2022	Active, not recruiting	U24CA224316
+clinical_trial	NCT02888743	Durvalumab and Tremelimumab With or Without High or Low-Dose Radiation Therapy in Treating Patients With Metastatic Colorectal or Non-small Cell Lung Cancer	6-Jan-2022	Active, not recruiting	U24CA224331
