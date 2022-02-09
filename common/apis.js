@@ -15,8 +15,7 @@ const clinicalTrialsApi = "https://clinicaltrials.gov/ct2/results/rpc/";
 const clinicalTrialsDetailSiteStudy = "https://clinicaltrials.gov/ct2/show/study/";
 const clinicalTrialsDetailSiteRecord = "https://clinicaltrials.gov/ct2/show/record/";
 const iciteApi = "https://itools.od.nih.gov/icite/api/pubs?pmids=";
-const usptoApiEndpointPublications = 'https://developer.uspto.gov/ibd-api/v1/application/publications?searchText=%s&publicationFromDate=%s&start=0&rows=100&largeTextSearchFlag=Y';
-const usptoApiEndpointGrants = 'https://developer.uspto.gov/ibd-api/v1/application/grants?searchText=%s&grantFromDate=%s&start=0&rows=100&largeTextSearchFlag=Y';
+const usptoPubwebappEndpoint = "https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily";
 
 module.exports = {
   nihReporterApi,
@@ -36,6 +35,5 @@ module.exports = {
   clinicalTrialsDetailSiteStudy,
   clinicalTrialsDetailSiteRecord,
   iciteApi,
-  usptoApiEndpointPublications,
-  usptoApiEndpointGrants
+  usptoPubwebappEndpoint
 };
