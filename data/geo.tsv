@@ -329,8 +329,8 @@ geo	GSE131601	Treatment-induced tumor dormancy through YAP-mediated transcriptio
 geo	GSE131594	Treatment-induced tumor dormancy through YAP-mediated transcriptional reprogramming of the apoptotic pathway [DMSO vs DORMANT]	Public on Jan 13, 2020	21-May-2019	13-Apr-2020	P01CA154303
 geo	GSE139248	DENDRO: genetic heterogeneity profiling and subclone detection by single-cell RNA sequencing	Public on Nov 10, 2019	22-Oct-2019	27-Jan-2020	P01CA210944
 geo	GSE139248	DENDRO: genetic heterogeneity profiling and subclone detection by single-cell RNA sequencing	Public on Nov 10, 2019	22-Oct-2019	27-Jan-2020	U2CCA233285
-geo	GSE139335	MUC1-C Drives Lineage Plasticity in Progression to Neuroendocrine Prostate Cancer	Public on Dec 02, 2019	24-Oct-2019	17-Aug-2021	U01CA233084
-geo	GSE139335	MUC1-C Drives Lineage Plasticity in Progression to Neuroendocrine Prostate Cancer	Public on Dec 02, 2019	24-Oct-2019	17-Aug-2021	U24CA232979
+geo	GSE139335	MUC1-C Drives Lineage Plasticity in Progression to Neuroendocrine Prostate Cancer	Public on Dec 02, 2019	24-Oct-2019	8-Feb-2022	U01CA233084
+geo	GSE139335	MUC1-C Drives Lineage Plasticity in Progression to Neuroendocrine Prostate Cancer	Public on Dec 02, 2019	24-Oct-2019	8-Feb-2022	U24CA232979
 geo	GSE153670	Bulk RNA sequencing from patient bone marrow samples	Public on Jul 02, 2020	1-Jul-2020	1-Oct-2020	P01CA214278
 geo	GSE130819	Genome-wide CRISPR/Cas9 guide library knockout screening in Nalm6 ALL cells under CART19 selective pressure	Public on Feb 17, 2020	7-May-2019	17-Feb-2020	P01CA214278
 geo	GSE130818	ATAC profiling of CART19 cells exposed to WT and BIDko Nalm6 cells	Public on Feb 17, 2020	7-May-2019	17-Feb-2020	P01CA214278
@@ -711,6 +711,10 @@ geo	GSE178341	A Single Cell Atlas of MMRd and MMRp Colorectal Cancer	Public on A
 geo	GSE92765	LPAR signaling activated in neural crest stem cells promotes melanoma cell growth, invasion and therapy resistance	Public on Dec 01, 2017	22-Dec-2016	27-Oct-2021	U54CA224070
 geo	GSE92764	LPAR signaling activated in neural crest stem cells promotes melanoma cell growth, invasion and therapy resistance [HumanHT-12 V4.0]	Public on Dec 01, 2017	22-Dec-2016	27-Oct-2021	U54CA224070
 geo	GSE92763	LPAR signaling activated in neural crest stem cells promotes melanoma cell growth, invasion and therapy resistance [HumanWG6_V2]	Public on Dec 01, 2017	22-Dec-2016	27-Oct-2021	U54CA224070
+geo	GSE175715	YBX1 mediates translation of oncogenic transcripts to control cell competition in AML	Public on May 28, 2021	27-May-2021	7-Sep-2021	R01CA176745
+geo	GSE175714	YBX1 mediates translation of oncogenic transcripts to control cell competition in AML [RNA-seq polysomes]	Public on May 28, 2021	27-May-2021	7-Sep-2021	R01CA176745
+geo	GSE175713	YBX1 mediates translation of oncogenic transcripts to control cell competition in AML [RNA-seq]	Public on May 28, 2021	27-May-2021	7-Sep-2021	R01CA176745
+geo	GSE175712	YBX1 mediates translation of oncogenic transcripts to control cell competition in AML [ChIP-seq]	Public on May 28, 2021	27-May-2021	7-Sep-2021	R01CA176745
 geo	GSE180949	Dietary suppression of MHC-II expression in intestinal epithelial cells enhances intestinal tumorigenesis	Public on Aug 16, 2021	27-Jul-2021	15-Nov-2021	U01CA250554
 geo	GSE171837	Bortezomib induces anti-multiple myeloma immune response mediated by cGAS/STING pathway activation	Public on Apr 12, 2021	11-Apr-2021	29-Sep-2021	P01CA155258
 geo	GSE162515	Chromatin accessibility associates with protein-RNA correlation in human cancer	Public on Dec 03, 2020	2-Dec-2020	15-Oct-2021	U2CCA233311

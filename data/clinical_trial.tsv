@@ -1,6 +1,7 @@
 type	clinical_trial_id	title	last_update_posted	recruitment_status	project.queried_project_id
 clinical_trial	NCT01697566	An Endometrial Cancer Chemoprevention Study of Metformin	5-Jun-2019	Active, not recruiting	P50CA098258
 clinical_trial	NCT01737619	PET/CT and Lymph Node Mapping in Finding Lymph Node Metastasis in Patients With High-Risk Endometrial Cancer	19-Nov-2021	Active, not recruiting	P50CA098258
+clinical_trial	NCT02397083	Levonorgestrel-Releasing Intrauterine System With or Without Everolimus in Treating Patients With Atypical Hyperplasia or Stage IA Grade 1 Endometrial Cancer (LEVER)	9-Feb-2022	Recruiting	P50CA098258
 clinical_trial	NCT00788671	Levonorgestrel-Releasing Intrauterine System in Treating Patients With Complex Atypical Hyperplasia or Grade I Endometrial Cancer	8-Oct-2021	Active, not recruiting	P50CA098258
 clinical_trial	NCT01935973	Trametinib With or Without GSK2141795 in Treating Patients With Recurrent or Persistent Endometrial Cancer	14-Oct-2020	Completed	P50CA098258
 clinical_trial	NCT01440998	Dasatinib, Paclitaxel, and Carboplatin in Treating Patients With Stage III-IV or Recurrent Endometrial Cancer	5-Apr-2018	Completed	P50CA098258
