@@ -66,6 +66,7 @@ const post = async (url, body, keep_trying=false) => {
     } catch (error) {
       console.log("POST failed");
       console.log(url);
+      console.log(error);
       if (keep_trying === false || counter >=MAX_RETRIES) {
         return "failed";
       }
