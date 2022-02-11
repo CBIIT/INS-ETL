@@ -389,10 +389,9 @@ const run = async (projectsTodo) => {
   columns = ["type", "patent_id", "fulfilled_date", "project.project_id"];
   filepath = 'digest_data/patent.tsv';
   writeToDataDigestFile(filepath, columns, patents, "patent");
-  // 01/31/2022 adeforge, only the data digest file for now, for exploration purposes
-  // columns = ["type", "patent_id", "kind_code", "filed_date", "cited_pattern_project_id", "cited_raw_project_id", "project.queried_project_id"];
-  // filepath = 'data/patent.tsv';
-  // writeToDataFile(filepath, columns, patents, "patent");
+  columns = ["type", "patent_id", "fulfilled_date", "project.project_id"];
+  filepath = 'data/patent.tsv';
+  writeToDataFile(filepath, columns, patents, "patent");
 };
 
 module.exports = {
