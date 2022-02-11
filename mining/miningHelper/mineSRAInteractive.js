@@ -1,16 +1,22 @@
-const { result } = require('lodash');
 const puppeteer = require('puppeteer');
 const apis = require('../../common/apis');
+const {
+  fetch,
+  fetchWithStatusCheck
+} = require ('../../common/utils');
 
 
 // the purpose of this function is to access SRP numbers which would otherwise be inaccessible by non-interactive (headless browser) methods
-const mineSRAInteractive = async (publications, sras) => {
-  for (let pmId in publications) {
-    if (publications[pmId].sra_overflow !== undefined) {  // this publication had overflow
-      console.log(apis.pmSraSite + pmId);
-      let d = await fetch(apis.pmSraSite + pmId, true);  // true is keep trying
-      if(d != "failed"){
-        if (d.indexOf("<title>Error - SRA - NCBI</title>") === -1 && d.indexOf("<title>No items found - SRA - NCBI</title>") === -1) {  // check if SRA datasets exist for this publication
+const run = async (publications, sras) => {
+  const keys = Object.keys(publications);
+  for (let i = 0; i < keys.length; i++) {
+    let pmId = keys[i];
+    if (publications[pmId].sra_overflow) {  // this publication had overflow
+          console.log("Collecting more SRA coverage for publication " + pmId + " [" + (i+1) + " of " + keys.length + "]");
+      // console.log(apis.pmSraSite + pmId);
+      // let d = await fetch(apis.pmSraSite + pmId, true);  // true is keep trying
+      // if(d != "failed"){
+        // if (d.indexOf("<title>Error - SRA - NCBI</title>") === -1 && d.indexOf("<title>No items found - SRA - NCBI</title>") === -1) {  // check if SRA datasets exist for this publication
           let moreSRAs = true;
           let total_results = 0;
           let run_results = 0;
@@ -24,18 +30,21 @@ const mineSRAInteractive = async (publications, sras) => {
             
             if (newPage === true) {
               if (pageNum > 1) {
-                d = interactSRA(srx, pageNum);
+                d = await interactSRA(pmId, pageNum);
               }
               else {
-                d = interactSRA(srx);
-                let tmp = d;
-                let idx = tmp.indexOf("Items: ");  // if there aren't multiple results, this accession shouldn't be here
-                let temp = tmp.substring(idx);
-                idx = temp.indexOf("of ");
-                temp = temp.substring(idx);
-                idx = temp.indexOf("</h3");
-                total_results = parseInt(temp.substring(0,idx));  // get the total number of results on the first page visit
+                d = await interactSRA(pmId);
               }
+              let tmp = d;
+              let idx = tmp.indexOf("Items: ");  // 7 characters, if there aren't multiple results, this accession shouldn't be here
+              let temp = tmp.substring(idx + 7);
+              idx = temp.indexOf("</h3");
+              temp = temp.substring(0,idx);
+              idx = temp.indexOf("of ");  // 3 characters
+              if (idx > -1) {
+                temp = temp.substring(idx + 3);
+              }
+              total_results = parseInt(temp);  // get the total number of results on the first page visit
             }
 
             let tmp = d;
@@ -46,7 +55,7 @@ const mineSRAInteractive = async (publications, sras) => {
             console.log(apis.pmSraDetailSite + accession + "[accn]");
             let sra_detail = await fetch(apis.pmSraDetailSite + accession + "[accn]", true);  // true is keep trying
             let pos_start = 0; 
-            if(sra_detail != "failed"){
+            if(sra_detail !== "failed"){
               let pos_end = 0;
               pos_start = sra_detail.indexOf("Link to SRA Study\">");  // 19 characters
               sra_detail = sra_detail.substring(pos_start + 19);
@@ -62,7 +71,7 @@ const mineSRAInteractive = async (publications, sras) => {
               // begin getting SRP details, including total number of runs
               console.log(apis.pmSrpDetailSite + srp);
               let dd = await fetch(apis.pmSrpDetailSite + srp, true);  // true is keep trying
-              if(dd != "failed"){
+              if(dd !== "failed"){
                 if (dd.indexOf("<div class=\"error\">SRA Study " + srp + " does not exist</div>") === -1) {
                   // get metric related to number of runs vs number of SRX results for publication
                   let temp = dd;
@@ -109,46 +118,79 @@ const mineSRAInteractive = async (publications, sras) => {
               }
             }
             let tempPage = pageNum;
-            pageNum = Math.floor((next_index + run_results) / 200) + 1;  // 200 is the page size
+            pageNum = pageNum + Math.floor((next_index + run_results) / 200);  // 200 is the page size
             newPage = (pageNum === tempPage) ? false : true;
             next_index = (next_index + run_results) % 200; // 200 is the page size
             moreSRAs = ((pageNum * 200) + next_index) >= total_results ? false : true;  // if the next index points to a result past the total results, stop
           }
-        }
-      }
+        // }
+      // }
     }
   }
 };
 
 // if you don't set pageNum, then you will get the landing page with 200 results per page
-const interactSRA = (accession, pageNum=null) => {
+const interactSRA = async (pmId, pageNum=null) => {
+  // let result = "";
+  // (async () => {
+  //   const browser = await puppeteer.launch();
+  //   const page = await browser.newPage();
+  //   console.log(apis.pmSraSite + pmId);
+  //   await page.goto(apis.pmSraSite + pmId);
+
+  //   await page.click("#ps200");  // set the page size to 200
+
+  //   if (pageNum) {
+  //     await page.waitForSelector('input[name=EntrezSystem2.PEntrez.Sra.Sra_ResultsPanel.Entrez_Pager.cPage]');
+  //     await page.$eval('input[name=EntrezSystem2.PEntrez.Sra.Sra_ResultsPanel.Entrez_Pager.cPage]', el => el.value = String(pageNum));
+  //     await page.focus('#pageno');
+  //     await page.keyboard.press("Enter");
+  //   }
+
+  //   result = await page.evaluate(() => {
+  //     return document.body;
+  //   });
+
+  //   await browser.close();
+  // })()
+
+  // return result;
   let result = "";
-  (async () => {
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    await page.goto(apis.pmSraDetailSite + accession + "[accn]");
+    await (async () => {
+        const browser = await puppeteer.launch(
+            {
+                'defaultViewport' : { 'width' : 1024, 'height' : 1600 }
+            });
+        const page = await browser.newPage();
+        page.setDefaultNavigationTimeout( 90000 );
+        await page.setViewport( { 'width' : 1024, 'height' : 1600 } );
+        await page.setUserAgent( 'UA-TEST' );
 
-    await page.click("#ps200");  // set the page size to 200
+        console.log(apis.pmSraSite + pmId);
+        await page.goto(apis.pmSraSite + pmId, { 'waitUntil' : 'domcontentloaded' });
 
-    if (pageNum) {
-      await page.waitForSelector('input[name=EntrezSystem2.PEntrez.Sra.Sra_ResultsPanel.Entrez_Pager.cPage]');
-      await page.$eval('input[name=EntrezSystem2.PEntrez.Sra.Sra_ResultsPanel.Entrez_Pager.cPage]', el => el.value = String(pageNum));
-      await page.focus('#pageno');
-      await page.keyboard.press("Enter");
-    }
+        await page.waitForSelector("input[id$=\"ps200\"]");
+        let handle1 = await page.$("input[id$=\"ps200\"]");
+        await handle1.evaluate(b => b.click());
+        await page.waitForNavigation();
 
-    result = await page.evaluate(() => {
-      return document.body;
-    });
+        if (pageNum) {
+          await page.waitForSelector('#pageno');
+          await page.$eval('#pageno', (el, pageNum) => {el.value = String(pageNum)}, pageNum);
+          await page.focus('#pageno');
+          await page.keyboard.press("Enter");
+          await page.waitForNavigation();
+        }
 
-    await browser.close();
-  })()
+        result = await page.evaluate(() => document.body.innerHTML);
 
-  return result;
+        await browser.close();
+    })()
+    return result;
 };
 
 
 
 module.exports = {
-	mineSRAInteractive
+	run
 };

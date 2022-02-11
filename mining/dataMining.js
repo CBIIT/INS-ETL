@@ -7,6 +7,7 @@ const mineSRADetail = require('./miningHelper/mineSRADetail');
 const mineGEODetail = require('./miningHelper/mineGEODetail');
 const mineDBGapDetail = require('./miningHelper/mineDBGapDetail');
 const mineClinicalTrialsDetail = require('./miningHelper/mineClinicalTrialsDetail');
+const mineSraInteractive = require('./miningHelper/mineSRAInteractive');
 const minePatents = require('./miningHelper/minePatents');
 const {
   getCoreId,
@@ -293,8 +294,12 @@ const run = async (projectsTodo) => {
 
   console.time('mineSRADetail');
   await mineSRADetail.run(publications, sras);
-  console.log("Number of SRAs: " + Object.keys(sras).length);
   console.timeEnd('mineSRADetail');
+
+  console.time('mineSraInteractive');
+  await mineSraInteractive.run(publications, sras);
+  console.log("Number of SRAs: " + Object.keys(sras).length);
+  console.timeEnd('mineSraInteractive');
 
   console.time('mineGEODetail');
   await mineGEODetail.run(publications, geos);

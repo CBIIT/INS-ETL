@@ -61,12 +61,15 @@ const getGEOData = async (publications, pmId) => {
 }
 
 const getTotalSRXResults = (temp) => {
-  let idx = temp.indexOf("Items: ");  // if there aren't multiple results, this accession shouldn't be here
-  temp = temp.substring(idx);
-  idx = temp.indexOf("of ");
-  temp = temp.substring(idx);
+  let idx = temp.indexOf("Items: ");  // 7 characters, if there aren't multiple results, this accession shouldn't be here
+  temp = temp.substring(idx + 7);
   idx = temp.indexOf("</h3");
-  let total_results = parseInt(temp.substring(0,idx));  // get the total number of results on the first page visit
+  temp = temp.substring(0,idx);
+  idx = temp.indexOf("of ");
+  if (idx > -1) {
+      temp = temp.substring(idx+3); 
+  }
+  let total_results = parseInt(temp);  // get the total number of results on the first page visit
   return total_results;
 }
 
@@ -113,7 +116,7 @@ const getSRAData = async (publications, pmId) => {
       }
       else {
         let temp = d;
-        publications[pmId].total_srx_results = getTotalSRXResults(temp);
+        // publications[pmId].total_srx_results = getTotalSRXResults(temp);  // 02/11/2022 adeforge, probably not needed
 
         temp = d;  // re-initialize the temp variable containing the hypertext
         publications[pmId].sra_accession = await getMultipleSRXResults(temp);
