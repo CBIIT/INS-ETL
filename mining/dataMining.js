@@ -294,6 +294,7 @@ const run = async (projectsTodo) => {
 
   console.time('mineSRADetail');
   await mineSRADetail.run(publications, sras);
+  console.log("Number of SRAs before coverage feature: " + Object.keys(sras).length);
   console.timeEnd('mineSRADetail');
 
   console.time('mineSraInteractive');

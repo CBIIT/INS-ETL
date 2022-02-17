@@ -30,12 +30,12 @@ const run = async (publications, sras) => {
             let run_results = parseInt(temp.substring(0,idx_total_runs));
             cumulative_srx_runs += run_results;
             // 20 is the max results for the page originally scraped
-            if (cumulative_srx_runs > 20) {  // the second part of the conditional is to check if any results past 20 belong to the same SRA being checked
+            if (cumulative_srx_runs > 20) {
               publications[pmIds[p]].sra_overflow = cumulative_srx_runs;  // where to start for the sra overflow portion of the script, otherwise undefined
             }
-            else {
+            // else {
               s += run_results;  // skip past the accessions in the same SRA
-            }
+            // }
 
             sras[srp] = {};
             let idx = d.indexOf("h1>");  // 3 characters
