@@ -118,6 +118,8 @@ geo	GSE96779	mRNA expression profile of A549 cells and MSR-A549 cells with or wi
 geo	GSE89560	Inhibition of MEK and ATR induces synergistic killing of a Mll-Af4 B-ALL model harboring activated Ras mutation	Public on Nov 28, 2018	4-Nov-2016	15-May-2019	R01CA176745
 geo	GSE106384	Transcript analysis of CD45+Ter119+CD71+ erythroid-like progenitor cells from tumor-bearing mice	Public on Oct 29, 2018	31-Oct-2017	16-Apr-2021	R33CA225328
 geo	GSE117452	Differences in microRNA expression in breast cancer between women of African and European ancestry	Public on Dec 06, 2018	20-Jul-2018	27-Mar-2019	U24CA232979
+geo	GSE117615	Colonic adenoma and adjacent normal single-cell RNA-seq	Public on Oct 23, 2018	24-Jul-2018	25-Mar-2019	U2CCA233291
+geo	GSE114044	Colonic single-cell RNA-seq experiment	Public on Oct 23, 2018	4-May-2018	27-Feb-2020	U2CCA233291
 geo	GSE110239	Differential Gene expression in the mouse mammary tumors of  PyMT-Malat1 wild-type (WT), PyMT-Malat1 knockout (KO) and PyMT-Malat1 knockout with Malat1 transgene expression (TG)	Public on Sep 18, 2018	6-Feb-2018	19-Mar-2019	U24CA209851
 geo	GSE115656	Alternative splicing analysis of pediatric B-cell acute lymphoblastic leukemia compared to normal bone marrow derived pro-B cells	Public on Oct 02, 2018	12-Jun-2018	3-Apr-2019	U01CA232563
 geo	GSE115655	Bone marrow derived human B cells [normal proB]	Public on Oct 02, 2018	12-Jun-2018	3-Apr-2019	U01CA232563
@@ -485,8 +487,8 @@ geo	GSE111921	Gene expression profile in multiple myeloma tumors from Vk*MYC mic
 geo	GSE110954	Evaluation of CNAs in multiple myeloma tumors from Vk*MYC mice	Public on Feb 20, 2020	21-Feb-2018	28-Sep-2020	U54CA224018
 geo	GSE151343	Functional precision medicine identifies new therapeutic candidates for medulloblastoma (expression dataset)	Public on Oct 01, 2020	28-May-2020	26-Dec-2020	U01CA217885
 geo	GSE154879	Overcoming primary and acquired resistance to anti-PD-L1 therapy by induction and activation of tumor-residing cDC1s	Public on Sep 24, 2020	22-Jul-2020	16-Nov-2020	U24CA232979
-geo	GSE155618	Role of PTEN in B-ALL	Public on Oct 13, 2020	3-Aug-2020	12-Jan-2021	U01CA232563
-geo	GSE155305	An Ifitm3-dependent amplification loop enables antibody responses and oncogenic signaling in B-cells	Public on Oct 13, 2020	28-Jul-2020	12-Jan-2021	U01CA232563
+geo	GSE155618	Role of PTEN in B-ALL	Public on Oct 13, 2020	3-Aug-2020	15-Feb-2022	U01CA232563
+geo	GSE155305	An Ifitm3-dependent amplification loop enables antibody responses and oncogenic signaling in B-cells	Public on Oct 13, 2020	28-Jul-2020	15-Feb-2022	U01CA232563
 geo	GSE158789	Functional Genomics Identifies Metabolic Vulnerabilities in Pancreatic Cancer [CRISPR Screen]	Public on Oct 01, 2020	30-Sep-2020	4-Jan-2021	U01CA224146
 geo	GSE158787	Functional Genomics Identifies Metabolic Vulnerabilities in Pancreatic Cancer	Public on Oct 01, 2020	30-Sep-2020	4-Jan-2021	U01CA224146
 geo	GSE158657	Functional Genomics Identifies Metabolic Vulnerabilities in Pancreatic Cancer [RNA-Seq]	Public on Oct 01, 2020	28-Sep-2020	4-Jan-2021	U01CA224146
@@ -608,6 +610,8 @@ geo	GSE164950	Transient “rest” induces functional reinvigoration and epigene
 geo	GSE164949	Transient “rest” induces functional reinvigoration and epigenetic remodeling in exhausted CAR-T cells Mediate Enhanced Antitumor Activity [RNA-seq]	Public on Jan 16, 2021	15-Jan-2021	18-Apr-2021	U54CA232568
 geo	GSE164947	Transient “rest” induces functional reinvigoration and epigenetic remodeling in exhausted CAR-T cells Mediate Enhanced Antitumor Activity [ATAC-seq, ChIP-seq]	Public on Jan 16, 2021	15-Jan-2021	18-Apr-2021	U54CA232568
 geo	GSE164946	Transient “rest” induces functional reinvigoration and epigenetic remodeling in exhausted CAR-T cells Mediate Enhanced Antitumor Activity [ATAC-seq]	Public on Jan 16, 2021	15-Jan-2021	18-Apr-2021	U54CA232568
+geo	GSE166319	Human MSI colon cancer study	Public on Mar 03, 2021	7-Feb-2021	13-Oct-2021	U2CCA233291
+geo	GSE158636	Human MSI colon cancer	Public on Mar 03, 2021	28-Sep-2020	13-Oct-2021	U2CCA233291
 geo	GSE142514	Splicing Variation Contributes to Functional Dysregulation of Genes in Acute Myeloid Leukemia	Public on Apr 01, 2021	22-Dec-2019	1-Jul-2021	U01CA232563
 geo	GSE161466	CRISPR genome editing of human dendritic cells (treatments of knockout dendritic cells)	Public on Apr 27, 2021	13-Nov-2020	1-May-2021	U54CA224081
 geo	GSE161401	CRISPR genome editing of human dendritic cells (treatments of unedited dendritic cells)	Public on Apr 27, 2021	13-Nov-2020	1-May-2021	U54CA224081
@@ -655,6 +659,7 @@ geo	GSE147875	Chromatin Occupancy of AR, BRD4, and H3K27Ac in MR42D Cells in res
 geo	GSE147875	Chromatin Occupancy of AR, BRD4, and H3K27Ac in MR42D Cells in response to Enzalutamide [ChIP-seq]	Public on Jun 22, 2021	1-Apr-2020	22-Jun-2021	U54CA224079
 geo	GSE147874	Chromatin Occupancy of AR, BRD4, and H3K27Ac in MR42D Cells in response to Enzalutamide [ATAC-seq]	Public on Jun 22, 2021	1-Apr-2020	22-Jun-2021	P50CA186786
 geo	GSE147874	Chromatin Occupancy of AR, BRD4, and H3K27Ac in MR42D Cells in response to Enzalutamide [ATAC-seq]	Public on Jun 22, 2021	1-Apr-2020	22-Jun-2021	U54CA224079
+geo	GSE162256	Spike-in normalization for single-cell RNA-seq reveals dynamic global transcriptional activity mediating anti-cancer drug response	Public on May 25, 2021	27-Nov-2020	26-Jun-2021	R33CA225323
 geo	GSE174055	Immune checkpoint blockade reprograms systemic immune landscape and tumor microenvironment in obesity-associated breast cancer	Public on May 08, 2021	7-May-2021	30-Jun-2021	R01CA229164
 geo	GSE174053	Immune checkpoint blockade reprograms systemic immune landscape and tumor microenvironment in obesity-associated breast cancer [tumor]	Public on May 08, 2021	7-May-2021	30-Jun-2021	R01CA229164
 geo	GSE174044	Immune checkpoint blockade reprograms systemic immune landscape and tumor microenvironment in obesity-associated breast cancer [Mammary fat pad, MFP]	Public on May 08, 2021	7-May-2021	30-Jun-2021	R01CA229164
@@ -663,8 +668,10 @@ geo	GSE161939	Transcriptome Analysis of treated cells in Philadelphia Chromosome
 geo	GSE174307	10X Genomics single-cell RNAseq combined with CRISPR tiling of Dot1l in mouse MLL-AF9 leukemia	Public on Jun 02, 2021	12-May-2021	27-Jul-2021	R01CA176745
 geo	GSE176109	Resident Kupffer cells and neutrophils drive liver toxicity in cancer immunotherapy	Public on Jun 04, 2021	3-Jun-2021	18-Nov-2021	R01AI084880
 geo	GSE176109	Resident Kupffer cells and neutrophils drive liver toxicity in cancer immunotherapy	Public on Jun 04, 2021	3-Jun-2021	18-Nov-2021	R01CA208205
+geo	GSE176109	Resident Kupffer cells and neutrophils drive liver toxicity in cancer immunotherapy	Public on Jun 04, 2021	3-Jun-2021	18-Nov-2021	U01CA224348
 geo	GSE175737	Resident Kupffer cells and neutrophils drive liver toxicity in cancer immunotherapy	Public on Jun 03, 2021	28-May-2021	18-Nov-2021	R01AI084880
 geo	GSE175737	Resident Kupffer cells and neutrophils drive liver toxicity in cancer immunotherapy	Public on Jun 03, 2021	28-May-2021	18-Nov-2021	R01CA208205
+geo	GSE175737	Resident Kupffer cells and neutrophils drive liver toxicity in cancer immunotherapy	Public on Jun 03, 2021	28-May-2021	18-Nov-2021	U01CA224348
 geo	GSE147190	Metabolic control of Tfh and humoral immunity by phosphatidylethanolamine	Public on May 26, 2021	18-Mar-2020	10-Jul-2021	R01CA221290
 geo	GSE174787	Multiplexed functional genomic analysis of somatic 5’ untranslated region mutations across the spectrum of human prostate cancer (Exome-Seq)	Public on May 20, 2021	20-May-2021	27-Jul-2021	R37CA230617
 geo	GSE174787	Multiplexed functional genomic analysis of somatic 5’ untranslated region mutations across the spectrum of human prostate cancer (Exome-Seq)	Public on May 20, 2021	20-May-2021	27-Jul-2021	U54CA224079
@@ -697,8 +704,8 @@ geo	GSE179111	CXCR6 Positions Cytotoxic T Cells to Receive Critical Survival Sig
 geo	GSE157830	Labile Iron Release Primes Pancreatic Cancer for Ferroptosis	Public on Jun 03, 2021	11-Sep-2020	8-Sep-2021	U01CA224145
 geo	GSE178388	Downregulation of exhausted cytotoxic T cells in gene expression networks of multisystem inflammatory syndrome in children	Public on Jun 18, 2021	17-Jun-2021	17-Sep-2021	U01DK124165
 geo	GSE178388	Downregulation of exhausted cytotoxic T cells in gene expression networks of multisystem inflammatory syndrome in children	Public on Jun 18, 2021	17-Jun-2021	17-Sep-2021	U24CA224319
-geo	GSE181374	RNA-Seq of MSK-PCa series of Patient Derived Organoids and Xenografts	Public on Aug 04, 2021	3-Aug-2021	29-Sep-2021	R37CA230617
-geo	GSE181374	RNA-Seq of MSK-PCa series of Patient Derived Organoids and Xenografts	Public on Aug 04, 2021	3-Aug-2021	29-Sep-2021	U54CA224079
+geo	GSE181374	RNA-Seq of MSK-PCa series of Patient Derived Organoids and Xenografts	Public on Aug 04, 2021	3-Aug-2021	16-Feb-2022	R37CA230617
+geo	GSE181374	RNA-Seq of MSK-PCa series of Patient Derived Organoids and Xenografts	Public on Aug 04, 2021	3-Aug-2021	16-Feb-2022	U54CA224079
 geo	GSE165851	Co-evolving JAK2V617F+ relapsed AML and donor T cells with PD-1 blockade after stem cell transplantation: an index case [TCR-seq]	Public on Aug 26, 2021	31-Jan-2021	25-Nov-2021	U24CA224331
 geo	GSE165850	Co-evolving JAK2V617F+ relapsed AML and donor T cells with PD-1 blockade after stem cell transplantation: an index case [BCR-seq]	Public on Aug 26, 2021	31-Jan-2021	25-Nov-2021	U24CA224331
 geo	GSE165822	Co-evolving JAK2V617F+ relapsed AML and donor T cells with PD-1 blockade after stem cell transplantation: an index case [CITE-seq]	Public on Aug 26, 2021	29-Jan-2021	25-Nov-2021	U24CA224331
@@ -716,6 +723,7 @@ geo	GSE175714	YBX1 mediates translation of oncogenic transcripts to control cell
 geo	GSE175713	YBX1 mediates translation of oncogenic transcripts to control cell competition in AML [RNA-seq]	Public on May 28, 2021	27-May-2021	7-Sep-2021	R01CA176745
 geo	GSE175712	YBX1 mediates translation of oncogenic transcripts to control cell competition in AML [ChIP-seq]	Public on May 28, 2021	27-May-2021	7-Sep-2021	R01CA176745
 geo	GSE180949	Dietary suppression of MHC-II expression in intestinal epithelial cells enhances intestinal tumorigenesis	Public on Aug 16, 2021	27-Jul-2021	15-Nov-2021	U01CA250554
+geo	GSE143805	Transcriptional profiling of distinct fibroblast populations in the pancreatic tumor microenvironment	Public on Sep 16, 2021	16-Jan-2020	16-Dec-2021	U01CA224193
 geo	GSE171837	Bortezomib induces anti-multiple myeloma immune response mediated by cGAS/STING pathway activation	Public on Apr 12, 2021	11-Apr-2021	29-Sep-2021	P01CA155258
 geo	GSE162515	Chromatin accessibility associates with protein-RNA correlation in human cancer	Public on Dec 03, 2020	2-Dec-2020	15-Oct-2021	U2CCA233311
 geo	GSE181817	Atlas of Clinically Distinct Cell States and Cellular Ecosystems Across Human Solid Tumors	Public on Aug 12, 2021	10-Aug-2021	14-Oct-2021	U24CA224309
@@ -742,5 +750,6 @@ geo	GSE152885	Predicting master transcription factors from pan-cancer expression
 geo	GSE150443	Predicting Master Transcription Factors from Pan-Cancer Expression Data	Public on Apr 19, 2021	12-May-2020	15-Dec-2021	P01CA155258
 geo	GSE183210	Phenotypic consequences of SLC25A40-ABCB1 fusions beyond drug resistance in High Grade Serous Ovarian Cancer	Public on Sep 03, 2021	1-Sep-2021	3-Dec-2021	U54CA209978
 geo	GSE160174	Induction of T cell dysfunction and NK-like T cell differentiation in vitro and in patients after CAR T cell treatment	Public on Dec 06, 2021	26-Oct-2020	8-Dec-2021	P01CA214278
+geo	GSE184398	RNA-sequencing of tumor infiltrating cells across 12 different solid tumors type	Public on Dec 29, 2021	19-Sep-2021	1-Jan-2022	R01CA197363
 geo	GSE180599	MUC1-C DICTATES JUN AND BAF-MEDIATED CHROMATIN REMODELING AT  PROMOTER AND ENHANCER SIGNATURES IN CANCER STEM CELLS	Public on Jan 19, 2022	21-Jul-2021	22-Jan-2022	U01CA233084
 geo	GSE180599	MUC1-C DICTATES JUN AND BAF-MEDIATED CHROMATIN REMODELING AT  PROMOTER AND ENHANCER SIGNATURES IN CANCER STEM CELLS	Public on Jan 19, 2022	21-Jul-2021	22-Jan-2022	U24CA232979
