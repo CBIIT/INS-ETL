@@ -13,7 +13,7 @@ const run = async (publications, sras) => {
     let pmId = keys[i];
     if (publications[pmId].sra_overflow) {  // this publication had overflow
       console.log("Collecting more SRA coverage for publication " + pmId + " [" + (i+1) + " of " + keys.length + "]");
-      let moreSRAs = true;
+      var moreSRAs = true;
       let total_results = 0;
       let run_results = 0;
       let next_index = publications[pmId].sra_overflow % 200;  // 200 is the page size
@@ -33,6 +33,7 @@ const run = async (publications, sras) => {
           }
           if (!d) {
             console.log("Repeated GET requests failed, skipping publication PubMed ID: " + pmId);
+            moreSRAs = false;
             break;
           }
 
@@ -52,6 +53,8 @@ const run = async (publications, sras) => {
         // the JavaScript method indexOf's second parameter is an index not an occurrence
         //  the second argument is to find the index of the (next_index+1) occurrencce
         let temp_idx = tmp.split("<dt>Accession: </dt> <dd>", (next_index+1)).join("<dt>Accession: </dt> <dd>").length;
+        console.log(next_index+1);
+        console.log(pageNum);
         let idx_start = tmp.indexOf("<dt>Accession: </dt> <dd>", temp_idx);  // 25 characters
         if (idx_start > -1) {
           tmp = tmp.substring(idx_start + 25);
@@ -122,16 +125,16 @@ const run = async (publications, sras) => {
               }
             }
           }
-          let tempPage = pageNum;
-          pageNum = pageNum + Math.floor((next_index + run_results) / 200);  // 200 is the page size
-          newPage = (pageNum === tempPage) ? false : true;
-          next_index = ((next_index + run_results) % 200); // 200 is the page size
-          moreSRAs = (((pageNum-1) * 200) + (next_index+1)) >= total_results ? false : true;  // if the next index points to a result past the total results, stop
-          console.log(pageNum);
-          console.log(next_index);
-          console.log(run_results);
-          console.log(total_results);
         }
+        let tempPage = pageNum;
+        pageNum = pageNum + Math.floor((next_index + run_results) / 200);  // 200 is the page size
+        newPage = (pageNum === tempPage) ? false : true;
+        next_index = ((next_index + run_results) % 200); // 200 is the page size
+        moreSRAs = (((pageNum-1) * 200) + (next_index+1)) >= total_results ? false : true;  // if the next index points to a result past the total results, stop
+        console.log(pageNum);
+        console.log(next_index);
+        console.log(run_results);
+        console.log(total_results);
       }
     }
   }
@@ -139,35 +142,11 @@ const run = async (publications, sras) => {
 
 // if you don't set pageNum, then you will get the landing page with 200 results per page
 const interactSRA = async (pmId, pageNum=null) => {
-  // let result = "";
-  // (async () => {
-  //   const browser = await puppeteer.launch();
-  //   const page = await browser.newPage();
-  //   console.log(apis.pmSraSite + pmId);
-  //   await page.goto(apis.pmSraSite + pmId);
-
-  //   await page.click("#ps200");  // set the page size to 200
-
-  //   if (pageNum) {
-  //     await page.waitForSelector('input[name=EntrezSystem2.PEntrez.Sra.Sra_ResultsPanel.Entrez_Pager.cPage]');
-  //     await page.$eval('input[name=EntrezSystem2.PEntrez.Sra.Sra_ResultsPanel.Entrez_Pager.cPage]', el => el.value = String(pageNum));
-  //     await page.focus('#pageno');
-  //     await page.keyboard.press("Enter");
-  //   }
-
-  //   result = await page.evaluate(() => {
-  //     return document.body;
-  //   });
-
-  //   await browser.close();
-  // })()
-
-  // return result;
   let result = "";
-  let keep_trying = true;
   const MAX_RETRIES = 200;
   let counter = 0;
-  while (keep_trying === true) {
+  var keep_trying = true;
+  while (keep_trying) {
     try {
       await (async () => {
           // this revisionInfo line is due to the error: TimeoutError: Timed out after 30000 ms while trying to connect to the browser! Only Chrome at revision r938248 is guaranteed to work.
@@ -176,14 +155,14 @@ const interactSRA = async (pmId, pageNum=null) => {
           // const revisionInfo = await browserFetcher.download('938248');
           const browser = await puppeteer.launch(
               {
-                  'defaultViewport' : { 'width' : 1024, 'height' : 1600 },
-                  headless: true,
+                  // 'defaultViewport' : { 'width' : 1024, 'height' : 1600 },
+                  // headless: true,
                   //executablePath: revisionInfo.executablePath
               });
           const page = await browser.newPage();
           page.setDefaultNavigationTimeout( 30000 );
-          await page.setViewport( { 'width' : 1024, 'height' : 1600 } );
-          await page.setUserAgent( 'UA-TEST' );  // 02/11/2022 adeforge, change me
+          // await page.setViewport( { 'width' : 1024, 'height' : 1600 } );
+          // await page.setUserAgent( 'UA-TEST' );  // 02/11/2022 adeforge, change me
 
           console.log(apis.pmSraSite + pmId);
           await page.goto(apis.pmSraSite + pmId, { 'waitUntil' : 'domcontentloaded' });
@@ -213,14 +192,15 @@ const interactSRA = async (pmId, pageNum=null) => {
         console.log(e);
         if (counter >= MAX_RETRIES) {
           result = null;
-          return;
+          keep_trying = false;
+          return result;
         }
         counter++;
         console.log("Retry Attempt: " + counter);
         await new Promise(resolve => setTimeout(resolve, 500));
     }
   }
-    return result;
+  return result;
 };
 
 
