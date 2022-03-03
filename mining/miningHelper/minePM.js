@@ -60,19 +60,7 @@ const getGEOData = async (publications, pmId) => {
   }
 }
 
-const getTotalSRXResults = (temp) => {
-  let idx = temp.indexOf("Items: ");  // 7 characters, if there aren't multiple results, this accession shouldn't be here
-  temp = temp.substring(idx + 7);
-  idx = temp.indexOf("</h3");
-  temp = temp.substring(0,idx);
-  idx = temp.indexOf("of ");
-  if (idx > -1) {
-      temp = temp.substring(idx+3); 
-  }
-  let total_results = parseInt(temp);  // get the total number of results on the first page visit
-  return total_results;
-}
-
+// first page only, mineSRAInteractive gets the rest if applicable
 const getMultipleSRXResults = async (temp) => {
   let result = [];
   let idx_start = temp.indexOf("<dt>Accession: </dt> <dd>");  // 25 characters
@@ -116,8 +104,6 @@ const getSRAData = async (publications, pmId) => {
       }
       else {
         let temp = d;
-        // publications[pmId].total_srx_results = getTotalSRXResults(temp);  // 02/11/2022 adeforge, probably not needed
-
         temp = d;  // re-initialize the temp variable containing the hypertext
         publications[pmId].sra_accession = await getMultipleSRXResults(temp);
       }
