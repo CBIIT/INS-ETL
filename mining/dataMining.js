@@ -23,6 +23,8 @@ let sras = {};
 let dbgaps = {};
 let clinicalTrials = {};
 let patents = {};
+let patent_grants = {};
+let patent_applications = {};
 
 const generateDataModel = async () => {
   // associate publications and projects for GEO, SRA, dbGap
@@ -204,6 +206,17 @@ const generateDataModel = async () => {
     const formatter = new Intl.DateTimeFormat('us', { month: 'short' });
     let temp = new Date(patents[patentID].fulfilled_date);
     patents[patentID].fulfilled_date = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
+    // define patent_grants vs patent_applications
+    const temp_arr = patentID.split("-");
+    if (temp_arr[temp_arr.length - 1].indexOf("A1") > -1) {
+      patent_applications[patentID] = patents[patentID];
+    }
+    else if (temp_arr[temp_arr.length - 1].indexOf("B2") > -1) {
+      patent_grants[patentID] = patents[patentID];
+    }
+    else {
+      console.log("Error classifying patent ID" + patentID);
+    }
   }
 };
 
@@ -288,6 +301,7 @@ const run = async (projectsTodo) => {
   console.timeEnd('minePublication');
   console.log("Number of publications: " + Object.keys(publications).length);
 
+  // caching happens here for dbGaPs, SRAs and GEOs
   console.time('mineGeoSraDbgap');
   await minePM.run(publications);
   console.timeEnd('mineGeoSraDbgap');
@@ -297,6 +311,7 @@ const run = async (projectsTodo) => {
   console.log("Number of SRAs before coverage feature: " + Object.keys(sras).length);
   console.timeEnd('mineSRADetail');
 
+  // sort of performs the function of both minePM and mineSRADetail, but for filling out edge cases
   console.time('mineSraInteractive');
   await mineSraInteractive.run(publications, sras);
   console.log("Number of SRAs: " + Object.keys(sras).length);
@@ -386,13 +401,21 @@ const run = async (projectsTodo) => {
   filepath = 'data/clinical_trial.tsv';
   writeToDataFile(filepath, columns, clinicalTrials, "clinical_trial");
 
-  // patents file
+  // patent application files
   columns = ["type", "patent_id", "fulfilled_date", "project.project_id"];
-  filepath = 'digest_data/patent.tsv';
-  writeToDataDigestFile(filepath, columns, patents, "patent");
+  filepath = 'digest_data/patent_application.tsv';
+  writeToDataDigestFile(filepath, columns, patent_applications, "patent_application");
   columns = ["type", "patent_id", "fulfilled_date", "project.project_id"];
-  filepath = 'data/patent.tsv';
-  writeToDataFile(filepath, columns, patents, "patent");
+  filepath = 'data/patent_application.tsv';
+  writeToDataFile(filepath, columns, patent_applications, "patent_application");
+
+  // granted patent files
+  columns = ["type", "patent_id", "fulfilled_date", "project.project_id"];
+  filepath = 'digest_data/patent_grant.tsv';
+  writeToDataDigestFile(filepath, columns, patent_grants, "granted_patent");  // granted_patent is the node type name
+  columns = ["type", "patent_id", "fulfilled_date", "project.project_id"];
+  filepath = 'data/patent_grant.tsv';
+  writeToDataFile(filepath, columns, patent_grants, "granted_patent");  // granted_patent is the node type name
 };
 
 module.exports = {
