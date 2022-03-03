@@ -5,7 +5,7 @@ const {
   fetchWithStatusCheck
 } = require ('../../common/utils');
 
-// 02/11/2022 adeforge, implement caching
+
 // the purpose of this function is to access SRP numbers which would otherwise be inaccessible by non-interactive (headless browser) methods
 const run = async (publications, sras) => {
   const keys = Object.keys(publications);
@@ -53,8 +53,6 @@ const run = async (publications, sras) => {
         // the JavaScript method indexOf's second parameter is an index not an occurrence
         //  the second argument is to find the index of the (next_index+1) occurrencce
         let temp_idx = tmp.split("<dt>Accession: </dt> <dd>", (next_index+1)).join("<dt>Accession: </dt> <dd>").length;
-        console.log(next_index+1);
-        console.log(pageNum);
         let idx_start = tmp.indexOf("<dt>Accession: </dt> <dd>", temp_idx);  // 25 characters
         if (idx_start > -1) {
           tmp = tmp.substring(idx_start + 25);
@@ -131,10 +129,6 @@ const run = async (publications, sras) => {
         newPage = (pageNum === tempPage) ? false : true;
         next_index = ((next_index + run_results) % 200); // 200 is the page size
         moreSRAs = (((pageNum-1) * 200) + (next_index+1)) >= total_results ? false : true;  // if the next index points to a result past the total results, stop
-        console.log(pageNum);
-        console.log(next_index);
-        console.log(run_results);
-        console.log(total_results);
       }
     }
   }
@@ -155,14 +149,10 @@ const interactSRA = async (pmId, pageNum=null) => {
           // const revisionInfo = await browserFetcher.download('938248');
           const browser = await puppeteer.launch(
               {
-                  // 'defaultViewport' : { 'width' : 1024, 'height' : 1600 },
-                  // headless: true,
-                  //executablePath: revisionInfo.executablePath
+                  //executablePath: revisionInfo.executablePath  // possibly necessary for the revisionInfo fix
               });
           const page = await browser.newPage();
           page.setDefaultNavigationTimeout( 30000 );
-          // await page.setViewport( { 'width' : 1024, 'height' : 1600 } );
-          // await page.setUserAgent( 'UA-TEST' );  // 02/11/2022 adeforge, change me
 
           console.log(apis.pmSraSite + pmId);
           await page.goto(apis.pmSraSite + pmId, { 'waitUntil' : 'domcontentloaded' });

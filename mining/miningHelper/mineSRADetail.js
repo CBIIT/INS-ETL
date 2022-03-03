@@ -33,9 +33,7 @@ const run = async (publications, sras) => {
             if (cumulative_srx_runs > 20) {
               publications[pmIds[p]].sra_overflow = cumulative_srx_runs;  // where to start for the sra overflow portion of the script, otherwise undefined
             }
-            // else {
-              s += run_results;  // skip past the accessions in the same SRA
-            // }
+            s += run_results;  // skip past the accessions in the same SRA
 
             sras[srp] = {};
             let idx = d.indexOf("h1>");  // 3 characters

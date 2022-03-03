@@ -3,10 +3,6 @@ const {
   fetchWithStatusCheck
 } = require('../../common/utils');
 const apis = require('../../common/apis');
-// const {
-//   loadCache,
-//   writeToCache
-// } = require('../miningHelper/miningCacher');
 
 
 const searchPatentDetail = async (patent, patentID) => {
@@ -55,7 +51,7 @@ const searchPatentDetail = async (patent, patentID) => {
                         if (patent.cited_pattern_project_id === "N/A") {
                             patent.cited_pattern_project_id = [];
                         }
-                        let pattern = /([A-Z][0-9]{2}[ -]?)?[A-Z]{2}[0-9]{6}([ -]?[0-9]{2}([A-Z][0-9])?)?/g;  // matches a project ID
+                        let pattern = /([A-Z][0-9]{2}[ -]?)?[A-Z]{2}[0-9]{6}([ -]?[0-9]{2}([A-Z][0-9])?)?/g;  // matches a project ID, 03/02/22 adeforge, we may use this for filtering by Government Interests
                         let t = temp.replace(/(\r\n|\r|\n|\t)/gm, "");
                         t = t.match(pattern);
                         if (t) {
