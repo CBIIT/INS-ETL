@@ -318,3 +318,13 @@ PropDefinitions:
     Type: string
     Req: false
     Private: false
+  patent_id:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    Private: false
+  fulfilled_date:
+    Desc: TBD.
+    Src: None
+    Type: Date

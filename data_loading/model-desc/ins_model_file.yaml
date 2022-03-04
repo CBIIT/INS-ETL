@@ -66,6 +66,14 @@ Nodes:
       - title
       - last_update_posted
       - recruitment_status
+  patent_application:
+    Props:
+      - patent_id
+      - fulfilled_date
+  granted_patent:
+    Props:
+      - patent_id
+      - fulfilled_date
 Relationships:  # tie everything back to a project, projects are tied to programs
   has_publication:
     Mul: many_to_many
@@ -102,4 +110,16 @@ Relationships:  # tie everything back to a project, projects are tied to program
     Ends:
       - Src: project
         Dst: program
+    Props: null
+  has_patent_application:
+    Mul: many-to-many
+    Ends:
+      - Src: patent_application
+        Dst: project
+    Props: null
+  has_patent_grant:
+    Mul: many-to-many
+    Ends:
+      - Src: granted_patent
+        Dst: project
     Props: null
