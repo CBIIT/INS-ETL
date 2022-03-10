@@ -85,25 +85,27 @@ Relationships:  # tie everything back to a project, projects are tied to program
     Mul: many_to_many
     Ends:
       - Src: geo
-        Dst: project
+        Dst: publication
     Props: null
   has_sra:
     Mul: many_to_many
     Ends:
       - Src: sra
-        Dst: project
+        Dst: publication
     Props: null
   has_dbgap:
     Mul: many_to_many
     Ends:
       - Src: dbgap
-        Dst: project
+        Dst: publication
     Props: null
   has_clinical_trial:
     Mul: many_to_many
     Ends:
       - Src: clinical_trial
         Dst: project
+      - Src: clinical_trial
+        Dst: publication
     Props: null
   projects_of_program:
     Mul: many_to_one
