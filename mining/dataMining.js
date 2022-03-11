@@ -37,12 +37,13 @@ const generateDataModel = async () => {
           geos[geo].publications = [];
         }
         geos[geo].publications.push(pid);
-        if (!geos[geo].projects) {
-          geos[geo].projects = [];
-        }
-        publications[pid].projects.forEach(project => {
-          geos[geo].projects.push(project);
-        });
+        // if (!geos[geo].projects) {
+        //   geos[geo].projects = [];
+        // }
+        // publications[pid].projects.forEach(project => {
+        //   geos[geo].projects.push(project);
+        // });
+        geos[geo].projects = null;  // make sure there are no associated projects
       }
     }
     //SRA
@@ -53,12 +54,13 @@ const generateDataModel = async () => {
           sras[sra].publications = [];
         }
         sras[sra].publications.push(pid);
-        if (!sras[sra].projects) {
-          sras[sra].projects = [];
-        }
-        publications[pid].projects.forEach(project => {
-          sras[sra].projects.push(project);
-        });
+        // if (!sras[sra].projects) {
+        //   sras[sra].projects = [];
+        // }
+        // publications[pid].projects.forEach(project => {
+        //   sras[sra].projects.push(project);
+        // });
+        sras[sra].projects = null;  // make sure there are no associated projects
       }
     }
     //dbGap
@@ -69,29 +71,30 @@ const generateDataModel = async () => {
           dbgaps[dbgap].publications = [];
         }
         dbgaps[dbgap].publications.push(pid);
-        if (!dbgaps[dbgap].projects) {
-          dbgaps[dbgap].projects = [];
-        }
-        publications[pid].projects.forEach(project => {
-          dbgaps[dbgap].projects.push(project);
-        });
+        // if (!dbgaps[dbgap].projects) {
+        //   dbgaps[dbgap].projects = [];
+        // }
+        // publications[pid].projects.forEach(project => {
+        //   dbgaps[dbgap].projects.push(project);
+        // });
+        dbgaps[dbgap].projects = null;  // make sure there are no associated projects
       }
     }
   }
-  // associate projects for ClinicalTrials
-  let keys = Object.keys(clinicalTrials);
-  for (let i = 0; i < keys.length; i++) {
-    if (clinicalTrials[keys[i]].publications) {
-      clinicalTrials[keys[i]].publications.forEach(pub => {
-        publications[pub].projects.forEach(proj => {
-          if (!clinicalTrials[keys[i]].projects) {
-            clinicalTrials[keys[i]].projects = [];
-          }
-          clinicalTrials[keys[i]].projects.push(proj);  // there may be duplicates if multiple publications come from the same project
-        });
-      });
-    }
-  }
+  // associate projects for ClinicalTrials  // 03/11/22 adeforge, we shouldn't be deriving project relationships, keep what was populated during scraping
+  // let keys = Object.keys(clinicalTrials);
+  // for (let i = 0; i < keys.length; i++) {
+  //   if (clinicalTrials[keys[i]].publications) {
+  //     clinicalTrials[keys[i]].publications.forEach(pub => {
+  //       publications[pub].projects.forEach(proj => {
+  //         if (!clinicalTrials[keys[i]].projects) {
+  //           clinicalTrials[keys[i]].projects = [];
+  //         }
+  //         clinicalTrials[keys[i]].projects.push(proj);  // there may be duplicates if multiple publications come from the same project
+  //       });
+  //     });
+  //   }
+  // }
   
   // format projects fields for writing to file
   for (let projectID in projects) {
@@ -221,7 +224,7 @@ const generateDataModel = async () => {
 };
 
 // the column names and the data structure field names need to be the same
-const writeToDataFile = (filepath, columns, dataStructure, type) => {
+const writeToDataFile = (filepath, columns, dataStructure, type, hasProjects, hasPublications) => {
   let data = "";
   data += columns.join("\t") + "\n";
   for (let key in dataStructure) {
@@ -232,16 +235,36 @@ const writeToDataFile = (filepath, columns, dataStructure, type) => {
         temp.push(dataStructure[key][col]);
       }
     });
-    // For the passed columns, projects.project_id or program.program_id should be listed last (whichever applies).
-    // All entities should point to only a project or a program, all other information/relationships should be queried, not raw.
-    // If a data structure does not inherently have projects (or all of the projects, some via publication), the generateDataModel function is where those
-    //   relationships should be populated/filled out. the note about projects in the columns passed still applies
-    if (dataStructure[key].projects) {
-      dataStructure[key].projects.map((p) => {
-        data += temp.join("\t") + "\t" + p + "\n";
-      });
+    // For the passed columns, publication.publication_id, projects.queried_project_id and program.program_id should be listed last (whichever applies).
+    // If an entity has both relationships to projects and publications, then the listed columns, at the end of the list of columns, should include
+    //   'publication.publication_id' and then 'project.queried_project_id', in that order.
+    if (hasProjects || hasPublications) {  // these checks mostly have to do with writing with the proper spacing depending upon whether there are both publication and project columns or either
+      if (hasProjects && hasPublications) {
+        if (dataStructure[key].projects) {
+          dataStructure[key].projects.map((p) => {
+            data += temp.join("\t") + "\t" + "" + "\t" + p + "\n";  // empty string is a placeholder for publication_id
+          });
+        }
+        if (dataStructure[key].publications) {
+          dataStructure[key].publications.map((p) => {
+            data += temp.join("\t") + "\t" + p + "\t" + "" + "\n";  // empty string is a placeholder for queried_project_id
+          });
+        }
+      }
+      else {
+        if (hasProjects) {
+          dataStructure[key].projects.map((p) => {
+            data += temp.join("\t") + "\t" + p + "\n";  // just projects, 'project.queried_project_id' should be the last column passed
+          });
+        }
+        if (hasPublications) {
+          dataStructure[key].publications.map((p) => {
+            data += temp.join("\t") + "\t" + p + "\n";  // just publications, 'publication.publication_id' should be the last column passed
+          });
+        }
+      }
     }
-    else if (dataStructure[key].program) {  // if it doesn't have projects, it is a project, which has a program
+    else if (dataStructure[key].program) {  // if it doesn't have projects or publications, it is a project, which has a program
       data += temp.join("\t") + "\t" + dataStructure[key].program + "\n";
     }
     else {
@@ -363,59 +386,59 @@ const run = async (projectsTodo) => {
   columns = ["type","publication_id", "year", "journal", "title", "authors",
   "publish_date", "citation_count", "relative_citation_ratio", "rcr_range", "nih_percentile", "doi", "project.queried_project_id"];
   filepath = 'data/publication.tsv';
-  writeToDataFile(filepath, columns, publications, "publication");
+  writeToDataFile(filepath, columns, publications, "publication", hasProjects=true, hasPublications=false);
 
   // GEO file
   // writeToGEOFile();
   columns = ["type","accession","title", "status", "submission_date","last_update_date", "project.queried_project_id", "publication.publication_id"];
   filepath = 'digest_data/geo.tsv';
   writeToDataDigestFile(filepath, columns, geos, "geo");
-  columns = ["type","accession","title", "status", "submission_date","last_update_date", "project.queried_project_id"];
+  columns = ["type","accession","title", "status", "submission_date","last_update_date", "publication.publication_id"];
   filepath = 'data/geo.tsv';
-  writeToDataFile(filepath, columns, geos, "geo");
+  writeToDataFile(filepath, columns, geos, "geo", hasProjects=false, hasPublications=true);
 
   // SRA file
   // writeToSRAFile();
   columns = ["type","accession","study_title", "bioproject_accession", "registration_date", "project.queried_project_id", "publication.publication_id"];
   filepath = 'digest_data/sra.tsv';
   writeToDataDigestFile(filepath, columns, sras, "sra");
-  columns = ["type","accession","study_title", "bioproject_accession", "registration_date", "project.queried_project_id"];
+  columns = ["type","accession","study_title", "bioproject_accession", "registration_date", "publication.publication_id"];
   filepath = 'data/sra.tsv';
-  writeToDataFile(filepath, columns, sras, "sra");
+  writeToDataFile(filepath, columns, sras, "sra", hasProjects=false, hasPublications=true);
 
   // dbGaP file
   // writeToDBGapFile();
   columns = ["type", "accession", "title", "release_date", "project.queried_project_id", "publication.publication_id"];
   filepath = 'digest_data/dbgap.tsv';
   writeToDataDigestFile(filepath, columns, dbgaps, "dbgap");
-  columns = ["type", "accession", "title", "release_date", "project.queried_project_id"];
+  columns = ["type", "accession", "title", "release_date", "publication.publication_id"];
   filepath = 'data/dbgap.tsv';
-  writeToDataFile(filepath, columns, dbgaps, "dbgap");
+  writeToDataFile(filepath, columns, dbgaps, "dbgap", hasProjects=false, hasPublications=true);
 
   // clinical trials file
   // writeToClinicalTrialsFile();
   columns = ["type", "clinical_trial_id", "title", "last_update_posted", "recruitment_status", "project.queried_project_id", "publication.publication_id"];
   filepath = 'digest_data/clinical_trial.tsv';
   writeToDataDigestFile(filepath, columns, clinicalTrials, "clinical_trial");
-  columns = ["type", "clinical_trial_id", "title", "last_update_posted", "recruitment_status", "project.queried_project_id"];
+  columns = ["type", "clinical_trial_id", "title", "last_update_posted", "recruitment_status", "publication.publication_id", "project.queried_project_id"];
   filepath = 'data/clinical_trial.tsv';
-  writeToDataFile(filepath, columns, clinicalTrials, "clinical_trial");
+  writeToDataFile(filepath, columns, clinicalTrials, "clinical_trial", hasProjects=true, hasPublications=true);
 
   // patent application files
-  columns = ["type", "patent_id", "fulfilled_date", "project.project_id"];
+  columns = ["type", "patent_id", "fulfilled_date", "project.queried_project_id"];
   filepath = 'digest_data/patent_application.tsv';
   writeToDataDigestFile(filepath, columns, patent_applications, "patent_application");
-  columns = ["type", "patent_id", "fulfilled_date", "project.project_id"];
+  columns = ["type", "patent_id", "fulfilled_date", "project.queried_project_id"];
   filepath = 'data/patent_application.tsv';
-  writeToDataFile(filepath, columns, patent_applications, "patent_application");
+  writeToDataFile(filepath, columns, patent_applications, "patent_application", hasProjects=true, hasPublications=false);
 
   // granted patent files
-  columns = ["type", "patent_id", "fulfilled_date", "project.project_id"];
+  columns = ["type", "patent_id", "fulfilled_date", "project.queried_project_id"];
   filepath = 'digest_data/patent_grant.tsv';
   writeToDataDigestFile(filepath, columns, patent_grants, "granted_patent");  // granted_patent is the node type name
-  columns = ["type", "patent_id", "fulfilled_date", "project.project_id"];
+  columns = ["type", "patent_id", "fulfilled_date", "project.queried_project_id"];
   filepath = 'data/patent_grant.tsv';
-  writeToDataFile(filepath, columns, patent_grants, "granted_patent");  // granted_patent is the node type name
+  writeToDataFile(filepath, columns, patent_grants, "granted_patent", hasProjects=true, hasPublications=false);  // granted_patent is the node type name
 };
 
 module.exports = {
