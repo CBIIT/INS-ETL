@@ -1,6 +1,7 @@
 const {
   post,
-  getCoreId
+  getCoreId,
+  getActivityCode
 } = require('../../common/utils');
 const apis = require('../../common/apis');
 const util = require('util');
@@ -17,13 +18,14 @@ const prepareSearchTerms = (projects) => {
     const keys = Object.keys(projects);
     for (let i = 0; i < keys.length; i++) {
         let project_core_id = getCoreId(keys[i]);
+        let project_activity_code = getActivityCode(keys[i]);
 
         if (!cluster[project_core_id]) {  // if we haven't seen this core id yet, make a new entry
-            cluster[project_core_id] = {"term": project_core_id, "project_group": [keys[i]]};
+            cluster[project_core_id] = {"term": project_core_id, "queried_project_id": [project_activity_code+project_core_id]};
         }
         else {  // if we have seen it, append a project
-            if (cluster[project_core_id].project_group.indexOf(keys[i]) === -1) {
-                cluster[project_core_id].project_group.push(keys[i]);
+            if (cluster[project_core_id].queried_project_id.indexOf(project_activity_code+project_core_id) === -1) {
+                cluster[project_core_id].queried_project_id.push(project_activity_code+project_core_id);
             }
         }
     }
@@ -54,7 +56,8 @@ const run = async (projects, patents) => {
                         if (!patents[results[j]["guid"]].projects) {
                             patents[results[j]["guid"]].projects = [];
                         }
-                        patents[results[j]["guid"]].projects.push(...cluster[keys[i]].project_group);
+                        // patents[results[j]["guid"]].projects.push(...cluster[keys[i]].project_group);  // 03/11/22 adeforge we shouldn't be deriving this? 
+                        patents[results[j]["guid"]].projects.push(...cluster[keys[i]].queried_project_id);  // for downstream queries, this should give the same result, make like publications which also connect directly to projects
                         counter += 1;
                     }
                 }
