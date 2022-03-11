@@ -1,13 +1,7 @@
 type	accession	title	release_date	publication.publication_id
-dbgap	phs001041.v1.p1	enetic Basis for Clinical Response to CTLA-4 Blockade in Melanoma	10-Jun-16	29132144
-dbgap	phs001041.v1.p1	enetic Basis for Clinical Response to CTLA-4 Blockade in Melanoma	10-Jun-16	
-dbgap	phs000980.v1.p1	utational Landscape Determines Sensitivity to PD-1 Blockade in Non-Small Cell Lung Cancer	19-Nov-15	29132144
-dbgap	phs000980.v1.p1	utational Landscape Determines Sensitivity to PD-1 Blockade in Non-Small Cell Lung Cancer	19-Nov-15	
-dbgap	phs001577.v1.p1	tructural Alterations Driving Castration-Resistant Prostate Cancer Revealed by Linked-Read Genome Sequencing	12-Sep-18	29610475
-dbgap	phs001577.v1.p1	tructural Alterations Driving Castration-Resistant Prostate Cancer Revealed by Linked-Read Genome Sequencing	12-Sep-18	
-dbgap	phs000450.v3.p1	olecular Subtypes of Diffuse Large B-cell Lymphoma are Associated with Distinct Pathogenic Mechanisms and Outcomes	11-Oct-18	29713087
-dbgap	phs000450.v3.p1	olecular Subtypes of Diffuse Large B-cell Lymphoma are Associated with Distinct Pathogenic Mechanisms and Outcomes	11-Oct-18	
-dbgap	phs001623.v1.p1	enomic Analysis of Head and Neck Cancers	23-Oct-18	30134176
-dbgap	phs001623.v1.p1	enomic Analysis of Head and Neck Cancers	23-Oct-18	
-dbgap	phs001234.v1.p1	argeted Sequencing of Primary ER-positive Breast Tumors Treated with 5 Years of Tamoxifen	16-Oct-18	30181556
-dbgap	phs001234.v1.p1	argeted Sequencing of Primary ER-positive Breast Tumors Treated with 5 Years of Tamoxifen	16-Oct-18	
+dbgap	phs001041.v1.p1	enetic Basis for Clinical Response to CTLA-4 Blockade in Melanoma	10-Jun-2016	29132144
+dbgap	phs000980.v1.p1	utational Landscape Determines Sensitivity to PD-1 Blockade in Non-Small Cell Lung Cancer	19-Nov-2015	29132144
+dbgap	phs001577.v1.p1	tructural Alterations Driving Castration-Resistant Prostate Cancer Revealed by Linked-Read Genome Sequencing	12-Sep-2018	29610475
+dbgap	phs000450.v3.p1	olecular Subtypes of Diffuse Large B-cell Lymphoma are Associated with Distinct Pathogenic Mechanisms and Outcomes	11-Oct-2018	29713087
+dbgap	phs001623.v1.p1	enomic Analysis of Head and Neck Cancers	23-Oct-2018	30134176
+dbgap	phs001234.v1.p1	argeted Sequencing of Primary ER-positive Breast Tumors Treated with 5 Years of Tamoxifen	16-Oct-2018	30181556
