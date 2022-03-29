@@ -100,7 +100,8 @@ const generateDataModel = async () => {
   for (let projectID in projects) {
     let keys = Object.keys(projects[projectID]);
     keys.forEach(key => {
-      projects[projectID][key] = projects[projectID][key] ? projects[projectID][key] : "";  // ensure all values are at least empty string
+      // TODO 03/18/2022 adeforge, put this other places
+      projects[projectID][key] = (projects[projectID][key] != null && projects[projectID][key] != undefined) ? projects[projectID][key] : "";  // ensure all values are at least empty string
     });
     projects[projectID].abstract_text = projects[projectID].abstract_text ? projects[projectID].abstract_text.replace(/\n/g, "\\n") : "";  // format the abstract
     // Publications key off of this queried_project_id for relationships in Neo4j upon data loading. When publications are scraped, they are scraped with respect to
@@ -122,7 +123,7 @@ const generateDataModel = async () => {
   for (let pubID in publications) {
     let keys = Object.keys(publications[pubID]);
     keys.forEach(key => {
-      publications[pubID][key] = publications[pubID][key] ? publications[pubID][key] : "";  // ensure all values are at least empty string
+      publications[pubID][key] = (publications[pubID][key] != null && publications[pubID][key] != undefined) ? publications[pubID][key] : "";  // ensure all values are at least empty string
     });
     // date formatting DD-AbrevMonth-YYYY, 25-Jan-2017
     const date_format = '%s-%s-%s';
@@ -135,7 +136,7 @@ const generateDataModel = async () => {
   for (let geoID in geos) {
     let keys = Object.keys(geos[geoID]);
     keys.forEach(key => {
-      geos[geoID][key] = geos[geoID][key] ? geos[geoID][key] : "";  // ensure all values are at least empty string
+      geos[geoID][key] = (geos[geoID][key] != null && geos[geoID][key] != undefined) ? geos[geoID][key] : "";  // ensure all values are at least empty string
     });
     geos[geoID].title = geos[geoID].title ? geos[geoID].title.replace(/(\r\n|\r|\n|\t)/gm, "") : "";  // format the title
     geos[geoID].publications = [...new Set(geos[geoID].publications)];  // unique publications
@@ -153,7 +154,7 @@ const generateDataModel = async () => {
   for (let sraID in sras) {
     let keys = Object.keys(sras[sraID]);
     keys.forEach(key => {
-      sras[sraID][key] = sras[sraID][key] ? sras[sraID][key] : "";  // ensure all values are at least empty string
+      sras[sraID][key] = (sras[sraID][key] != null && sras[sraID][key] != undefined) ? sras[sraID][key] : "";  // ensure all values are at least empty string
     });
     sras[sraID].study_title = sras[sraID].study_title ? sras[sraID].study_title.replace(/(\r\n|\r|\n|\t)/gm, "") : "";  // format the study_title
     sras[sraID].publications = [...new Set(sras[sraID].publications)];  // unique publications
@@ -169,7 +170,7 @@ const generateDataModel = async () => {
   for (let dbgapID in dbgaps) {
     let keys = Object.keys(dbgaps[dbgapID]);
     keys.forEach(key => {
-      dbgaps[dbgapID][key] = dbgaps[dbgapID][key] ? dbgaps[dbgapID][key] : "";  // ensure all values are at least empty string
+      dbgaps[dbgapID][key] = (dbgaps[dbgapID][key] != null && dbgaps[dbgapID][key] != undefined) ? dbgaps[dbgapID][key] : "";  // ensure all values are at least empty string
     });
     dbgaps[dbgapID].title = dbgaps[dbgapID].title ? dbgaps[dbgapID].title.replace(/(\r\n|\r|\n|\t)/gm, "") : "";  // format the title
     dbgaps[dbgapID].publications = [...new Set(dbgaps[dbgapID].publications)];  // unique publications
@@ -185,7 +186,7 @@ const generateDataModel = async () => {
   for (let clinicalTrialID in clinicalTrials) {
     let keys = Object.keys(clinicalTrials[clinicalTrialID]);
     keys.forEach(key => {
-      clinicalTrials[clinicalTrialID][key] = clinicalTrials[clinicalTrialID][key] ? clinicalTrials[clinicalTrialID][key] : "";  // ensure all values are at least empty string
+      clinicalTrials[clinicalTrialID][key] = (clinicalTrials[clinicalTrialID][key] != null && clinicalTrials[clinicalTrialID][key] != undefined) ? clinicalTrials[clinicalTrialID][key] : "";  // ensure all values are at least empty string
     });
     if (clinicalTrials[clinicalTrialID].publications) {
       clinicalTrials[clinicalTrialID].publications = [...new Set(clinicalTrials[clinicalTrialID].publications)];  // unique publications
@@ -202,7 +203,7 @@ const generateDataModel = async () => {
   for (let patentID in patents) {
     let keys = Object.keys(patents[patentID]);
     keys.forEach(key => {
-      patents[patentID][key] = patents[patentID][key] ? patents[patentID][key] : "";  // ensure all values are at least empty string
+      patents[patentID][key] = (patents[patentID][key] != null && patents[patentID][key] != undefined) ? patents[patentID][key] : "";  // ensure all values are at least empty string
     });
     // date formatting DD-AbrevMonth-YYYY, 25-Jan-2017
     const date_format = '%s-%s-%s';
