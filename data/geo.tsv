@@ -11,6 +11,9 @@ geo	GSE93395	Gene expression profile of human multiple myeloma cell line MM.1S a
 geo	GSE86147	Gene expression profiles of MM.1S cells after knockdown of HDAC3 or DNMT1	Public on Jun 01, 2017	28-Aug-2016	25-Mar-2019	28490812
 geo	GSE98705	Analysis of gene expression in p53-null cell types following deletion of Mdm2	Public on Sep 06, 2017	9-May-2017	25-Jul-2021	28576884
 geo	GSE39754	Gene Expression profiling of Multiple Myeloma	Public on Sep 10, 2012	30-Jul-2012	1-Aug-2019	28581522
+geo	GSE100337	IFNγ-dependent tissue immune homeostasis is co-opted in the tumor microenvironment	Public on Jun 29, 2017	21-Jun-2017	26-Mar-2019	28666115
+geo	GSE100050	IFN-gamma-dependent tissue immune homeostasis is co-opted in the tumor microenvironment	Public on Jun 27, 2017	14-Jun-2017	25-Jul-2021	28666115
+geo	GSE98994	IFN-gamma-dependent tissue immune homeostasis is co-opted in the tumor microenvironment	Public on Jun 29, 2017	17-May-2017	25-Jul-2021	28666115
 geo	GSE83503	Key transcription factors altered in multiple myeloma patients revealed by logic programming approach combining gene expression pro ling and regulatory networks	Public on Sep 20, 2017	20-Jun-2016	18-Feb-2019	28835615
 geo	GSE83088	Transcription profile of WT and LKB1 (encoded by the gene Stk11)-deficient Treg cells	Public on Aug 29, 2017	7-Jun-2016	21-Feb-2018	28847007
 geo	GSE100317	Effects of inhibition of topoisomerase I or HSP90 in primary melanoma cell lines	Public on Oct 04, 2017	21-Jun-2017	25-Jul-2021	28878208
@@ -217,6 +220,7 @@ geo	GSE112027	HPV	Public on Mar 20, 2018	19-Mar-2018	29-May-2019	31097695
 geo	GSE112026	A Novel Functional Splice Variant of AKT3 Defined by Analysis of Alternative Splice Expression in HPV-Positive Oropharyngeal Cancers (RNA-Seq)	Public on Mar 20, 2018	19-Mar-2018	29-May-2019	31097695
 geo	GSE112023	A Novel Functional Splice Variant of AKT3 Defined by Analysis of Alternative Splice Expression in HPV-Positive Oropharyngeal Cancers (MBD-Seq)	Public on Mar 20, 2018	19-Mar-2018	29-May-2019	31097695
 geo	GSE112021	Integrated Analysis of Whole-Genome ChIP-Seq and RNA-Seq Data of Primary Head and Neck Tumor Samples Associates HPV Integration Sites with Open Chromatin Marks (ChIP-Seq)	Public on Mar 20, 2018	19-Mar-2018	29-May-2019	31097695
+geo	GSE118053	Expression data from WT, p110α-/-, p110δ-/-, and p110αδ double knockout HSC and LMPP hematopoietic populations	Public on Jun 06, 2019	2-Aug-2018	6-Jun-2019	31120863
 geo	GSE130540	Distruption of TOX and TOX2 transcription factors in CAR T cells limits T cell exhaustion	Public on May 31, 2019	1-May-2019	30-Aug-2019	31152140
 geo	GSE130539	Distruption of TOX and TOX2 transcription factors in CAR T cells limits T cell exhaustion [ATAC-Seq]	Public on May 31, 2019	1-May-2019	30-Aug-2019	31152140
 geo	GSE130538	Distruption of TOX and TOX2 transcription factors in CAR T cells limits T cell exhaustion [RNA-Seq]	Public on May 31, 2019	1-May-2019	30-Aug-2019	31152140
@@ -584,7 +588,7 @@ geo	GSE150272	cIAP1/2 antagonism eliminates MHC class I negative tumors through 
 geo	GSE150271	cIAP1/2 antagonism eliminates MHC class I negative tumors through T cell-dependent reprogramming of mononuclear phagocytes	Public on Apr 30, 2021	11-May-2020	30-Jul-2021	34011631
 geo	GSE150270	cIAP1/2 antagonism eliminates MHC class I negative tumors through T cell-dependent reprogramming of mononuclear phagocytes	Public on Apr 30, 2021	11-May-2020	30-Jul-2021	34011631
 geo	GSE150269	cIAP1/2 antagonism eliminates MHC class I negative tumors through T cell-dependent reprogramming of mononuclear phagocytes	Public on Apr 30, 2021	11-May-2020	30-Jul-2021	34011631
-geo	GSE158722	Evolution of core archetypal phenotypes in high-grade serous ovarian cancer (HGSOC)	Public on Feb 09, 2021	29-Sep-2020	3-Mar-2022	34031395
+geo	GSE158722	Evolution of core archetypal phenotypes in high-grade serous ovarian cancer (HGSOC)	Public on Feb 09, 2021	29-Sep-2020	15-Mar-2022	34031395
 geo	GSE124230	Pancreatic cancer prognosis is predicted by chromatin accessibility (Quantseq)	Public on Mar 30, 2021	20-Dec-2018	29-Jun-2021	34031415
 geo	GSE124229	Pancreatic cancer prognosis is predicted by chromatin accessibility (ATAC-Seq)	Public on Mar 30, 2021	20-Dec-2018	29-Jun-2021	34031415
 geo	GSE160592	Apolipoprotein E promotes immune suppression in pancreatic cancer through NF-kB-mediated production of CXCL1 	Public on May 12, 2021	1-Nov-2020	4-Jun-2021	34049975
@@ -681,6 +685,7 @@ geo	GSE148808	Potent androgen receptor inhibition unleashes oncogenic action of 
 geo	GSE148807	Potent androgen receptor inhibition unleashes oncogenic action of the KLF5 stem cell transcription factor in castration-resistant prostate cancer [ChIP-seq]	Public on Sep 21, 2021	16-Apr-2020	29-Dec-2021	34737261
 geo	GSE148806	Potent androgen receptor inhibition unleashes oncogenic action of the KLF5 stem cell transcription factor in castration-resistant prostate cancer [RNA-seq]	Public on Sep 21, 2021	16-Apr-2020	29-Dec-2021	34737261
 geo	GSE176282	Single-cell Multi-omics Defines Tolerogenic Extrathymic Aire-Expressing Populations with Unique Homology to Thymic Epithelium	Public on Dec 15, 2021	7-Jun-2021	15-Dec-2021	34767455
+geo	GSE188241	H3K27 tri-methylation signature in CML CD34+ cells	Public on Nov 08, 2021	4-Nov-2021	7-Feb-2022	34780648
 geo	GSE164506	Exceptional response of high-risk neuroblastoma to RBM39 degrader Indisulam	Public on Nov 24, 2021	10-Jan-2021	25-Nov-2021	34788094
 geo	GSE164505	Exceptional response of high-risk neuroblastoma to RBM39 degrader Indisulam  (RNA-Seq)	Public on Nov 24, 2021	10-Jan-2021	25-Nov-2021	34788094
 geo	GSE164504	Exceptional response of high-risk neuroblastoma to RBM39 degrader Indisulam (ATAC-Seq)	Public on Nov 24, 2021	10-Jan-2021	25-Nov-2021	34788094
