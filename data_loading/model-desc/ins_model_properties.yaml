@@ -112,13 +112,13 @@ PropDefinitions:
   award_amount:
     Desc: TBD.
     Src: None
-    Type: string
+    Type: Int
     Req: true
     Private: false
   nci_funded_amount:
     Desc: TBD.
     Src: None
-    Type: string
+    Type: Int
     Req: true
     Private: false
   award_notice_date:
@@ -161,7 +161,7 @@ PropDefinitions:
   year:
     Desc: TBD.
     Src: None
-    Type: string
+    Type: Date
     Req: false
     Private: false
   journal:
