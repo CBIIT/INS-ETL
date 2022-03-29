@@ -40,7 +40,7 @@ PropDefinitions:
   fiscal_year:
     Desc: TBD.
     Src: None
-    Type: string
+    Type: Date
     Req: true
     Private: false
   project_title:
@@ -124,19 +124,19 @@ PropDefinitions:
   award_notice_date:
     Desc: TBD.
     Src: None
-    Type: string
+    Type: Date
     Req: false
     Private: false
   project_start_date:
     Desc: TBD.
     Src: None
-    Type: string
+    Type: Date
     Req: true
     Private: false
   project_end_date:
     Desc: TBD.
     Src: None
-    Type: string
+    Type: Date
     Req: true
     Private: false
   full_foa:
@@ -185,22 +185,22 @@ PropDefinitions:
   publish_date:
     Desc: TBD.
     Src: None
-    Type: string
+    Type: Date
     Req: false
     Private: false
   citation_count:
     Desc: TBD.
     Src: None
-    Type: string
+    Type: Int
     Req: false
     Private: false
   relative_citation_ratio:
     Desc: TBD.
     Src: None
-    Type: string
+    Type: Float
     Req: false
     Private: false
-  rcr_range:
+  rcr_range:  # enum?
     Desc: TBD.
     Src: None
     Type: string
@@ -209,7 +209,7 @@ PropDefinitions:
   nih_percentile:
     Desc: TBD.
     Src: None
-    Type: string
+    Type: Float
     Req: false
     Private: false
   doi:
@@ -240,13 +240,13 @@ PropDefinitions:
   submission_date:
     Desc: TBD.
     Src: None
-    Type: string
+    Type: Date
     Req: true
     Private: false
   last_update_date:
     Desc: TBD.
     Src: None
-    Type: string
+    Type: Date
     Req: false
     Private: false
   #properties of sra:
@@ -271,7 +271,7 @@ PropDefinitions:
   registration_date:
     Desc: TBD.
     Src: None
-    Type: string
+    Type: Date
     Req: true
     Private: false
   #properties of dbgap:
@@ -290,7 +290,7 @@ PropDefinitions:
   release_date:
     Desc: TBD.
     Src: None
-    Type: string
+    Type: Date
     Req: true
     Private: false
   #properties of clinical_trial:
@@ -309,7 +309,7 @@ PropDefinitions:
   last_update_posted:
     Desc: TBD.
     Src: None
-    Type: string
+    Type: Date
     Req: false
     Private: false
   recruitment_status:
@@ -328,3 +328,5 @@ PropDefinitions:
     Desc: TBD.
     Src: None
     Type: Date
+    Req: true
+    Private: false
