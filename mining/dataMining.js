@@ -108,6 +108,23 @@ const generateDataModel = async () => {
     //  the activiity code and core id -- we don't have information more granular than that -- an entire set of projects that share a (activity code + core id) are
     //  all treated the same. Therefore, this 'queried_project_id' property must be formatted into just the activity code + core id.
     projects[projectID].queried_project_id = getActivityCode(projectID) + getCoreId(projectID);
+    // populate the 'award_amount_category' field
+    if (projects[projectID].award_amount < 250000) {
+      projects[projectID].award_amount_category = "<$250k";
+    } 
+    else if (250000 <= projects[projectID].award_amount < 500000) {
+      projects[projectID].award_amount_category = "$250k to $499k";
+    }
+    else if (500000 <= projects[projectID].award_amount < 750000) {
+      projects[projectID].award_amount_category = "$500k to $749k";
+    }
+    else if (750000 <= projects[projectID].award_amount < 1000000) {
+      projects[projectID].award_amount_category = "$750k to $999k";
+    }
+    else if (projects[projectID].award_amount >= 1000000) {
+      projects[projectID].award_amount_category = ">=$1M";
+    }
+
     // date formatting DD-AbrevMonth-YYYY, 25-Jan-2017
     const date_format = '%s-%s-%s';
     const formatter = new Intl.DateTimeFormat('us', { month: 'short' });
