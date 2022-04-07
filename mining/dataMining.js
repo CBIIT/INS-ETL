@@ -372,7 +372,7 @@ const run = async (projectsTodo) => {
   // writeToProjectFile();
   let columns = ["type", "project_id", "queried_project_id","application_id", "fiscal_year", "project_title", "project_type", "abstract_text", "keywords",
    "org_name", "org_city", "org_state", "org_country", "principal_investigators", "lead_doc", "program_officers", "award_amount",
-    "nci_funded_amount", "award_notice_date", "project_start_date", "project_end_date", "full_foa", "program.program_id"];
+    "nci_funded_amount", "award_notice_date", "project_start_date", "project_end_date", "full_foa", "program", "program.program_id"];
   let filepath = 'digest_data/project.tsv';
   writeToDataDigestFile(filepath, columns, projects, "project");
   filepath = 'data/project.tsv';
