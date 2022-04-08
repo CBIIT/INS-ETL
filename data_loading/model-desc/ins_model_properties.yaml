@@ -25,12 +25,6 @@ PropDefinitions:
     Req: true
     Private: false
   #properties of project:
-  program:
-    Desc: TBD.
-    Src: None
-    Type: string
-    Req: true
-    Private: false
   project_id:
     Desc: TBD.
     Src: None
@@ -158,12 +152,6 @@ PropDefinitions:
     Req: false
     Private: false
   #properties of publication:
-  queried_project_ids:
-    Desc: TBD.
-    Src: None
-    Type: string
-    Req: true
-    Private: false
   publication_id:
     Desc: TBD.
     Src: None

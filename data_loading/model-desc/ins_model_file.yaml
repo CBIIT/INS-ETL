@@ -7,7 +7,6 @@ Nodes:
       - program_website
   project:
     Props:
-      - program
       - project_id  # this has the leading numeral, suffix, everything (can't tie publications to it)
       - queried_project_id  # this is just the activity code and core id (can tie publications to it), and there are duplicates
       - application_id
@@ -32,7 +31,6 @@ Nodes:
       - full_foa
   publication:
     Props:
-      - queried_project_ids
       - publication_id
       - pmc_id
       - year

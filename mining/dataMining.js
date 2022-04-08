@@ -142,8 +142,6 @@ const generateDataModel = async () => {
     keys.forEach(key => {
       publications[pubID][key] = (publications[pubID][key] != null && publications[pubID][key] != undefined) ? publications[pubID][key] : "";  // ensure all values are at least empty string
     });
-    // populate 'queried_project_ids' field
-    publications[pubID].queried_project_ids = publications.projects.join(",");
     // date formatting DD-AbrevMonth-YYYY, 25-Jan-2017
     const date_format = '%s-%s-%s';
     const formatter = new Intl.DateTimeFormat('us', { month: 'short' });
@@ -391,7 +389,7 @@ const run = async (projectsTodo) => {
   // writeToProjectFile();
   let columns = ["type", "project_id", "queried_project_id","application_id", "fiscal_year", "project_title", "project_type", "abstract_text", "keywords",
    "org_name", "org_city", "org_state", "org_country", "principal_investigators", "lead_doc", "program_officers", "award_amount", "award_amount_category",
-    "nci_funded_amount", "award_notice_date", "project_start_date", "project_end_date", "full_foa", "program", "program.program_id"];
+    "nci_funded_amount", "award_notice_date", "project_start_date", "project_end_date", "full_foa", "program.program_id"];
   let filepath = 'digest_data/project.tsv';
   writeToDataDigestFile(filepath, columns, projects, "project");
   filepath = 'data/project.tsv';
@@ -400,11 +398,11 @@ const run = async (projectsTodo) => {
   // publications file
   // writeToPublicationFile();
   columns = ["type","publication_id", "year", "journal", "title", "authors",
-   "publish_date", "citation_count", "relative_citation_ratio", "rcr_range", "nih_percentile", "doi", "queried_project_ids", "project.queried_project_id"];
+   "publish_date", "citation_count", "relative_citation_ratio", "rcr_range", "nih_percentile", "doi", "project.queried_project_id"];
   filepath = 'digest_data/publication.tsv';
   writeToDataDigestFile(filepath, columns, publications, "publication");
   columns = ["type","publication_id", "year", "journal", "title", "authors",
-  "publish_date", "citation_count", "relative_citation_ratio", "rcr_range", "nih_percentile", "doi", "queried_project_ids", "project.queried_project_id"];
+  "publish_date", "citation_count", "relative_citation_ratio", "rcr_range", "nih_percentile", "doi", "project.queried_project_id"];
   filepath = 'data/publication.tsv';
   writeToDataFile(filepath, columns, publications, "publication", hasProjects=true, hasPublications=false);
 
