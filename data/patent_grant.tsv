@@ -1,6 +1,7 @@
 type	patent_id	fulfilled_date	project.queried_project_id
 granted_patent	US-11116854-B2	13-Sep-2021	U01DE028233
 granted_patent	US-11046954-B2	28-Jun-2021	R01CA176745
+granted_patent	US-11293023-B2	4-Apr-2022	R01CA176745
 granted_patent	US-10849980-B2	30-Nov-2020	R01CA176745
 granted_patent	US-10669253-B2	1-Jun-2020	R01CA176745
 granted_patent	US-11059801-B2	12-Jul-2021	R01CA176745
