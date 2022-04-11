@@ -53,10 +53,10 @@ sra	SRP150548	Robust prediction of response to immune checkpoint blockade therap
 sra	SRP153810	Discovery of a Pro-Tumoral Clonogenic Unipotent Neutrophil Progenitor in Mouse and Human Bone Marrow	PRJNA481252	16-Jul-2018	U01CA224766	30157427
 sra	SRP153808	Identification of an Early Unipotent Neutrophil Progenitor with Pro-Tumoral Activity in Mouse and Human Bone Marrow	PRJNA481247	16-Jul-2018	U01CA224766	30157427
 sra	SRP144074	Transcriptional effects of small molecule targeting of ARID1A	PRJNA454308	30-Apr-2018	R01CA163915	30197195
-sra	SRP102097	Genome-wide maps of histone H3K27 acetylation in A549 and MSR-A549 cells.	PRJNA379622	17-Mar-2017	P01CA154303	30205046
 sra	SRP102097	Genome-wide maps of histone H3K27 acetylation in A549 and MSR-A549 cells.	PRJNA379622	17-Mar-2017	U01CA217885	30205046
-sra	SRP102140	mRNA expression profile of A549 cells and MSR-A549 cells with or without JQ1 treatment	PRJNA379664	17-Mar-2017	P01CA154303	30205046
+sra	SRP102097	Genome-wide maps of histone H3K27 acetylation in A549 and MSR-A549 cells.	PRJNA379622	17-Mar-2017	P01CA154303	30205046
 sra	SRP102140	mRNA expression profile of A549 cells and MSR-A549 cells with or without JQ1 treatment	PRJNA379664	17-Mar-2017	U01CA217885	30205046
+sra	SRP102140	mRNA expression profile of A549 cells and MSR-A549 cells with or without JQ1 treatment	PRJNA379664	17-Mar-2017	P01CA154303	30205046
 sra	SRP092620	Inhibition of MEK and ATR induces synergistic killing of a Mll-Af4 B-ALL model harboring activated Ras mutation	PRJNA352549	4-Nov-2016	R01CA176745	30266823
 sra	SRP123227	Transcript analysis of CD45+Ter119+CD71+ erythroid-like progenitor cells from tumor-bearing mice	PRJNA416659	31-Oct-2017	R33CA225328	30297899
 sra	SRP154583	Differences in microRNA expression in breast cancer between women of African and European ancestry	PRJNA482141	20-Jul-2018	U24CA232979	30321299
@@ -100,8 +100,8 @@ sra	SRP159013	Gene exression in single T cells across division states.	PRJNA4882
 sra	SRP108831	Genome-wide maps at the base-pair level, of chromatin regions enriched for H3 me3 marks in mouse glioma neurospheres (NS)	PRJNA389684	8-Jun-2017	U01CA224160	30760578
 sra	SRP100060	Differential gene expression in IDH1-R132H  Low Grade Glioma animal brain tumors brain in response to 10 Gy of radiation	PRJNA375076	16-Feb-2017	U01CA224160	30760578
 sra	SRP158518	SOX2 epidermal overexpression promotes cutaneous wound healing via activation of EGFR/MEK/ERK signaling mediated by EGFR ligands	PRJNA487061	21-Aug-2018	R33CA225291	30772301
-sra	SRP147456	Mitochondrial hypoxic stress induces RNA editing by APOBEC3G in lymphocytes	PRJNA471680	16-May-2018	R01CA188900	30791937
 sra	SRP147456	Mitochondrial hypoxic stress induces RNA editing by APOBEC3G in lymphocytes	PRJNA471680	16-May-2018	U24CA232979	30791937
+sra	SRP147456	Mitochondrial hypoxic stress induces RNA editing by APOBEC3G in lymphocytes	PRJNA471680	16-May-2018	R01CA188900	30791937
 sra	SRP173344	Nr4a transcription factors limit CAR-T cell function in solid tumors [RNA-Seq]	PRJNA509668	12-Dec-2018	U01DE028227	30814732
 sra	SRP183188	Single-cell RNA-seq reveals AML hierarchies relevant to disease progression and immunity	PRJNA477870	25-Jun-2018	U2CCA233195	30827681
 sra	SRP162488	Regulatory T cell depletion promotes oncogenic Kras driven pancreatic tumorigenesis.	PRJNA492936	24-Sep-2018	U01CA224145	30827862
@@ -122,8 +122,8 @@ sra	SRP106891	Tumor microenvironment-activated angiotensin blockers enhance canc
 sra	SRP188564	CD8+ T cells regulate tumor ferroptosis during cancer immunotherapy	PRJNA527311	15-Mar-2019	R01CA205426	31043744
 sra	SRP194099	Genome wide CRISPR screen for Venetoclax resisatnce in MOLM13 cells using Brunello library	PRJNA540212	29-Apr-2019	U54CA224019	31048320
 sra	SRP194098	Genome wide CRISPR screen for Venetoclax resisatnce in MOLM13 cells using Y. Kosuke library	PRJNA540211	29-Apr-2019	U54CA224019	31048320
-sra	SRP186687	Cancer Cell Line Encyclopedia (CCLE)	PRJNA523380	20-Feb-2019	P50CA098258	31068700
 sra	SRP186687	Cancer Cell Line Encyclopedia (CCLE)	PRJNA523380	20-Feb-2019	U54CA224068	31068700
+sra	SRP186687	Cancer Cell Line Encyclopedia (CCLE)	PRJNA523380	20-Feb-2019	P50CA098258	31068700
 sra	SRP119053	Aging Human Hematopoietic Stem Cells Manifest Profound Epigenetic Reprogramming of Enhancers That May Predispose to Leukemia	PRJNA412479	28-Sep-2017	R01CA196658	31085557
 sra	SRP136009	Integrated Analysis of Whole-Genome ChIP-Seq and RNA-Seq Data of Primary Head and Neck Tumor Samples Associates HPV Integration Sites with Open Chromatin Marks (ChIP-Seq)	PRJNA438961	19-Mar-2018	U01CA217885	31097695
 sra	SRP136016	A Novel Functional Splice Variant of AKT3 Defined by Analysis of Alternative Splice Expression in HPV-Positive Oropharyngeal Cancers (RNA-Seq)	PRJNA438981	19-Mar-2018	U01CA217885	31097695
@@ -157,8 +157,8 @@ sra	SRP214243	MUC1-C ACTIVATES THE NURD COMPLEX IN DEDIFFERENTIATION OF TRIPLE-N
 sra	SRP214243	MUC1-C ACTIVATES THE NURD COMPLEX IN DEDIFFERENTIATION OF TRIPLE-NEGATIVE BREASTCANCER CELLS	PRJNA554094	11-Jul-2019	U24CA232979	31519689
 sra	SRP217327	Napabucasin-mediated transcriptomic changes in human pancreatic cancer cell lines	PRJNA558548	4-Aug-2019	R33CA206949	31527169
 sra	SRP215841	Identification of PIKfyve kinase as a target in multiple myeloma	PRJNA555832	22-Jul-2019	U54CA224018	31582538
-sra	SRP218895	Retention of CD19 intron 2 contributes to CART-19 resistance in leukemias with subclonal frameshift mutations in CD19	PRJNA561160	20-Aug-2019	P01CA214278	31591467
 sra	SRP218895	Retention of CD19 intron 2 contributes to CART-19 resistance in leukemias with subclonal frameshift mutations in CD19	PRJNA561160	20-Aug-2019	U01CA232563	31591467
+sra	SRP218895	Retention of CD19 intron 2 contributes to CART-19 resistance in leukemias with subclonal frameshift mutations in CD19	PRJNA561160	20-Aug-2019	P01CA214278	31591467
 sra	SRP121512	N6-methyladenosine mRNA marking promotes selective translation of regulons required for human erythropoiesis [MeRIP-seq]	PRJNA415689	24-Oct-2017	R37CA230617	31601799
 sra	SRP217139	Lactate mediated epigenetic reprogramming during cancer associated fibroblast formation	PRJNA557889	1-Aug-2019	U24CA224020	31663852
 sra	SRP188729	Papillomavirus-Colonized Murine Skin Confers Cancer Resistance	PRJNA527818	18-Mar-2019	U01CA233097	31666702
@@ -178,14 +178,14 @@ sra	SRP222296	Transcriptomic profiling of mouse lung tumor cells in response to 
 sra	SRP055512	Gene expression profiling of patient's DCIS-IDC tandem lesions by RNA sequencing analysis	PRJNA276455	25-Feb-2015	R01CA207445	31907974
 sra	SRP301811	Regulatory T Cell depletion causes compensatory immune suppression and accelerated pancreatic carcinogenesis	PRJNA590272	18-Nov-2019	U01CA224145	31911451
 sra	SRP189142	Regulatory T cell depletion causes compensatory immune suppression and accelerated pancreatic carcinogenesis.	PRJNA528597	22-Mar-2019	U01CA224145	31911451
-sra	SRP156614	STRIPAK directs PP2A activity to promote oncogenic transformation	PRJNA485011	7-Aug-2018	U01CA217885	31913126
 sra	SRP156614	STRIPAK directs PP2A activity to promote oncogenic transformation	PRJNA485011	7-Aug-2018	U01DE028227	31913126
+sra	SRP156614	STRIPAK directs PP2A activity to promote oncogenic transformation	PRJNA485011	7-Aug-2018	U01CA217885	31913126
 sra	SRP222942	Androgen Receptor Degraders Overcome Common Resistance Mechanisms Developed During Prostate Cancer Treatment	PRJNA573618	23-Sep-2019	P50CA186786	31931431
 sra	SRP218453	MYC and Twist1 Expression in Cancer Cells Activates Host Macrophages to Enable metastasis	PRJNA560393	15-Aug-2019	U01CA231776	31933479
 sra	SRP225053	Treatment-induced tumor dormancy through YAP-mediated transcriptional reprogramming of the apoptotic pathway [scRNASeq]	PRJNA576817	10-Oct-2019	P01CA154303	31935369
 sra	SRP199298	Treatment-induced tumor dormancy through YAP-mediated transcriptional reprogramming of the apoptotic pathway [ChIP + ATAC]	PRJNA544436	23-May-2019	P01CA154303	31935369
-sra	SRP226622	DENDRO: genetic heterogeneity profiling and subclone detection by single-cell RNA sequencing	PRJNA578900	22-Oct-2019	P01CA210944	31937348
 sra	SRP226622	DENDRO: genetic heterogeneity profiling and subclone detection by single-cell RNA sequencing	PRJNA578900	22-Oct-2019	U2CCA233285	31937348
+sra	SRP226622	DENDRO: genetic heterogeneity profiling and subclone detection by single-cell RNA sequencing	PRJNA578900	22-Oct-2019	P01CA210944	31937348
 sra	SRP226833	MUC1-C Drives Lineage Plasticity in Progression to Neuroendocrine Prostate Cancer	PRJNA579338	24-Oct-2019	U01CA233084	31953400
 sra	SRP226833	MUC1-C Drives Lineage Plasticity in Progression to Neuroendocrine Prostate Cancer	PRJNA579338	24-Oct-2019	U24CA232979	31953400
 sra	SRP226833	MUC1-C Drives Lineage Plasticity in Progression to Neuroendocrine Prostate Cancer	PRJNA579338	24-Oct-2019	U01CA233084	34163028
@@ -241,10 +241,10 @@ sra	SRP243450	Transcriptional profiling of ribociclib-treated sensitive and ribo
 sra	SRP193372	Signaling state and abundance of circulating immune cell subpopulations determine cancer response to immunotherapy	PRJNA534106	22-Apr-2019	U54CA209978	32571915
 sra	SRP255945	Transcriptomic analysis of IRAK4 in murine pancreatic cancer cells (KP2)	PRJNA624277	10-Apr-2020	U54CA224083	32573499
 sra	SRP258057	Novel Inhibitors of the Histone-Methyltransferase DOT1L Show Potent Antileukemic Activity in Patient-derived Xenografts (RNA-seq dataset)	PRJNA627611	23-Apr-2020	R01CA176745	32575123
-sra	SRP265179	Single Cell and Spatial Analysis of Human Squamous Cell Carcinoma [WES]	PRJNA603106	24-Jan-2020	U2CCA233195	32579974
 sra	SRP265179	Single Cell and Spatial Analysis of Human Squamous Cell Carcinoma [WES]	PRJNA603106	24-Jan-2020	U2CCA233238	32579974
-sra	SRP244706	Single Cell and Spatial Analysis of Human Squamous Cell Carcinoma [single-cell RNA-seq]	PRJNA603103	24-Jan-2020	U2CCA233195	32579974
+sra	SRP265179	Single Cell and Spatial Analysis of Human Squamous Cell Carcinoma [WES]	PRJNA603106	24-Jan-2020	U2CCA233195	32579974
 sra	SRP244706	Single Cell and Spatial Analysis of Human Squamous Cell Carcinoma [single-cell RNA-seq]	PRJNA603103	24-Jan-2020	U2CCA233238	32579974
+sra	SRP244706	Single Cell and Spatial Analysis of Human Squamous Cell Carcinoma [single-cell RNA-seq]	PRJNA603103	24-Jan-2020	U2CCA233195	32579974
 sra	SRP253678	Functional characterization of the novel GWAS-identified GP2 coding variant	PRJNA614018	23-Mar-2020	U01CA164973	32581250
 sra	SRP251986	IL-18BP is a secreted immune checkpoint and barrier to effective IL-18 immunotherapy	PRJNA611084	8-Mar-2020	U01CA233096	32581358
 sra	SRP250163	Recapitulation of Prostate Tissue Cell Type-specific Transcriptomes by an in vivo Primary Prostate Tissue Xenograft Model	PRJNA607784	20-Feb-2020	U24CA232979	32584883
@@ -268,8 +268,8 @@ sra	SRP268823	Identification of a CD117+? ?CD71+? ? early ?unipotent? neutrophil
 sra	SRP246912	Chromatin profiling of the relationship between EWS/FLI, LSD1, and K27ac in multiple Ewing sarcoma cell lines	PRJNA604586	3-Feb-2020	U54CA231641	32842875
 sra	SRP269753	Genome-scale CRISPR-Cas9 knockout screening for identification of genes which regulate CD38 expression in RPMI 8226 cells	PRJNA643779	2-Jul-2020	P01CA155258	32844992
 sra	SRP271143	Multivalent proteins rapidly and reversibly phase-separate upon osmotic cell volume  change	PRJNA645164	9-Jul-2020	P50CA186786	32857953
-sra	SRP266970	Effect of bone marrow microenvironment on the sensitivity of breast cancer cells to antiestrogens	PRJNA638946	11-Jun-2020	U54CA224079	32859606
 sra	SRP266970	Effect of bone marrow microenvironment on the sensitivity of breast cancer cells to antiestrogens	PRJNA638946	11-Jun-2020	U54CA233223	32859606
+sra	SRP266970	Effect of bone marrow microenvironment on the sensitivity of breast cancer cells to antiestrogens	PRJNA638946	11-Jun-2020	U54CA224079	32859606
 sra	SRP236894	Massively parallel and time-resolved RNA sequencing in single cells with scNT-Seq	PRJNA594978	11-Dec-2019	U2CCA233285	32868927
 sra	SRP257960	The Gustatory Sensory G-Protein GNAT3 Suppresses Pancreatic Cancer Progression in Mice	PRJNA627490	22-Apr-2020	U01CA224145	32882403
 sra	SRP275628	A Non-genetic Mechanism Involving the Integrin b4/Paxillin Axis Contributes to Chemoresistance in Lung Cancer	PRJNA650468	3-Aug-2020	U54CA209978	32947124
@@ -296,19 +296,19 @@ sra	SRP285135	Targeted single-cell RNAseq of tonsil organoid cultures	PRJNA66526
 sra	SRP292343	Tumor-infiltrating mast cells are associated with resistance to anti-PD-1 therapy. [RNA-Seq]	PRJNA677942	12-Nov-2020	U54CA224070	33436641
 sra	SRP291283	Tumor-infiltrating mast cells are associated with resistance to anti-PD-1 therapy. [TCR]	PRJNA674781	5-Nov-2020	U54CA224070	33436641
 sra	SRP243766	Genomic alterations during the in situ to invasive ductal breast carcinoma transition shaped by the immune system	PRJNA602512	21-Jan-2020	U24CA224331	33443130
-sra	SRP300174	A CRISPR/Cas9-engineered ARID1A-deficient human gastric cancer organoid model reveals essential and non-essential modes of oncogenic transformation	PRJNA689437	4-Jan-2021	R01CA163915	33451982
 sra	SRP300174	A CRISPR/Cas9-engineered ARID1A-deficient human gastric cancer organoid model reveals essential and non-essential modes of oncogenic transformation	PRJNA689437	4-Jan-2021	U54CA224081	33451982
+sra	SRP300174	A CRISPR/Cas9-engineered ARID1A-deficient human gastric cancer organoid model reveals essential and non-essential modes of oncogenic transformation	PRJNA689437	4-Jan-2021	R01CA163915	33451982
 sra	SRP291010	Inhibitory signaling sustains a distinct early memory CD8+ T cell precursor that is resistant to DNA damage	PRJNA674364	3-Nov-2020	P01CA210944	33452106
 sra	SRP285126	Cell-type, single-cell, and spatial signatures of brain-region specific splicing in postnatal development	PRJNA665252	23-Sep-2020	U24CA180996	33469025
 sra	SRP239279	Global gene expression analysis of breast cancer cell line responses to Topsentinol L Trisulfate or DMSO as the vehicle control	PRJNA598573	2-Jan-2020	U54CA209978	33477536
 sra	SRP292363	Single-cell lineages reveal the rates, routes, and drivers of metastasis in cancer xenografts	PRJNA677962	12-Nov-2020	U54CA224081	33479121
-sra	SRP252552	RNA editing enzyme APOBEC3A promotes pro-inflammatory (M1) macrophage polarization	PRJNA612213	12-Mar-2020	R01CA188900	33483601
 sra	SRP252552	RNA editing enzyme APOBEC3A promotes pro-inflammatory (M1) macrophage polarization	PRJNA612213	12-Mar-2020	U24CA232979	33483601
+sra	SRP252552	RNA editing enzyme APOBEC3A promotes pro-inflammatory (M1) macrophage polarization	PRJNA612213	12-Mar-2020	R01CA188900	33483601
 sra	SRP300048	MUC1-C integrates activation of the IFN-? pathway with suppression of the tumor immune microenvironment in triple-negative breast cancer	PRJNA689212	2-Jan-2021	U01CA233084	33495298
 sra	SRP300048	MUC1-C integrates activation of the IFN-? pathway with suppression of the tumor immune microenvironment in triple-negative breast cancer	PRJNA689212	2-Jan-2021	U24CA232979	33495298
 sra	SRP306841	Convergent organization of aberrant MYB complexes controls oncogenic gene expression in acute myeloid leukemia [ChIPseq]	PRJNA702445	17-Feb-2021	R01CA204396	33527899
-sra	SRP279983	Single-cell B receptor VDJ sequencing from HGSOC isolated B cells	PRJNA661287	3-Sep-2020	R01CA211913	33536615
 sra	SRP279983	Single-cell B receptor VDJ sequencing from HGSOC isolated B cells	PRJNA661287	3-Sep-2020	U01CA232758	33536615
+sra	SRP279983	Single-cell B receptor VDJ sequencing from HGSOC isolated B cells	PRJNA661287	3-Sep-2020	R01CA211913	33536615
 sra	SRP258859	Genome-wide maps of histone modifications in mouse tumor-derived cell lines	PRJNA628863	28-Apr-2020	U54CA224065	33536620
 sra	SRP268591	SPT6 Promotes Epidermal Differentiation and Blockade of an Intestinal Phenotype through Control of Transcriptional Elongation	PRJNA641564	24-Jun-2020	U01CA217885	33542242
 sra	SRP256444	Gain-of-Function p53 Protein Transferred via Small Extracellular Vesicles Promotes Conversion of Fibroblasts to a Cancer-Associated Phenotype	PRJNA625457	15-Apr-2020	P50CA098258	33567287
@@ -335,9 +335,9 @@ sra	SRP285593	Human MSI colon cancer	PRJNA666078	28-Sep-2020	U2CCA233291	3383713
 sra	SRP238563	Splicing Variation Contributes to Functional Dysregulation of Genes in Acute Myeloid Leukemia	PRJNA597243	22-Dec-2019	U01CA232563	33876749
 sra	SRP292529	CRISPR genome editing of human dendritic cells (treatments of knockout dendritic cells)	PRJNA678348	13-Nov-2020	U54CA224081	33904395
 sra	SRP310875	Human stem cell-derived pancreatic acini-like and duct-like organoids demonstrate lineage-specific differences to oncogene activation	PRJNA714896	16-Mar-2021	U01CA224193	33915081
-sra	SRP308387	Targeting Treg cells with GITR activation alleviates resistance to immunotherapy in murine glioblastomas	PRJNA705184	26-Feb-2021	R01CA208205	33976133
-sra	SRP308387	Targeting Treg cells with GITR activation alleviates resistance to immunotherapy in murine glioblastomas	PRJNA705184	26-Feb-2021	U01CA224348	33976133
 sra	SRP308387	Targeting Treg cells with GITR activation alleviates resistance to immunotherapy in murine glioblastomas	PRJNA705184	26-Feb-2021	U2CCA233262	33976133
+sra	SRP308387	Targeting Treg cells with GITR activation alleviates resistance to immunotherapy in murine glioblastomas	PRJNA705184	26-Feb-2021	U01CA224348	33976133
+sra	SRP308387	Targeting Treg cells with GITR activation alleviates resistance to immunotherapy in murine glioblastomas	PRJNA705184	26-Feb-2021	R01CA208205	33976133
 sra	SRP261101	cIAP1/2 antagonism eliminates MHC class I negative tumors through T cell-dependent reprogramming of mononuclear phagocytes	PRJNA631697	11-May-2020	U01CA224146	34011631
 sra	SRP290695	Apolipoprotein E promotes immune suppression in pancreatic cancer through NF-kB-mediated production of CXCL1	PRJNA673706	1-Nov-2020	U01CA224145	34049975
 sra	SRP320538	Dynamic patterns of DNA methylation in the normal prostate epithelial differentiation program are targets of aberrant methylation in prostate cancer [BiSulfite-seq]	PRJNA731168	19-May-2021	U24CA232979	34075163
@@ -351,25 +351,25 @@ sra	SRP318107	mSWI/SNF promotes polycomb repression both directly and through ge
 sra	SRP303823	The effect of STAG2 loss in Ewing sarcoma [ChIP-seq]	PRJNA697910	29-Jan-2021	R01CA204915	34129824
 sra	SRP267182	Visualizing programmed lineage trajectories at cancer initiation	PRJNA639282	13-Jun-2020	U24CA209923	34131071
 sra	SRP221563	Characterization of transcriptional analysis of LKB1 mutant lung nodules	PRJNA565371	13-Sep-2019	U01CA233084	34142094
-sra	SRP254894	Chromatin Occupancy of AR, BRD4, and H3K27Ac in MR42D Cells in response to Enzalutamide [RNA-seq]	PRJNA622461	1-Apr-2020	P50CA186786	34145028
 sra	SRP254894	Chromatin Occupancy of AR, BRD4, and H3K27Ac in MR42D Cells in response to Enzalutamide [RNA-seq]	PRJNA622461	1-Apr-2020	U54CA224079	34145028
+sra	SRP254894	Chromatin Occupancy of AR, BRD4, and H3K27Ac in MR42D Cells in response to Enzalutamide [RNA-seq]	PRJNA622461	1-Apr-2020	P50CA186786	34145028
 sra	SRP294495	Spike-in normalization for single-cell RNA-seq reveals dynamic global transcriptional activity mediating anti-cancer drug response	PRJNA681205	27-Nov-2020	R33CA225323	34159316
 sra	SRP318897	Immune checkpoint blockade reprograms systemic immune landscape and tumor microenvironment in obesity-associated breast cancer [tumor]	PRJNA728069	7-May-2021	R01CA229164	34161764
 sra	SRP285763	Genome-wide CRISPR rensensitization screens in FGF2 and FL-derived Early and Late Gilteritinib Resistant MOLM14 cultures using  Y. Kosuke library	PRJNA666344	29-Sep-2020	U54CA224019	34171263
 sra	SRP293634	Transcriptome Analysis of treated cells in Philadelphia Chromosome-Like Acute Lymphoblastic Leukemia	PRJNA679952	21-Nov-2020	U01CA232486	34210682
 sra	SRP319403	10X Genomics single-cell RNAseq combined with CRISPR tiling of Dot1l in mouse MLL-AF9 leukemia	PRJNA729273	12-May-2021	R01CA176745	34210975
+sra	SRP322468	Resident Kupffer cells and neutrophils drive liver toxicity in cancer immunotherapy	PRJNA734933	3-Jun-2021	U01CA224348	34215680
 sra	SRP322468	Resident Kupffer cells and neutrophils drive liver toxicity in cancer immunotherapy	PRJNA734933	3-Jun-2021	R01AI084880	34215680
 sra	SRP322468	Resident Kupffer cells and neutrophils drive liver toxicity in cancer immunotherapy	PRJNA734933	3-Jun-2021	R01CA208205	34215680
-sra	SRP322468	Resident Kupffer cells and neutrophils drive liver toxicity in cancer immunotherapy	PRJNA734933	3-Jun-2021	U01CA224348	34215680
 sra	SRP320718	Multiplexed functional genomic analysis of somatic 5' untranslated region mutations across the spectrum of human prostate cancer (Exome-Seq)	PRJNA731519	20-May-2021	R37CA230617	34244513
 sra	SRP320718	Multiplexed functional genomic analysis of somatic 5' untranslated region mutations across the spectrum of human prostate cancer (Exome-Seq)	PRJNA731519	20-May-2021	U54CA224079	34244513
 sra	SRP272605	BATF and IRF4 cooperate to counter exhaustion in tumour-infiltrating CAR T cells (ChIP-seq)	PRJNA647369	20-Jul-2020	U01DE028227	34282330
 sra	SRP327407	RNA-seq on NUT Carcinoma (NC) cell lines treated with DMSO, Panobinostat or IRBM6	PRJNA744556	7-Jul-2021	R01CA124633	34285087
 sra	SRP285426	RNA splicing factors SRRM3 and SRRM4 distinguish molecular phenotypes of castration-resistant neuroendocrine prostate cancer [RNA-seq]	PRJNA665740	25-Sep-2020	P50CA186786	34312180
 sra	SRP255626	SMAD4 represses FOSL1 expression and pancreatic cancer metastatic colonization	PRJNA623590	7-Apr-2020	U01CA224146	34320363
-sra	SRP261076	RNA-seq profiling of Ewing sarcoma cells after TRIM8 knockout and EWS/FLI over-expression	PRJNA631627	11-May-2020	R01CA204915	34329586
-sra	SRP261076	RNA-seq profiling of Ewing sarcoma cells after TRIM8 knockout and EWS/FLI over-expression	PRJNA631627	11-May-2020	U54CA231637	34329586
 sra	SRP261076	RNA-seq profiling of Ewing sarcoma cells after TRIM8 knockout and EWS/FLI over-expression	PRJNA631627	11-May-2020	U54CA231641	34329586
+sra	SRP261076	RNA-seq profiling of Ewing sarcoma cells after TRIM8 knockout and EWS/FLI over-expression	PRJNA631627	11-May-2020	U54CA231637	34329586
+sra	SRP261076	RNA-seq profiling of Ewing sarcoma cells after TRIM8 knockout and EWS/FLI over-expression	PRJNA631627	11-May-2020	R01CA204915	34329586
 sra	SRP256219	Generation of a functional, patient specific human thymus from induced pluripotent stem cell in vivo	PRJNA624651	10-Apr-2020	R01CA213102	34331993
 sra	SRP325983	CXCR6 Positions Cytotoxic T Cells to Receive Critical Survival Signals in the Tumor Microenvironment	PRJNA742240	29-Jun-2021	R01AI084880	34343496
 sra	SRP282058	Labile Iron Release Primes Pancreatic Cancer for Ferroptosis	PRJNA662926	11-Sep-2020	U01CA224145	34381026
@@ -387,14 +387,16 @@ sra	SRP309174	Pathway Signatures Derived from On-treatment Tumor Specimens Predi
 sra	SRP278653	Altered BAF53A (ACTL6A) Stoichiometry Drives Human Squamous Cell Carcinoma [ATAC-seq]	PRJNA659022	24-Aug-2020	R01CA163915	34687603
 sra	SRP256724	Potent androgen receptor inhibition unleashes oncogenic action of the KLF5 stem cell transcription factor in castration-resistant prostate cancer [ChIP-seq]	PRJNA625790	16-Apr-2020	R37CA230617	34737261
 sra	SRP323037	Single-cell Multi-omics Defines Tolerogenic Extrathymic Aire-Expressing Populations with Unique Homology to Thymic Epithelium	PRJNA735721	7-Jun-2021	P01AI118688	34767455
+sra	SRP344663	H3K27 tri-methylation signature in CML CD34+ cells	PRJNA777969	4-Nov-2021	R01CA229875	34780648
 sra	SRP301119	Exceptional response of high-risk neuroblastoma to RBM39 degrader Indisulam (ATAC-Seq)	PRJNA691027	10-Jan-2021	U01CA232488	34788094
-sra	SRP294135	Immune cell topography predicts response to PD-1 blockade in cutaneous T cell lymphoma	PRJNA680750	25-Nov-2020	U2CCA233195	34795254
 sra	SRP294135	Immune cell topography predicts response to PD-1 blockade in cutaneous T cell lymphoma	PRJNA680750	25-Nov-2020	U2CCA233238	34795254
+sra	SRP294135	Immune cell topography predicts response to PD-1 blockade in cutaneous T cell lymphoma	PRJNA680750	25-Nov-2020	U2CCA233195	34795254
 sra	SRP294135	Immune cell topography predicts response to PD-1 blockade in cutaneous T cell lymphoma	PRJNA680750	25-Nov-2020	UM1CA154967	34795254
 sra	SRP268138	Predicting master transcription factors from pan-cancer expression data	PRJNA640799	20-Jun-2020	P01CA155258	34818047
 sra	SRP335232	Phenotypic consequences of SLC25A40-ABCB1 fusions beyond drug resistance in High Grade Serous Ovarian Cancer	PRJNA759615	1-Sep-2021	U54CA209978	34830797
-sra	SRP337782	RNA-sequencing of tumor infiltrating cells across 12 different solid tumors type	PRJNA764510	19-Sep-2021	R01CA197363	34963056
+sra	SRP340749	Phase Separation by the NUP98-HOXA9 Fusion Oncoprotein Drives an Oncogenic Phenotype in Hematopoietic Cells	PRJNA770091	10-Oct-2021	U54CA243124	34903620
 sra	SRP337782	RNA-sequencing of tumor infiltrating cells across 12 different solid tumors type	PRJNA764510	19-Sep-2021	U54CA224081	34963056
+sra	SRP337782	RNA-sequencing of tumor infiltrating cells across 12 different solid tumors type	PRJNA764510	19-Sep-2021	R01CA197363	34963056
 sra	SRP329329	MUC1-C DICTATES JUN AND BAF-MEDIATED CHROMATIN REMODELING AT  PROMOTER AND ENHANCER SIGNATURES IN CANCER STEM CELLS	PRJNA748762	21-Jul-2021	U01CA233084	35022313
 sra	SRP329329	MUC1-C DICTATES JUN AND BAF-MEDIATED CHROMATIN REMODELING AT  PROMOTER AND ENHANCER SIGNATURES IN CANCER STEM CELLS	PRJNA748762	21-Jul-2021	U24CA232979	35022313
 sra	SRP092004	Suppression of adaptive responses to targeted cancer therapy by transcriptional repression [RNA-seq]	PRJNA350335	24-Oct-2016	P01CA154303	29054992
@@ -416,10 +418,10 @@ sra	SRP199112	H3K36 methyltransferase SETD2 regulates lymphoid and neural develo
 sra	SRP186959	Loss of CHD1 promotes chromatin dysregulation leading to heterogeneous mechanisms of resistance to hormone therapy in prostate cancer [ATAC-seq]	PRJNA524393	26-Feb-2019	U54CA224079	32220301
 sra	SRP186568	Loss of CHD1 promotes chromatin dysregulation leading to heterogeneous mechanisms of resistance to hormone therapy in prostate cancer [RNA-seq]	PRJNA523728	22-Feb-2019	U54CA224079	32220301
 sra	SRP258055	Novel Inhibitors of the Histone-Methyltransferase DOT1L Show Potent Antileukemic Activity in Patient-derived Xenografts (ChIP-seq dataset)	PRJNA627612	23-Apr-2020	R01CA176745	32575123
-sra	SRP262989	Single Cell and Spatial Analysis of Human Squamous Cell Carcinoma [ST]	PRJNA603104	24-Jan-2020	U2CCA233195	32579974
 sra	SRP262989	Single Cell and Spatial Analysis of Human Squamous Cell Carcinoma [ST]	PRJNA603104	24-Jan-2020	U2CCA233238	32579974
-sra	SRP244707	Single Cell and Spatial Analysis of Human Squamous Cell Carcinoma [CRISPR screen]	PRJNA603105	24-Jan-2020	U2CCA233195	32579974
+sra	SRP262989	Single Cell and Spatial Analysis of Human Squamous Cell Carcinoma [ST]	PRJNA603104	24-Jan-2020	U2CCA233195	32579974
 sra	SRP244707	Single Cell and Spatial Analysis of Human Squamous Cell Carcinoma [CRISPR screen]	PRJNA603105	24-Jan-2020	U2CCA233238	32579974
+sra	SRP244707	Single Cell and Spatial Analysis of Human Squamous Cell Carcinoma [CRISPR screen]	PRJNA603105	24-Jan-2020	U2CCA233195	32579974
 sra	SRP220703	Comparison of tumor-associated YAP1 fusions identifies a recurrent set of functions critical for oncogenesis[RNASeq]	PRJNA564315	6-Sep-2019	U54CA243125	32675324
 sra	SRP226106	A bifunctional nucleosome binding protein mediates specialized mSWI/SNF complex targeting and activity (ChIP-seq dataset)	PRJNA578157	17-Oct-2019	U54CA231638	32747783
 sra	SRP246691	Chromatin profiling of the relationship between EWS/FLI, LSD1, and H3K27 acetylation	PRJNA604452	2-Feb-2020	U54CA231641	32842875
@@ -439,10 +441,10 @@ sra	SRP292473	CRISPR genome editing of human dendritic cells (treatments of uned
 sra	SRP270318	RNAseq analysis of synovial sarcoma (SS), Smarcb1-/- and combined genotype of SS18-SSX and Smarcb1-/- mouse tumors	PRJNA644359	6-Jul-2020	U54CA231652	34078620
 sra	SRP298669	Longitudinal single-cell dynamics of mitochondrial mutations in chronic lymphocytic leukemia mirror disease history	PRJNA686864	21-Dec-2020	U24CA224331	34112698
 sra	SRP316738	mSWI/SNF promotes polycomb repression both directly and through genome-wide redistribution [RNA-seq]	PRJNA725842	28-Apr-2021	R01CA163915	34117481
-sra	SRP254893	Chromatin Occupancy of AR, BRD4, and H3K27Ac in MR42D Cells in response to Enzalutamide [ChIP-seq]	PRJNA622462	1-Apr-2020	P50CA186786	34145028
 sra	SRP254893	Chromatin Occupancy of AR, BRD4, and H3K27Ac in MR42D Cells in response to Enzalutamide [ChIP-seq]	PRJNA622462	1-Apr-2020	U54CA224079	34145028
-sra	SRP254892	Chromatin Occupancy of AR, BRD4, and H3K27Ac in MR42D Cells in response to Enzalutamide [ATAC-seq]	PRJNA622463	1-Apr-2020	P50CA186786	34145028
+sra	SRP254893	Chromatin Occupancy of AR, BRD4, and H3K27Ac in MR42D Cells in response to Enzalutamide [ChIP-seq]	PRJNA622462	1-Apr-2020	P50CA186786	34145028
 sra	SRP254892	Chromatin Occupancy of AR, BRD4, and H3K27Ac in MR42D Cells in response to Enzalutamide [ATAC-seq]	PRJNA622463	1-Apr-2020	U54CA224079	34145028
+sra	SRP254892	Chromatin Occupancy of AR, BRD4, and H3K27Ac in MR42D Cells in response to Enzalutamide [ATAC-seq]	PRJNA622463	1-Apr-2020	P50CA186786	34145028
 sra	SRP272607	BATF and IRF4 cooperate to counter exhaustion in tumour-infiltrating CAR T cells (RNA-seq)	PRJNA647370	20-Jul-2020	U01DE028227	34282330
 sra	SRP272604	BATF and IRF4 cooperate to counter exhaustion in tumour-infiltrating CAR T cells (ATAC-seq)	PRJNA647372	20-Jul-2020	U01DE028227	34282330
 sra	SRP261351	Predicting Master Transcription Factors from Pan-Cancer Expression Data	PRJNA632047	12-May-2020	P01CA155258	34818047
