@@ -115,7 +115,7 @@ PropDefinitions:
     Type: Int
     Req: true
     Private: false
-  award_amount_categorie:
+  award_amount_category:
     Desc: TBD.
     Src: None
     Type: string
@@ -200,6 +200,12 @@ PropDefinitions:
     Type: Int
     Req: false
     Private: false
+  citation_count_category:
+    Desc: TBD.
+    Src: None
+    Type: string
+    Req: true
+    private: false
   relative_citation_ratio:
     Desc: TBD.
     Src: None

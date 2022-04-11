@@ -23,7 +23,7 @@ Nodes:
       - lead_doc
       - program_officers
       - award_amount
-      - award_ammount_category
+      - award_amount_category
       - nci_funded_amount
       - award_notice_date
       - project_start_date
@@ -39,6 +39,7 @@ Nodes:
       - authors
       - publish_date
       - citation_count
+      - citation_count_category
       - relative_citation_ratio
       - rcr_range
       - nih_percentile
