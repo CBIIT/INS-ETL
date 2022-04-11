@@ -112,19 +112,18 @@ const generateDataModel = async () => {
     if (projects[projectID].award_amount < 250000) {
       projects[projectID].award_amount_category = "<$250k";
     } 
-    else if (250000 <= projects[projectID].award_amount < 500000) {
+    else if (250000 <= projects[projectID].award_amount && projects[projectID].award_amount < 500000) {
       projects[projectID].award_amount_category = "$250k to $499k";
     }
-    else if (500000 <= projects[projectID].award_amount < 750000) {
+    else if (500000 <= projects[projectID].award_amount && projects[projectID].award_amount < 750000) {
       projects[projectID].award_amount_category = "$500k to $749k";
     }
-    else if (750000 <= projects[projectID].award_amount < 1000000) {
+    else if (750000 <= projects[projectID].award_amount && projects[projectID].award_amount < 1000000) {
       projects[projectID].award_amount_category = "$750k to $999k";
     }
     else if (projects[projectID].award_amount >= 1000000) {
       projects[projectID].award_amount_category = ">=$1M";
     }
-
     // date formatting DD-AbrevMonth-YYYY, 25-Jan-2017
     const date_format = '%s-%s-%s';
     const formatter = new Intl.DateTimeFormat('us', { month: 'short' });
@@ -142,6 +141,22 @@ const generateDataModel = async () => {
     keys.forEach(key => {
       publications[pubID][key] = (publications[pubID][key] != null && publications[pubID][key] != undefined) ? publications[pubID][key] : "";  // ensure all values are at least empty string
     });
+    // populate the 'citation_count_category' field
+    if (publications[pubID].citation_count < 5) {
+      publications[pubID].citation_count_category = "<=4";
+    } 
+    else if (5 <= publications[pubID].citation_count && publications[pubID].citation_count < 10) {
+      publications[pubID].citation_count_category = "5 to 9";
+    }
+    else if (10 <= publications[pubID].citation_count && publications[pubID].citation_count < 15) {
+      publications[pubID].citation_count_category = "10 to 14";
+    }
+    else if (15 <= publications[pubID].citation_count && publications[pubID].citation_count < 20) {
+      publications[pubID].citation_count_category = "15 to 19";
+    }
+    else if (publications[pubID].citation_count >= 20) {
+      publications[pubID].citation_count_category = ">=20";
+    }
     // date formatting DD-AbrevMonth-YYYY, 25-Jan-2017
     const date_format = '%s-%s-%s';
     const formatter = new Intl.DateTimeFormat('us', { month: 'short' });
@@ -398,11 +413,11 @@ const run = async (projectsTodo) => {
   // publications file
   // writeToPublicationFile();
   columns = ["type","publication_id", "year", "journal", "title", "authors",
-   "publish_date", "citation_count", "relative_citation_ratio", "rcr_range", "nih_percentile", "doi", "project.queried_project_id"];
+   "publish_date", "citation_count", "citation_count_category", "relative_citation_ratio", "rcr_range", "nih_percentile", "doi", "project.queried_project_id"];
   filepath = 'digest_data/publication.tsv';
   writeToDataDigestFile(filepath, columns, publications, "publication");
   columns = ["type","publication_id", "year", "journal", "title", "authors",
-  "publish_date", "citation_count", "relative_citation_ratio", "rcr_range", "nih_percentile", "doi", "project.queried_project_id"];
+  "publish_date", "citation_count", "citation_count_category","relative_citation_ratio", "rcr_range", "nih_percentile", "doi", "project.queried_project_id"];
   filepath = 'data/publication.tsv';
   writeToDataFile(filepath, columns, publications, "publication", hasProjects=true, hasPublications=false);
 
