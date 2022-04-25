@@ -55,8 +55,11 @@ const run = async (projectsTodo) => {
           break;
         }
       }
+      console.log(`Collected project detail data for : ${projectNums[i]} [${i+1} of ${projectNums.length}]`);
     }
-    console.log(`Collected project detail data for : ${projectNums[i]} [${i+1} of ${projectNums.length}]`);
+    else {
+      console.log("Failed to collect project detail for " + projectNums[i] + " [" + i + " of " + projectNums.length + "]");
+    }
   }
   return projectsTodo;
 };
