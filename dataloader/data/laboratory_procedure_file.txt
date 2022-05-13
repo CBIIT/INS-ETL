@@ -1,0 +1,2 @@
+type	program.program_id	laboratory_procedure_id	laboratory_procedure_type	laboratory_procedure_target_type	test_name
+laboratory_procedure	NCT1234567	BENTO-LAB-001	Quantitative RT-PCR on a panel of oncogenes	RNA isolated from tumor biospecimens	RNA Count

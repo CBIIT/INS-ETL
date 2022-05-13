@@ -1,0 +1,11 @@
+type	study.study_id	study_subject_id	study_subject_source_id	consent_type	lost_to_followup	status	disease_type	disease_subtype	taxon	primary_site	in_analysis	case_report_form_submitted	consent_withdrawn
+study_subject	BENTO-STUDY-003	BENTO-CASE-0001	1	Informed_Consent	No	Qualified	Breast Invasive Carcinoma	Infiltrating Ductal Carcinoma	Homo sapiens	Breast	TRUE	TRUE	FALSE
+study_subject	BENTO-STUDY-003	BENTO-CASE-0002	2	Informed_Consent	No	Qualified	Breast Invasive Carcinoma	Medullary Carcinoma	Homo sapiens	Breast	TRUE	TRUE	FALSE
+study_subject	BENTO-STUDY-003	BENTO-CASE-0003	3	Informed_Consent	No	Qualified	Breast Invasive Carcinoma	Papillary Carcinoma	Homo sapiens	Breast	TRUE	TRUE	FALSE
+study_subject	BENTO-STUDY-002	BENTO-CASE-0004	4	Informed_Consent	No	Qualified	Breast Invasive Carcinoma	Papillary Carcinoma	Homo sapiens	Breast	TRUE	TRUE	TRUE
+study_subject	BENTO-STUDY-002	BENTO-CASE-0005	5	Informed_Consent	No	Qualified	Breast Invasive Carcinoma	Infiltrating Ductal Carcinoma	Homo sapiens	Breast	TRUE	TRUE	FALSE
+study_subject	BENTO-STUDY-003	BENTO-CASE-0006	6	Informed_Consent	No	Qualified	Breast Invasive Carcinoma	Infiltrating Ductal Carcinoma	Homo sapiens	Breast	TRUE	TRUE	FALSE
+study_subject	BENTO-STUDY-004	BENTO-CASE-0007	7	Informed_Consent	No	Qualified	Breast Invasive Carcinoma	Medullary Carcinoma	Homo sapiens	Breast	TRUE	TRUE	FALSE
+study_subject	BENTO-STUDY-004	BENTO-CASE-0008	8	Informed_Consent	No	Qualified	Breast Invasive Carcinoma	Papillary Carcinoma	Homo sapiens	Breast	FALSE	TRUE	FALSE
+study_subject	BENTO-STUDY-001	BENTO-CASE-0009	9	Informed_Consent	No	Qualified	Breast Invasive Carcinoma	Tubular Carcinoma	Homo sapiens	Breast	FALSE	TRUE	FALSE
+study_subject	BENTO-STUDY-003	BENTO-CASE-0010	10	Informed_Consent	No	Qualified	Breast Invasive Carcinoma	Medullary Carcinoma	Homo sapiens	Breast	FALSE	TRUE	TRUE

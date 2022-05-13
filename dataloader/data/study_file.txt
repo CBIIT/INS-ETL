@@ -1,0 +1,5 @@
+type	program.program_id	study_id	study_acronym	study_full_description	study_name	study_short_description	study_type	study_sort_order
+study	NCT1234567	BENTO-STUDY-001	Alpha	GROUP 1	RNA Abundance Score 0-10	RNA Abundance Score 0-10	Observational Clinical Trial	
+study	NCT1234567	BENTO-STUDY-002	Beta	GROUP 2 	RNA Abundance Score 11-25	RNA Abundance Score 11-25	Observational Clinical Trial	
+study	NCT1234567	BENTO-STUDY-003	Gamma	GROUP 3	RNA Abundance Score 26-30	RNA Abundance Score 26-30	Observational Clinical Trial	
+study	NCT1234567	BENTO-STUDY-004	Delta	GROUP 4	RNA Abundance Score >30	RNA Abundance Score >30	Observational Clinical Trial	

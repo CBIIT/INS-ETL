@@ -1,0 +1,11 @@
+type	study_subject.study_subject_id	demographic_data_id	age_at_index	cause_of_death	survival_time	race	ethnicity	vital_status	menopause_status	gender
+demographic_data	BENTO-CASE-0001	BENTO-DEMO-0001	64	Not_applicable	2350	Black or African American	Not Hispanic or Latino	Alive	Postmenopausal	Female
+demographic_data	BENTO-CASE-0002	BENTO-DEMO-0002	47	Not_applicable	8391	Black or African American	Not Hispanic or Latino	Alive	Perimenopausal	Female
+demographic_data	BENTO-CASE-0003	BENTO-DEMO-0003	48	Not_applicable	1123	White	Hispanic or Latino	Alive	Postmenopausal	Female
+demographic_data	BENTO-CASE-0004	BENTO-DEMO-0004	57	Not_applicable	0	Asian	Not Hispanic or Latino	Alive	Postmenopausal	Female
+demographic_data	BENTO-CASE-0005	BENTO-DEMO-0005	55	Not_applicable	2672	Black or African American	Hispanic or Latino	Alive	Postmenopausal	Female
+demographic_data	BENTO-CASE-0006	BENTO-DEMO-0006	38	Not_applicable	4839	Native Hawaiian or Other Pacific Islander	Not Hispanic or Latino	Alive	Premenopausal 	Female
+demographic_data	BENTO-CASE-0007	BENTO-DEMO-0007	43	Not_applicable	3339	American Indian or Alaska Native	Not Hispanic or Latino	Alive	Premenopausal 	Female
+demographic_data	BENTO-CASE-0008	BENTO-DEMO-0008	45	Not_applicable	3829	American Indian or Alaska Native	Not Hispanic or Latino	Alive	Premenopausal 	Female
+demographic_data	BENTO-CASE-0009	BENTO-DEMO-0009	54	Not_applicable	291	American Indian or Alaska Native	Not Hispanic or Latino	Alive	Postmenopausal	Female
+demographic_data	BENTO-CASE-0010	BENTO-DEMO-0010	60	Breast Cancer	234	Native Hawaiian or Other Pacific Islander	Not Hispanic or Latino	Dead	Postmenopausal	Female
