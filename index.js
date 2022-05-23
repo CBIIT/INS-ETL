@@ -12,7 +12,7 @@ console.log(`Received paramaters: ${args}`);
 
 console.log("Start processing...");
 
-let file_path = path.join(__dirname, 'config', 'Moonshot IDs_no P30_031622_suff&pref_v2.xlsx');
+let file_path = path.join(__dirname, 'config', 'CCDI project list_ no P30s.xlsx');
 
 readXlsxFile(file_path, { sheet: 1 }).then(async (rows) => {
   console.time('full_run');
@@ -27,7 +27,7 @@ readXlsxFile(file_path, { sheet: 1 }).then(async (rows) => {
         }
     });
 
-    await dataMining.run(projects);
+    await dataMining.run(projects);  // change me to dataMiningPublicationsOnly to only scrape publications, usually for exploratory reasons with new project ids
     console.timeEnd('full_run');
 
     console.log(`End of processing, finished data gathering for ${Object.keys(projects).length} projects`);
