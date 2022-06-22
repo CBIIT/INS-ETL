@@ -516,8 +516,10 @@ Indices:
   - index_name: projects
     type: neo4j
     mapping:
+      program:
+        type: keyword
       project_id:
-        type: text
+        type: keyword
       application_id:
         type: text
       fiscal_year:
@@ -563,7 +565,9 @@ Indices:
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
         MATCH (pr:project)
+        OPTIONAL MATCH (p:program)<--(pr)
         RETURN DISTINCT
+          p.program_id AS program,
           pr.project_id AS project_id,
           pr.application_id AS application_id,
           pr.fiscal_year AS fiscal_year,
