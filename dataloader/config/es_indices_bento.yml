@@ -512,3 +512,44 @@ Indices:
             pr.fiscal_year AS fiscal_years,
             pr.award_amount_category AS award_amounts
       "
+
+  - index_name: datasets
+    type: neo4j
+    mapping:
+      type:
+        type: keyword
+      accession:
+        type: keyword
+      title:
+        type: text
+      release_date:
+        type: date
+        format: DD-MMM-YYYY||D-MMM-YYYY
+      registration_date:
+        type: date
+        format: DD-MMM-YYYY||D-MMM-YYYY
+      bioproject_accession:
+        type: keyword
+      status:
+        type: keyword
+      submission_date:
+        type: date
+        format: DD-MMM-YYYY||D-MMM-YYYY
+      last_update_date:
+        type: date
+        format: DD-MMM-YYYY||D-MMM-YYYY
+  # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
+    cypher_query: "
+        MATCH (pr:project)<--(:publication)<--(dt)
+          WHERE (dt:geo OR dt:sra OR dt:dbgap)
+        RETURN DISTINCT
+          LABELS(dt)[0] AS type,
+          dt.accession AS accession,
+          dt.title AS title,
+          dt.release_date AS release_date,
+          dt.registration_date AS registration_date,
+          dt.bioproject_accession AS bioproject_accession,
+          dt.status AS status,
+          dt.submission_date AS submission_date,
+          dt.last_update_date AS last_update_date
+      "
