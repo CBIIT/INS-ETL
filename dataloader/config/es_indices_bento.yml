@@ -516,6 +516,8 @@ Indices:
   - index_name: publications
     type: neo4j
     mapping:
+      queried_project_id:
+        type: text
       publication_id:
         type: keyword
       pmc_id:
@@ -542,8 +544,9 @@ Indices:
         type: text
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
-        MATCH (pub:publication)
+        MATCH (pr:project)<--(pub:publication)
         RETURN DISTINCT
+          pr.queried_project_id AS queried_project_id,
           pub.publication_id AS publication_id,
           pub.pmc_id AS pmc_id,
           pub.year AS year,
