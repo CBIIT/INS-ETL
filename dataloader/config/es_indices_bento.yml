@@ -512,3 +512,30 @@ Indices:
             pr.fiscal_year AS fiscal_years,
             pr.award_amount_category AS award_amounts
       "
+
+  - index_name: clinical_trials
+    type: neo4j
+    mapping:
+      clinical_trial_id:
+        type: keyword
+      title:
+        type: text
+      last_update_posted:
+        type: date
+        format: DD-MMM-YYYY||D-MMM-YYYY
+      recruitment_status:
+        type: text
+      queried_project_ids:
+        type: text
+    # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
+    cypher_query: "
+        MATCH (ct:clinical_trial)
+        OPTIONAL MATCH (pr:project)
+            WHERE (pr)<--(:publication)<--(ct) OR (pr)<--(ct)
+        RETURN DISTINCT
+          ct.clinical_trial_id AS clinical_trial_id,
+          ct.title AS title,
+          ct.last_update_posted AS last_update_posted,
+          ct.recruitment_status AS recruitment_status,
+          pr.queried_project_id AS queried_project_ids
+      "
