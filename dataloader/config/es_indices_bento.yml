@@ -538,11 +538,14 @@ Indices:
       last_update_date:
         type: date
         format: DD-MMM-YYYY||D-MMM-YYYY
+      queried_project_id:
+        type: text
   # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
         MATCH (pr:project)<--(:publication)<--(dt)
           WHERE (dt:geo OR dt:sra OR dt:dbgap)
         RETURN DISTINCT
+          pr.queried_project_id AS queried_project_id,
           LABELS(dt)[0] AS type,
           dt.accession AS accession,
           dt.title AS title,
