@@ -525,7 +525,7 @@ Indices:
         format: DD-MMM-YYYY||D-MMM-YYYY
       recruitment_status:
         type: text
-      queried_project_ids:
+      queried_project_id:
         type: text
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
@@ -537,5 +537,5 @@ Indices:
           ct.title AS title,
           ct.last_update_posted AS last_update_posted,
           ct.recruitment_status AS recruitment_status,
-          pr.queried_project_id AS queried_project_ids
+          pr.queried_project_id AS queried_project_id
       "
