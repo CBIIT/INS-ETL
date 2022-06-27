@@ -513,6 +513,26 @@ Indices:
             pr.award_amount_category AS award_amounts
       "
 
+  - index_name: patents
+    type: neo4j
+    mapping:
+      patent_id:
+        type: keyword
+      fulfilled_date:
+        type: date
+        format: DD-MMM-YYYY||D-MMM-YYYY
+      queried_project_id:
+        type: text
+    # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
+    cypher_query: "
+        MATCH (pr:project)<--(p)
+          WHERE (p:granted_patent OR p:patent_application)
+        RETURN DISTINCT
+            p.patent_id AS patent_id,
+            p.fulfilled_date AS fulfilled_date,
+            pr.queried_project_id AS queried_project_id
+       "
+
   - index_name: clinical_trials
     type: neo4j
     mapping:
