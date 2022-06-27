@@ -587,6 +587,12 @@ Indices:
         format: DD-MMM-YYYY||D-MMM-YYYY
       queried_project_ids:
         type: text
+      link:
+        type: keyword
+      transformed_type:
+        type: keyword
+      link:
+        type: keyword
   # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
         MATCH (pr:project)<--(:publication)<--(dt)
@@ -601,7 +607,15 @@ Indices:
           dt.bioproject_accession AS bioproject_accession,
           dt.status AS status,
           dt.submission_date AS submission_date,
-          dt.last_update_date AS last_update_date
+          dt.last_update_date AS last_update_date,
+          CASE LABELS(dt)[0]
+            WHEN 'geo' THEN 'GEO'
+            WHEN 'sra' THEN 'SRA'
+            WHEN 'dbgap' THEN 'dbGaP' END AS transformed_type,
+          CASE LABELS(dt)[0]
+            WHEN 'geo' THEN 'https://www.ncbi.nlm.nih.gov/gds/?term=' + dt.accession
+            WHEN 'sra' THEN 'https://www.ncbi.nlm.nih.gov/gds/?term=' + dt.accession
+            WHEN 'dbgap' THEN 'https://www.ncbi.nlm.nih.gov/gds/?term=' + dt.accession END AS link
       "
 
   - index_name: publications
