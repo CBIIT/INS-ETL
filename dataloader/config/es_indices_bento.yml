@@ -513,6 +513,53 @@ Indices:
             pr.award_amount_category AS award_amounts
       "
 
+  - index_name: publications
+    type: neo4j
+    mapping:
+      queried_project_id:
+        type: text
+      publication_id:
+        type: keyword
+      pmc_id:
+        type: text
+      year:
+        type: date
+        format: YYYY
+      journal:
+        type: text
+      title:
+        type: text
+      authors:
+        type: text
+      publish_date:
+        type: date
+        format: DD-MMM-YYYY||D-MMM-YYYY
+      citation_count:
+        type: integer
+      relative_citation_ratio:
+        type: float
+      nih_percentile:
+        type: float
+      doi:
+        type: text
+    # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
+    cypher_query: "
+        MATCH (pr:project)<--(pub:publication)
+        RETURN DISTINCT
+          pr.queried_project_id AS queried_project_id,
+          pub.publication_id AS publication_id,
+          pub.pmc_id AS pmc_id,
+          pub.year AS year,
+          pub.journal AS journal,
+          pub.title AS title,
+          pub.authors AS authors,
+          pub.publish_date AS publish_date,
+          pub.citation_count AS citation_count,
+          pub.relative_citation_ratio AS relative_citation_ratio,
+          pub.nih_percentile AS nih_percentile,
+          pub.doi AS doi
+       "
+
   - index_name: projects
     type: neo4j
     mapping:
