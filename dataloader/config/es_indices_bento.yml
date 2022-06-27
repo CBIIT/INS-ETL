@@ -512,3 +512,80 @@ Indices:
             pr.fiscal_year AS fiscal_years,
             pr.award_amount_category AS award_amounts
       "
+
+  - index_name: projects
+    type: neo4j
+    mapping:
+      program:
+        type: keyword
+      project_id:
+        type: keyword
+      application_id:
+        type: text
+      fiscal_year:
+        type: date
+        format: YYYY
+      project_title:
+        type: text
+      project_type:
+        type: text
+      abstract_text:
+        type: text
+      keywords:
+        type: text
+      org_name:
+        type: text
+      org_city:
+        type: text
+      org_state:
+        type: text
+      org_country:
+        type: text
+      principal_investigators:
+        type: text
+      lead_doc:
+        type: text
+      program_officers:
+        type: text
+      award_amount:
+        type: integer
+      nci_funded_amount:
+        type: integer
+      award_notice_date:
+        type: date
+        format: DD-MMM-YYYY||D-MMM-YYYY
+      project_start_date:
+        type: date
+        format: DD-MMM-YYYY||D-MMM-YYYY
+      project_end_date:
+        type: date
+        format: DD-MMM-YYYY||D-MMM-YYYY
+      full_foa:
+        type: text
+    # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
+    cypher_query: "
+        MATCH (pr:project)
+        OPTIONAL MATCH (p:program)<--(pr)
+        RETURN DISTINCT
+          p.program_id AS program,
+          pr.project_id AS project_id,
+          pr.application_id AS application_id,
+          pr.fiscal_year AS fiscal_year,
+          pr.project_title AS project_title,
+          pr.project_type AS project_type,
+          pr.abstract_text AS abstract_text,
+          pr.keywords AS keywords,
+          pr.org_name AS org_name,
+          pr.org_city AS org_city,
+          pr.org_state AS org_state,
+          pr.org_country AS org_country,
+          pr.principal_investigators AS principal_investigators,
+          pr.lead_doc AS lead_doc,
+          pr.program_officers AS program_officers,
+          pr.award_amount AS award_amount,
+          pr.nci_funded_amount AS nci_funded_amount,
+          pr.award_notice_date AS award_notice_date,
+          pr.project_start_date AS project_start_date,
+          pr.project_end_date AS project_end_date,
+          pr.full_foa As full_foa
+      "
