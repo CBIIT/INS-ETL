@@ -521,7 +521,7 @@ Indices:
       fulfilled_date:
         type: date
         format: DD-MMM-YYYY||D-MMM-YYYY
-      queried_project_id:
+      queried_project_ids:
         type: text
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
@@ -530,7 +530,7 @@ Indices:
         RETURN DISTINCT
             p.patent_id AS patent_id,
             p.fulfilled_date AS fulfilled_date,
-            pr.queried_project_id AS queried_project_id
+            COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids
        "
 
   - index_name: clinical_trials
@@ -545,7 +545,7 @@ Indices:
         format: DD-MMM-YYYY||D-MMM-YYYY
       recruitment_status:
         type: text
-      queried_project_id:
+      queried_project_ids:
         type: text
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
@@ -557,7 +557,7 @@ Indices:
           ct.title AS title,
           ct.last_update_posted AS last_update_posted,
           ct.recruitment_status AS recruitment_status,
-          pr.queried_project_id AS queried_project_id
+          COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids
       "
 
   - index_name: datasets
@@ -585,14 +585,14 @@ Indices:
       last_update_date:
         type: date
         format: DD-MMM-YYYY||D-MMM-YYYY
-      queried_project_id:
+      queried_project_ids:
         type: text
   # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
         MATCH (pr:project)<--(:publication)<--(dt)
           WHERE (dt:geo OR dt:sra OR dt:dbgap)
         RETURN DISTINCT
-          pr.queried_project_id AS queried_project_id,
+          COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
           LABELS(dt)[0] AS type,
           dt.accession AS accession,
           dt.title AS title,
@@ -607,7 +607,7 @@ Indices:
   - index_name: publications
     type: neo4j
     mapping:
-      queried_project_id:
+      queried_project_ids:
         type: text
       publication_id:
         type: keyword
@@ -637,7 +637,7 @@ Indices:
     cypher_query: "
         MATCH (pr:project)<--(pub:publication)
         RETURN DISTINCT
-          pr.queried_project_id AS queried_project_id,
+          COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
           pub.publication_id AS publication_id,
           pub.pmc_id AS pmc_id,
           pub.year AS year,
