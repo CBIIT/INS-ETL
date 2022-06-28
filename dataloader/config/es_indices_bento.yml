@@ -796,8 +796,7 @@ Indices:
       pmc_id:
         type: text
       year:
-        type: date
-        format: YYYY
+        type: keyword
       journal:
         type: text
       title:
@@ -809,8 +808,12 @@ Indices:
         format: DD-MMM-YYYY||D-MMM-YYYY
       citation_count:
         type: integer
+      citation_count_category:
+        type: keyword
       relative_citation_ratio:
         type: float
+      rcr_range:
+        type: keyword
       nih_percentile:
         type: float
       doi:
@@ -832,7 +835,9 @@ Indices:
           pub.authors AS authors,
           pub.publish_date AS publish_date,
           pub.citation_count AS citation_count,
+          pub.citation_count_category AS citation_count_category,
           pub.relative_citation_ratio AS relative_citation_ratio,
+          pub.rcr_range AS rcr_range,
           pub.nih_percentile AS nih_percentile,
           pub.doi AS doi
        "
@@ -895,6 +900,8 @@ Indices:
       program_officers:
         type: text
       award_amount:
+        type: integer
+      award_amount_category:
         type: keyword
       nci_funded_amount:
         type: integer
@@ -930,6 +937,7 @@ Indices:
           pr.lead_doc AS lead_doc,
           pr.program_officers AS program_officers,
           pr.award_amount AS award_amount,
+          pr.award_amount_category AS award_amount_category,
           pr.nci_funded_amount AS nci_funded_amount,
           pr.award_notice_date AS award_notice_date,
           pr.project_start_date AS project_start_date,
