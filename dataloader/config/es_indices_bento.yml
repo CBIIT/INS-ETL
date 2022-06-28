@@ -470,52 +470,81 @@ Indices:
   #     value_kw:
   #       type: keyword
 
-  - index_name: filter_ids
+  # - index_name: filter_ids
+  #   type: neo4j
+  #   mapping:
+  #     project_ids:
+  #       type: keyword
+  #     publication_ids:
+  #       type: keyword
+  #     accessions:
+  #       type: keyword
+  #     clinical_trial_ids:
+  #       type: keyword
+  #     patent_ids:
+  #       type: keyword
+  #     programs:
+  #       type: keyword
+  #     docs:
+  #       type: keyword
+  #     fiscal_years:
+  #       type: keyword
+  #     award_amounts:
+  #       type: keyword
+  #   # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
+  #   cypher_query: "
+  #       MATCH (p:program)<--(pr:project)
+  #       OPTIONAL MATCH (pr)<--(pub:publication)
+  #       OPTIONAL MATCH (pr)<--(:publication)<--(dt)
+  #           WHERE dt:geo OR dt:sra OR dt:dbgap
+  #       OPTIONAL MATCH (ct:clinical_trial)
+  #           WHERE EXISTS((ct)-->(:publication)-->(pr)) OR EXISTS((pr)<--(ct))
+  #       OPTIONAL MATCH (pr)<--(pat)
+  #           WHERE pat:granted_patent OR pat:patent_application
+  #       RETURN DISTINCT
+  #           COLLECT(DISTINCT pr.project_id) AS project_ids,
+  #           COLLECT(DISTINCT pub.publication_id) AS publication_ids,
+  #           COLLECT(DISTINCT dt.accession) AS accessions,
+  #           COLLECT(DISTINCT ct.clinical_trial_id) AS clinical_trial_ids,
+  #           COLLECT(DISTINCT pat.patent_id) AS patent_ids,
+  #           p.program_id AS programs,
+  #           pr.lead_doc AS docs,
+  #           pr.fiscal_year AS fiscal_years,
+  #           pr.award_amount_category AS award_amounts
+  #     "
+
+  - index_name: programs
     type: neo4j
     mapping:
-      project_ids:
+      program_id:
         type: keyword
-      publication_ids:
+      lead_doc:
         type: keyword
-      accessions:
+      fiscal_year:
         type: keyword
-      clinical_trial_ids:
-        type: keyword
-      patent_ids:
-        type: keyword
-      programs:
-        type: keyword
-      docs:
-        type: keyword
-      fiscal_years:
-        type: date
-      award_amounts:
+      award_amount:
         type: keyword
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
         MATCH (p:program)<--(pr:project)
-        OPTIONAL MATCH (pr)<--(pub:publication)
-        OPTIONAL MATCH (pr)<--(:publication)<--(dt)
-            WHERE dt:geo OR dt:sra OR dt:dbgap
-        OPTIONAL MATCH (ct:clinical_trial)
-            WHERE EXISTS((ct)-->(:publication)-->(pr)) OR EXISTS((pr)<--(ct))
-        OPTIONAL MATCH (pr)<--(pat)
-            WHERE pat:granted_patent OR pat:patent_application
         RETURN DISTINCT
-            COLLECT(DISTINCT pr.project_id) AS project_ids,
-            COLLECT(DISTINCT pub.publication_id) AS publication_ids,
-            COLLECT(DISTINCT dt.accession) AS accessions,
-            COLLECT(DISTINCT ct.clinical_trial_id) AS clinical_trial_ids,
-            COLLECT(DISTINCT pat.patent_id) AS patent_ids,
-            p.program_id AS programs,
-            pr.lead_doc AS docs,
-            pr.fiscal_year AS fiscal_years,
-            pr.award_amount_category AS award_amounts
+          p.program_id AS program_id,
+          pr.lead_doc AS lead_doc,
+          pr.fiscal_year AS fiscal_year,
+          pr.award_amount_category AS award_amount
       "
 
   - index_name: patents
     type: neo4j
     mapping:
+      program_id:
+        type: keyword
+      lead_doc:
+        type: keyword
+      fiscal_year:
+        type: keyword
+      award_amount:
+        type: keyword
       patent_id:
         type: keyword
       fulfilled_date:
@@ -525,17 +554,29 @@ Indices:
         type: text
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
-        MATCH (pr:project)<--(p)
-          WHERE (p:granted_patent OR p:patent_application)
+        MATCH (p:program)<--(pr:project)<--(pat)
+          WHERE (pat:granted_patent OR pat:patent_application)
         RETURN DISTINCT
-            p.patent_id AS patent_id,
-            p.fulfilled_date AS fulfilled_date,
+            COLLECT(DISTINCT p.program_id) AS program_id,
+            COLLECT(DISTINCT pr.lead_doc) AS lead_doc,
+            COLLECT(DISTINCT pr.fiscal_year) AS fiscal_year,
+            COLLECT(DISTINCT pr.award_amount_category) AS award_amount,
+            pat.patent_id AS patent_id,
+            pat.fulfilled_date AS fulfilled_date,
             COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids
        "
 
   - index_name: clinical_trials
     type: neo4j
     mapping:
+      program_id:
+        type: keyword
+      lead_doc:
+        type: keyword
+      fiscal_year:
+        type: keyword
+      award_amount:
+        type: keyword
       clinical_trial_id:
         type: keyword
       title:
@@ -550,9 +591,13 @@ Indices:
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
         MATCH (ct:clinical_trial)
-        OPTIONAL MATCH (pr:project)
+        OPTIONAL MATCH (p:program)<--(pr:project)
             WHERE (pr)<--(:publication)<--(ct) OR (pr)<--(ct)
         RETURN DISTINCT
+          COLLECT(DISTINCT p.program_id) AS program_id,
+          COLLECT(DISTINCT pr.lead_doc) AS lead_doc,
+          COLLECT(DISTINCT pr.fiscal_year) AS fiscal_year,
+          COLLECT(DISTINCT pr.award_amount_category) AS award_amount,
           ct.clinical_trial_id AS clinical_trial_id,
           ct.title AS title,
           ct.last_update_posted AS last_update_posted,
@@ -560,9 +605,120 @@ Indices:
           COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids
       "
 
+  # - index_name: datasets
+  #   type: neo4j
+  #   mapping:
+  #     program_id:
+  #       type: keyword
+  #     lead_doc:
+  #       type: keyword
+  #     fiscal_year:
+  #       type: keyword
+  #     award_amount:
+  #       type: keyword
+  #     accession:
+  #       type: keyword
+  #   # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
+  #   cypher_query: "
+  #       MATCH (p:program)<--(pr:project)<--(:publication)<--(dt)
+  #         WHERE dt:geo OR dt:sra OR dt:dbgap
+  #       RETURN DISTINCT
+  #         COLLECT(DISTINCT p.program_id) AS program_id,
+  #         COLLECT(DISTINCT pr.lead_doc) AS lead_doc,
+  #         COLLECT(DISTINCT pr.fiscal_year) AS fiscal_year,
+  #         COLLECT(DISTINCT pr.award_amount_category) AS award_amount,
+  #         dt.accession AS accession
+  #     "
+
+  # - index_name: clinical_trials
+  #   type: neo4j
+  #   mapping:
+  #     program_id:
+  #       type: keyword
+  #     lead_doc:
+  #       type: keyword
+  #     fiscal_year:
+  #       type: keyword
+  #     award_amount:
+  #       type: keyword
+  #     clinical_trial_id:
+  #       type: keyword
+  #   # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
+  #   cypher_query: "
+  #       MATCH (p:program)<--(pr:project)
+  #       OPTIONAL MATCH (ct:clinical_trial)
+  #         WHERE EXISTS((ct)-->(:publication)-->(pr)) OR EXISTS((pr)<--(ct))
+  #       RETURN DISTINCT
+  #         COLLECT(DISTINCT p.program_id) AS program_id,
+  #         COLLECT(DISTINCT pr.lead_doc) AS lead_doc,
+  #         COLLECT(DISTINCT pr.fiscal_year) AS fiscal_year,
+  #         COLLECT(DISTINCT pr.award_amount_category) AS award_amount,
+  #         ct.clinical_trial_id AS clinical_trial_id
+  #     "
+
+  # - index_name: patents
+  #   type: neo4j
+  #   mapping:
+  #     program_id:
+  #       type: keyword
+  #     lead_doc:
+  #       type: keyword
+  #     fiscal_year:
+  #       type: keyword
+  #     award_amount:
+  #       type: keyword
+  #     patent_id:
+  #       type: keyword
+  #   # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
+  #   cypher_query: "
+  #       MATCH (p:program)<--(pr:project)<--(pat)
+  #         WHERE pat:granted_patent OR pat:patent_application
+  #       RETURN DISTINCT
+  #         COLLECT(DISTINCT p.program_id) AS program_id,
+  #         COLLECT(DISTINCT pr.lead_doc) AS lead_doc,
+  #         COLLECT(DISTINCT pr.fiscal_year) AS fiscal_year,
+  #         COLLECT(DISTINCT pr.award_amount_category) AS award_amount,
+  #         pat.patent_id AS patent_id
+  #     "
+
+  # - index_name: datasets
+  #   type: neo4j
+  #   mapping:
+  #     program_id:
+  #       type: keyword
+  #     lead_doc:
+  #       type: keyword
+  #     fiscal_year:
+  #       type: keyword
+  #     award_amount:
+  #       type: keyword
+  #     accession:
+  #       type: keyword
+  #   # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
+  #   cypher_query: "
+  #       MATCH (p:program)<--(pr:project)<--(:publication)<--(dt)
+  #         WHERE dt:geo OR dt:sra OR dt:dbgap
+  #       RETURN DISTINCT
+  #         COLLECT(DISTINCT p.program_id) AS program_id,
+  #         COLLECT(DISTINCT pr.lead_doc) AS lead_doc,
+  #         COLLECT(DISTINCT pr.fiscal_year) AS fiscal_year,
+  #         COLLECT(DISTINCT pr.award_amount_category) AS award_amount,
+  #         dt.accession AS accession
+  #     "
+
   - index_name: datasets
     type: neo4j
     mapping:
+      program_id:
+        type: keyword
+      lead_doc:
+        type: keyword
+      fiscal_year:
+        type: keyword
+      award_amount:
+        type: keyword
+      accession:
+        type: keyword
       type:
         type: keyword
       accession:
@@ -595,9 +751,13 @@ Indices:
         type: keyword
   # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
-        MATCH (pr:project)<--(:publication)<--(dt)
+        MATCH (p:program)<--(pr:project)<--(:publication)<--(dt)
           WHERE (dt:geo OR dt:sra OR dt:dbgap)
         RETURN DISTINCT
+          COLLECT(DISTINCT p.program_id) AS program_id,
+          COLLECT(DISTINCT pr.lead_doc) AS lead_doc,
+          COLLECT(DISTINCT pr.fiscal_year) AS fiscal_year,
+          COLLECT(DISTINCT pr.award_amount_category) AS award_amount,
           COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
           LABELS(dt)[0] AS type,
           dt.accession AS accession,
@@ -621,6 +781,14 @@ Indices:
   - index_name: publications
     type: neo4j
     mapping:
+      program_id:
+        type: keyword
+      lead_doc:
+        type: keyword
+      fiscal_year:
+        type: keyword
+      award_amount:
+        type: keyword
       queried_project_ids:
         type: text
       publication_id:
@@ -628,8 +796,7 @@ Indices:
       pmc_id:
         type: text
       year:
-        type: date
-        format: YYYY
+        type: keyword
       journal:
         type: text
       title:
@@ -641,16 +808,24 @@ Indices:
         format: DD-MMM-YYYY||D-MMM-YYYY
       citation_count:
         type: integer
+      citation_count_category:
+        type: keyword
       relative_citation_ratio:
         type: float
+      rcr_range:
+        type: keyword
       nih_percentile:
         type: float
       doi:
         type: text
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
-        MATCH (pr:project)<--(pub:publication)
+        MATCH (p:program)<--(pr:project)<--(pub:publication)
         RETURN DISTINCT
+          COLLECT(DISTINCT p.program_id) AS program_id,
+          COLLECT(DISTINCT pr.lead_doc) AS lead_doc,
+          COLLECT(DISTINCT pr.fiscal_year) AS fiscal_year,
+          COLLECT(DISTINCT pr.award_amount_category) AS award_amount,
           COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
           pub.publication_id AS publication_id,
           pub.pmc_id AS pmc_id,
@@ -660,10 +835,36 @@ Indices:
           pub.authors AS authors,
           pub.publish_date AS publish_date,
           pub.citation_count AS citation_count,
+          pub.citation_count_category AS citation_count_category,
           pub.relative_citation_ratio AS relative_citation_ratio,
+          pub.rcr_range AS rcr_range,
           pub.nih_percentile AS nih_percentile,
           pub.doi AS doi
        "
+
+  # - index_name: publications
+  #   type: neo4j
+  #   mapping:
+  #     program_id:
+  #       type: keyword
+  #     lead_doc:
+  #       type: keyword
+  #     fiscal_year:
+  #       type: keyword
+  #     award_amount:
+  #       type: keyword
+  #     publication_id:
+  #       type: keyword
+  #   # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
+  #   cypher_query: "
+  #       MATCH (p:program)<--(pr:project)<--(pub:publication)
+  #       RETURN DISTINCT
+  #         COLLECT(DISTINCT p.program_id) AS program_id,
+  #         COLLECT(DISTINCT pr.lead_doc) AS lead_doc,
+  #         COLLECT(DISTINCT pr.fiscal_year) AS fiscal_year,
+  #         COLLECT(DISTINCT pr.award_amount_category) AS award_amount,
+  #         pub.publication_id AS publication_id
+  #       "
 
   - index_name: projects
     type: neo4j
@@ -675,8 +876,7 @@ Indices:
       application_id:
         type: text
       fiscal_year:
-        type: date
-        format: YYYY
+        type: keyword
       project_title:
         type: text
       project_type:
@@ -696,11 +896,13 @@ Indices:
       principal_investigators:
         type: text
       lead_doc:
-        type: text
+        type: keyword
       program_officers:
         type: text
       award_amount:
         type: integer
+      award_amount_category:
+        type: keyword
       nci_funded_amount:
         type: integer
       award_notice_date:
@@ -735,6 +937,7 @@ Indices:
           pr.lead_doc AS lead_doc,
           pr.program_officers AS program_officers,
           pr.award_amount AS award_amount,
+          pr.award_amount_category AS award_amount_category,
           pr.nci_funded_amount AS nci_funded_amount,
           pr.award_notice_date AS award_notice_date,
           pr.project_start_date AS project_start_date,
