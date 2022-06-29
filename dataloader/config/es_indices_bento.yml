@@ -869,7 +869,7 @@ Indices:
   - index_name: projects
     type: neo4j
     mapping:
-      program:
+      program_id:
         type: keyword
       project_id:
         type: keyword
@@ -921,7 +921,7 @@ Indices:
         MATCH (pr:project)
         OPTIONAL MATCH (p:program)<--(pr)
         RETURN DISTINCT
-          p.program_id AS program,
+          p.program_id AS program_id,
           pr.project_id AS project_id,
           pr.application_id AS application_id,
           pr.fiscal_year AS fiscal_year,
