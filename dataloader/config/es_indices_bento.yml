@@ -914,6 +914,8 @@ Indices:
     mapping:
       programs:
         type: keyword
+      program:
+        type: keyword
       project_id:
         type: keyword
       application_id:
@@ -968,6 +970,7 @@ Indices:
         MATCH (pr:project)
         OPTIONAL MATCH (p:program)<--(pr)
         RETURN DISTINCT
+          p.program_id AS program,
           p.program_id AS programs,
           pr.project_id AS project_id,
           pr.application_id AS application_id,
