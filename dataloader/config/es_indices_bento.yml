@@ -518,16 +518,19 @@ Indices:
     mapping:
       programs:
         type: keyword
+      program:
+        type: keyword
       lead_doc:
         type: keyword
       docs:
         type: keyword
       fiscal_year:
-        type: keyword
+        type: date
+        format: YYYY
       fiscal_years:
         type: keyword
       award_amount:
-        type: keyword
+        type: integer
       award_amounts:
         type: keyword
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
@@ -535,11 +538,12 @@ Indices:
         MATCH (p:program)<--(pr:project)
         RETURN DISTINCT
           p.program_id AS programs,
+          p.program_id AS program,
           COLLECT(DISTINCT pr.lead_doc) AS lead_doc,
           COLLECT(DISTINCT pr.lead_doc) AS docs,
           COLLECT(DISTINCT pr.fiscal_year) AS fiscal_year,
           COLLECT(DISTINCT pr.fiscal_year) AS fiscal_years,
-          COLLECT(DISTINCT pr.award_amount_category) AS award_amount,
+          COLLECT(DISTINCT pr.award_amount) AS award_amount,
           COLLECT(DISTINCT pr.award_amount_category) AS award_amounts
       "
 
@@ -548,17 +552,20 @@ Indices:
     mapping:
       programs:
         type: keyword
+      program:
+        type: keyword
       lead_doc:
         type: keyword
       docs:
         type: keyword
       fiscal_year:
-        type: keyword
+        type: date
+        format: YYYY
       fiscal_years:
         type: keyword
       award_amount:
-        type: keyword
-      award_amount:
+        type: integer
+      award_amounts:
         type: keyword
       patent_id:
         type: keyword
@@ -566,18 +573,19 @@ Indices:
         type: date
         format: DD-MMM-YYYY||D-MMM-YYYY
       queried_project_ids:
-        type: text
+        type: keyword
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
         MATCH (p:program)<--(pr:project)<--(pat)
           WHERE (pat:granted_patent OR pat:patent_application)
         RETURN DISTINCT
             COLLECT(DISTINCT p.program_id) AS programs,
+            COLLECT(DISTINCT p.program_id) AS program,
             COLLECT(DISTINCT pr.lead_doc) AS lead_doc,
             COLLECT(DISTINCT pr.lead_doc) AS docs,
             COLLECT(DISTINCT pr.fiscal_year) AS fiscal_year,
             COLLECT(DISTINCT pr.fiscal_year) AS fiscal_years,
-            COLLECT(DISTINCT pr.award_amount_category) AS award_amount,
+            COLLECT(DISTINCT pr.award_amount) AS award_amount,
             COLLECT(DISTINCT pr.award_amount_category) AS award_amounts,
             pat.patent_id AS patent_id,
             pat.fulfilled_date AS fulfilled_date,
@@ -589,29 +597,32 @@ Indices:
     mapping:
       programs:
         type: keyword
+      program:
+        type: keyword
       lead_doc:
         type: keyword
       docs:
         type: keyword
       fiscal_year:
-        type: keyword
+        type: date
+        format: YYYY
       fiscal_years:
         type: keyword
       award_amount:
-        type: keyword
+        type: integer
       award_amounts:
         type: keyword
       clinical_trial_id:
         type: keyword
       title:
-        type: text
+        type: keyword
       last_update_posted:
         type: date
         format: DD-MMM-YYYY||D-MMM-YYYY
       recruitment_status:
-        type: text
+        type: keyword
       queried_project_ids:
-        type: text
+        type: keyword
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
         MATCH (ct:clinical_trial)
@@ -619,11 +630,12 @@ Indices:
             WHERE (pr)<--(:publication)<--(ct) OR (pr)<--(ct)
         RETURN DISTINCT
           COLLECT(DISTINCT p.program_id) AS programs,
+          COLLECT(DISTINCT p.program_id) AS program,
           COLLECT(DISTINCT pr.lead_doc) AS lead_doc,
           COLLECT(DISTINCT pr.lead_doc) AS docs,
           COLLECT(DISTINCT pr.fiscal_year) AS fiscal_year,
           COLLECT(DISTINCT pr.fiscal_year) AS fiscal_years,
-          COLLECT(DISTINCT pr.award_amount_category) AS award_amount,
+          COLLECT(DISTINCT pr.award_amount) AS award_amount,
           COLLECT(DISTINCT pr.award_amount_category) AS award_amounts,
           ct.clinical_trial_id AS clinical_trial_id,
           ct.title AS title,
@@ -738,16 +750,19 @@ Indices:
     mapping:
       programs:
         type: keyword
+      program:
+        type: keyword
       lead_doc:
         type: keyword
       docs:
         type: keyword
       fiscal_year:
-        type: keyword
+        type: date
+        format: YYYY
       fiscal_years:
         type: keyword
       award_amount:
-        type: keyword
+        type: integer
       award_amounts:
         type: keyword
       accession:
@@ -757,7 +772,7 @@ Indices:
       accession:
         type: keyword
       title:
-        type: text
+        type: keyword
       release_date:
         type: date
         format: DD-MMM-YYYY||D-MMM-YYYY
@@ -775,7 +790,7 @@ Indices:
         type: date
         format: DD-MMM-YYYY||D-MMM-YYYY
       queried_project_ids:
-        type: text
+        type: keyword
       link:
         type: keyword
       transformed_type:
@@ -788,11 +803,12 @@ Indices:
           WHERE (dt:geo OR dt:sra OR dt:dbgap)
         RETURN DISTINCT
           COLLECT(DISTINCT p.program_id) AS programs,
+          COLLECT(DISTINCT p.program_id) AS program,
           COLLECT(DISTINCT pr.lead_doc) AS lead_doc,
           COLLECT(DISTINCT pr.lead_doc) AS docs,
           COLLECT(DISTINCT pr.fiscal_year) AS fiscal_year,
           COLLECT(DISTINCT pr.fiscal_year) AS fiscal_years,
-          COLLECT(DISTINCT pr.award_amount_category) AS award_amount,
+          COLLECT(DISTINCT pr.award_amount) AS award_amount,
           COLLECT(DISTINCT pr.award_amount_category) AS award_amounts,
           COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
           LABELS(dt)[0] AS type,
@@ -819,30 +835,36 @@ Indices:
     mapping:
       programs:
         type: keyword
+      program:
+        type: keyword
       lead_doc:
         type: keyword
       docs:
         type: keyword
       fiscal_year:
+        type: date
+        format: YYYY
+      fiscal_years:
         type: keyword
       award_amount:
-        type: keyword
+        type: integer
       award_amounts:
         type: keyword
       queried_project_ids:
-        type: text
+        type: keyword
       publication_id:
         type: keyword
       pmc_id:
-        type: text
-      year:
         type: keyword
+      year:
+        type: date
+        format: YYYY
       journal:
-        type: text
+        type: keyword
       title:
-        type: text
+        type: keyword
       authors:
-        type: text
+        type: keyword
       publish_date:
         type: date
         format: DD-MMM-YYYY||D-MMM-YYYY
@@ -857,17 +879,18 @@ Indices:
       nih_percentile:
         type: float
       doi:
-        type: text
+        type: keyword
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
         MATCH (p:program)<--(pr:project)<--(pub:publication)
         RETURN DISTINCT
           COLLECT(DISTINCT p.program_id) AS programs,
+          COLLECT(DISTINCT p.program_id) AS program,
           COLLECT(DISTINCT pr.lead_doc) AS lead_doc,
           COLLECT(DISTINCT pr.lead_doc) AS docs,
           COLLECT(DISTINCT pr.fiscal_year) AS fiscal_year,
           COLLECT(DISTINCT pr.fiscal_year) AS fiscal_years,
-          COLLECT(DISTINCT pr.award_amount_category) AS award_amount,
+          COLLECT(DISTINCT pr.award_amount) AS award_amount,
           COLLECT(DISTINCT pr.award_amount_category) AS award_amounts,
           COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
           pub.publication_id AS publication_id,
@@ -919,63 +942,64 @@ Indices:
       project_id:
         type: keyword
       application_id:
-        type: text
-      fiscal_year:
         type: keyword
       fiscal_years:
         type: keyword
+      fiscal_year:
+        type: date
+        format: YYYY
       project_title:
-        type: text
+        type: keyword
       project_type:
-        type: text
+        type: keyword
       abstract_text:
-        type: text
+        type: keyword
       keywords:
-        type: text
+        type: keyword
       org_name:
-        type: text
+        type: keyword
       org_city:
-        type: text
+        type: keyword
       org_state:
-        type: text
+        type: keyword
       org_country:
-        type: text
+        type: keyword
       principal_investigators:
-        type: text
-      lead_doc:
         type: keyword
       docs:
         type: keyword
+      lead_doc:
+        type: keyword
       program_officers:
-        type: text
-      award_amount:
-        type: integer
+        type: keyword
       award_amounts:
         type: keyword
+      award_amount:
+        type: integer
       nci_funded_amount:
         type: integer
       award_notice_date:
         type: date
-        format: DD-MMM-YYYY||D-MMM-YYYY
+        format: dd-MMM-yyyy||d-MMM-yyyy
       project_start_date:
         type: date
-        format: DD-MMM-YYYY||D-MMM-YYYY
+        format: dd-MMM-yyyy||d-MMM-yyyy
       project_end_date:
         type: date
-        format: DD-MMM-YYYY||D-MMM-YYYY
+        format: dd-MMM-yyyy||d-MMM-yyyy
       full_foa:
-        type: text
+        type: keyword
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
         MATCH (pr:project)
         OPTIONAL MATCH (p:program)<--(pr)
         RETURN DISTINCT
-          p.program_id AS program,
           p.program_id AS programs,
+          p.program_id AS program,
           pr.project_id AS project_id,
           pr.application_id AS application_id,
-          pr.fiscal_year AS fiscal_year,
           pr.fiscal_year AS fiscal_years,
+          pr.fiscal_year AS fiscal_year,
           pr.project_title AS project_title,
           pr.project_type AS project_type,
           pr.abstract_text AS abstract_text,
@@ -985,8 +1009,8 @@ Indices:
           pr.org_state AS org_state,
           pr.org_country AS org_country,
           pr.principal_investigators AS principal_investigators,
-          pr.lead_doc AS lead_doc,
           pr.lead_doc AS docs,
+          pr.lead_doc AS lead_doc,
           pr.program_officers AS program_officers,
           pr.award_amount AS award_amount,
           pr.award_amount_category AS award_amounts,
