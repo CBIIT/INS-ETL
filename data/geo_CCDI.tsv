@@ -1,0 +1,14 @@
+type	accession	title	status	submission_date	last_update_date	publication.publication_id
+geo	GSE178239	Germline RUNX1 Variation and Predisposition to Childhood Acute Lymphoblastic	Public on Dec 31, 2021	15-Jun-2021	1-Apr-2022	34166225
+geo	GSE178238	Germline RUNX1 Variation and Predisposition to Childhood Acute Lymphoblastic-ChIP-Seq	Public on Dec 31, 2021	15-Jun-2021	1-Apr-2022	34166225
+geo	GSE178237	Germline RUNX1 Variation and Predisposition to Childhood Acute Lymphoblastic-RNA-Seq	Public on Dec 31, 2021	15-Jun-2021	1-Apr-2022	34166225
+geo	GSE168884	Affymetrix OncoScan SNP data for T-cell lymphoblastic lymphoma	Public on Mar 15, 2021	14-Mar-2021	11-Aug-2021	34297047
+geo	GSE175543	Comprehensive molecular characterization of pediatric radiation-induced high-grade glioma	Public on May 27, 2021	25-May-2021	13-Oct-2021	34545084
+geo	GSE151506	Epigenetic encoding, heritability and plasticity of glioma transcriptional cell states	Public on May 31, 2021	30-May-2020	7-Jan-2022	34594037
+geo	GSE186150	scRNAseq of longitidunally acquired samples from a CLL patient	Public on Oct 22, 2021	19-Oct-2021	21-Jan-2022	34711268
+geo	GSE184717	Novel temporal and spatial patterns of metastatic colonization from breast cancer rapid-autopsy tumor biopsies	Public on Sep 26, 2021	24-Sep-2021	4-Nov-2021	34711268
+geo	GSE188325	CD19-CAR T cells undergo exhaustion epigenetic programming in patients with acute lymphoblastic leukemia	Public on Nov 08, 2021	5-Nov-2021	7-Feb-2022	34852226
+geo	GSE186802	GD2-CAR T-cell therapy for H3K27M-mutated diffuse midline gliomas	Public on Feb 07, 2022	29-Oct-2021	1-Apr-2022	35130560
+geo	GSE190269	Transcriptomic data of cord blood CD34+ cells as controls of transcriptome cohort of pediatric acute myeloid leukemia	Public on Feb 22, 2022	6-Dec-2021	22-Feb-2022	35176137
+geo	GSE189901	Expression data from cord blood CD34+ cells transduced with UBTF wildtype expression vectors, UBTF-TD expression vectors, or empty control vector.	Public on Feb 22, 2022	30-Nov-2021	22-Feb-2022	35176137
+geo	GSE195620	Multi-omics analysis of RNA binding, splicing and turnover alterations induced by mutant U2AF1 in myeloid malignancies.	Public on Mar 17, 2022	28-Jan-2022	28-Mar-2022	35303483
