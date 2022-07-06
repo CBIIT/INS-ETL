@@ -914,68 +914,67 @@ Indices:
     mapping:
       programs:
         type: keyword
-      program:
+      fiscal_years:
         type: keyword
+        fields:
+          raw:
+            type: date
+            format: yyyy
+      docs:
+        type: keyword
+      award_amounts:
+        type: keyword
+      award_amount:
+        type: integer
       project_id:
         type: keyword
       application_id:
-        type: text
-      fiscal_year:
-        type: keyword
-      fiscal_years:
         type: keyword
       project_title:
-        type: text
-      project_type:
-        type: text
-      abstract_text:
-        type: text
-      keywords:
-        type: text
-      org_name:
-        type: text
-      org_city:
-        type: text
-      org_state:
-        type: text
-      org_country:
-        type: text
-      principal_investigators:
-        type: text
-      lead_doc:
         type: keyword
-      docs:
+      project_type:
+        type: keyword
+      abstract_text:
+        type: keyword
+      keywords:
+        type: keyword
+      org_name:
+        type: keyword
+      org_city:
+        type: keyword
+      org_state:
+        type: keyword
+      org_country:
+        type: keyword
+      principal_investigators:
         type: keyword
       program_officers:
-        type: text
-      award_amount:
-        type: integer
-      award_amounts:
         type: keyword
       nci_funded_amount:
         type: integer
       award_notice_date:
         type: date
-        format: DD-MMM-YYYY||D-MMM-YYYY
+        format: dd-MMM-yyyy||d-MMM-yyyy
       project_start_date:
         type: date
-        format: DD-MMM-YYYY||D-MMM-YYYY
+        format: dd-MMM-yyyy||d-MMM-yyyy
       project_end_date:
         type: date
-        format: DD-MMM-YYYY||D-MMM-YYYY
+        format: dd-MMM-yyyy||d-MMM-yyyy
       full_foa:
-        type: text
+        type: keyword
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
         MATCH (pr:project)
         OPTIONAL MATCH (p:program)<--(pr)
         RETURN DISTINCT
-          p.program_id AS program,
           p.program_id AS programs,
+          pr.fiscal_year AS fiscal_years,
+          pr.lead_doc AS docs,
+          pr.award_amount AS award_amount,
+          pr.award_amount_category AS award_amounts,
           pr.project_id AS project_id,
           pr.application_id AS application_id,
-          pr.fiscal_year AS fiscal_year,
-          pr.fiscal_year AS fiscal_years,
           pr.project_title AS project_title,
           pr.project_type AS project_type,
           pr.abstract_text AS abstract_text,
@@ -985,11 +984,7 @@ Indices:
           pr.org_state AS org_state,
           pr.org_country AS org_country,
           pr.principal_investigators AS principal_investigators,
-          pr.lead_doc AS lead_doc,
-          pr.lead_doc AS docs,
           pr.program_officers AS program_officers,
-          pr.award_amount AS award_amount,
-          pr.award_amount_category AS award_amounts,
           pr.nci_funded_amount AS nci_funded_amount,
           pr.award_notice_date AS award_notice_date,
           pr.project_start_date AS project_start_date,
