@@ -562,11 +562,13 @@ Indices:
         type: keyword
       patent_id:
         type: keyword
+        normalizer: lowercase
       fulfilled_date:
         type: date
         format: dd-MMM-yyyy||d-MMM-yyyy
       queried_project_ids:
         type: keyword
+        normalizer: lowercase
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
         MATCH (p:program)<--(pr:project)<--(pat)
@@ -601,15 +603,19 @@ Indices:
         type: keyword
       clinical_trial_id:
         type: keyword
+        normalizer: lowercase
       title:
         type: keyword
+        normalizer: lowercase
       last_update_posted:
         type: date
         format: dd-MMM-yyyy||d-MMM-yyyy
       recruitment_status:
         type: keyword
+        normalizer: lowercase
       queried_project_ids:
         type: keyword
+        normalizer: lowercase
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
         MATCH (ct:clinical_trial)
@@ -748,8 +754,10 @@ Indices:
         type: keyword
       accession:
         type: keyword
+        normalizer: lowercase
       title:
         type: keyword
+        normalizer: lowercase
       release_date:
         type: date
         format: dd-MMM-yyyy||d-MMM-yyyy
@@ -768,10 +776,12 @@ Indices:
         format: dd-MMM-yyyy||d-MMM-yyyy
       queried_project_ids:
         type: keyword
+        normalizer: lowercase
       link:
         type: keyword
       transformed_type:
         type: keyword
+        normalizer: lowercase
   # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
         MATCH (p:program)<--(pr:project)<--(:publication)<--(dt)
@@ -820,6 +830,7 @@ Indices:
         type: keyword
       queried_project_ids:
         type: keyword
+        normalizer: lowercase
       publication_id:
         type: keyword
       pmc_id:
@@ -831,8 +842,10 @@ Indices:
         type: keyword
       title:
         type: keyword
+        normalizer: lowercase
       authors:
         type: keyword
+        normalizer: lowercase
       publish_date:
         type: date
         format: dd-MMM-yyyy||d-MMM-yyyy
@@ -902,6 +915,7 @@ Indices:
     mapping:
       programs:
         type: keyword
+        normalizer: lowercase
       fiscal_years:
         type: keyword
         fields:
@@ -910,16 +924,19 @@ Indices:
             format: yyyy
       docs:
         type: keyword
+        normalizer: lowercase
       award_amounts:
         type: keyword
       award_amount:
         type: integer
       project_id:
         type: keyword
+        normalizer: lowercase
       application_id:
         type: keyword
       project_title:
         type: keyword
+        normalizer: lowercase
       project_type:
         type: keyword
       abstract_text:
@@ -936,6 +953,7 @@ Indices:
         type: keyword
       principal_investigators:
         type: keyword
+        normalizer: lowercase
       program_officers:
         type: keyword
       nci_funded_amount:
