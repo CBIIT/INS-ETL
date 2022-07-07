@@ -819,33 +819,36 @@ Indices:
     mapping:
       programs:
         type: keyword
-      lead_doc:
-        type: keyword
       docs:
         type: keyword
-      fiscal_year:
+      fiscal_years:
         type: keyword
+        fields:
+          raw:
+            type: date
+            format: yyyy
       award_amount:
-        type: keyword
+        type: integer
       award_amounts:
         type: keyword
       queried_project_ids:
-        type: text
+        type: keyword
       publication_id:
         type: keyword
       pmc_id:
-        type: text
-      year:
         type: keyword
+      year:
+        type: date
+        format: yyyy
       journal:
-        type: text
+        type: keyword
       title:
-        type: text
+        type: keyword
       authors:
-        type: text
+        type: keyword
       publish_date:
         type: date
-        format: DD-MMM-YYYY||D-MMM-YYYY
+        format: dd-MMM-yyyy||d-MMM-yyyy
       citation_count:
         type: integer
       citation_count_category:
@@ -857,17 +860,15 @@ Indices:
       nih_percentile:
         type: float
       doi:
-        type: text
+        type: keyword
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
         MATCH (p:program)<--(pr:project)<--(pub:publication)
         RETURN DISTINCT
           COLLECT(DISTINCT p.program_id) AS programs,
-          COLLECT(DISTINCT pr.lead_doc) AS lead_doc,
           COLLECT(DISTINCT pr.lead_doc) AS docs,
-          COLLECT(DISTINCT pr.fiscal_year) AS fiscal_year,
           COLLECT(DISTINCT pr.fiscal_year) AS fiscal_years,
-          COLLECT(DISTINCT pr.award_amount_category) AS award_amount,
+          COLLECT(DISTINCT pr.award_amount) AS award_amount,
           COLLECT(DISTINCT pr.award_amount_category) AS award_amounts,
           COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
           pub.publication_id AS publication_id,
