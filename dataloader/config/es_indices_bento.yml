@@ -589,29 +589,29 @@ Indices:
     mapping:
       programs:
         type: keyword
-      lead_doc:
-        type: keyword
       docs:
-        type: keyword
-      fiscal_year:
         type: keyword
       fiscal_years:
         type: keyword
+        fields:
+          raw:
+            type: date
+            format: yyyy
       award_amount:
-        type: keyword
+        type: integer
       award_amounts:
         type: keyword
       clinical_trial_id:
         type: keyword
       title:
-        type: text
+        type: keyword
       last_update_posted:
         type: date
-        format: DD-MMM-YYYY||D-MMM-YYYY
+        format: dd-MMM-yyyy||d-MMM-yyyy
       recruitment_status:
-        type: text
+        type: keyword
       queried_project_ids:
-        type: text
+        type: keyword
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
         MATCH (ct:clinical_trial)
@@ -619,11 +619,9 @@ Indices:
             WHERE (pr)<--(:publication)<--(ct) OR (pr)<--(ct)
         RETURN DISTINCT
           COLLECT(DISTINCT p.program_id) AS programs,
-          COLLECT(DISTINCT pr.lead_doc) AS lead_doc,
           COLLECT(DISTINCT pr.lead_doc) AS docs,
-          COLLECT(DISTINCT pr.fiscal_year) AS fiscal_year,
           COLLECT(DISTINCT pr.fiscal_year) AS fiscal_years,
-          COLLECT(DISTINCT pr.award_amount_category) AS award_amount,
+          COLLECT(DISTINCT pr.award_amount) AS award_amount,
           COLLECT(DISTINCT pr.award_amount_category) AS award_amounts,
           ct.clinical_trial_id AS clinical_trial_id,
           ct.title AS title,
