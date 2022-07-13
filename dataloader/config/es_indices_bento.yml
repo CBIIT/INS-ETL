@@ -1008,6 +1008,8 @@ Indices:
         fields:
           search:
             type: search_as_you_type
+      type:
+        type: keyword
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
         MATCH (pr:project)
@@ -1034,5 +1036,6 @@ Indices:
           pr.award_notice_date AS award_notice_date,
           pr.project_start_date AS project_start_date,
           pr.project_end_date AS project_end_date,
-          pr.full_foa As full_foa
+          pr.full_foa As full_foa,
+          LABELS(pr)[0] as type
       "
