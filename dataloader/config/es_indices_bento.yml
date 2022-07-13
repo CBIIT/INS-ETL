@@ -916,6 +916,9 @@ Indices:
       programs:
         type: keyword
         normalizer: lowercase
+        fields:
+          search:
+            type: search_as_you_type
       fiscal_years:
         type: keyword
         fields:
@@ -925,6 +928,9 @@ Indices:
       docs:
         type: keyword
         normalizer: lowercase
+        fields:
+          search:
+            type: search_as_you_type
       award_amounts:
         type: keyword
       award_amount:
@@ -932,30 +938,60 @@ Indices:
       project_id:
         type: keyword
         normalizer: lowercase
+        fields:
+          search:
+            type: search_as_you_type
       application_id:
         type: keyword
+        fields:
+          search:
+            type: search_as_you_type
       project_title:
         type: keyword
         normalizer: lowercase
+        fields:
+          search:
+            type: search_as_you_type
       project_type:
         type: keyword
       abstract_text:
         type: keyword
+        fields:
+          search:
+            type: search_as_you_type
       keywords:
         type: keyword
+        fields:
+          search:
+            type: search_as_you_type
       org_name:
         type: keyword
+        fields:
+          search:
+            type: search_as_you_type
       org_city:
         type: keyword
+        fields:
+          search:
+            type: search_as_you_type
       org_state:
         type: keyword
+        fields:
+          search:
+            type: search_as_you_type
       org_country:
         type: keyword
       principal_investigators:
         type: keyword
         normalizer: lowercase
+        fields:
+          search:
+            type: search_as_you_type
       program_officers:
         type: keyword
+        fields:
+          search:
+            type: search_as_you_type
       nci_funded_amount:
         type: integer
       award_notice_date:
@@ -969,6 +1005,9 @@ Indices:
         format: dd-MMM-yyyy||d-MMM-yyyy
       full_foa:
         type: keyword
+        fields:
+          search:
+            type: search_as_you_type
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
         MATCH (pr:project)
@@ -996,57 +1035,4 @@ Indices:
           pr.project_start_date AS project_start_date,
           pr.project_end_date AS project_end_date,
           pr.full_foa As full_foa
-      "
-  - index_name: projects
-    type: neo4j
-    # type mapping for each property of the index
-    mapping:
-      project_id:
-        type: search_as_you_type
-      project_id_kw:
-        type: keyword
-      application_id:
-        type: search_as_you_type
-      project_title:
-        type: text
-      abstract_text:
-        type: text
-      keywords:
-        type: text
-      org_name:
-        type: text
-      org_city:
-        type: text
-      org_state:
-        type: text
-      principal_investigators:
-        type: text
-      lead_doc:
-        type: text
-      program_officers:
-        type: text
-      full_foa:
-        type: text
-      program:
-        type: text
-
-    # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
-    cypher_query: "
-      MATCH (pr:project)
-      OPTIONAL MATCH (p:program)<--(pr)
-      RETURN DISTINCT
-        pr.project_id AS project_id,
-        pr.project_id AS project_id_kw,
-        pr.application_id AS application_id,
-        pr.project_title AS project_title,
-        pr.abstract_text AS abstract_text,
-        pr.keywords AS keywords,
-        pr.org_name AS org_name,
-        pr.org_city AS org_city,
-        pr.org_state AS org_state,
-        pr.principal_investigators AS principal_investigators,
-        pr.lead_doc AS lead_doc,
-        pr.program_officers AS program_officers,
-        pr.full_foa AS full_foa,
-        p.program AS program
       "
