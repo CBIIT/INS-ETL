@@ -916,6 +916,9 @@ Indices:
       programs:
         type: keyword
         normalizer: lowercase
+        fields:
+          search:
+            type: search_as_you_type
       fiscal_years:
         type: keyword
         fields:
@@ -925,6 +928,9 @@ Indices:
       docs:
         type: keyword
         normalizer: lowercase
+        fields:
+          search:
+            type: search_as_you_type
       award_amounts:
         type: keyword
       award_amount:
@@ -932,30 +938,60 @@ Indices:
       project_id:
         type: keyword
         normalizer: lowercase
+        fields:
+          search:
+            type: search_as_you_type
       application_id:
         type: keyword
+        fields:
+          search:
+            type: search_as_you_type
       project_title:
         type: keyword
         normalizer: lowercase
+        fields:
+          search:
+            type: search_as_you_type
       project_type:
         type: keyword
       abstract_text:
         type: keyword
+        fields:
+          search:
+            type: search_as_you_type
       keywords:
         type: keyword
+        fields:
+          search:
+            type: search_as_you_type
       org_name:
         type: keyword
+        fields:
+          search:
+            type: search_as_you_type
       org_city:
         type: keyword
+        fields:
+          search:
+            type: search_as_you_type
       org_state:
         type: keyword
+        fields:
+          search:
+            type: search_as_you_type
       org_country:
         type: keyword
       principal_investigators:
         type: keyword
         normalizer: lowercase
+        fields:
+          search:
+            type: search_as_you_type
       program_officers:
         type: keyword
+        fields:
+          search:
+            type: search_as_you_type
       nci_funded_amount:
         type: integer
       award_notice_date:
@@ -968,6 +1004,11 @@ Indices:
         type: date
         format: dd-MMM-yyyy||d-MMM-yyyy
       full_foa:
+        type: keyword
+        fields:
+          search:
+            type: search_as_you_type
+      type:
         type: keyword
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
@@ -995,5 +1036,6 @@ Indices:
           pr.award_notice_date AS award_notice_date,
           pr.project_start_date AS project_start_date,
           pr.project_end_date AS project_end_date,
-          pr.full_foa As full_foa
+          pr.full_foa As full_foa,
+          LABELS(pr)[0] as type
       "
