@@ -30,7 +30,8 @@ class ESLoader:
                 http_auth = awsauth,
                 use_ssl = True,
                 verify_certs = True,
-                connection_class = RequestsHttpConnection
+                connection_class = RequestsHttpConnection,
+                timeout = 30
             )
         else:
             self.es_client = Elasticsearch(hosts=[es_host])
