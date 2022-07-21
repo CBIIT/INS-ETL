@@ -915,7 +915,6 @@ Indices:
     mapping:
       programs:
         type: keyword
-        normalizer: lowercase
         fields:
           search:
             type: search_as_you_type
@@ -927,7 +926,6 @@ Indices:
             format: yyyy
       docs:
         type: keyword
-        normalizer: lowercase
         fields:
           search:
             type: search_as_you_type
@@ -937,7 +935,6 @@ Indices:
         type: integer
       project_id:
         type: keyword
-        normalizer: lowercase
         fields:
           search:
             type: search_as_you_type
@@ -948,7 +945,6 @@ Indices:
             type: search_as_you_type
       project_title:
         type: keyword
-        normalizer: lowercase
         fields:
           search:
             type: search_as_you_type
@@ -983,7 +979,6 @@ Indices:
         type: keyword
       principal_investigators:
         type: keyword
-        normalizer: lowercase
         fields:
           search:
             type: search_as_you_type
