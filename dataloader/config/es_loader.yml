@@ -1,17 +1,17 @@
 Config:
   # Neo4j URL with port number
-  neo4j_uri: "bolt://localhost:7687"
+  neo4j_uri: "bolt://10.0.0.13:7687"
   # Neo4j user name, default is neo4j
   neo4j_user: neo4j
   # Password for Neo4j user
-  neo4j_password: "123456"
+  neo4j_password: "neo4j_password"
   # Elastic search host name or IP, without trailing slash
-  es_host: localhost:9200
+  es_host: 10.0.0.13:9200
   # Path to about file
   about_file: model-desc/aboutPagesContent.yaml
 
   model_files:
-    - model-desc/bento_model_file.yaml
-    - model-desc/bento_model_properties.yaml
+    - model-desc/ins_model_file.yaml
+    - model-desc/ins_model_properties.yaml
 
-  prop_file: model-desc/props-bento.yml
+  prop_file: model-desc/props-ins.yml
