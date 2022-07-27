@@ -794,7 +794,7 @@ Indices:
           COLLECT(DISTINCT pr.award_amount_category) AS award_amounts,
           COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
           dt.accession AS accession,
-          dt.title AS title,
+          COALESCE(dt.title, dt.study_title) AS title,
           dt.release_date AS release_date,
           dt.registration_date AS registration_date,
           dt.bioproject_accession AS bioproject_accession,
@@ -948,6 +948,9 @@ Indices:
         fields:
           search:
             type: search_as_you_type
+          sort:
+            type: keyword
+            normalizer: lowercase
       project_type:
         type: keyword
       abstract_text:
