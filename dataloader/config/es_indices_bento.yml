@@ -918,6 +918,9 @@ Indices:
         fields:
           search:
             type: search_as_you_type
+          sort:
+            type: keyword
+            normalizer: lowercase
       fiscal_years:
         type: keyword
         fields:
@@ -929,6 +932,9 @@ Indices:
         fields:
           search:
             type: search_as_you_type
+          sort:
+            type: keyword
+            normalizer: lowercase
       award_amounts:
         type: keyword
       award_amount:
@@ -938,6 +944,9 @@ Indices:
         fields:
           search:
             type: search_as_you_type
+          sort:
+            type: keyword
+            normalizer: lowercase
       application_id:
         type: keyword
         fields:
@@ -985,6 +994,9 @@ Indices:
         fields:
           search:
             type: search_as_you_type
+          sort:
+            type: keyword
+            normalizer: lowercase
       program_officers:
         type: keyword
         fields:
