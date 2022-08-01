@@ -409,18 +409,18 @@ Indices:
   #       COLLECT(DISTINCT sf.file_name) AS study_file_names
   #     "
 
-  # - index_name: about_page
-  #   type: about_file
-  #   # type mapping for each property of the index
-  #   mapping:
-  #     page:
-  #       type: search_as_you_type
-  #     title:
-  #       type: search_as_you_type
-  #     primaryContentImage:
-  #       type: text
-  #     content:
-  #       type: object
+  - index_name: about_page
+    type: about_file
+    # type mapping for each property of the index
+    mapping:
+      page:
+        type: search_as_you_type
+      title:
+        type: search_as_you_type
+      primaryContentImage:
+        type: text
+      content:
+        type: object
 
   # - index_name: model_nodes
   #   type: model
