@@ -12,7 +12,7 @@ console.log(`Received paramaters: ${args}`);
 
 console.log("Start processing...");
 
-let file_path = path.join(__dirname, 'config', 'Moonshot IDs_no P30_031622_suff&pref_v2.xlsx');
+let file_path = path.join(__dirname, 'config', 'Moonshot_CCCDI project list_070122.xlsx');
 
 readXlsxFile(file_path, { sheet: 1 }).then(async (rows) => {
   console.time('full_run');

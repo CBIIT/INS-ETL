@@ -49,6 +49,7 @@ const run = async (projectsTodo) => {
           });
           projectsTodo[projectNums[i]].nci_funded_amount = fundedAmount;
           projectsTodo[projectNums[i]].award_notice_date = dt.award_notice_date;
+          console.log("Award Notice Date: " + dt.award_notice_date);
           projectsTodo[projectNums[i]].project_start_date = dt.project_start_date;
           projectsTodo[projectNums[i]].project_end_date = dt.project_end_date;
           projectsTodo[projectNums[i]].full_foa = dt.full_foa;
