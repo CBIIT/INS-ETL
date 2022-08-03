@@ -939,6 +939,19 @@ Indices:
         type: keyword
       award_amount:
         type: integer
+      activity_code:
+        type: keyword
+        fields:
+          search:
+            type: search_as_you_type
+          sort:
+            type: keyword
+            normalizer: lowercase
+      serial_number:
+        type: keyword
+        fields:
+          search:
+            type: search_as_you_type
       project_id:
         type: keyword
         fields:
@@ -1030,6 +1043,8 @@ Indices:
           pr.lead_doc AS docs,
           pr.award_amount AS award_amount,
           pr.award_amount_category AS award_amounts,
+          SUBSTRING(pr.project_id, 1, 3) AS activity_code,
+          SUBSTRING(pr.project_id, 6, 6) AS serial_number,
           pr.project_id AS project_id,
           pr.application_id AS application_id,
           pr.project_title AS project_title,
