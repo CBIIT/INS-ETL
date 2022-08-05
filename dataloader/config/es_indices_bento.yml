@@ -409,18 +409,18 @@ Indices:
   #       COLLECT(DISTINCT sf.file_name) AS study_file_names
   #     "
 
-  # - index_name: about_page
-  #   type: about_file
-  #   # type mapping for each property of the index
-  #   mapping:
-  #     page:
-  #       type: search_as_you_type
-  #     title:
-  #       type: search_as_you_type
-  #     primaryContentImage:
-  #       type: text
-  #     content:
-  #       type: object
+  - index_name: about_page
+    type: about_file
+    # type mapping for each property of the index
+    mapping:
+      page:
+        type: search_as_you_type
+      title:
+        type: search_as_you_type
+      primaryContentImage:
+        type: text
+      content:
+        type: object
 
   # - index_name: model_nodes
   #   type: model
@@ -794,7 +794,7 @@ Indices:
           COLLECT(DISTINCT pr.award_amount_category) AS award_amounts,
           COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
           dt.accession AS accession,
-          dt.title AS title,
+          COALESCE(dt.title, dt.study_title) AS title,
           dt.release_date AS release_date,
           dt.registration_date AS registration_date,
           dt.bioproject_accession AS bioproject_accession,
@@ -915,10 +915,12 @@ Indices:
     mapping:
       programs:
         type: keyword
-        normalizer: lowercase
         fields:
           search:
             type: search_as_you_type
+          sort:
+            type: keyword
+            normalizer: lowercase
       fiscal_years:
         type: keyword
         fields:
@@ -927,20 +929,37 @@ Indices:
             format: yyyy
       docs:
         type: keyword
-        normalizer: lowercase
         fields:
           search:
             type: search_as_you_type
+          sort:
+            type: keyword
+            normalizer: lowercase
       award_amounts:
         type: keyword
       award_amount:
         type: integer
-      project_id:
+      activity_code:
         type: keyword
-        normalizer: lowercase
         fields:
           search:
             type: search_as_you_type
+          sort:
+            type: keyword
+            normalizer: lowercase
+      serial_number:
+        type: keyword
+        fields:
+          search:
+            type: search_as_you_type
+      project_id:
+        type: keyword
+        fields:
+          search:
+            type: search_as_you_type
+          sort:
+            type: keyword
+            normalizer: lowercase
       application_id:
         type: keyword
         fields:
@@ -948,10 +967,12 @@ Indices:
             type: search_as_you_type
       project_title:
         type: keyword
-        normalizer: lowercase
         fields:
           search:
             type: search_as_you_type
+          sort:
+            type: keyword
+            normalizer: lowercase
       project_type:
         type: keyword
       abstract_text:
@@ -983,10 +1004,12 @@ Indices:
         type: keyword
       principal_investigators:
         type: keyword
-        normalizer: lowercase
         fields:
           search:
             type: search_as_you_type
+          sort:
+            type: keyword
+            normalizer: lowercase
       program_officers:
         type: keyword
         fields:
@@ -1020,6 +1043,8 @@ Indices:
           pr.lead_doc AS docs,
           pr.award_amount AS award_amount,
           pr.award_amount_category AS award_amounts,
+          SUBSTRING(pr.project_id, 1, 3) AS activity_code,
+          SUBSTRING(pr.project_id, 6, 6) AS serial_number,
           pr.project_id AS project_id,
           pr.application_id AS application_id,
           pr.project_title AS project_title,
