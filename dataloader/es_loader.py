@@ -30,8 +30,7 @@ class ESLoader:
                 http_auth = awsauth,
                 use_ssl = True,
                 verify_certs = True,
-                connection_class = RequestsHttpConnection,
-                timeout = 30
+                connection_class = RequestsHttpConnection
             )
         else:
             self.es_client = Elasticsearch(hosts=[es_host])
@@ -88,7 +87,8 @@ class ESLoader:
         for ok, _ in streaming_bulk(
                 client=self.es_client,
                 index=index_name,
-                actions=data
+                actions=data,
+                request_timeout=3600
         ):
             total += 1
             successes += 1 if ok else 0
