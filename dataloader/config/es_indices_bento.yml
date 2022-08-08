@@ -1015,6 +1015,9 @@ Indices:
         fields:
           search:
             type: search_as_you_type
+          sort:
+            type: keyword
+            normalizer: lowercase
       nci_funded_amount:
         type: integer
       award_notice_date:
