@@ -87,7 +87,8 @@ class ESLoader:
         for ok, _ in streaming_bulk(
                 client=self.es_client,
                 index=index_name,
-                actions=data
+                actions=data,
+                request_timeout=3600
         ):
             total += 1
             successes += 1 if ok else 0

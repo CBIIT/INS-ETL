@@ -1,0 +1,82 @@
+type	clinical_trial_id	title	last_update_posted	recruitment_status	publication.publication_id	project.queried_project_id
+clinical_trial	NCT01120353	Childhood Cancer Survivor Study	29-Apr-2022	Recruiting		U24CA055727
+clinical_trial	NCT03904862	Testing the Safety and Tolerability of CX-4945 in Patients With Recurrent Medulloblastoma Who May or May Not Have Surgery	17-May-2022	Recruiting		UM1CA081457
+clinical_trial	NCT03033992	Feasibility Trial of Optune for Children With Recurrent or Progressive Supratentorial High-Grade Glioma and Ependymoma	16-Sep-2021	Recruiting		UM1CA081457
+clinical_trial	NCT03598244	Volitinib in Treating Patients With Recurrent or Refractory Primary CNS Tumors	23-May-2022	Recruiting		UM1CA081457
+clinical_trial	NCT03387020	Ribociclib and Everolimus in Treating Children With Recurrent or Refractory Malignant Brain Tumors	27-Aug-2021	Completed		UM1CA081457
+clinical_trial	NCT03210714	Erdafitinib in Treating Patients With Relapsed or Refractory Advanced Solid Tumors, Non-Hodgkin Lymphoma, or Histiocytic Disorders With FGFR Mutations (A Pediatric MATCH Treatment Trial)	16-May-2022	Suspended		UM1CA081457
+clinical_trial	NCT02359565	Pembrolizumab in Treating Younger Patients With Recurrent, Progressive, or Refractory High-Grade Gliomas, Diffuse Intrinsic Pontine Gliomas, Hypermutated Brain Tumors, Ependymoma or Medulloblastoma	20-Apr-2022	Recruiting		UM1CA081457
+clinical_trial	NCT00867178	Vorinostat Combined With Isotretinoin and Chemotherapy in Treating Younger Patients With Embryonal Tumors of the Central Nervous System	13-Jan-2022	Completed		UM1CA081457
+clinical_trial	NCT02415153	Pomalidomide in Treating Younger Patients With Recurrent, Progressive, or Refractory Central Nervous System Tumors	25-Apr-2022	Completed		UM1CA081457
+clinical_trial	NCT01514201	Veliparib, Radiation Therapy, and Temozolomide in Treating Younger Patients With Newly Diagnosed Diffuse Pontine Gliomas	13-Aug-2019	Completed		UM1CA081457
+clinical_trial	NCT01514201	Veliparib, Radiation Therapy, and Temozolomide in Treating Younger Patients With Newly Diagnosed Diffuse Pontine Gliomas	13-Aug-2019	Completed	32009149	
+clinical_trial	NCT01089101	Selumetinib in Treating Young Patients With Recurrent or Refractory Low Grade Glioma	21-Apr-2022	Active, not recruiting		UM1CA081457
+clinical_trial	NCT00866307	Pegaspargase and Combination Chemotherapy in Treating Younger Patients With Newly Diagnosed High-Risk Acute Lymphoblastic Leukemia (Closed to Accrual 4-22-2011)	27-Apr-2021	Completed		U10CA180899
+clinical_trial	NCT01339663	Vaccine Therapy Following Therapeutic Autologous Lymphocytes and Cyclophosphamide in Treating Patients With Metastatic Melanoma	21-Apr-2014	Completed		K12CA076930
+clinical_trial	NCT01141725	Bendamustine and Idarubicin in Treating Older Patients With Previously Untreated AML or MDS	18-Aug-2017	Completed		K12CA076930
+clinical_trial	NCT00871481	Laboratory-Treated T Cells and Ipilimumab in Treating Patients With Metastatic Melanoma	19-Apr-2017	Completed		K12CA076930
+clinical_trial	NCT00945269	Therapeutic Autologous Lymphocytes, Aldesleukin, and Denileukin Diftitox in Treating Patients With Stage III-IV Melanoma	8-Dec-2011	Terminated		K12CA076930
+clinical_trial	NCT01957709	Recombinant Interferon Gamma in Treating Patients With Soft Tissue Sarcoma	10-Jul-2019	Terminated		K12CA076930
+clinical_trial	NCT04928599	Financial Distress During Treatment for Pediatric Acute Lymphoblastic Leukemia in the United States	3-May-2022	Recruiting		UG1CA189955
+clinical_trial	NCT03204916	Cancer Care Delivery in Adolescent and Young Adult Patients With Acute Lymphoblastic Leukemia	24-Mar-2022	Suspended		UG1CA189955
+clinical_trial	NCT03057626	Late Effects After Treatment in Patients With Previously Diagnosed High-Risk Neuroblastoma	19-Oct-2021	Active, not recruiting		UG1CA189955
+clinical_trial	NCT02847130	Identifying, Understanding, and Overcoming Barriers to the Use of Clinical Practice Guidelines in Pediatric Oncology	5-Sep-2021	Active, not recruiting		UG1CA189955
+clinical_trial	NCT02847130	Identifying, Understanding, and Overcoming Barriers to the Use of Clinical Practice Guidelines in Pediatric Oncology	5-Sep-2021	Active, not recruiting	34530933	
+clinical_trial	NCT04089358	Mobile Health and Social Media Physical Activity Intervention Among Adolescent and Young Adult Childhood Cancer Survivors, the StepByStep Study	15-Apr-2022	Recruiting		UG1CA189955
+clinical_trial	NCT03223753	Web-Based Physical Activity Intervention in Improving Long Term Health in Children and Adolescents With Cancer	24-Mar-2022	Active, not recruiting		UG1CA189955
+clinical_trial	NCT03206450	Biospecimen Analysis in Determining Effects of Chemotherapy on Fertility in Osteosarcoma Survivors	15-Apr-2022	Recruiting		UG1CA189955
+clinical_trial	NCT03057054	Lactobacillus Plantarum in Preventing Acute Graft Versus Host Disease in Children Undergoing Donor Stem Cell Transplant	24-Mar-2022	Active, not recruiting		UG1CA189955
+clinical_trial	NCT02717507	Carvedilol in Preventing Heart Failure in Childhood Cancer Survivors	24-Feb-2022	Active, not recruiting		UG1CA189955
+clinical_trial	NCT01793233	Blood Sample Markers of Reproductive Hormones in Assessing Ovarian Reserve in Younger Patients With Newly Diagnosed Lymphomas	5-Sep-2021	Active, not recruiting		UG1CA189955
+clinical_trial	NCT04597359	To Evaluate if Green Tea Can be Effective in Reducing the Progression of Prostate Cancer in Men on Close Monitoring	23-May-2022	Recruiting		UG1CA189828
+clinical_trial	NCT04467021	Cancer and Blood Pressure Management, CARISMA Study	14-Jan-2022	Recruiting		UG1CA189828
+clinical_trial	NCT04438382	Infliximab and Intravenous Immunoglobulin Therapy in Treating Patients With Steroid-Refractory Pneumonitis	9-Nov-2021	Recruiting		UG1CA189828
+clinical_trial	NCT04239573	Comparing Two Methods to Follow Patients With Pancreatic Cysts	3-Jan-2022	Recruiting		UG1CA189828
+clinical_trial	NCT04239573	Comparing Two Methods to Follow Patients With Pancreatic Cysts	3-Jan-2022	Recruiting	32920242	
+clinical_trial	NCT04001829	Docetaxel or Paclitaxel in Reducing Chemotherapy-Induced Peripheral Neuropathy in African American Patients With Stage I-III Breast Cancer	22-Apr-2022	Active, not recruiting		UG1CA189828
+clinical_trial	NCT03804255	Assessment of Current Biomarker Testing Practices for Common Solid Cancers in Precision Oncology in the Community Setting	3-Jan-2022	Active, not recruiting		UG1CA189828
+clinical_trial	NCT02352883	MRI and Gene Expression in Diagnosing Patients With Ductal Breast Cancer In Situ	26-Oct-2020	Active, not recruiting		UG1CA189828
+clinical_trial	NCT03253848	Simplified Patient Care Strategy in Decreasing Early Death in Patients With Acute Promyelocytic Leukemia	3-Jan-2022	Active, not recruiting		UG1CA189828
+clinical_trial	NCT02933489	Abbreviated Breast MRI and Digital Tomosynthesis Mammography in Screening Women With Dense Breasts	9-Nov-2021	Active, not recruiting		UG1CA189828
+clinical_trial	NCT04616560	Trastuzumab Deruxtecan for the Treatment of HER2+ Newly Diagnosed or Recurrent Osteosarcoma	16-Feb-2022	Suspended		UM1CA228823
+clinical_trial	NCT05359237	A Study to Measure How a New Method for Dosing Vincristine in Infants and Young Children Compares to the Standard Dosing Method in Older Children	3-May-2022	Not yet recruiting		UM1CA228823
+clinical_trial	NCT05286801	Tiragolumab and Atezolizumab for the Treatment of Relapsed or Refractory SMARCB1 or SMARCA4 Deficient Tumors	18-Mar-2022	Not yet recruiting		UM1CA228823
+clinical_trial	NCT05071209	Elimusertib for the Treatment of Relapsed or Refractory Solid Tumors	5-May-2022	Recruiting		UM1CA228823
+clinical_trial	NCT04870944	CBL0137 for the Treatment of Relapsed or Refractory Solid Tumors, Including CNS Tumors and Lymphoma	10-May-2022	Recruiting		UM1CA228823
+clinical_trial	NCT04851119	Tegavivint for the Treatment of Recurrent or Refractory Solid Tumors, Including Lymphomas and Desmoid Tumors	5-May-2022	Recruiting		UM1CA228823
+clinical_trial	NCT04158739	Flotetuzumab for the Treatment of Pediatric Recurrent or Refractory Acute Myeloid Leukemia	10-May-2022	Active, not recruiting		UM1CA228823
+clinical_trial	NCT04939597	A Study to See if Memantine Protects the Brain During Radiation Therapy Treatment for a Brain Tumor	24-Mar-2022	Recruiting		U24CA196173
+clinical_trial	NCT02296684	Immunotherapy With MK-3475 in Surgically Resectable Head and Neck Squamous Cell Carcinoma	28-Apr-2022	Completed	32665297	
+clinical_trial	NCT01642251	Cisplatin and Etoposide With or Without Veliparib in Treating Patients With Extensive Stage Small Cell Lung Cancer	5-Feb-2019	Completed	32860331	
+clinical_trial	NCT01863550	Bortezomib or Carfilzomib With Lenalidomide and Dexamethasone in Treating Patients With Newly Diagnosed Multiple Myeloma	3-Jan-2022	Active, not recruiting	32866432	
+clinical_trial	NCT03257631	A Study of Pomalidomide Monotherapy for Children and Young Adults With Recurrent or Progressive Primary Brain Tumors	3-May-2022	Active, not recruiting	33025730	
+clinical_trial	NCT01606878	Crizotinib and Combination Chemotherapy in Treating Younger Patients With Relapsed or Refractory Solid Tumors or Anaplastic Large Cell Lymphoma	26-Feb-2019	Completed	33095287	
+clinical_trial	NCT01503515	Caspofungin Acetate, Fluconazole, or Voriconazole in Preventing Fungal Infections in Patients Following Donor Stem Cell Transplant	31-Jan-2022	Completed	33136159	
+clinical_trial	NCT01190930	Risk-Adapted Chemotherapy in Treating Younger Patients With Newly Diagnosed Standard-Risk Acute Lymphoblastic Leukemia or Localized B-Lineage Lymphoblastic Lymphoma	8-Jun-2021	Active, not recruiting	33411585	
+clinical_trial	NCT00025259	Chemotherapy With or Without Additional Chemotherapy and/or Radiation Therapy in Treating Children With Newly Diagnosed Hodgkin's Disease	12-Apr-2017	Completed	33512412	
+clinical_trial	NCT00025259	Chemotherapy With or Without Additional Chemotherapy and/or Radiation Therapy in Treating Children With Newly Diagnosed Hodgkin's Disease	12-Apr-2017	Completed	34662378	
+clinical_trial	NCT00346164	Observation, Radiation Therapy, Combination Chemotherapy, and/or Surgery in Treating Young Patients With Soft Tissue Sarcoma	28-Apr-2022	Completed	33548339	
+clinical_trial	NCT00346164	Observation, Radiation Therapy, Combination Chemotherapy, and/or Surgery in Treating Young Patients With Soft Tissue Sarcoma	28-Apr-2022	Completed	34623899	
+clinical_trial	NCT00939770	Crizotinib in Treating Younger Patients With Relapsed or Refractory Solid Tumors or Anaplastic Large Cell Lymphoma	9-Jun-2020	Completed	33568345	
+clinical_trial	NCT01979536	Brentuximab Vedotin or Crizotinib and Combination Chemotherapy in Treating Patients With Newly Diagnosed Stage II-IV Anaplastic Large Cell Lymphoma	24-Feb-2022	Active, not recruiting	33684925	
+clinical_trial	NCT02808650	Prexasertib in Treating Pediatric Patients With Recurrent or Refractory Solid Tumors	15-Apr-2021	Completed	33881209	
+clinical_trial	NCT03126916	Iobenguane I-131 or Crizotinib and Standard Therapy in Treating Younger Patients With Newly-Diagnosed High-Risk Neuroblastoma or Ganglioneuroblastoma	25-Aug-2021	Recruiting	34028986	
+clinical_trial	NCT01175356	Induction Therapy Including 131 I-MIBG and Chemotherapy in Treating Patients With Newly Diagnosed High-Risk Neuroblastoma Undergoing Stem Cell Transplant, Radiation Therapy, and Maintenance Therapy With Isotretinoin	7-Mar-2022	Active, not recruiting	34028986	
+clinical_trial	NCT01407757	Study of Gemtuzumab Ozogamicin Therapy in DNA Samples From Patients With Acute Myeloid Leukemia Treated on COG-AAML0531	19-May-2016	Completed	34048275	
+clinical_trial	NCT02445391	Platinum Based Chemotherapy or Capecitabine in Treating Patients With Residual Triple-Negative Basal-Like Breast Cancer Following Neoadjuvant Chemotherapy	21-May-2020	Recruiting	34092112	
+clinical_trial	NCT00085735	Comparison of Radiation Therapy Regimens in Combination With Chemotherapy in Treating Young Patients With Newly Diagnosed Standard-Risk Medulloblastoma	2-Mar-2022	Active, not recruiting	34110925	
+clinical_trial	NCT00392327	Chemotherapy and Radiation Therapy in Treating Young Patients With Newly Diagnosed, Previously Untreated, High-Risk Medulloblastoma/PNET	6-Jan-2022	Active, not recruiting	34292305	
+clinical_trial	NCT02444884	MLN8237 to Treat Children With Relapsed/Refractory Solid Tumors	9-Feb-2016	Completed	34435684	
+clinical_trial	NCT01154816	Alisertib in Treating Young Patients With Recurrent or Refractory Solid Tumors or Leukemia	13-May-2020	Completed	34435684	
+clinical_trial	NCT02180867	Radiation Therapy With or Without Combination Chemotherapy or Pazopanib Before Surgery in Treating Patients With Newly Diagnosed Non-rhabdomyosarcoma Soft Tissue Sarcomas That Can Be Removed by Surgery	29-Apr-2022	Active, not recruiting	34515544	
+clinical_trial	NCT01516567	Intergroup Trial for Children or Adolescents With Primary Mediastinal Large B-Cell Lymphoma: DA-EPOCH-Rituximab Evaluation	18-Mar-2021	Active, not recruiting	34570655	
+clinical_trial	NCT00372593	Combination Chemotherapy With or Without Gemtuzumab in Treating Young Patients With Newly Diagnosed Acute Myeloid Leukemia	24-Mar-2021	Completed	34596937	
+clinical_trial	NCT01371981	Bortezomib and Sorafenib Tosylate in Treating Patients With Newly Diagnosed Acute Myeloid Leukemia	29-Apr-2022	Active, not recruiting	34596937	
+clinical_trial	NCT01371981	Bortezomib and Sorafenib Tosylate in Treating Patients With Newly Diagnosed Acute Myeloid Leukemia	29-Apr-2022	Active, not recruiting	34855461	
+clinical_trial	NCT01231906	Combination Chemotherapy in Treating Patients With Non-Metastatic Extracranial Ewing Sarcoma	23-May-2022	Active, not recruiting	34652968	
+clinical_trial	NCT02339740	Tretinoin and Arsenic Trioxide in Treating Patients With Untreated Acute Promyelocytic Leukemia	24-Jan-2022	Active, not recruiting	34762093	
+clinical_trial	NCT00980460	Risk-Based Therapy in Treating Younger Patients With Newly Diagnosed Liver Cancer	29-Apr-2022	Active, not recruiting	34874751	
+clinical_trial	NCT02823652	Pre-Test Genetic Education and Remote Genetic Counseling in Communicating Tumor Profiling Results to Patients With Advanced Cancer	2-Aug-2021	Completed	34890045	
+clinical_trial	NCT02981628	Inotuzumab Ozogamicin in Treating Younger Patients With B-Lymphoblastic Lymphoma or Relapsed or Refractory CD22 Positive B Acute Lymphoblastic Leukemia	29-Mar-2022	Active, not recruiting	35007127	
+clinical_trial	NCT00945009	Combination Chemotherapy and Surgery in Treating Young Patients With Wilms Tumor	25-Mar-2022	Active, not recruiting	35072864	
+clinical_trial	NCT00433511	Doxorubicin Hydrochloride, Cyclophosphamide, and Paclitaxel With or Without Bevacizumab in Treating Patients With Lymph Node-Positive or High-Risk, Lymph Node-Negative Breast Cancer	18-May-2022	Active, not recruiting	35226083	
