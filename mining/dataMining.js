@@ -109,7 +109,7 @@ const generateDataModel = async () => {
       // TODO 03/18/2022 adeforge, put this other places
       projects[projectID][key] = (projects[projectID][key] != null && projects[projectID][key] != undefined) ? projects[projectID][key] : "";  // ensure all values are at least empty string
     });
-    projects[projectID].abstract_text = projects[projectID].abstract_text ? projects[projectID].abstract_text.replace(/\n/g, "\\n") : "";  // format the abstract
+    projects[projectID].abstract_text = projects[projectID].abstract_text ? projects[projectID].abstract_text.replace(/\n/g, " ") : "";  // format the abstract
     // Publications key off of this queried_project_id for relationships in Neo4j upon data loading. When publications are scraped, they are scraped with respect to
     //  the activiity code and core id -- we don't have information more granular than that -- an entire set of projects that share a (activity code + core id) are
     //  all treated the same. Therefore, this 'queried_project_id' property must be formatted into just the activity code + core id.
@@ -175,11 +175,7 @@ const generateDataModel = async () => {
     const formatter = new Intl.DateTimeFormat('us', { month: 'short' });
     if (publications[pubID].publish_date != null) {
       let temp = new Date(publications[pubID].publish_date);
-      console.log(publications[pubID].publish_date);
-      console.log(temp);
-      console.log(temp.getFullYear());
       publications[pubID].publish_date = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
-      console.log(publications[pubID].publish_date);
     }
   }
 
