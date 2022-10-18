@@ -761,9 +761,11 @@ Indices:
       release_date:
         type: date
         format: dd-MMM-yyyy||d-MMM-yyyy
+        null_value: 1-Jan-1000
       registration_date:
         type: date
         format: dd-MMM-yyyy||d-MMM-yyyy
+        null_value: 1-Jan-1000
       bioproject_accession:
         type: keyword
       status:
@@ -771,9 +773,11 @@ Indices:
       submission_date:
         type: date
         format: dd-MMM-yyyy||d-MMM-yyyy
+        null_value: 1-Jan-1000
       last_update_date:
         type: date
         format: dd-MMM-yyyy||d-MMM-yyyy
+        null_value: 1-Jan-1000
       queried_project_ids:
         type: keyword
         normalizer: lowercase
