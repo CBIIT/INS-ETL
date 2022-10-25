@@ -788,7 +788,8 @@ Indices:
         normalizer: lowercase
   # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
-        MATCH (dt: geo), (dt:sra), (dt:dbgap)
+        MATCH (dt)
+            WHERE (dt:geo OR dt:sra OR dt:dbgap)
         OPTIONAL MATCH (p:program)<--(pr:project)
             WHERE (p)<--(pr)<--(:publication)<--(dt) OR (pr)<--(dt)
         RETURN DISTINCT
