@@ -569,7 +569,7 @@ Indices:
       queried_project_ids:
         type: keyword
         normalizer: lowercase
-      project_ids:
+      project_id:
         type: keyword
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
@@ -584,7 +584,7 @@ Indices:
             pat.patent_id AS patent_id,
             pat.fulfilled_date AS fulfilled_date,
             COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
-            COLLECT(DISTINCT pr.project_id) AS project_ids
+            COLLECT(DISTINCT pr.project_id) AS project_id
        "
 
   - index_name: clinical_trials
@@ -619,7 +619,7 @@ Indices:
       queried_project_ids:
         type: keyword
         normalizer: lowercase
-      project_ids:
+      project_id:
         type: keyword
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
@@ -637,7 +637,7 @@ Indices:
           ct.last_update_posted AS last_update_posted,
           ct.recruitment_status AS recruitment_status,
           COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
-          COLLECT(DISTINCT pr.project_id) AS project_ids
+          COLLECT(DISTINCT pr.project_id) AS project_id
       "
 
   # - index_name: datasets
@@ -787,7 +787,7 @@ Indices:
       queried_project_ids:
         type: keyword
         normalizer: lowercase
-      project_ids:
+      project_id:
         type: keyword
       link:
         type: keyword
@@ -805,7 +805,7 @@ Indices:
           COLLECT(DISTINCT pr.award_amount) AS award_amount,
           COLLECT(DISTINCT pr.award_amount_category) AS award_amounts,
           COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
-          COLLECT(DISTINCT pr.project_id) AS project_ids,
+          COLLECT(DISTINCT pr.project_id) AS project_id,
           dt.accession AS accession,
           COALESCE(dt.title, dt.study_title) AS title,
           dt.release_date AS release_date,
@@ -844,7 +844,7 @@ Indices:
       queried_project_ids:
         type: keyword
         normalizer: lowercase
-      project_ids:
+      project_id:
         type: keyword
       publication_id:
         type: keyword
@@ -886,7 +886,7 @@ Indices:
           COLLECT(DISTINCT pr.award_amount) AS award_amount,
           COLLECT(DISTINCT pr.award_amount_category) AS award_amounts,
           COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
-          COLLECT(DISTINCT pr.project_id) AS project_ids,
+          COLLECT(DISTINCT pr.project_id) AS project_id,
           pub.publication_id AS publication_id,
           pub.pmc_id AS pmc_id,
           pub.year AS year,
