@@ -11,9 +11,6 @@ geo	GSE93395	Gene expression profile of human multiple myeloma cell line MM.1S a
 geo	GSE86147	Gene expression profiles of MM.1S cells after knockdown of HDAC3 or DNMT1	Public on Jun 01, 2017	28-Aug-2016	25-Mar-2019	28490812
 geo	GSE98705	Analysis of gene expression in p53-null cell types following deletion of Mdm2	Public on Sep 06, 2017	9-May-2017	25-Jul-2021	28576884
 geo	GSE39754	Gene Expression profiling of Multiple Myeloma	Public on Sep 10, 2012	30-Jul-2012	1-Aug-2019	28581522
-geo	GSE100337	IFNγ-dependent tissue immune homeostasis is co-opted in the tumor microenvironment	Public on Jun 29, 2017	21-Jun-2017	26-Mar-2019	28666115
-geo	GSE100050	IFN-gamma-dependent tissue immune homeostasis is co-opted in the tumor microenvironment	Public on Jun 27, 2017	14-Jun-2017	25-Jul-2021	28666115
-geo	GSE98994	IFN-gamma-dependent tissue immune homeostasis is co-opted in the tumor microenvironment	Public on Jun 29, 2017	17-May-2017	25-Jul-2021	28666115
 geo	GSE83503	Key transcription factors altered in multiple myeloma patients revealed by logic programming approach combining gene expression pro ling and regulatory networks	Public on Sep 20, 2017	20-Jun-2016	18-Feb-2019	28835615
 geo	GSE83088	Transcription profile of WT and LKB1 (encoded by the gene Stk11)-deficient Treg cells	Public on Aug 29, 2017	7-Jun-2016	21-Feb-2018	28847007
 geo	GSE100317	Effects of inhibition of topoisomerase I or HSP90 in primary melanoma cell lines	Public on Oct 04, 2017	21-Jun-2017	25-Jul-2021	28878208
@@ -577,8 +574,6 @@ geo	GSE164950	Transient “rest” induces functional reinvigoration and epigene
 geo	GSE164949	Transient “rest” induces functional reinvigoration and epigenetic remodeling in exhausted CAR-T cells Mediate Enhanced Antitumor Activity [RNA-seq]	Public on Jan 16, 2021	15-Jan-2021	18-Apr-2021	33795428
 geo	GSE164947	Transient “rest” induces functional reinvigoration and epigenetic remodeling in exhausted CAR-T cells Mediate Enhanced Antitumor Activity [ATAC-seq, ChIP-seq]	Public on Jan 16, 2021	15-Jan-2021	18-Apr-2021	33795428
 geo	GSE164946	Transient “rest” induces functional reinvigoration and epigenetic remodeling in exhausted CAR-T cells Mediate Enhanced Antitumor Activity [ATAC-seq]	Public on Jan 16, 2021	15-Jan-2021	18-Apr-2021	33795428
-geo	GSE166319	Human MSI colon cancer study	Public on Mar 03, 2021	7-Feb-2021	13-Oct-2021	33837131
-geo	GSE158636	Human MSI colon cancer	Public on Mar 03, 2021	28-Sep-2020	13-Oct-2021	33837131
 geo	GSE142514	Splicing Variation Contributes to Functional Dysregulation of Genes in Acute Myeloid Leukemia	Public on Apr 01, 2021	22-Dec-2019	1-Jul-2021	33876749
 geo	GSE161466	CRISPR genome editing of human dendritic cells (treatments of knockout dendritic cells)	Public on Apr 27, 2021	13-Nov-2020	1-May-2021	33904395
 geo	GSE161401	CRISPR genome editing of human dendritic cells (treatments of unedited dendritic cells)	Public on Apr 27, 2021	13-Nov-2020	1-May-2021	33904395
