@@ -872,10 +872,12 @@ Indices:
         type: keyword
       relative_citation_ratio:
         type: float
+        null_value: -1
       rcr_range:
         type: keyword
       nih_percentile:
         type: float
+        null_value: -1
       doi:
         type: keyword
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
