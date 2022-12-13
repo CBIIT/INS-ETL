@@ -821,9 +821,9 @@ Indices:
             WHEN 'sra' THEN 'SRA'
             WHEN 'dbgap' THEN 'dbGaP' END AS transformed_type,
           CASE LABELS(dt)[0]
-            WHEN 'geo' THEN 'https://www.ncbi.nlm.nih.gov/gds/?term=' + dt.accession
+            WHEN 'geo' THEN 'https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=' + dt.accession
             WHEN 'sra' THEN 'https://trace.ncbi.nlm.nih.gov/Traces/sra/?study=' + dt.accession
-            WHEN 'dbgap' THEN 'https://www.ncbi.nlm.nih.gov/gap/?term=' + dt.accession END AS link
+            WHEN 'dbgap' THEN 'https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=' + dt.accession END AS link
       "
 
   - index_name: publications
