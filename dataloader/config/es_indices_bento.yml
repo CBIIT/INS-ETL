@@ -569,6 +569,8 @@ Indices:
       queried_project_ids:
         type: keyword
         normalizer: lowercase
+      project_id:
+        type: keyword
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
         MATCH (p:program)<--(pr:project)<--(pat)
@@ -581,7 +583,8 @@ Indices:
             COLLECT(DISTINCT pr.award_amount_category) AS award_amounts,
             pat.patent_id AS patent_id,
             pat.fulfilled_date AS fulfilled_date,
-            COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids
+            COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
+            COLLECT(DISTINCT pr.project_id) AS project_id
        "
 
   - index_name: clinical_trials
@@ -616,6 +619,8 @@ Indices:
       queried_project_ids:
         type: keyword
         normalizer: lowercase
+      project_id:
+        type: keyword
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
         MATCH (ct:clinical_trial)
@@ -631,7 +636,8 @@ Indices:
           ct.title AS title,
           ct.last_update_posted AS last_update_posted,
           ct.recruitment_status AS recruitment_status,
-          COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids
+          COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
+          COLLECT(DISTINCT pr.project_id) AS project_id
       "
 
   # - index_name: datasets
@@ -761,9 +767,11 @@ Indices:
       release_date:
         type: date
         format: dd-MMM-yyyy||d-MMM-yyyy
+        null_value: 1-Jan-1000
       registration_date:
         type: date
         format: dd-MMM-yyyy||d-MMM-yyyy
+        null_value: 1-Jan-1000
       bioproject_accession:
         type: keyword
       status:
@@ -771,12 +779,16 @@ Indices:
       submission_date:
         type: date
         format: dd-MMM-yyyy||d-MMM-yyyy
+        null_value: 1-Jan-1000
       last_update_date:
         type: date
         format: dd-MMM-yyyy||d-MMM-yyyy
+        null_value: 1-Jan-1000
       queried_project_ids:
         type: keyword
         normalizer: lowercase
+      project_id:
+        type: keyword
       link:
         type: keyword
       transformed_type:
@@ -784,8 +796,10 @@ Indices:
         normalizer: lowercase
   # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
-        MATCH (p:program)<--(pr:project)<--(:publication)<--(dt)
-          WHERE (dt:geo OR dt:sra OR dt:dbgap)
+        MATCH (dt)
+            WHERE (dt:geo OR dt:sra OR dt:dbgap)
+        OPTIONAL MATCH (p:program)<--(pr:project)
+            WHERE (p)<--(pr)<--(:publication)<--(dt) OR (pr)<--(dt)
         RETURN DISTINCT
           COLLECT(DISTINCT p.program_id) AS programs,
           COLLECT(DISTINCT pr.lead_doc) AS docs,
@@ -793,6 +807,7 @@ Indices:
           COLLECT(DISTINCT pr.award_amount) AS award_amount,
           COLLECT(DISTINCT pr.award_amount_category) AS award_amounts,
           COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
+          COLLECT(DISTINCT pr.project_id) AS project_id,
           dt.accession AS accession,
           COALESCE(dt.title, dt.study_title) AS title,
           dt.release_date AS release_date,
@@ -806,9 +821,9 @@ Indices:
             WHEN 'sra' THEN 'SRA'
             WHEN 'dbgap' THEN 'dbGaP' END AS transformed_type,
           CASE LABELS(dt)[0]
-            WHEN 'geo' THEN 'https://www.ncbi.nlm.nih.gov/gds/?term=' + dt.accession
+            WHEN 'geo' THEN 'https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=' + dt.accession
             WHEN 'sra' THEN 'https://trace.ncbi.nlm.nih.gov/Traces/sra/?study=' + dt.accession
-            WHEN 'dbgap' THEN 'https://www.ncbi.nlm.nih.gov/gap/?term=' + dt.accession END AS link
+            WHEN 'dbgap' THEN 'https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=' + dt.accession END AS link
       "
 
   - index_name: publications
@@ -831,6 +846,8 @@ Indices:
       queried_project_ids:
         type: keyword
         normalizer: lowercase
+      project_id:
+        type: keyword
       publication_id:
         type: keyword
       pmc_id:
@@ -855,10 +872,12 @@ Indices:
         type: keyword
       relative_citation_ratio:
         type: float
+        null_value: -1
       rcr_range:
         type: keyword
       nih_percentile:
         type: float
+        null_value: -1
       doi:
         type: keyword
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
@@ -871,6 +890,7 @@ Indices:
           COLLECT(DISTINCT pr.award_amount) AS award_amount,
           COLLECT(DISTINCT pr.award_amount_category) AS award_amounts,
           COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
+          COLLECT(DISTINCT pr.project_id) AS project_id,
           pub.publication_id AS publication_id,
           pub.pmc_id AS pmc_id,
           pub.year AS year,

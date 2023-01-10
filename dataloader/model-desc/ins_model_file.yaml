@@ -100,6 +100,8 @@ Relationships:  # tie everything back to a project, projects are tied to program
     Ends:
       - Src: dbgap
         Dst: publication
+      - Src: dbgap  # dbGaP depositions, adeforge 10/24/2022
+        Dst: project
     Props: null
   has_clinical_trial:
     Mul: many_to_many
