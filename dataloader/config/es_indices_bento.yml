@@ -530,9 +530,18 @@ Indices:
         type: keyword
       award_amounts:
         type: keyword
+      program_name:
+        type: keyword
+      program_website:
+        type: keyword
+      num_projects:
+        type: integer
+      num_publications:
+        type: integer
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
         MATCH (p:program)<--(pr:project)
+        OPTIONAL MATCH (pr)<--(pub:publication)
         RETURN DISTINCT
           p.program_id AS programs,
           COLLECT(DISTINCT pr.lead_doc) AS lead_doc,
@@ -540,7 +549,11 @@ Indices:
           COLLECT(DISTINCT pr.fiscal_year) AS fiscal_year,
           COLLECT(DISTINCT pr.fiscal_year) AS fiscal_years,
           COLLECT(DISTINCT pr.award_amount_category) AS award_amount,
-          COLLECT(DISTINCT pr.award_amount_category) AS award_amounts
+          COLLECT(DISTINCT pr.award_amount_category) AS award_amounts,
+          p.program_name AS program_name,
+          p.program_website AS program_website,
+          COUNT(DISTINCT pr) AS num_projects,
+          COUNT(DISTINCT pub) AS num_publications
       "
 
   - index_name: patents
