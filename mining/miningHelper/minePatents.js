@@ -19,13 +19,20 @@ const prepareSearchTerms = (projects) => {
     for (let i = 0; i < keys.length; i++) {
         let project_core_id = getCoreId(keys[i]);
         let project_activity_code = getActivityCode(keys[i]);
+        let award_notice_date = projects[keys[i]].award_notice_date
 
         if (!cluster[project_core_id]) {  // if we haven't seen this core id yet, make a new entry
-            cluster[project_core_id] = {"term": project_core_id, "queried_project_id": [project_activity_code+project_core_id]};
+            cluster[project_core_id] = {"term": project_core_id, "queried_project_id": [project_activity_code+project_core_id], "award_notice_date": award_notice_date};
         }
         else {  // if we have seen it, append a project
             if (cluster[project_core_id].queried_project_id.indexOf(project_activity_code+project_core_id) === -1) {
                 cluster[project_core_id].queried_project_id.push(project_activity_code+project_core_id);
+                // keep the oldest date in the cluster
+                const current = new Date(cluster[project_core_id].award_notice_date);
+                const potential = new Date(projects[keys[i]].award_notice_date);
+                if (potential < current) {
+                    cluster[project_core_id].award_notice_date = projects[keys[i]].award_notice_date;
+                }
             }
         }
     }
@@ -34,11 +41,11 @@ const prepareSearchTerms = (projects) => {
 
 const run = async (projects, patents) => {
     const cluster = prepareSearchTerms(projects);
-    const from_date = new Date("2017-01-01");
     const keys = Object.keys(cluster);
     let counter = 0;
-    console.log("Querying patent publications...");
+    console.log("Querying patents...");
     for (let i = 0; i < keys.length; i++) {
+        const from_date = new Date(cluster[keys[i]].award_notice_date);
         const term = "*" + cluster[keys[i]].term + "*";
         post_body["query"]["q"] = term;
         post_body["query"]["queryName"] = term;

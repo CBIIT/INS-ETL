@@ -27,7 +27,7 @@ readXlsxFile(file_path, { sheet: 1 }).then(async (rows) => {
         }
     });
 
-    await dataMining.run(projects);
+    await dataMining.run(projects);  // change me to dataMiningPublicationsOnly to only scrape publications, usually for exploratory reasons with new project ids
     console.timeEnd('full_run');
 
     console.log(`End of processing, finished data gathering for ${Object.keys(projects).length} projects`);

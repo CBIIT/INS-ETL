@@ -4,11 +4,11 @@ Config:
 
   neo4j:
     # Location of Neo4j server, e.g., bolt://127.0.0.1:7687, can be overridden by -i/--uir argument
-    uri: bolt://127.0.0.1:7687
+    uri: 
     # Neo4j username, can be overridden by -u/--user argument
-    user: neo4j
+    user: 
     # Neo4j password, if not set here, will try to read from environment variable NEO_PASSWORD. CLI argument -p/--password will overwrite either settings
-    password: 123456
+    password: 
 
   # Schema files' locations, usually two file, can be overridden by -s/--schema argument
   schema:
@@ -46,6 +46,6 @@ Config:
   # S3 folder for dataset, will be overridden by --s3-folder argument
   s3_folder:
   # Loading mode, can be UPSERT_MODE, NEW_MODE or DELETE_MODE, default is UPSERT_MODE, can be overridden by -m/--mode argument
-  loading_mode: UPSERT_MODE
+  loading_mode: NEW_MODE
   # Location of dataset, can be overridden by --dataset argument
   dataset: data
