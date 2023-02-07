@@ -75,26 +75,47 @@ const run = async (publications, sras) => {
               publications[pmId].sra_accession.push(str);                //  such that an SRP number is related to an SRA data set
             }
             // begin getting SRP details, including total number of runs
-            console.log(apis.pmSrpDetailSite + srp);
-            let dd = await fetch(apis.pmSrpDetailSite + srp, true);  // true is keep trying
+            console.log(apis.pmSrpDetailEndpoint + srp);
+            let dd = await fetch(apis.pmSrpDetailEndpoint + srp, true);  // true is keep trying
             if(dd !== "failed"){
-              if (dd.indexOf("<div class=\"error\">SRA Study " + srp + " does not exist</div>") === -1) {
+              if (dd.indexOf("SRA Study " + srp + " does not exist") === -1) {
                 // get metric related to number of runs vs number of SRX results for publication
                 let temp = dd;
-                let idx_total_runs = temp.indexOf("href=\"https://www.ncbi.nlm.nih.gov//sra/?term=" + srp + "\">");  // 48 characters plus srp string length
-                temp = temp.substring(idx_total_runs + 48 + srp.length);
-                idx_total_runs = temp.indexOf("<");
-                run_results = parseInt(temp.substring(0,idx_total_runs));
+                // let idx_total_runs = temp.indexOf("href=\"https://www.ncbi.nlm.nih.gov//sra/?term=" + srp + "\">");  // 48 characters plus srp string length
+                // temp = temp.substring(idx_total_runs + 48 + srp.length);
+                // idx_total_runs = temp.indexOf("<");
+                // run_results = parseInt(temp.substring(0,idx_total_runs));
+
+                // FOR PARSING XML
+                let idx_total_runs = temp.indexOf("run_cnt=\"");  // 9 characters
+                temp = temp.substring(idx_total_runs + 9);
+                idx_total_runs = temp.indexOf("\"");
+                temp = temp.substring(0, idx_total_runs);
+                run_results = parseInt(temp);
 
                 sras[srp] = {};
-                let idx = dd.indexOf("h1>");  // 3 characters
-                dd = dd.substring(idx + 3);
-                let idx_end = dd.indexOf("</h1>");
-                sras[srp].study_title = dd.substring(0, idx_end);
-                idx = dd.indexOf("bioproject\/");  // 11 characters
-                dd = dd.substring(idx);
-                idx_end = dd.indexOf("\">");
-                sras[srp].bioproject_accession = dd.substring(11, idx_end);
+                // let idx = dd.indexOf("h1>");  // 3 characters
+                // dd = dd.substring(idx + 3);
+                // let idx_end = dd.indexOf("</h1>");
+
+                // FOR PARSING XML
+                temp = dd;
+                let idx = temp.indexOf("<STUDY_TITLE>");  // 13 characters
+                temp = temp.substring(idx + 13)
+                let idx_end = temp.indexOf("</STUDY_TITLE>");
+
+                sras[srp].study_title = temp.substring(0, idx_end);
+                // idx = dd.indexOf("bioproject\/");  // 11 characters
+                // dd = dd.substring(idx);
+                // idx_end = dd.indexOf("\">");
+
+                // FOR PARSING XML
+                temp = dd;
+                idx = temp.indexOf("<EXTERNAL_ID namespace=\"BioProject\" label=\"primary\">");  // 52 characters
+                temp = temp.substring(idx + 52);
+                idx_end = temp.indexOf("</EXTERNAL_ID>");
+
+                sras[srp].bioproject_accession = temp.substring(0, idx_end);
                 console.log(apis.pmBioprojectDetailSite + sras[srp].bioproject_accession);
                 let bioproject_detail = await fetchWithStatusCheck(apis.pmBioprojectDetailSite + sras[srp].bioproject_accession, 404);  // keep trying unless 404
                 if(bioproject_detail){

@@ -30,7 +30,7 @@ const run = async (publications, dbgaps) => {
             let pos = 0;
             let temp = dbgap_detail;
             pos  = temp.indexOf("name=\"study-name\"");  // 17 characters
-            temp = temp.substring(pos + 19);  
+            temp = temp.substring(pos + 17);  
             pos = temp.indexOf("</span>");
             dbgaps[dbgap_id].title = temp.substring(0, pos);
 
