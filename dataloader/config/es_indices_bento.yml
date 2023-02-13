@@ -552,7 +552,7 @@ Indices:
           COLLECT(DISTINCT pr.award_amount_category) AS award_amounts,
           p.program_name AS program_name,
           p.program_website AS program_website,
-          COUNT(DISTINCT pr) AS num_projects,
+          COUNT(DISTINCT pr.queried_project_id) AS num_projects,
           COUNT(DISTINCT pub) AS num_publications
       "
 
