@@ -993,6 +993,8 @@ Indices:
           sort:
             type: keyword
             normalizer: lowercase
+      queried_project_id:
+        type: keyword
       application_id:
         type: keyword
         fields:
@@ -1082,6 +1084,7 @@ Indices:
           SUBSTRING(pr.project_id, 1, 3) AS activity_code,
           SUBSTRING(pr.project_id, 6, 6) AS serial_number,
           pr.project_id AS project_id,
+          pr.queried_project_id AS queried_project_id,
           pr.application_id AS application_id,
           pr.project_title AS project_title,
           pr.project_type AS project_type,
