@@ -1,0 +1,7 @@
+type	accession	title	release_date	publication.publication_id
+dbgap	phs001041.v1.p1	Genetic Basis for Clinical Response to CTLA-4 Blockade in Melanoma	10-Jun-2016	29132144
+dbgap	phs000980.v1.p1	Mutational Landscape Determines Sensitivity to PD-1 Blockade in Non-Small Cell Lung Cancer	19-Nov-2015	29132144
+dbgap	phs001577.v1.p1	Structural Alterations Driving Castration-Resistant Prostate Cancer Revealed by Linked-Read Genome Sequencing	12-Sep-2018	29610475
+dbgap	phs000450.v3.p1	Molecular Subtypes of Diffuse Large B-cell Lymphoma are Associated with Distinct Pathogenic Mechanisms and Outcomes	11-Oct-2018	29713087
+dbgap	phs001623.v1.p1	Genomic Analysis of Head and Neck Cancers	23-Oct-2018	30134176
+dbgap	phs001234.v1.p1	Targeted Sequencing of Primary ER-positive Breast Tumors Treated with 5 Years of Tamoxifen	16-Oct-2018	30181556

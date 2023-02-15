@@ -32,69 +32,75 @@ const generateDataModel = async () => {
     //GEO
     for (let g = 0; g < publications[pid].geo_accession.length; g++) {
       let geo = publications[pid].geo_accession[g];
-      if (geo && geos[geo]) {
+      if (geo && geos[geo]) {  // normal
+      // if (geo) {  // modified
+      //   geos[geo] = {};  // modified because we're skipping getting GEO details for this
         if (!geos[geo].publications) {
           geos[geo].publications = [];
         }
         geos[geo].publications.push(pid);
-        // if (!geos[geo].projects) {
-        //   geos[geo].projects = [];
-        // }
-        // publications[pid].projects.forEach(project => {
-        //   geos[geo].projects.push(project);
-        // });
-        geos[geo].projects = null;  // make sure there are no associated projects
+        if (!geos[geo].projects) {
+          geos[geo].projects = [];
+        }
+        publications[pid].projects.forEach(project => {
+          geos[geo].projects.push(project);
+        });
+        // geos[geo].projects = null;  // make sure there are no associated projects
       }
     }
     //SRA
     for (let s = 0; s < publications[pid].sra_accession.length; s++) {
       let sra = publications[pid].sra_accession[s];
-      if (sra && sras[sra]) {
+      if (sra && sras[sra]) {  // normal
+      // if (sra) {  // modified
+      //   sras[sra] = {};  // modified because we're skipping getting SRA details for this
         if (!sras[sra].publications) {
           sras[sra].publications = [];
         }
         sras[sra].publications.push(pid);
-        // if (!sras[sra].projects) {
-        //   sras[sra].projects = [];
-        // }
-        // publications[pid].projects.forEach(project => {
-        //   sras[sra].projects.push(project);
-        // });
-        sras[sra].projects = null;  // make sure there are no associated projects
+        if (!sras[sra].projects) {
+          sras[sra].projects = [];
+        }
+        publications[pid].projects.forEach(project => {
+          sras[sra].projects.push(project);
+        });
+        // sras[sra].projects = null;  // make sure there are no associated projects
       }
     }
     //dbGap
     for (let d = 0; d < publications[pid].dbgap_accession.length; d++) {
       let dbgap = publications[pid].dbgap_accession[d];
-      if (dbgap && dbgaps[dbgap]) {
+      if (dbgap && dbgaps[dbgap]) {  // normal
+      // if (dbgap) {  // modified
+      //   dbgaps[dbgap] = {};  // modified because we're skipping getting dbGaP details for this
         if (!dbgaps[dbgap].publications) {
           dbgaps[dbgap].publications = [];
         }
         dbgaps[dbgap].publications.push(pid);
-        // if (!dbgaps[dbgap].projects) {
-        //   dbgaps[dbgap].projects = [];
-        // }
-        // publications[pid].projects.forEach(project => {
-        //   dbgaps[dbgap].projects.push(project);
-        // });
-        dbgaps[dbgap].projects = null;  // make sure there are no associated projects
+        if (!dbgaps[dbgap].projects) {
+          dbgaps[dbgap].projects = [];
+        }
+        publications[pid].projects.forEach(project => {
+          dbgaps[dbgap].projects.push(project);
+        });
+        // dbgaps[dbgap].projects = null;  // make sure there are no associated projects
       }
     }
   }
   // associate projects for ClinicalTrials  // 03/11/22 adeforge, we shouldn't be deriving project relationships, keep what was populated during scraping
-  // let keys = Object.keys(clinicalTrials);
-  // for (let i = 0; i < keys.length; i++) {
-  //   if (clinicalTrials[keys[i]].publications) {
-  //     clinicalTrials[keys[i]].publications.forEach(pub => {
-  //       publications[pub].projects.forEach(proj => {
-  //         if (!clinicalTrials[keys[i]].projects) {
-  //           clinicalTrials[keys[i]].projects = [];
-  //         }
-  //         clinicalTrials[keys[i]].projects.push(proj);  // there may be duplicates if multiple publications come from the same project
-  //       });
-  //     });
-  //   }
-  // }
+  let keys = Object.keys(clinicalTrials);
+  for (let i = 0; i < keys.length; i++) {
+    if (clinicalTrials[keys[i]].publications) {
+      clinicalTrials[keys[i]].publications.forEach(pub => {
+        publications[pub].projects.forEach(proj => {
+          if (!clinicalTrials[keys[i]].projects) {
+            clinicalTrials[keys[i]].projects = [];
+          }
+          clinicalTrials[keys[i]].projects.push(proj);  // there may be duplicates if multiple publications come from the same project
+        });
+      });
+    }
+  }
   
   // format projects fields for writing to file
   for (let projectID in projects) {
@@ -103,7 +109,7 @@ const generateDataModel = async () => {
       // TODO 03/18/2022 adeforge, put this other places
       projects[projectID][key] = (projects[projectID][key] != null && projects[projectID][key] != undefined) ? projects[projectID][key] : "";  // ensure all values are at least empty string
     });
-    projects[projectID].abstract_text = projects[projectID].abstract_text ? projects[projectID].abstract_text.replace(/\n/g, "\\n") : "";  // format the abstract
+    projects[projectID].abstract_text = projects[projectID].abstract_text ? projects[projectID].abstract_text.replace(/\n/g, " ") : "";  // format the abstract
     // Publications key off of this queried_project_id for relationships in Neo4j upon data loading. When publications are scraped, they are scraped with respect to
     //  the activiity code and core id -- we don't have information more granular than that -- an entire set of projects that share a (activity code + core id) are
     //  all treated the same. Therefore, this 'queried_project_id' property must be formatted into just the activity code + core id.
@@ -127,12 +133,19 @@ const generateDataModel = async () => {
     // date formatting DD-AbrevMonth-YYYY, 25-Jan-2017
     const date_format = '%s-%s-%s';
     const formatter = new Intl.DateTimeFormat('us', { month: 'short' });
-    let temp = new Date(projects[projectID].award_notice_date);
-    projects[projectID].award_notice_date = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
-    temp = new Date(projects[projectID].project_start_date);
-    projects[projectID].project_start_date = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
-    temp = new Date(projects[projectID].project_end_date);
-    projects[projectID].project_end_date = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
+    let temp = null;
+    if (projects[projectID].award_notice_date != null) {
+      temp = new Date(projects[projectID].award_notice_date);
+      projects[projectID].award_notice_date = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
+    }
+    if (projects[projectID].project_start_date != null) {
+      temp = new Date(projects[projectID].project_start_date);
+      projects[projectID].project_start_date = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
+    }
+    if (projects[projectID].project_end_date != null) {
+      temp = new Date(projects[projectID].project_end_date);
+      projects[projectID].project_end_date = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
+    }
   }
 
   // format publications fields for writing to file
@@ -160,10 +173,13 @@ const generateDataModel = async () => {
     // date formatting DD-AbrevMonth-YYYY, 25-Jan-2017
     const date_format = '%s-%s-%s';
     const formatter = new Intl.DateTimeFormat('us', { month: 'short' });
-    let temp = new Date(publications[pubID].publish_date);
-    publications[pubID].publish_date = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
+    if (publications[pubID].publish_date != null) {
+      let temp = new Date(publications[pubID].publish_date);
+      publications[pubID].publish_date = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
+    }
   }
 
+  // adeforge 07/12/2022, all commented in this section due to modification and shouldn't be permanent
   // format GEO fields for writing to file
   for (let geoID in geos) {
     let keys = Object.keys(geos[geoID]);
@@ -182,6 +198,7 @@ const generateDataModel = async () => {
     geos[geoID].last_update_date = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
   }
 
+  // adeforge 07/12/2022, all commented in this section due to modification and shouldn't be permanent
   // format SRA fields for writing to file
   for (let sraID in sras) {
     let keys = Object.keys(sras[sraID]);
@@ -198,6 +215,7 @@ const generateDataModel = async () => {
     sras[sraID].registration_date = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
   }
 
+  // adeforge 07/12/2022, all commented in this section due to modification and shouldn't be permanent
   // format dbGaP fields for writing to file
   for (let dbgapID in dbgaps) {
     let keys = Object.keys(dbgaps[dbgapID]);
@@ -214,6 +232,7 @@ const generateDataModel = async () => {
     dbgaps[dbgapID].release_date = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
   }
 
+  // adeforge 07/12/2022, all commented in this section due to modification and shouldn't be permanent
   // format clinicalTrial fields for writing to file
   for (let clinicalTrialID in clinicalTrials) {
     let keys = Object.keys(clinicalTrials[clinicalTrialID]);
@@ -240,8 +259,10 @@ const generateDataModel = async () => {
     // date formatting DD-AbrevMonth-YYYY, 25-Jan-2017
     const date_format = '%s-%s-%s';
     const formatter = new Intl.DateTimeFormat('us', { month: 'short' });
-    let temp = new Date(patents[patentID].fulfilled_date);
-    patents[patentID].fulfilled_date = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
+    if (patents[patentID].fulfilled_date != null) {
+      let temp = new Date(patents[patentID].fulfilled_date);
+      patents[patentID].fulfilled_date = util.format(date_format,temp.getDate(),formatter.format(temp).toString(),temp.getFullYear());
+    }
     // define patent_grants vs patent_applications
     const temp_arr = patentID.split("-");
     if (temp_arr[temp_arr.length - 1].indexOf("A1") > -1) {
@@ -405,17 +426,17 @@ const run = async (projectsTodo) => {
   let columns = ["type", "project_id", "queried_project_id","application_id", "fiscal_year", "project_title", "project_type", "abstract_text", "keywords",
    "org_name", "org_city", "org_state", "org_country", "principal_investigators", "lead_doc", "program_officers", "award_amount", "award_amount_category",
     "nci_funded_amount", "award_notice_date", "project_start_date", "project_end_date", "full_foa", "program.program_id"];
-  let filepath = 'digest_data/project.tsv';
-  writeToDataDigestFile(filepath, columns, projects, "project");
+  // let filepath = 'digest_data/project.tsv';
+  // writeToDataDigestFile(filepath, columns, projects, "project");
   filepath = 'data/project.tsv';
   writeToDataFile(filepath, columns, projects, "project");
 
   // publications file
   // writeToPublicationFile();
-  columns = ["type","publication_id", "year", "journal", "title", "authors",
-   "publish_date", "citation_count", "citation_count_category", "relative_citation_ratio", "rcr_range", "nih_percentile", "doi", "project.queried_project_id"];
-  filepath = 'digest_data/publication.tsv';
-  writeToDataDigestFile(filepath, columns, publications, "publication");
+  // columns = ["type","publication_id", "year", "journal", "title", "authors",
+  //  "publish_date", "citation_count", "citation_count_category", "relative_citation_ratio", "rcr_range", "nih_percentile", "doi", "project.queried_project_id"];
+  // filepath = 'digest_data/publication.tsv';
+  // writeToDataDigestFile(filepath, columns, publications, "publication");
   columns = ["type","publication_id", "year", "journal", "title", "authors",
   "publish_date", "citation_count", "citation_count_category","relative_citation_ratio", "rcr_range", "nih_percentile", "doi", "project.queried_project_id"];
   filepath = 'data/publication.tsv';
@@ -423,52 +444,56 @@ const run = async (projectsTodo) => {
 
   // GEO file
   // writeToGEOFile();
-  columns = ["type","accession","title", "status", "submission_date","last_update_date", "project.queried_project_id", "publication.publication_id"];
-  filepath = 'digest_data/geo.tsv';
-  writeToDataDigestFile(filepath, columns, geos, "geo");
-  columns = ["type","accession","title", "status", "submission_date","last_update_date", "publication.publication_id"];
+  // columns = ["type","accession","title", "status", "submission_date","last_update_date", "project.queried_project_id", "publication.publication_id"];
+  // filepath = 'digest_data/geo.tsv';
+  // writeToDataDigestFile(filepath, columns, geos, "geo");
+  columns = ["type","accession","title", "status", "submission_date","last_update_date", "publication.publication_id"];  // normal
+  // columns = ["type","accession","publication.publication_id"];  // modified
   filepath = 'data/geo.tsv';
   writeToDataFile(filepath, columns, geos, "geo", hasProjects=false, hasPublications=true);
 
   // SRA file
   // writeToSRAFile();
-  columns = ["type","accession","study_title", "bioproject_accession", "registration_date", "project.queried_project_id", "publication.publication_id"];
-  filepath = 'digest_data/sra.tsv';
-  writeToDataDigestFile(filepath, columns, sras, "sra");
+  // columns = ["type","accession","study_title", "bioproject_accession", "registration_date", "project.queried_project_id", "publication.publication_id"];
+  // filepath = 'digest_data/sra.tsv';
+  // writeToDataDigestFile(filepath, columns, sras, "sra");
   columns = ["type","accession","study_title", "bioproject_accession", "registration_date", "publication.publication_id"];
+  // columns = ["type","accession","publication.publication_id"];  // modified
   filepath = 'data/sra.tsv';
   writeToDataFile(filepath, columns, sras, "sra", hasProjects=false, hasPublications=true);
 
   // dbGaP file
   // writeToDBGapFile();
-  columns = ["type", "accession", "title", "release_date", "project.queried_project_id", "publication.publication_id"];
-  filepath = 'digest_data/dbgap.tsv';
-  writeToDataDigestFile(filepath, columns, dbgaps, "dbgap");
+  // columns = ["type", "accession", "title", "release_date", "project.queried_project_id", "publication.publication_id"];
+  // filepath = 'digest_data/dbgap.tsv';
+  // writeToDataDigestFile(filepath, columns, dbgaps, "dbgap");
   columns = ["type", "accession", "title", "release_date", "publication.publication_id"];
+  // columns = ["type", "accession","publication.publication_id"];  // modified
   filepath = 'data/dbgap.tsv';
   writeToDataFile(filepath, columns, dbgaps, "dbgap", hasProjects=false, hasPublications=true);
 
   // clinical trials file
   // writeToClinicalTrialsFile();
-  columns = ["type", "clinical_trial_id", "title", "last_update_posted", "recruitment_status", "project.queried_project_id", "publication.publication_id"];
-  filepath = 'digest_data/clinical_trial.tsv';
-  writeToDataDigestFile(filepath, columns, clinicalTrials, "clinical_trial");
+  // columns = ["type", "clinical_trial_id", "title", "last_update_posted", "recruitment_status", "project.queried_project_id", "publication.publication_id"];
+  // filepath = 'digest_data/clinical_trial.tsv';
+  // writeToDataDigestFile(filepath, columns, clinicalTrials, "clinical_trial");
   columns = ["type", "clinical_trial_id", "title", "last_update_posted", "recruitment_status", "publication.publication_id", "project.queried_project_id"];
+  // columns = ["type", "clinical_trial_id", "publication.publication_id", "project.queried_project_id"];  // modified
   filepath = 'data/clinical_trial.tsv';
   writeToDataFile(filepath, columns, clinicalTrials, "clinical_trial", hasProjects=true, hasPublications=true);
 
   // patent application files
-  columns = ["type", "patent_id", "fulfilled_date", "project.queried_project_id"];
-  filepath = 'digest_data/patent_application.tsv';
-  writeToDataDigestFile(filepath, columns, patent_applications, "patent_application");
+  // columns = ["type", "patent_id", "fulfilled_date", "project.queried_project_id"];
+  // filepath = 'digest_data/patent_application.tsv';
+  // writeToDataDigestFile(filepath, columns, patent_applications, "patent_application");
   columns = ["type", "patent_id", "fulfilled_date", "project.queried_project_id"];
   filepath = 'data/patent_application.tsv';
   writeToDataFile(filepath, columns, patent_applications, "patent_application", hasProjects=true, hasPublications=false);
 
   // granted patent files
-  columns = ["type", "patent_id", "fulfilled_date", "project.queried_project_id"];
-  filepath = 'digest_data/patent_grant.tsv';
-  writeToDataDigestFile(filepath, columns, patent_grants, "granted_patent");  // granted_patent is the node type name
+  // columns = ["type", "patent_id", "fulfilled_date", "project.queried_project_id"];
+  // filepath = 'digest_data/patent_grant.tsv';
+  // writeToDataDigestFile(filepath, columns, patent_grants, "granted_patent");  // granted_patent is the node type name
   columns = ["type", "patent_id", "fulfilled_date", "project.queried_project_id"];
   filepath = 'data/patent_grant.tsv';
   writeToDataFile(filepath, columns, patent_grants, "granted_patent", hasProjects=true, hasPublications=false);  // granted_patent is the node type name
