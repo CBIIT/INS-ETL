@@ -29,6 +29,7 @@ Nodes:
       - project_start_date
       - project_end_date
       - full_foa
+      - representative
   publication:
     Props:
       - publication_id
