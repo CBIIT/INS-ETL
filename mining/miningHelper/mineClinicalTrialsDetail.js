@@ -22,12 +22,12 @@ const run = async (clinicalTrials) => {
       let idx = d.indexOf("tr-solo_record");
       d = d.substring(idx + 16);
       idx = d.indexOf("</h1>");
-      clinicalTrials[clinicaltrialID].title = d.substring(0, idx);
+      clinicalTrials[clinicaltrialID].title = d.substring(0, idx).replace(/(\r\n|\r|\n|\t)/gm, "");
       idx = d.indexOf("data-term=\"recruitment status\"");
       d = d.substring(idx);
       idx = d.indexOf("</span>");
       d = d.substring(idx + 7);
-      let status = d.substring(0, d.indexOf("<div")).replace(" :", "").trim();
+      let status = d.substring(0, d.indexOf("<div")).replace(" :", "").trim().replace(/(\r\n|\r|\n|\t|\s)/gm, "");
       if(status.indexOf("Terminated") > -1){
         clinicalTrials[clinicaltrialID].recruitment_status = "Terminated";
       }
@@ -45,7 +45,7 @@ const run = async (clinicalTrials) => {
       idx = d.indexOf("</span>");
       d = d.substring(idx + 7);
       let last_update_posted = d.substring(0, d.indexOf("</div"));
-      clinicalTrials[clinicaltrialID].last_update_posted = last_update_posted.replace(" :", "").trim();
+      clinicalTrials[clinicaltrialID].last_update_posted = last_update_posted.replace(" :", "").trim().replace(/(\r\n|\r|\n|\t|\s)/gm, "");
     }
     counter++;
   }

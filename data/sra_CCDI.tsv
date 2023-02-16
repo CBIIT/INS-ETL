@@ -1,5 +1,0 @@
-type	accession	study_title	bioproject_accession	registration_date	publication.publication_id
-sra	SRP324312	Germline RUNX1 Variation and Predisposition to Childhood Acute Lymphoblastic-ChIP-Seq	PRJNA738285	15-Jun-2021	34166225
-sra	SRP349414	Transcriptomic data of cord blood CD34+ cells as controls of transcriptome cohort of pediatric acute myeloid leukemia	PRJNA786561	6-Dec-2021	35176137
-sra	SRP357187	Multi-omics analysis of RNA binding, splicing and turnover alterations induced by mutant U2AF1 in myeloid malignancies.	PRJNA801503	28-Jan-2022	35303483
-sra	SRP324311	Germline RUNX1 Variation and Predisposition to Childhood Acute Lymphoblastic-RNA-Seq	PRJNA738284	15-Jun-2021	34166225
