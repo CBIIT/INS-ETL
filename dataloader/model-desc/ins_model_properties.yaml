@@ -157,6 +157,12 @@ PropDefinitions:
     Type: string
     Req: false
     Private: false
+  representative:
+    Desc: Used for designating representative grant.  # adeforge 02/16/2023
+    Src: None
+    Type: boolean
+    Req: true
+    Private: false
   #properties of publication:
   publication_id:
     Desc: TBD.
