@@ -52,7 +52,7 @@ Indices:
           COLLECT(DISTINCT pr.award_amount_category) AS award_amounts,
           p.program_name AS program_name,
           p.program_website AS program_website,
-          COUNT(DISTINCT pr) AS num_projects,
+          COUNT(DISTINCT pr.queried_project_id) AS num_projects,
           COUNT(DISTINCT pub) AS num_publications
       "
 
@@ -472,6 +472,8 @@ Indices:
           sort:
             type: keyword
             normalizer: lowercase
+      queried_project_id:
+        type: keyword
       application_id:
         type: keyword
         fields:
@@ -548,6 +550,8 @@ Indices:
             type: search_as_you_type
       type:
         type: keyword
+      representative:
+        type: boolean
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
         MATCH (pr:project)
@@ -561,6 +565,7 @@ Indices:
           SUBSTRING(pr.project_id, 1, 3) AS activity_code,
           SUBSTRING(pr.project_id, 6, 6) AS serial_number,
           pr.project_id AS project_id,
+          pr.queried_project_id AS queried_project_id,
           pr.application_id AS application_id,
           pr.project_title AS project_title,
           pr.project_type AS project_type,
@@ -577,5 +582,6 @@ Indices:
           pr.project_start_date AS project_start_date,
           pr.project_end_date AS project_end_date,
           pr.full_foa As full_foa,
-          LABELS(pr)[0] as type
+          LABELS(pr)[0] AS type,
+          pr.representative AS representative
       "
