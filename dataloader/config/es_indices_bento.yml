@@ -38,6 +38,23 @@ Indices:
         type: integer
       num_publications:
         type: integer
+      nested_projects:
+        type: nested
+        properties:
+          programs:
+            type: keyword
+          docs:
+            type: keyword
+          fiscal_years:
+            type: keyword
+          award_amount:
+            type: keyword
+          award_amounts:
+            type: keyword
+          queried_project_ids:
+            type: keyword
+          project_id:
+            type: keyword
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
         MATCH (p:program)<--(pr:project)
@@ -50,6 +67,15 @@ Indices:
           COLLECT(DISTINCT pr.fiscal_year) AS fiscal_years,
           COLLECT(DISTINCT pr.award_amount_category) AS award_amount,
           COLLECT(DISTINCT pr.award_amount_category) AS award_amounts,
+          COLLECT(DISTINCT {
+              programs: p.program_id,
+              docs: pr.lead_doc,
+              fiscal_years: pr.fiscal_year,
+              award_amount: pr.award_amount,
+              award_amounts: pr.award_amount_category,
+              queried_project_ids: pr.queried_project_id,
+              project_id: pr.project_id
+          }) AS nested_projects,
           p.program_name AS program_name,
           p.program_website AS program_website,
           COUNT(DISTINCT pr.queried_project_id) AS num_projects,
