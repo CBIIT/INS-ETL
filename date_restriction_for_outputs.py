@@ -176,3 +176,28 @@ for df_patent in df_patents:
     df_patent[FULFILLED_DATE] = df_patent[FULFILLED_DATE].apply(lambda x: datetime.strftime(x, '%d-%b-%Y'))
     print(df_patent.describe())
 
+
+# write new clinical trials files
+for file, df in zip(clinical_trial_files, df_clinical_trials):
+    print(file)
+    df.to_csv(f"{DATA_DIR}/{file}", sep="\t", index=False)
+
+# write new sra files
+for file, df in zip(sra_files, df_sras):
+    print(file)
+    df.to_csv(f"{DATA_DIR}/{file}", sep="\t", index=False)
+
+# write new geo files
+for file, df in zip(geo_files, df_geos):
+    print(file)
+    df.to_csv(f"{DATA_DIR}/{file}", sep="\t", index=False)
+
+# write new dbgap files
+for file, df in zip(dbgap_files, df_dbgaps):
+    print(file)
+    df.to_csv(f"{DATA_DIR}/{file}", sep="\t", index=False)
+
+# write new patent files
+for file, df in zip(patent_files, df_patents):
+    print(file)
+    df.to_csv(f"{DATA_DIR}/{file}", sep="\t", index=False)
