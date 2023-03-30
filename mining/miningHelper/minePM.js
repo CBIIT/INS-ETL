@@ -124,7 +124,7 @@ const getDBGapData = async (publications, pmId) => {
       let idx_start = tmp.indexOf("href=\"/projects/gap/cgi-bin/study.cgi?study_id=phs"); // 50 characters
       while (idx_start > -1) {
         let idx_end = 0;
-        tmp = tmp.substring(idx_start + 50);
+        tmp = tmp.substring(idx_start + 50 - 3); // '-3' to get the 'phs' back
         idx_end = tmp.indexOf("\"");
         let str = tmp.substring(0, idx_end);
         publications[pmId].dbgap_accession.push(str);
