@@ -90,12 +90,16 @@ df_publication = df_publication[["publication_id","queried_project_id"]]
 
 # prepare the project dataframe for merger
 df_project["award_notice_date"] = df_project["award_notice_date"].apply(lambda x: datetime.strptime(x, '%d-%b-%Y'))  # format as datetime from string time
-df_project = df_project.groupby("queried_project_id", group_keys=False).apply(lambda x: pd.DataFrame({"queried_project_id": x["queried_project_id"], "award_notice_date": min(x["award_notice_date"])}))
+df_project_lookup = df_project.groupby("queried_project_id", group_keys=False).apply(lambda x: pd.DataFrame({"queried_project_id": x["queried_project_id"], "award_notice_date": min(x["award_notice_date"])}))
+print(df_project_lookup.head())
+print(df_project_lookup.describe())
 
 # publications should be unique and be associated with the oldest award_notice_date (and associated queried_project_id) from its upstream grants
-df_lookup = df_publication.merge(df_project, on="queried_project_id").drop_duplicates().reset_index(drop=True)
-df_lookup = df_lookup.groupby("publication_id", as_index=False, group_keys=False).apply(lambda x: pd.DataFrame([{"award_notice_date": min(x["award_notice_date"]), "publication_id": x.iloc[0]["publication_id"], "queried_project_id": x.sort_values("award_notice_date").reset_index(drop=True).iloc[0]["queried_project_id"]}])).reset_index(drop=True)
-print(df_lookup.describe())
+# df_lookup = df_publication.merge(df_project, on="queried_project_id").drop_duplicates().reset_index(drop=True)
+# df_lookup = df_lookup.groupby("publication_id", as_index=False, group_keys=False).apply(lambda x: pd.DataFrame([{"award_notice_date": min(x["award_notice_date"]), "publication_id": x.iloc[0]["publication_id"], "queried_project_id": x.sort_values("award_notice_date").reset_index(drop=True).iloc[0]["queried_project_id"]}])).reset_index(drop=True)
+df_publication_lookup = df_publication.groupby("publication_id", group_keys=False).apply(lambda x: x)
+print(df_publication_lookup.head())
+print(df_publication_lookup.describe())
 
 
 AWARD_NOTICE_DATE = "award_notice_date"
@@ -110,94 +114,78 @@ RELEASE_DATE = "release_date"
 FULFILLED_DATE = "fulfilled_date"
 
 # filter clinical trials by 'queried_project_id' and then 'publication_id'
-for df_ct in df_clinical_trials:
+for file, df_ct in zip(clinical_trial_files,df_clinical_trials):
     print(df_ct.describe())
     # convert String date to datetime object
     df_ct[LAST_UPDATE_POSTED] = df_ct[LAST_UPDATE_POSTED].apply(lambda x: datetime.strptime(x, '%d-%b-%Y'))  # format as datetime from string time
     # create a mask based upon 'queried_project_id'
-    proj_mask = df_ct.apply(lambda x: 1 if x[LAST_UPDATE_POSTED] >= np.min(df_lookup[df_lookup[QUERIED_PROJECT_ID]==x[DOT_QUERIED_PROJECT_ID]][AWARD_NOTICE_DATE]) else 0, axis=1)
+    proj_mask = df_ct.apply(lambda x: 1 if x[LAST_UPDATE_POSTED] >= np.min(df_project_lookup.loc[df_project_lookup[QUERIED_PROJECT_ID].isin(pd.Series(x[DOT_QUERIED_PROJECT_ID]))][AWARD_NOTICE_DATE]) else 0, axis=1)
     # create a mask based upon 'publication_id'
-    pub_mask = df_ct.apply(lambda x: 1 if x[LAST_UPDATE_POSTED] >= np.min(df_lookup[df_lookup[PUBLICATION_ID]==x[DOT_PUBLICATION_ID]][AWARD_NOTICE_DATE]) else 0, axis=1)
+    pub_mask = df_ct.apply(lambda x: 1 if x[LAST_UPDATE_POSTED] >= np.min(df_project_lookup.loc[df_project_lookup[QUERIED_PROJECT_ID].isin(pd.Series(df_publication_lookup.loc[df_publication_lookup[PUBLICATION_ID].isin(pd.Series(x[DOT_PUBLICATION_ID]))][QUERIED_PROJECT_ID]))][AWARD_NOTICE_DATE]) else 0, axis=1)
     # combine masks and drop clinical trials based upon the mask
-    mask = proj_mask | pub_mask
+    mask = [1 if x ==1 or y==1 else 0 for x, y in zip(proj_mask,pub_mask)]
     df_ct = df_ct.drop(mask)
     # convert datetime back to string
     df_ct[LAST_UPDATE_POSTED] = df_ct[LAST_UPDATE_POSTED].apply(lambda x: datetime.strftime(x, '%d-%b-%Y'))
     print(df_ct.describe())
+    print(file)
+    df_ct.to_csv(f"{DATA_DIR}/{file}", sep="\t", index=False)
 
 # filter sras by 'publication_id'
-for df_sra in df_sras:
+for file, df_sra in zip(sra_files,df_sras):
     print(df_sra.describe())
     # convert String date to datetime object
     df_sra[REGISTRATION_DATE] = df_sra[REGISTRATION_DATE].apply(lambda x: datetime.strptime(x, '%d-%b-%Y'))  # format as datetime from string time
     # create a mask based upon 'publication_id'
-    mask = df_sra.apply(lambda x: 1 if x[REGISTRATION_DATE] >= np.min(df_lookup[df_lookup[PUBLICATION_ID]==x[DOT_PUBLICATION_ID]][AWARD_NOTICE_DATE]) else 0, axis=1)
+    mask = df_sra.apply(lambda x: 1 if x[REGISTRATION_DATE] >= np.min(df_project_lookup.loc[df_project_lookup[QUERIED_PROJECT_ID].isin(pd.Series(df_publication_lookup.loc[df_publication_lookup[PUBLICATION_ID].isin(pd.Series(x[DOT_PUBLICATION_ID]))][QUERIED_PROJECT_ID]))][AWARD_NOTICE_DATE]) else 0, axis=1)
     df_sra = df_sra.drop(mask)
     # convert datetime back to string
     df_sra[REGISTRATION_DATE] = df_sra[REGISTRATION_DATE].apply(lambda x: datetime.strftime(x, '%d-%b-%Y'))
     print(df_sra.describe())
+    print(file)
+    df_sra.to_csv(f"{DATA_DIR}/{file}", sep="\t", index=False)
 
 # filter geos by 'publication_id'
-for df_geo in df_geos:
+for file, df_geo in zip(geo_files,df_geos):
     print(df_geo.describe())
     # convert String date to datetime object
     df_geo[LAST_UPDATE_DATE] = df_geo[LAST_UPDATE_DATE].apply(lambda x: datetime.strptime(x, '%d-%b-%Y'))  # format as datetime from string time
     # create a mask based upon 'publication_id'
-    mask = df_geo.apply(lambda x: 1 if x[LAST_UPDATE_DATE] >= np.min(df_lookup[df_lookup[PUBLICATION_ID]==x[DOT_PUBLICATION_ID]][AWARD_NOTICE_DATE]) else 0, axis=1)
+    mask = df_geo.apply(lambda x: 1 if x[LAST_UPDATE_DATE] >= np.min(df_project_lookup.loc[df_project_lookup[QUERIED_PROJECT_ID].isin(pd.Series(df_publication_lookup.loc[df_publication_lookup[PUBLICATION_ID].isin(pd.Series(x[DOT_PUBLICATION_ID]))][QUERIED_PROJECT_ID]))][AWARD_NOTICE_DATE]) else 0, axis=1)
     df_geo = df_geo.drop(mask)
     # convert datetime back to string
     df_geo[LAST_UPDATE_DATE] = df_geo[LAST_UPDATE_DATE].apply(lambda x: datetime.strftime(x, '%d-%b-%Y'))
     print(df_geo.describe())
+    print(file)
+    df_geo.to_csv(f"{DATA_DIR}/{file}", sep="\t", index=False)
 
 # filter dbgaps by 'publication_id' OR 'queried_project_id'
-for df_dbgap in df_dbgaps:
+for file, df_dbgap in zip(dbgap_files,df_dbgaps):
     print(df_dbgap.describe())
     # convert String date to datetime object
     df_dbgap[RELEASE_DATE] = df_dbgap[RELEASE_DATE].apply(lambda x: datetime.strptime(x, '%d-%b-%Y'))  # format as datetime from string time
-    # create a mask based upon 'publication_id'
+    # create a mask based upon 'publication_id' or 'queried_project_id'
     if DOT_PUBLICATION_ID in df_dbgap.columns:
-        mask = df_dbgap.apply(lambda x: 1 if x[RELEASE_DATE] >= np.min(df_lookup[df_lookup[PUBLICATION_ID]==x[DOT_PUBLICATION_ID]][AWARD_NOTICE_DATE]) else 0, axis=1)
+        mask = df_dbgap.apply(lambda x: 1 if x[RELEASE_DATE] >= np.min(df_project_lookup.loc[df_project_lookup[QUERIED_PROJECT_ID].isin(pd.Series(df_publication_lookup.loc[df_publication_lookup[PUBLICATION_ID].isin(pd.Series(x[DOT_PUBLICATION_ID]))][QUERIED_PROJECT_ID]))][AWARD_NOTICE_DATE]) else 0, axis=1)
     elif DOT_QUERIED_PROJECT_ID in df_dbgap.columns:
-        mask = df_dbgap.apply(lambda x: 1 if x[RELEASE_DATE] >= np.min(df_lookup[df_lookup[QUERIED_PROJECT_ID]==x[DOT_QUERIED_PROJECT_ID]][AWARD_NOTICE_DATE]) else 0, axis=1)
+        mask = df_dbgap.apply(lambda x: 1 if x[RELEASE_DATE] >= df_project_lookup.loc[df_project_lookup[QUERIED_PROJECT_ID].isin(pd.Series(x[DOT_QUERIED_PROJECT_ID]))][AWARD_NOTICE_DATE] else 0, axis=1)
     df_dbgap = df_dbgap.drop(mask)
     # convert datetime back to string
     df_dbgap[RELEASE_DATE] = df_dbgap[RELEASE_DATE].apply(lambda x: datetime.strftime(x, '%d-%b-%Y'))
     print(df_dbgap.describe())
+    print(file)
+    df_dbgap.to_csv(f"{DATA_DIR}/{file}", sep="\t", index=False)
 
 # filter patents by 'queried_project_id'
-for df_patent in df_patents:
+for file, df_patent in zip(patent_files,df_patents):
     print(df_patent.describe())
     # convert String date to datetime object
     df_patent[FULFILLED_DATE] = df_patent[FULFILLED_DATE].apply(lambda x: datetime.strptime(x, '%d-%b-%Y'))  # format as datetime from string time
-    # create a mask based upon 'publication_id'
-    mask = df_patent.apply(lambda x: 1 if x[FULFILLED_DATE] >= np.min(df_lookup[df_lookup[QUERIED_PROJECT_ID]==x[DOT_QUERIED_PROJECT_ID]][AWARD_NOTICE_DATE]) else 0, axis=1)
+    # create a mask based upon 'queried_project_id'
+    mask = df_patent.apply(lambda x: 1 if x[FULFILLED_DATE] >= np.min(df_project_lookup.loc[df_project_lookup[QUERIED_PROJECT_ID].isin(pd.Series(x[DOT_QUERIED_PROJECT_ID]))][AWARD_NOTICE_DATE]) else 0, axis=1)
     df_patent = df_patent.drop(mask)
     # convert datetime back to string
     df_patent[FULFILLED_DATE] = df_patent[FULFILLED_DATE].apply(lambda x: datetime.strftime(x, '%d-%b-%Y'))
     print(df_patent.describe())
-
-
-# write new clinical trials files
-for file, df in zip(clinical_trial_files, df_clinical_trials):
     print(file)
-    df.to_csv(f"{DATA_DIR}/{file}", sep="\t", index=False)
-
-# write new sra files
-for file, df in zip(sra_files, df_sras):
-    print(file)
-    df.to_csv(f"{DATA_DIR}/{file}", sep="\t", index=False)
-
-# write new geo files
-for file, df in zip(geo_files, df_geos):
-    print(file)
-    df.to_csv(f"{DATA_DIR}/{file}", sep="\t", index=False)
-
-# write new dbgap files
-for file, df in zip(dbgap_files, df_dbgaps):
-    print(file)
-    df.to_csv(f"{DATA_DIR}/{file}", sep="\t", index=False)
-
-# write new patent files
-for file, df in zip(patent_files, df_patents):
-    print(file)
-    df.to_csv(f"{DATA_DIR}/{file}", sep="\t", index=False)
+    df_patent.to_csv(f"{DATA_DIR}/{file}", sep="\t", index=False)
