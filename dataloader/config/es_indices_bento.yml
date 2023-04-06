@@ -500,6 +500,9 @@ Indices:
             normalizer: lowercase
       queried_project_id:
         type: keyword
+        fields:
+          search:
+            type: search_as_you_type
       application_id:
         type: keyword
         fields:
