@@ -118,22 +118,22 @@ def project_lookup_by_publication(df):
 
 def get_queried_project_ids(df):
     result = df.apply(lambda x: x[DOT_QUERIED_PROJECT_ID] if DOT_QUERIED_PROJECT_ID in x and x[DOT_QUERIED_PROJECT_ID]!="" else np.nan, axis=1)
-    result = result.explode()
+    # result = result.explode()
     result = result.dropna().reset_index(drop=True)
     return result
 
 def get_project_id(df):
     result = df.apply(lambda x: x[DOT_PROJECT_ID] if DOT_PROJECT_ID in x and x[DOT_PROJECT_ID]!="" else np.nan, axis=1)
-    result = result.explode()
+    # result = result.explode()
     result = result.dropna().reset_index(drop=True)
-    result = pd.Series([x[1:12] for x in result])  # get the core project id from the grant id
+    result = pd.Series([x[1:12] for x in result.tolist()])  # get the core project id from the grant id
     return result
 
 def award_amount_lookup_by_project(df, queried_project_ids):
-    result = df.apply(lambda x: df_project_lookup[df_project_lookup[QUERIED_PROJECT_ID].isin(queried_project_ids.tolist())][AWARD_NOTICE_DATE].tolist(), axis=1)
+    result = df.apply(lambda x: df_project_lookup[df_project_lookup[QUERIED_PROJECT_ID].isin(queried_project_ids.tolist())][AWARD_NOTICE_DATE].tolist() if ~queried_project_ids.empty else np.nan, axis=1)
     result = result.explode()
     result = result.dropna().reset_index(drop=True)
-    return min(result)
+    return min(result.tolist())
 
 def trim_outputs(df, target_date_field, award_amount):
     result = df[df[target_date_field] >= award_amount]
@@ -142,9 +142,8 @@ def trim_outputs(df, target_date_field, award_amount):
 def filter_outputs(df, target_date_field):
     result = None
 
-    queried_project_ids = project_lookup_by_publication(df)
-    queried_project_ids = pd.concat([queried_project_ids, get_queried_project_ids(df), get_project_id(df)], ignore_index=True, axis=0)
-        
+    queried_project_ids = pd.concat([project_lookup_by_publication(df), get_queried_project_ids(df), get_project_id(df)], ignore_index=True, axis=0)
+
     award_amount = award_amount_lookup_by_project(df, queried_project_ids)
     result = trim_outputs(df, target_date_field, award_amount)
     return result
