@@ -1,7 +1,6 @@
 import os.path
 from datetime import datetime
 
-import re
 import pandas as pd
 import numpy as np
 
@@ -80,21 +79,16 @@ for file in patent_files:
 # we will care to compare the award_notice_date through the publication link to all outputs and their relevant dates
 ###############################################
 
-# populate main dataframe relating publication_id to award_notice_date of interest (and also keep queried_project_ids)
-#   clinical trials by core project will be handled later
-df_lookup = None
-
 # prepare the publication dataframe for merger
 df_publication = df_publication.rename(columns={"project.queried_project_id": "queried_project_id"})
 df_publication = df_publication[["publication_id","queried_project_id"]]
 
 # prepare the project dataframe for merger
 df_project["award_notice_date"] = df_project["award_notice_date"].apply(lambda x: datetime.strptime(x, '%d-%b-%Y'))  # format as datetime from string time
-df_project_lookup = df_project.groupby("queried_project_id", group_keys=False).apply(lambda x: pd.DataFrame({"queried_project_id": x["queried_project_id"], "award_notice_date": x["award_notice_date"]}).explode("award_notice_date"))
-print(len(df_project))
+df_project_lookup = df_project[["queried_project_id","award_notice_date"]]
 print(df_project_lookup.head(15))
 
-df_publication_lookup = df_publication.groupby("publication_id", group_keys=False).apply(lambda x: pd.DataFrame({"publication_id": x["publication_id"], "queried_project_id": x["queried_project_id"]}).explode("queried_project_id"))
+df_publication_lookup = df_publication[["publication_id","queried_project_id"]]
 print(df_publication_lookup.head(15))
 
 
@@ -110,42 +104,60 @@ RELEASE_DATE = "release_date"
 FULFILLED_DATE = "fulfilled_date"
 DOT_PROJECT_ID = "project.project_id"
 
-def project_lookup_by_publication(df):
-    result = df.apply(lambda x: df_publication_lookup[df_publication_lookup[PUBLICATION_ID] == str(x[DOT_PUBLICATION_ID])][QUERIED_PROJECT_ID].tolist() if DOT_PUBLICATION_ID in x and str(x[DOT_PUBLICATION_ID])!="" else np.nan, axis=1)
-    result = result.explode()
-    result = result.dropna().reset_index(drop=True)
+def filter_by_publication_helper(x, target_date_field):
+    target_date = x[target_date_field]
+    publication_id = x[DOT_PUBLICATION_ID] if DOT_PUBLICATION_ID in x and str(x[DOT_PUBLICATION_ID]) != "nan" else ""
+    if publication_id != "":
+        publication_projects = df_publication_lookup[df_publication_lookup[PUBLICATION_ID] == publication_id][QUERIED_PROJECT_ID]
+        if not publication_projects.empty:
+            award_notice_dates = df_project_lookup[df_project_lookup[QUERIED_PROJECT_ID].isin(publication_projects)][AWARD_NOTICE_DATE]
+            if not award_notice_dates.empty:
+                award_notice_date = min(award_notice_dates.tolist())
+                if target_date >= award_notice_date:
+                    return pd.Series(x)
+    return pd.Series(np.nan, index=x.index)
+
+def filter_by_publication(df, target_date_field):
+    result = df.apply(lambda x: filter_by_publication_helper(x,target_date_field), result_type='expand', axis=1)
+    result = result.dropna(how='all').drop_duplicates().reset_index(drop=True)
     return result
 
-def get_queried_project_ids(df):
-    result = df.apply(lambda x: x[DOT_QUERIED_PROJECT_ID] if DOT_QUERIED_PROJECT_ID in x and x[DOT_QUERIED_PROJECT_ID]!="" else np.nan, axis=1)
-    # result = result.explode()
-    result = result.dropna().reset_index(drop=True)
+def filter_by_queried_project_id_helper(x, target_date_field):
+    target_date = x[target_date_field]
+    queried_project_id = x[DOT_QUERIED_PROJECT_ID] if DOT_QUERIED_PROJECT_ID in x and str(x[DOT_QUERIED_PROJECT_ID]) != "nan" else ""
+    if queried_project_id != "":
+        award_notice_dates = df_project_lookup[df_project_lookup[QUERIED_PROJECT_ID] == queried_project_id][AWARD_NOTICE_DATE]
+        if not award_notice_dates.empty:
+            award_notice_date = min(award_notice_dates.tolist())
+            if target_date >= award_notice_date:
+                return pd.Series(x)
+    return pd.Series(np.nan, index=x.index)
+
+def filter_by_queried_project_id(df, target_date_field):
+    result = df.apply(lambda x: filter_by_queried_project_id_helper(x,target_date_field), result_type='expand', axis=1)
+    result = result.dropna(how='all').drop_duplicates().reset_index(drop=True)
     return result
 
-def get_project_id(df):
-    result = df.apply(lambda x: x[DOT_PROJECT_ID] if DOT_PROJECT_ID in x and x[DOT_PROJECT_ID]!="" else np.nan, axis=1)
-    # result = result.explode()
-    result = result.dropna().reset_index(drop=True)
-    result = pd.Series([x[1:12] for x in result.tolist()])  # get the core project id from the grant id
-    return result
+def filter_by_project_id_helper(x, target_date_field):
+    target_date = x[target_date_field]
+    queried_project_id = x[DOT_PROJECT_ID][1:12] if DOT_PROJECT_ID in x and str(x[DOT_PROJECT_ID]) != "nan" else "" # get core project id from grant id
+    if queried_project_id != "":
+        award_notice_dates = df_project_lookup[df_project_lookup[QUERIED_PROJECT_ID] == queried_project_id][AWARD_NOTICE_DATE]
+        if not award_notice_dates.empty:
+            award_notice_date = min(award_notice_dates.tolist())
+            if target_date >= award_notice_date:
+                return pd.Series(x)
+    return pd.Series(np.nan, index=x.index)
 
-def award_amount_lookup_by_project(df, queried_project_ids):
-    result = df.apply(lambda x: df_project_lookup[df_project_lookup[QUERIED_PROJECT_ID].isin(queried_project_ids.tolist())][AWARD_NOTICE_DATE].tolist() if ~queried_project_ids.empty else np.nan, axis=1)
-    result = result.explode()
-    result = result.dropna().reset_index(drop=True)
-    return min(result.tolist())
-
-def trim_outputs(df, target_date_field, award_amount):
-    result = df[df[target_date_field] >= award_amount]
+def filter_by_project_id(df, target_date_field):
+    result = df.apply(lambda x: filter_by_project_id_helper(x,target_date_field), result_type='expand', axis=1)
+    result = result.dropna(how='all').drop_duplicates().reset_index(drop=True)
     return result
 
 def filter_outputs(df, target_date_field):
-    result = None
-
-    queried_project_ids = pd.concat([project_lookup_by_publication(df), get_queried_project_ids(df), get_project_id(df)], ignore_index=True, axis=0)
-
-    award_amount = award_amount_lookup_by_project(df, queried_project_ids)
-    result = trim_outputs(df, target_date_field, award_amount)
+    result = filter_by_publication(df, target_date_field)
+    result = pd.concat([result, filter_by_queried_project_id(df, target_date_field)], ignore_index=True)
+    result = pd.concat([result, filter_by_project_id(df, target_date_field)], ignore_index=True)
     return result
 
 # filter clinical trials by 'queried_project_id' and then 'publication_id'
