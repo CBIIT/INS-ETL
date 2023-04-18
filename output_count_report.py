@@ -104,4 +104,5 @@ df_project["patent_count"] = df_project.apply(lambda x: len(df_patent[df_patent[
 df_project["dataset_count"] = df_project[["geo_count","sra_count","dbgap_count"]].apply(sum, axis=1)
 
 df_project = df_project[["project_id","queried_project_id","publication_count","geo_count","sra_count","dbgap_count","clinical_trial_count","patent_count","dataset_count"]]
-print(df_project.head(20))
+
+df_project.to_csv(f"{DIGEST_DIR}/qa_validation_file.tsv", sep="\t", index=False)
