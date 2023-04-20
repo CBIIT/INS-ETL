@@ -103,6 +103,15 @@ df_project["patent_count"] = df_project.apply(lambda x: len(df_patent[df_patent[
 
 df_project["dataset_count"] = df_project[["geo_count","sra_count","dbgap_count"]].apply(sum, axis=1)
 
-df_project = df_project[["project_id","queried_project_id","publication_count","geo_count","sra_count","dbgap_count","clinical_trial_count","patent_count","dataset_count"]]
+df_project["total_outputs_count"] = df_project[["publication_count","dataset_count","clinical_trial_count","patent_count"]].apply(sum, axis=1)
+
+df_grant_count_lookup = df_project.groupby("queried_project_id", group_keys=False, as_index=False).apply(len)
+df_project["grant_count"] = df_project.apply(lambda x: df_grant_count_lookup[df_grant_count_lookup["queried_project_id"] == x["queried_project_id"]].iloc[0,1], axis=1)
+print(df_project.head(20))
+
+df_project = df_project[["project_id","queried_project_id","total_outputs_count","publication_count","dataset_count","clinical_trial_count","patent_count","grant_count","geo_count","sra_count","dbgap_count"]]
+
+df_project = df_project.rename(columns={"project_id": "grant_id", "queried_project_id": "project_id"})
+
 
 df_project.to_csv(f"{DIGEST_DIR}/qa_validation_file.tsv", sep="\t", index=False)
