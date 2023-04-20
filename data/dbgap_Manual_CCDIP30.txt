@@ -1,0 +1,8 @@
+type	accession	title	release_date	project.project_id
+dbgap	phs001683.v2.p1	Clinical Sequencing Exploratory Research Consortium: Incorporation of Genomic Sequencing into Pediatric Cancer Care	17-Jul-2020	3P30CA125123-14S6
+dbgap	phs002504.v1.p1	"UCSF Database for the Advancement of JMML - Integration of Metadata with ""Omic"" Data"	05-Aug-2022	3P30CA082103-21S9
+dbgap	phs002599.v1.p1	NCI CCSG CCDI Supplement Additional Genomic Submission	09-Jun-2022	3P30CA069533-22S5
+dbgap	phs002620.v1.p1	Feasibility and Clinical Utility of Whole Genome Profiling in Pediatric and Young Adult Cancers	02-May-2022	3P30CA008748-54S3
+dbgap	phs003111.v1.p1	Childhood Cancer Data Initiative (CCDI): Clonal Evolution During Metastatic Spread in High-Risk Neuroblastoma	28-Feb-2023	3P30CA008748-54S3
+dbgap	phs002529.v1.p1	Childhood Cancer Data Initiative (CCDI): Comprehensive Genomic Sequencing of Pediatric Cancer Cases (CMRI/KUCC)	28-Feb-2023	3P30CA168524-09S3
+dbgap	phs002518.v1.p1	Childhood Cancer Data Initiative (CCDI): OncoKids - NGS Panel for Pediatric Malignancies	7-Dec-2022	3P30CA014089-45S6
