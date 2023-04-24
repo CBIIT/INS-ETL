@@ -8,18 +8,20 @@ import numpy as np
 
 DATA_DIR = os.path.abspath("data")
 DIGEST_DIR = os.path.abspath("digest_data")
-EXTENSION = "tsv"
+EXTENSIONS = ["tsv", "txt"]
 
 # get publication file filenames
-publication_files = [f for f in os.listdir(DATA_DIR) if os.path.isfile(DATA_DIR+"/"+f) and f.split(".")[1] == EXTENSION and f.startswith("publication")]
+publication_files = [f for f in os.listdir(DATA_DIR) if os.path.isfile(DATA_DIR+"/"+f) and f.split(".")[1] in EXTENSIONS and f.startswith("publication")]
 # get clinical trial filenames
-clinical_trial_files = [f for f in os.listdir(DATA_DIR) if os.path.isfile(DATA_DIR+"/"+f) and f.split(".")[1] == EXTENSION and f.startswith("clinical_trial")]
+clinical_trial_files = [f for f in os.listdir(DATA_DIR) if os.path.isfile(DATA_DIR+"/"+f) and f.split(".")[1] in EXTENSIONS and f.startswith("clinical_trial")]
 # get sra filenames
-sra_files = [f for f in os.listdir(DATA_DIR) if os.path.isfile(DATA_DIR+"/"+f) and f.split(".")[1] == EXTENSION and f.startswith("sra")]
+sra_files = [f for f in os.listdir(DATA_DIR) if os.path.isfile(DATA_DIR+"/"+f) and f.split(".")[1] in EXTENSIONS and f.startswith("sra")]
 # get geo filesnames
-geo_files = [f for f in os.listdir(DATA_DIR) if os.path.isfile(DATA_DIR+"/"+f) and f.split(".")[1] == EXTENSION and f.startswith("geo")]
+geo_files = [f for f in os.listdir(DATA_DIR) if os.path.isfile(DATA_DIR+"/"+f) and f.split(".")[1] in EXTENSIONS and f.startswith("geo")]
 # get dbgap filenames
-dbgap_files = [f for f in os.listdir(DATA_DIR) if os.path.isfile(DATA_DIR+"/"+f) and f.split(".")[1] == EXTENSION and f.startswith("dbgap")]
+dbgap_files = [f for f in os.listdir(DATA_DIR) if os.path.isfile(DATA_DIR+"/"+f) and f.split(".")[1] in EXTENSIONS and f.startswith("dbgap")]
+# get patent filenames
+patent_files = [f for f in os.listdir(DATA_DIR) if os.path.isfile(DATA_DIR+"/"+f) and f.split(".")[1] in EXTENSIONS and f.startswith("patent")]
 
 # load and consolidate data in all publication files
 df_publication = None
@@ -66,6 +68,14 @@ for file in dbgap_files:
         df_temp = pd.read_csv(DATA_DIR+"/"+file, sep="\t", dtype=object)
         df_dbgap = pd.concat([df_dbgap, df_temp]).drop_duplicates().reset_index(drop=True)
 
+# load and consolidate data in all patent files
+df_patent = None
+for file in patent_files:
+    if df_patent is None:
+        df_patent = pd.read_csv(DATA_DIR+"/"+file, sep="\t", dtype=object)
+    else:
+        df_temp = pd.read_csv(DATA_DIR+"/"+file, sep="\t", dtype=object)
+        df_patent = pd.concat([df_patent, df_temp]).drop_duplicates().reset_index(drop=True)
 
 ###################################
 # now we want to perform joins for each of clinical trials, sras, geos and dbgaps
@@ -113,3 +123,6 @@ df_dbgap["queried_project_id"] = df_dbgap.apply(lambda x: df_publication[df_publ
 df_dbgap = df_dbgap.explode("queried_project_id").reset_index(drop=True)
 # print the new dbgap file
 df_dbgap.to_csv(f"{DIGEST_DIR}/digest_dbgap.tsv", sep="\t", index=False)
+
+# print the patent file, no real work done, just consolidation with a new filename
+df_patent.to_csv(f"{DIGEST_DIR}/digest_patent.tsv", sep="\t", index=False)
