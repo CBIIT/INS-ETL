@@ -52,10 +52,33 @@ prop_file: The file containing the properties for the specified schema
 
 dataset: The directory containing the data to be loaded, a temporary directory if loading from an S3 bucket
 
+### Run the Pre-processing Pipeline
+The INS project has a data pre-processing pipeline which consists of several Python scripts. These scripts format and in some cases generate a report about the data.
+
+It is essential to run these scripts in order for the raw gathered data to work in the INS web application.
+
+These scripts should be run from the root directory for the INS-ETL project in the following order and they will act upon data in the '/data' directory:
+
+1) <code>python date_restriction_for_outputs.py</code> This filters data based upon dates
+
+2) <code>python project_abstract_formatter.py</code> This removes '\n' characters from project abstracts
+
+3) <code>python extra_whitespace_formatter.py</code> This makes sure any whitespace is just a single space
+
+4) <code>python calculate_award_amount_ranges.py</code> This formats a column for the project data to be used on the UI
+
+5) <code>python tag_representative_project.py</code> This formats a column for the project data that is internal to the application but is required for the application to work properly
+
+6) <code>python output_count_report.py</code> This generates a report for the data, intended for data validation purposes
+
+There are assumptions:
+1) All files have the file extensions either '.txt' or '.tsv'. Our convention is that manually curated data ends in '.txt' while automatically gathered data ends in '.tsv'.
+2) All files start with the type of data in the file, case sensitive. For example: type 'patent' has files 'patent_application.tsv' and 'patent_grant.tsv', not 'granted_patent.tsv' or 'Patent_application.tsv'. Any filename-level annotation is to be done after the beginning of the filename is the type of data in the file.
+3) These are tab delimited files.
+
 ### Load Data into Neo4j
 Run following command to load data into neo4j database (under data_loading folder):
 
 ```bash
 python loader.py config/config.yml -p <neo4j password> -s model-desc/ins_model_file.yaml -s model-desc/ins_model_properties.yaml --prop-file model-desc/props-ins.yml --no-backup --dataset data
 ``` 
-
