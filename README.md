@@ -76,6 +76,10 @@ There are assumptions:
 2) All files start with the type of data in the file, case sensitive. For example: type 'patent' has files 'patent_application.tsv' and 'patent_grant.tsv', not 'granted_patent.tsv' or 'Patent_application.tsv'. Any filename-level annotation is to be done after the beginning of the filename is the type of data in the file.
 3) These are tab delimited files.
 
+NOTE0: For manually curated data, if copy/pasting was involved, there may be some characters that don't display properly, they may look like this '�'. These need to be addressed by hand. Take care when preparing manually curated data, in general.
+
+NOTE1: Sometimes automatically gathered data isn't perfect, sometimes there are sparse or ill-formatted rows that can usually be safely removed. From experience, these are very rare.
+
 ### Load Data into Neo4j
 Run following command to load data into neo4j database (under data_loading folder):
 
