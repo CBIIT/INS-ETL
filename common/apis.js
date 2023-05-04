@@ -7,6 +7,7 @@ const pmGeoDetailSite = "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=";
 const pmSraSite = "https://www.ncbi.nlm.nih.gov/sra/?linkname=pubmed_sra&from_uid=";
 const pmSraDetailSite = "https://www.ncbi.nlm.nih.gov/sra/";
 const pmSrpDetailSite = "https://trace.ncbi.nlm.nih.gov/Traces/sra/?study=";
+const pmSrpDetailEndpoint = "https://trace.ncbi.nlm.nih.gov/Traces/sra-db-be/study?acc=";
 const pmBioprojectDetailSite = "https://www.ncbi.nlm.nih.gov/bioproject/";
 const pmDbgapSite = "https://www.ncbi.nlm.nih.gov/gap/?linkname=pubmed_gap&from_uid=";
 const pmDbgapDetailSite = "https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=";
@@ -27,6 +28,7 @@ module.exports = {
   pmSraSite,
   pmSraDetailSite,
   pmSrpDetailSite,
+  pmSrpDetailEndpoint,
   pmBioprojectDetailSite,
   pmDbgapSite,
   pmDbgapDetailSite,

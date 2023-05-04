@@ -121,15 +121,17 @@ const getDBGapData = async (publications, pmId) => {
   if(d != "failed"){
     if (d.indexOf("<title>Error - dbGaP - NCBI</title>") === -1 && d.indexOf("<title>No items found - dbGaP - NCBI</title>") === -1) {  // check if DBGap datasets exist for this publication
       let tmp = d;
-      let idx_start = tmp.indexOf("href=\"/projects/gap/cgi-bin/study.cgi?study_id="); // 47 characters
+      let idx_start = tmp.indexOf("href=\"/projects/gap/cgi-bin/study.cgi?study_id=phs"); // 50 characters
       while (idx_start > -1) {
         let idx_end = 0;
-        tmp = tmp.substring(idx_start + 47);
+        tmp = tmp.substring(idx_start + 50 - 3); // '-3' to get the 'phs' back
         idx_end = tmp.indexOf("\"");
         let str = tmp.substring(0, idx_end);
         publications[pmId].dbgap_accession.push(str);
         tmp = tmp.substring(idx_end);
-        idx_start = tmp.indexOf("href=\"/projects/gap/cgi-bin/study.cgi?study_id="); // 47 characters
+        idx_start = tmp.indexOf("href=\"/projects/gap/cgi-bin/study.cgi?study_id=phs"); // 50 characters
+        // these come in paris since the update to the dbGaP site, we skip the second one, the repeat
+        idx_start = tmp.indexOf("href=\"/projects/gap/cgi-bin/study.cgi?study_id=phs"); // 50 characters
       }
       console.log(publications[pmId].dbgap_accession.length + " dbGaPs found.")
     }

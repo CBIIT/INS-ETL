@@ -25,22 +25,22 @@ const run = async (publications, geos) => {
             pos = gd.indexOf("Status</td>");
             gd = gd.substring(pos + 16);
             pos = gd.indexOf("</td>");
-            geos[geo_id].status = gd.substring(0, pos);
+            geos[geo_id].status = gd.substring(0, pos).replace(/(\r\n|\r|\n|\t)/gm, "");
 
             pos = gd.indexOf("justify\">");
             gd = gd.substring(pos + 9);
             pos = gd.indexOf("</td>");
-            geos[geo_id].title = gd.substring(0, pos);
+            geos[geo_id].title = gd.substring(0, pos).replace(/(\r\n|\r|\n|\t)/gm, "");
 
             pos = gd.indexOf("Submission date</td>");
             gd = gd.substring(pos + 25);
             pos = gd.indexOf("</td>");
-            geos[geo_id].submission_date = gd.substring(0, pos);
+            geos[geo_id].submission_date = gd.substring(0, pos).replace(/(\r\n|\r|\n|\t|\s)/gm, "");
 
             pos = gd.indexOf("Last update date</td>");
             gd = gd.substring(pos + 26);
             pos = gd.indexOf("</td>");
-            geos[geo_id].last_update_date = gd.substring(0, pos);
+            geos[geo_id].last_update_date = gd.substring(0, pos).replace(/(\r\n|\r|\n|\t|\s)/gm, "");
             console.log("GEO details found.");
           }
           else {
