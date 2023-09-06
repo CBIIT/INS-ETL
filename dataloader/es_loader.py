@@ -87,8 +87,7 @@ class ESLoader:
         for ok, _ in streaming_bulk(
                 client=self.es_client,
                 index=index_name,
-                actions=data,
-                request_timeout=3600
+                actions=data
         ):
             total += 1
             successes += 1 if ok else 0
@@ -130,7 +129,9 @@ class ESLoader:
             props = obj[PROPERTIES]
             if subtype == 'node':
                 yield {
+                    'type': 'node',
                     'node': node_name,
+                    'node_name': node_name,
                     'node_kw': node_name
                 }
             else:
@@ -140,8 +141,11 @@ class ESLoader:
                         continue
                     if subtype == 'property':
                         yield {
+                            'type': 'property',
                             'node': node_name,
+                            'node_name': node_name,
                             'property': prop_name,
+                            'property_name': prop_name,
                             'property_kw': prop_name,
                             'property_description': prop.get(DESCRIPTION, ''),
                             'property_required': prop.get(REQUIRED, False),
@@ -150,8 +154,11 @@ class ESLoader:
                     elif subtype == 'value' and ENUM in prop:
                         for value in prop[ENUM]:
                             yield {
+                                    'type': 'value',
                                     "node": node_name,
+                                    "node_name": node_name,
                                     "property": prop_name,
+                                    "property_name": prop_name,
                                     'property_description': prop.get(DESCRIPTION, ''),
                                     'property_required': prop.get(REQUIRED, False),
                                     'property_type': PROP_ENUM,

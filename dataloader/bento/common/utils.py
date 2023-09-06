@@ -23,6 +23,39 @@ DEFAULT_LOG_LEVEL = 'DEBUG'
 
 log_file = None
 
+def get_raw_logger(name, log_level, log_folder, log_prefix):
+    '''
+    
+    Return a logger object with given name
+
+    Log entries will be written to a log file and not stdout
+
+    Log format is the raw message(s) passed to the logger object
+
+    Log file will have name in format "<prefix>-<timestamp>.log"
+
+    :param name: logger name
+    :param log_level: log level recorded
+    :param log_folder: directory for log file
+    :param log_prefix: prefix for log file
+    :return: logger object
+    '''
+    log = logging.getLogger(name)
+    if not log.handlers:
+        log.setLevel(log_level)
+
+        formatter = logging.Formatter()
+        
+        if not os.path.isdir(log_folder):
+            os.makedirs(log_folder, exist_ok=True)
+
+        log_file = os.path.join(log_folder, f'{log_prefix}-{get_time_stamp()}.log')
+
+        file_handler = logging.FileHandler(log_file)
+        file_handler.setFormatter(formatter)
+        log.addHandler(file_handler)
+    return log, log_file
+
 def get_logger(name):
     '''
     Return a logger object with given name
@@ -51,7 +84,7 @@ def get_logger(name):
         std_handler.setLevel('INFO')
         app_name = os.environ.get(APP_NAME, '-')
         formatter = logging.Formatter(f'<14>1 %(asctime)s.%(msecs)03dZ - {app_name} %(process)d - - %(levelname)s: (%(name)s) %(message)s',
-                                      "%Y-%m-%dT%H:%M:%S")
+                                        "%Y-%m-%dT%H:%M:%S")
         formatter.converter = time.gmtime
         std_handler.setFormatter(formatter)
         log.addHandler(std_handler)
