@@ -55,7 +55,7 @@ Config:
   # S3 folder name for successful data files
   s3_folder_success: test
   # Loading mode, can be UPSERT_MODE, NEW_MODE or DELETE_MODE, default is UPSERT_MODE
-  loading_mode: new
+  loading_mode: upsert
   split_transactions: true
   # Location of dataset
   dataset: data
