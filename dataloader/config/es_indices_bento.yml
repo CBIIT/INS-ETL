@@ -1,0 +1,616 @@
+# Indices settings
+Indices:
+  - index_name: about_page
+    type: about_file
+    # type mapping for each property of the index
+    mapping:
+      page:
+        type: search_as_you_type
+      title:
+        type: search_as_you_type
+      primaryContentImage:
+        type: text
+      content:
+        type: object
+
+  - index_name: programs
+    type: neo4j
+    mapping:
+      programs:
+        type: keyword
+      lead_doc:
+        type: keyword
+      docs:
+        type: keyword
+      fiscal_year:
+        type: keyword
+      fiscal_years:
+        type: keyword
+      award_amount:
+        type: keyword
+      award_amounts:
+        type: keyword
+      program_name:
+        type: keyword
+      program_website:
+        type: keyword
+      num_projects:
+        type: integer
+      num_publications:
+        type: integer
+      nested_projects:
+        type: nested
+        properties:
+          programs:
+            type: keyword
+          docs:
+            type: keyword
+          fiscal_years:
+            type: keyword
+          award_amount:
+            type: keyword
+          award_amounts:
+            type: keyword
+          queried_project_ids:
+            type: keyword
+          project_id:
+            type: keyword
+    # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
+    cypher_query: "
+        MATCH (p:program)<--(pr:project)
+        OPTIONAL MATCH (pr)<--(pub:publication)
+        RETURN DISTINCT
+          p.program_id AS programs,
+          COLLECT(DISTINCT pr.lead_doc) AS lead_doc,
+          COLLECT(DISTINCT pr.lead_doc) AS docs,
+          COLLECT(DISTINCT pr.fiscal_year) AS fiscal_year,
+          COLLECT(DISTINCT pr.fiscal_year) AS fiscal_years,
+          COLLECT(DISTINCT pr.award_amount_category) AS award_amount,
+          COLLECT(DISTINCT pr.award_amount_category) AS award_amounts,
+          COLLECT(DISTINCT {
+              programs: p.program_id,
+              docs: pr.lead_doc,
+              fiscal_years: pr.fiscal_year,
+              award_amount: pr.award_amount,
+              award_amounts: pr.award_amount_category,
+              queried_project_ids: pr.queried_project_id,
+              project_id: pr.project_id
+          }) AS nested_projects,
+          p.program_name AS program_name,
+          p.program_website AS program_website,
+          COUNT(DISTINCT pr.queried_project_id) AS num_projects,
+          COUNT(DISTINCT pub) AS num_publications
+      "
+
+  - index_name: patents
+    type: neo4j
+    mapping:
+      programs:
+        type: keyword
+      docs:
+        type: keyword
+      fiscal_years:
+        type: keyword
+        fields:
+          raw:
+            type: date
+            format: yyyy
+      award_amount:
+        type: integer
+      award_amounts:
+        type: keyword
+      patent_id:
+        type: keyword
+        normalizer: lowercase
+      fulfilled_date:
+        type: date
+        format: dd-MMM-yyyy||d-MMM-yyyy
+      queried_project_ids:
+        type: keyword
+        normalizer: lowercase
+      project_id:
+        type: keyword
+      nested_projects:
+        type: nested
+        properties:
+          programs:
+            type: keyword
+          docs:
+            type: keyword
+          fiscal_years:
+            type: keyword
+          award_amount:
+            type: keyword
+          award_amounts:
+            type: keyword
+          queried_project_ids:
+            type: keyword
+          project_id:
+            type: keyword
+    # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
+    cypher_query: "
+        MATCH (p:program)<--(pr:project)<--(pat)
+          WHERE (pat:granted_patent OR pat:patent_application)
+        RETURN DISTINCT
+            COLLECT(DISTINCT p.program_id) AS programs,
+            COLLECT(DISTINCT pr.lead_doc) AS docs,
+            COLLECT(DISTINCT pr.fiscal_year) AS fiscal_years,
+            COLLECT(DISTINCT pr.award_amount) AS award_amount,
+            COLLECT(DISTINCT pr.award_amount_category) AS award_amounts,
+            COLLECT(DISTINCT {
+              programs: p.program_id,
+              docs: pr.lead_doc,
+              fiscal_years: pr.fiscal_year,
+              award_amount: pr.award_amount,
+              award_amounts: pr.award_amount_category,
+              queried_project_ids: pr.queried_project_id,
+              project_id: pr.project_id
+            }) AS nested_projects,
+            pat.patent_id AS patent_id,
+            pat.fulfilled_date AS fulfilled_date,
+            COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
+            COLLECT(DISTINCT pr.project_id) AS project_id
+       "
+
+  - index_name: clinical_trials
+    type: neo4j
+    mapping:
+      programs:
+        type: keyword
+      docs:
+        type: keyword
+      fiscal_years:
+        type: keyword
+        fields:
+          raw:
+            type: date
+            format: yyyy
+      award_amount:
+        type: integer
+      award_amounts:
+        type: keyword
+      clinical_trial_id:
+        type: keyword
+        normalizer: lowercase
+      title:
+        type: keyword
+        normalizer: lowercase
+      last_update_posted:
+        type: date
+        format: dd-MMM-yyyy||d-MMM-yyyy
+      recruitment_status:
+        type: keyword
+        normalizer: lowercase
+      queried_project_ids:
+        type: keyword
+        normalizer: lowercase
+      project_id:
+        type: keyword
+      nested_projects:
+        type: nested
+        properties:
+          programs:
+            type: keyword
+          docs:
+            type: keyword
+          fiscal_years:
+            type: keyword
+          award_amount:
+            type: keyword
+          award_amounts:
+            type: keyword
+          queried_project_ids:
+            type: keyword
+          project_id:
+            type: keyword
+    # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
+    cypher_query: "
+        MATCH (ct:clinical_trial)
+        OPTIONAL MATCH (p:program)<--(pr:project)
+            WHERE (pr)<--(:publication)<--(ct) OR (pr)<--(ct)
+        RETURN DISTINCT
+          COLLECT(DISTINCT p.program_id) AS programs,
+          COLLECT(DISTINCT pr.lead_doc) AS docs,
+          COLLECT(DISTINCT pr.fiscal_year) AS fiscal_years,
+          COLLECT(DISTINCT pr.award_amount) AS award_amount,
+          COLLECT(DISTINCT pr.award_amount_category) AS award_amounts,
+          COLLECT(DISTINCT {
+           programs: p.program_id,
+           docs: pr.lead_doc,
+           fiscal_years: pr.fiscal_year,
+           award_amount: pr.award_amount,
+           award_amounts: pr.award_amount_category,
+           queried_project_ids: pr.queried_project_id,
+           project_id: pr.project_id
+          }) AS nested_projects,
+          ct.clinical_trial_id AS clinical_trial_id,
+          ct.title AS title,
+          ct.last_update_posted AS last_update_posted,
+          ct.recruitment_status AS recruitment_status,
+          COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
+          COLLECT(DISTINCT pr.project_id) AS project_id
+      "
+
+  - index_name: datasets
+    type: neo4j
+    mapping:
+      programs:
+        type: keyword
+      docs:
+        type: keyword
+      fiscal_years:
+        type: keyword
+        fields:
+          raw:
+            type: date
+            format: yyyy
+      award_amount:
+        type: integer
+      award_amounts:
+        type: keyword
+      accession:
+        type: keyword
+        normalizer: lowercase
+      title:
+        type: keyword
+        normalizer: lowercase
+      release_date:
+        type: date
+        format: dd-MMM-yyyy||d-MMM-yyyy
+        null_value: 1-Jan-1000
+      registration_date:
+        type: date
+        format: dd-MMM-yyyy||d-MMM-yyyy
+        null_value: 1-Jan-1000
+      bioproject_accession:
+        type: keyword
+      status:
+        type: keyword
+      submission_date:
+        type: date
+        format: dd-MMM-yyyy||d-MMM-yyyy
+        null_value: 1-Jan-1000
+      last_update_date:
+        type: date
+        format: dd-MMM-yyyy||d-MMM-yyyy
+        null_value: 1-Jan-1000
+      queried_project_ids:
+        type: keyword
+        normalizer: lowercase
+      project_id:
+        type: keyword
+      link:
+        type: keyword
+      transformed_type:
+        type: keyword
+        normalizer: lowercase
+      nested_projects:
+        type: nested
+        properties:
+          programs:
+            type: keyword
+          docs:
+            type: keyword
+          fiscal_years:
+            type: keyword
+          award_amount:
+            type: keyword
+          award_amounts:
+            type: keyword
+          queried_project_ids:
+            type: keyword
+          project_id:
+            type: keyword
+  # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
+    cypher_query: "
+        MATCH (dt)
+            WHERE (dt:geo OR dt:sra OR dt:dbgap)
+        OPTIONAL MATCH (p:program)<--(pr:project)
+            WHERE (p)<--(pr)<--(:publication)<--(dt) OR (pr)<--(dt)
+        RETURN DISTINCT
+          COLLECT(DISTINCT p.program_id) AS programs,
+          COLLECT(DISTINCT pr.lead_doc) AS docs,
+          COLLECT(DISTINCT pr.fiscal_year) AS fiscal_years,
+          COLLECT(DISTINCT pr.award_amount) AS award_amount,
+          COLLECT(DISTINCT pr.award_amount_category) AS award_amounts,
+          COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
+          COLLECT(DISTINCT pr.project_id) AS project_id,
+          COLLECT(DISTINCT {
+           programs: p.program_id,
+           docs: pr.lead_doc,
+           fiscal_years: pr.fiscal_year,
+           award_amount: pr.award_amount,
+           award_amounts: pr.award_amount_category,
+           queried_project_ids: pr.queried_project_id,
+           project_id: pr.project_id
+          }) AS nested_projects,
+          dt.accession AS accession,
+          COALESCE(dt.title, dt.study_title) AS title,
+          dt.release_date AS release_date,
+          dt.registration_date AS registration_date,
+          dt.bioproject_accession AS bioproject_accession,
+          dt.status AS status,
+          dt.submission_date AS submission_date,
+          dt.last_update_date AS last_update_date,
+          CASE LABELS(dt)[0]
+            WHEN 'geo' THEN 'GEO'
+            WHEN 'sra' THEN 'SRA'
+            WHEN 'dbgap' THEN 'dbGaP' END AS transformed_type,
+          CASE LABELS(dt)[0]
+            WHEN 'geo' THEN 'https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=' + dt.accession
+            WHEN 'sra' THEN 'https://trace.ncbi.nlm.nih.gov/Traces/sra/?study=' + dt.accession
+            WHEN 'dbgap' THEN 'https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=' + dt.accession END AS link
+      "
+
+  - index_name: publications
+    type: neo4j
+    mapping:
+      programs:
+        type: keyword
+      docs:
+        type: keyword
+      fiscal_years:
+        type: keyword
+        fields:
+          raw:
+            type: date
+            format: yyyy
+      award_amount:
+        type: integer
+      award_amounts:
+        type: keyword
+      queried_project_ids:
+        type: keyword
+        normalizer: lowercase
+      project_id:
+        type: keyword
+      publication_id:
+        type: keyword
+      pmc_id:
+        type: keyword
+      year:
+        type: date
+        format: yyyy
+      journal:
+        type: keyword
+      title:
+        type: keyword
+        normalizer: lowercase
+      authors:
+        type: keyword
+        normalizer: lowercase
+      publish_date:
+        type: date
+        format: dd-MMM-yyyy||d-MMM-yyyy
+      citation_count:
+        type: integer
+      citation_count_category:
+        type: keyword
+      relative_citation_ratio:
+        type: float
+        null_value: -1
+      rcr_range:
+        type: keyword
+      nih_percentile:
+        type: float
+        null_value: -1
+      doi:
+        type: keyword
+      nested_projects:
+        type: nested
+        properties:
+          programs:
+            type: keyword
+          docs:
+            type: keyword
+          fiscal_years:
+            type: keyword
+          award_amount:
+            type: keyword
+          award_amounts:
+            type: keyword
+          queried_project_ids:
+            type: keyword
+          project_id:
+            type: keyword
+    # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
+    cypher_query: "
+        MATCH (p:program)<--(pr:project)<--(pub:publication)
+        RETURN DISTINCT
+          COLLECT(DISTINCT p.program_id) AS programs,
+          COLLECT(DISTINCT pr.lead_doc) AS docs,
+          COLLECT(DISTINCT pr.fiscal_year) AS fiscal_years,
+          COLLECT(DISTINCT pr.award_amount) AS award_amount,
+          COLLECT(DISTINCT pr.award_amount_category) AS award_amounts,
+          COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
+          COLLECT(DISTINCT pr.project_id) AS project_id,
+          COLLECT(DISTINCT {
+           programs: p.program_id,
+           docs: pr.lead_doc,
+           fiscal_years: pr.fiscal_year,
+           award_amount: pr.award_amount,
+           award_amounts: pr.award_amount_category,
+           queried_project_ids: pr.queried_project_id,
+           project_id: pr.project_id
+          }) AS nested_projects,
+          pub.publication_id AS publication_id,
+          pub.pmc_id AS pmc_id,
+          pub.year AS year,
+          pub.journal AS journal,
+          pub.title AS title,
+          pub.authors AS authors,
+          pub.publish_date AS publish_date,
+          pub.citation_count AS citation_count,
+          pub.citation_count_category AS citation_count_category,
+          pub.relative_citation_ratio AS relative_citation_ratio,
+          pub.rcr_range AS rcr_range,
+          pub.nih_percentile AS nih_percentile,
+          pub.doi AS doi
+       "
+
+  - index_name: projects
+    type: neo4j
+    mapping:
+      programs:
+        type: keyword
+        fields:
+          search:
+            type: search_as_you_type
+          sort:
+            type: keyword
+            normalizer: lowercase
+      fiscal_years:
+        type: keyword
+        fields:
+          raw:
+            type: date
+            format: yyyy
+      docs:
+        type: keyword
+        fields:
+          search:
+            type: search_as_you_type
+          sort:
+            type: keyword
+            normalizer: lowercase
+      award_amounts:
+        type: keyword
+      award_amount:
+        type: integer
+      activity_code:
+        type: keyword
+        fields:
+          search:
+            type: search_as_you_type
+          sort:
+            type: keyword
+            normalizer: lowercase
+      serial_number:
+        type: keyword
+        fields:
+          search:
+            type: search_as_you_type
+      project_id:
+        type: keyword
+        fields:
+          search:
+            type: search_as_you_type
+          sort:
+            type: keyword
+            normalizer: lowercase
+      queried_project_id:
+        type: keyword
+        fields:
+          search:
+            type: search_as_you_type
+      application_id:
+        type: keyword
+        fields:
+          search:
+            type: search_as_you_type
+      project_title:
+        type: keyword
+        fields:
+          search:
+            type: search_as_you_type
+          sort:
+            type: keyword
+            normalizer: lowercase
+      project_type:
+        type: keyword
+      abstract_text:
+        type: keyword
+        fields:
+          search:
+            type: search_as_you_type
+      keywords:
+        type: keyword
+        fields:
+          search:
+            type: search_as_you_type
+      org_name:
+        type: keyword
+        fields:
+          search:
+            type: search_as_you_type
+      org_city:
+        type: keyword
+        fields:
+          search:
+            type: search_as_you_type
+      org_state:
+        type: keyword
+        fields:
+          search:
+            type: search_as_you_type
+      org_country:
+        type: keyword
+      principal_investigators:
+        type: keyword
+        fields:
+          search:
+            type: search_as_you_type
+          sort:
+            type: keyword
+            normalizer: lowercase
+      program_officers:
+        type: keyword
+        fields:
+          search:
+            type: search_as_you_type
+          sort:
+            type: keyword
+            normalizer: lowercase
+      nci_funded_amount:
+        type: integer
+      award_notice_date:
+        type: date
+        format: dd-MMM-yyyy||d-MMM-yyyy
+      project_start_date:
+        type: date
+        format: dd-MMM-yyyy||d-MMM-yyyy
+      project_end_date:
+        type: date
+        format: dd-MMM-yyyy||d-MMM-yyyy
+      full_foa:
+        type: keyword
+        fields:
+          search:
+            type: search_as_you_type
+      type:
+        type: keyword
+      representative:
+        type: boolean
+    # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
+    cypher_query: "
+        MATCH (pr:project)
+        OPTIONAL MATCH (p:program)<--(pr)
+        RETURN DISTINCT
+          p.program_id AS programs,
+          pr.fiscal_year AS fiscal_years,
+          pr.lead_doc AS docs,
+          pr.award_amount AS award_amount,
+          pr.award_amount_category AS award_amounts,
+          SUBSTRING(pr.project_id, 1, 3) AS activity_code,
+          SUBSTRING(pr.project_id, 6, 6) AS serial_number,
+          pr.project_id AS project_id,
+          pr.queried_project_id AS queried_project_id,
+          pr.application_id AS application_id,
+          pr.project_title AS project_title,
+          pr.project_type AS project_type,
+          pr.abstract_text AS abstract_text,
+          pr.keywords AS keywords,
+          pr.org_name AS org_name,
+          pr.org_city AS org_city,
+          pr.org_state AS org_state,
+          pr.org_country AS org_country,
+          pr.principal_investigators AS principal_investigators,
+          pr.program_officers AS program_officers,
+          pr.nci_funded_amount AS nci_funded_amount,
+          pr.award_notice_date AS award_notice_date,
+          pr.project_start_date AS project_start_date,
+          pr.project_end_date AS project_end_date,
+          pr.full_foa As full_foa,
+          LABELS(pr)[0] AS type,
+          pr.representative AS representative
+      "
