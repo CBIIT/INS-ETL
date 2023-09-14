@@ -37,26 +37,23 @@ RELATIONSHIP_PROPS = 'relationship_properties'
 BATCH_SIZE = 1000
 
 
-def get_indexes(session):
+def get_btree_indexes(session):
     """
     Queries the database to get all existing indexes
-
     :param session: the current neo4j transaction session
     :return: A set of tuples representing all existing indexes in the database
     """
-    command = "call db.indexes()"
+    command = "SHOW INDEXES"
     result = session.run(command)
     indexes = set()
     for r in result:
-        if len(r["labelsOrTypes"]) > 0 :
+        if r["type"] == "BTREE":
             indexes.add(format_as_tuple(r["labelsOrTypes"][0], r["properties"]))
     return indexes
-
 
 def format_as_tuple(node_name, properties):
     """
     Format index info as a tuple
-
     :param node_name: The name of the node type for the index
     :param properties: The list of node properties being used by the index
     :return: A tuple containing the index node_name followed by the index properties in alphabetical order
@@ -295,10 +292,7 @@ class DataLoader:
     # Remove extra spaces at beginning and end of the keys and values
     @staticmethod
     def cleanup_node(node):
-        obj = {}
-        for key, value in node.items():
-            obj[key.strip()] = value.strip()
-        return obj
+        return {key if not key else key.strip(): value if not value else value.strip() for key, value in node.items()}
 
     # Cleanup values for Boolean, Int and Float types
     # Add uuid to nodes if one not exists
@@ -466,7 +460,6 @@ class DataLoader:
     def get_node_properties(self, obj):
         """
         Generate a node with only node properties from input data
-
         :param obj: input data object (dict), may contain parent pointers, relationship properties etc.
         :return: an object (dict) that only contains properties on this node
         """
@@ -482,6 +475,44 @@ class DataLoader:
 
         return node
 
+    # Validate the field names
+    def validate_field_name(self, file_name):
+        file_encoding = check_encoding(file_name)
+        with open(file_name, encoding=file_encoding) as in_file:
+            reader = csv.DictReader(in_file, delimiter='\t')
+
+            row = next(reader)
+            row = self.cleanup_node(row)
+            row_prepare_node = self.prepare_node(row)
+            parent_pointer = []
+            for key in row_prepare_node.keys():
+                if is_parent_pointer(key):
+                    parent_pointer.append(key)
+            error_list = []
+            parent_error_list = []
+            for key in row.keys():
+                if key not in parent_pointer:
+                    try:
+                        if key not in self.schema.get_props_for_node(row['type']) and key != 'type':
+                            error_list.append(key)
+                    except:
+                        error_list.append(key)
+                else:
+                    try:
+                        if key.split('.')[1] not in self.schema.get_props_for_node(key.split('.')[0]):
+                            parent_error_list.append(key)
+                    except:
+                        parent_error_list.append(key)
+            if len(error_list) > 0:
+                for error_field_name in error_list:
+                    self.log.warning('Property: "{}" not found in data model'.format(error_field_name))
+            if len(parent_error_list) > 0:
+                for parent_error_field_name in parent_error_list:
+                    self.log.error('Parent pointer: "{}" not found in data model'.format(parent_error_field_name))
+                self.log.error('Parent pointer not found in the data model, abort loading!')
+                return False
+        return True
+
     # Validate file
     def validate_file(self, file_name, max_violations):
         file_encoding = check_encoding(file_name)
@@ -492,12 +523,16 @@ class DataLoader:
             validation_failed = False
             violations = 0
             ids = {}
+            if not self.validate_field_name(file_name):
+                return False
+
             for org_obj in reader:
                 obj = self.cleanup_node(org_obj)
                 props = self.get_node_properties(obj)
                 line_num += 1
                 id_field = self.schema.get_id_field(obj)
                 node_id = self.schema.get_id(obj)
+
                 if node_id:
                     if node_id in ids:
                         if get_props_signature(props) != ids[node_id]['props']:
@@ -516,13 +551,16 @@ class DataLoader:
                         ids[node_id] = {'props': get_props_signature(props), 'lines': [str(line_num)]}
 
                 validate_result = self.schema.validate_node(obj[NODE_TYPE], obj)
-                if not validate_result['result']:
+                if not validate_result['result'] and not validate_result['warning']:
                     for msg in validate_result['messages']:
                         self.log.error('Invalid data at line {}: "{}"!'.format(line_num, msg))
                     validation_failed = True
                     violations += 1
                     if violations >= max_violations:
                         return False
+                elif not validate_result['result'] and validate_result['warning']:
+                    for msg in validate_result['messages']:
+                        self.log.warning('Invalid data at line {}: "{}"!'.format(line_num, msg))
             return not validation_failed
 
     def get_new_statement(self, node_type, obj):
@@ -698,6 +736,7 @@ class DataLoader:
         int_node_created = 0
         provided_parents = 0
         relationship_properties = {}
+        #print(obj.items())
         for key, value in obj.items():
             if is_parent_pointer(key):
                 provided_parents += 1
@@ -712,9 +751,11 @@ class DataLoader:
                     self.log.error('Line: {}: Relationship not found!'.format(line_num))
                     raise Exception('Undefined relationship, abort loading!')
                 if not self.node_exists(session, other_node, other_id, value):
+                    create_parent = False
                     if create_intermediate_node:
                         for plugin in self.plugins:
                             if plugin.should_run(other_node, MISSING_PARENT):
+                                create_parent = True
                                 if plugin.create_node(session, line_num, other_node, value, obj):
                                     int_node_created += 1
                                     relationships.append(
@@ -725,6 +766,11 @@ class DataLoader:
                                         'Line: {}: Could not create {} node automatically!'.format(line_num,
                                                                                                    other_node))
                     else:
+                        self.log.warning(
+                            'Line: {}: Parent node (:{} {{{}: "{}"}} not found in DB!'.format(line_num, other_node,
+                                                                                              other_id,
+                                                                                              value))
+                    if not create_parent:
                         self.log.warning(
                             'Line: {}: Parent node (:{} {{{}: "{}"}} not found in DB!'.format(line_num, other_node,
                                                                                               other_id,
@@ -824,7 +870,6 @@ class DataLoader:
             # Use transactions in split-transactions mode
             if split:
                 tx = session.begin_transaction()
-
             for org_obj in reader:
                 line_num += 1
                 transaction_counter += 1
@@ -838,7 +883,6 @@ class DataLoader:
                 if provided_parents > 0:
                     if len(relationships) == 0:
                         raise Exception('Line: {}: No parents found, abort loading!'.format(line_num))
-
                     for relationship in relationships:
                         relationship_name = relationship[RELATIONSHIP_TYPE]
                         multiplier = relationship[MULTIPLIER]
@@ -858,7 +902,7 @@ class DataLoader:
                         else:
                             self.log.debug('Multiplier: {}, no action needed!'.format(multiplier))
                         prop_statement = ', '.join(self.get_relationship_prop_statements(properties))
-                        statement = 'MATCH (m:{0} {{ {1}: ${1} }})'.format(parent_node, parent_id_field)
+                        statement = 'MATCH (m:{0} {{ {1}: $__parentID__ }})'.format(parent_node, parent_id_field)
                         statement += ' MATCH (n:{0} {{ {1}: ${1} }})'.format(node_type,
                                                                              self.schema.get_id_field(obj))
                         statement += ' MERGE (n)-[r:{}]->(m)'.format(relationship_name)
@@ -867,7 +911,7 @@ class DataLoader:
                         statement += ' ON MATCH SET r.{} = datetime()'.format(UPDATED)
                         statement += ', {}'.format(prop_statement) if prop_statement else ''
 
-                        result = tx.run(statement, {**obj, parent_id_field: parent_id, **properties})
+                        result = tx.run(statement, {**obj, "__parentID__": parent_id, **properties})
                         count = result.consume().counters.relationships_created
                         self.relationships_created += count
                         relationship_pattern = '(:{})->[:{}]->(:{})'.format(node_type, relationship_name, parent_node)
@@ -885,10 +929,12 @@ class DataLoader:
                     tx = session.begin_transaction()
                     self.log.info(f'{line_num - 1} rows loaded ...')
                     transaction_counter = 0
+
             # commit last transaction
             if split:
                 tx.commit()
-
+            if provided_parents == 0:
+                    self.log.warning('there is no parent mapping columns in the node {}'.format(node_type))
             for rel, count in relationships_created.items():
                 self.log.info('{} {} relationship(s) loaded'.format(count, rel))
             if int_nodes_created > 0:
@@ -941,10 +987,9 @@ class DataLoader:
         """
         Creates indexes, if they do not already exist, for all entries in the "id_fields" and "indexes" sections of the
         properties file
-
         :param session: the current neo4j transaction session
         """
-        existing = get_indexes(session)
+        existing = get_btree_indexes(session)
         # Create indexes from "id_fields" section of the properties file
         ids = self.schema.props.id_fields
         for node_name in ids:
