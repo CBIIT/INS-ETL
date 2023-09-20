@@ -148,7 +148,7 @@ Indices:
             }) AS nested_projects,
             pat.patent_id AS patent_id,
             pat.fulfilled_date AS fulfilled_date,
-            COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
+            apoc.coll.sort(COLLECT(DISTINCT pr.queried_project_id)) AS queried_project_ids,
             COLLECT(DISTINCT pr.project_id) AS project_id
        "
 
@@ -227,7 +227,7 @@ Indices:
           ct.title AS title,
           ct.last_update_posted AS last_update_posted,
           ct.recruitment_status AS recruitment_status,
-          COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
+          apoc.coll.sort(COLLECT(DISTINCT pr.queried_project_id)) AS queried_project_ids,
           COLLECT(DISTINCT pr.project_id) AS project_id
       "
 
@@ -313,7 +313,7 @@ Indices:
           COLLECT(DISTINCT pr.fiscal_year) AS fiscal_years,
           COLLECT(DISTINCT pr.award_amount) AS award_amount,
           COLLECT(DISTINCT pr.award_amount_category) AS award_amounts,
-          COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
+          apoc.coll.sort(COLLECT(DISTINCT pr.queried_project_id)) AS queried_project_ids,
           COLLECT(DISTINCT pr.project_id) AS project_id,
           COLLECT(DISTINCT {
            programs: p.program_id,
@@ -422,7 +422,7 @@ Indices:
           COLLECT(DISTINCT pr.fiscal_year) AS fiscal_years,
           COLLECT(DISTINCT pr.award_amount) AS award_amount,
           COLLECT(DISTINCT pr.award_amount_category) AS award_amounts,
-          COLLECT(DISTINCT pr.queried_project_id) AS queried_project_ids,
+          apoc.coll.sort(COLLECT(DISTINCT pr.queried_project_id)) AS queried_project_ids,
           COLLECT(DISTINCT pr.project_id) AS project_id,
           COLLECT(DISTINCT {
            programs: p.program_id,
